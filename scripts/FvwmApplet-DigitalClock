@@ -1,0 +1,47 @@
+# Modified to show date of the form Sat Oct 25 23:01
+# Size changed to 100x14
+# Erin Sheldon, BNL
+WindowTitle {FvwmApplet-DigitalClock}
+WindowSize 80 14		# Taille
+#WindowSize 100 14		# Taille
+Font		"Shadow=1 0 SE:xft:Sans:size=8:minspace=False:antialias=True"
+# Use the FvwmScript default colors.
+#BackColor {rgb:a0/90/80}
+#ForeColor {black}
+#ShadowColor	{black}
+#HilightColor	{rgb:a0/90/80}
+
+Init
+ Begin
+  Set $MainColorset=(GetScriptArgument 1)
+  If $MainColorset <> {} Then
+  Begin
+   ChangeColorset 0 $MainColorset
+   ChangeColorset 1 $MainColorset
+  End
+  Set $tmp = (GetOutput {exec date +"%b %d %H:%M"} 1 -1)
+  ChangeTitle  1 $tmp
+End
+
+PeriodicTasks
+ Begin 
+  If (RemainderOfDiv (GetTime) 30)==0 Then
+  Begin
+    Set $tmp = (GetOutput {exec date +"%b %d %H:%M"} 1 -1)
+    ChangeTitle  1 $tmp
+  End
+End
+
+Widget 1
+Property
+ Position 0 0
+ Size 80 14
+ Type ItemDraw
+ Flags NoReliefString
+ Title {}
+Main
+ Case message of
+  SingleClic :
+  Begin
+  End
+End
