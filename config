@@ -1,0 +1,302 @@
+ModulePath $[FVWM_USERDIR]:+
+
+ImagePath ${HOME}/.fvwm/images:${HOME}/.fvwm/3dpixmaps:+
+
+SetEnv fvwm_wallpaper_dir ${HOME}/.fvwm/Wallpapers
+SetEnv fvwm_script $./scripts
+
+*FvwmScript: Path $[HOME]/.fvwm/scripts
+
+InfoStoreAdd filemanager pcmanfm
+InfoStoreAdd editor mousepad
+InfoStoreAdd terminal xfce4-terminal
+InfoStoreAdd browser firefox
+InfoStoreAdd mail thunderbird
+InfoStoreAdd viewer gthumb
+InfoStoreAdd videoplayer vlc
+InfoStoreAdd audioplayer audacious
+InfoStoreAdd help xman
+
+InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:DejaVu Sans:size=8::minspace=False:antialias=True"
+InfoStoreAdd normalfont "xft:DejaVu Sans:size=9:minspace=False:antialias=True"
+InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:DejaVu Sans:size=9:minspace=False:antialias=True"
+
+DeskTopSize 4x1
+
+Emulate Win
+HideGeometryWindow Move
+IgnoreModifiers L2
+ClickTime 550
+OpaqueMoveSize 100
+
+EdgeScroll 0 0
+EdgeResistance 500
+EdgeThickness 1
+
+BusyCursor DynamicMenu True, Read True
+
+CursorStyle ROOT         left_ptr
+CursorStyle TITLE        left_ptr
+CursorStyle DEFAULT      left_ptr
+CursorStyle SYS          left_ptr
+CursorStyle MENU         left_ptr
+
+Colorset 0 fg black, bg cadetblue
+Colorset 1 fg black, bg grey
+Colorset 2 fg white, bg black
+
+Style * Colorset 1, HilightColorset 0
+Style * BorderWidth 4, HandleWidth 4
+
+DestroyDecor ClassicDecor
+AddToDecor ClassicDecor
++ TitleStyle	Centered Height 22
++ ButtonStyle	all	-- UseTitleStyle, MWMDecor 
+
+Style *	UseDecor ClassicDecor, MWMBorder 
+Style *	Font "$[infostore.titlefont]"
+Style * IconFont "$[infostore.normalfont]"
+
+Style * IconBackgroundRelief 1, IconTitleRelief 2	
+Style * IconBackgroundColorset 9, IconTitleColorset 9, HilightIconTitleColorset 7
+Style * IconSize 64 64, # !IconTitle
+
+MenuStyle * MWM
+MenuStyle * Hilight3DThickness 1, PopupOffset 0 100, PopupDelay 300
+MenuStyle * Font "$[infostore.normalfont]"
+MenuStyle * TitleFont "$[infostore.titlefont]"
+# MenuStyle * MenuColorset 5, HilightBack, ActiveColorset 7, HilightTitleBack, TitleColorset 5
+MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
+MenuStyle * TrianglesUseFore, TrianglesSolid
+MenuStyle * ItemFormat "%s%| %i %l  %r  %i%> %|%"
+MenuStyle * VerticalItemSpacing 4 3, VerticalTitleSpacing 6 3
+MenuStyle * SeparatorsLong
+
+Style * ClickToFocus
+Style * MouseFocusClickRaises
+Style * TileCascadePlacement
+Style * ResizeOpaque
+Style * WindowShadeSteps 20
+Style * SnapAttraction 10
+Style * UsePPosition
+Style * GrabFocus, GrabFocusTransient
+Style * !FPReleaseFocus
+Style * FPLenient
+Style * IconBox 5 5 -5 -5, IconGrid 5 5, IconFill left bottom
+Style * DecorateTransient, DontLowerTransient, UseTransientPPosition
+Style * MWMFunctions
+Style * MWMDecor
+Style * HintOverride
+Style * OLDecor
+Style * EWMHUseStateHints
+Style * GNOMEUseHints
+
+Style panel        Sticky, NoTitle, WindowListSkip, CirculateSkip, BorderWidth 0
+Style "tint2" !Title, !Handles, !Borders, StaysOnTop, EWMHIgnoreStrutHints, Sticky, EWMHPlacementIgnoreWorkingArea, NeverFocus, WindowListSkip
+Style desktop_icon CirculateSkip, WindowListSkip,  NoTitle
+Style *lock        NoTitle, NoHandles, Sticky, WindowListSkip
+Style stalonetray  NoTitle, NoHandles, WindowListSkip, CirculateSkip, StaysOnBottom,NeverFocus, EWMHUseStackingOrderHints
+Style FvwmForm-QuitVerify NoButton 1, NoButton 2, NoButton 4, NoButton 6, StaysOnTop, NoHandles, WindowListSkip
+
+
+#------------------------------------------------------------------------------
+# Menus
+#------------------------------------------------------------------------------
+Read menus
+
+#------------------------------------------------------------------------------
+# Functions
+#------------------------------------------------------------------------------
+
+DestroyFunc MoveOrRaiseOrShade
+AddToFunc MoveOrRaiseOrShade I Focus
++ I Raise
++ M Move
++ C Raise
++ D WindowShade
+
+DestroyFunc MoveOrIconifyOrRaise
+AddToFunc MoveOrIconifyOrRaise M Move
++ C Raise
++ D Iconify
+
+DestroyFunc IconifyWindow
+AddToFunc IconifyWindow
++ C Iconify
+
+DestroyFunc CloseWindow
+AddToFunc CloseWindow
++ C Close
+
+DestroyFunc RaiseLowerKey
+AddToFunc RaiseLowerKey
++ I ThisWindow (!Overlapped) Lower
++ I TestRc (Match) TransferFocus
+
+DestroyFunc RaiseLowerWindow
+AddToFunc RaiseLowerWindow
++ C ThisWindow (!Overlapped) Lower
++ C TestRc (Match) TransferFocus
+
+DestroyFunc WindowListFunc
+AddToFunc WindowListFunc
++ I ThisWindow Iconify off
++ I ThisWindow Raise
++ I ThisWindow Focus
+
+DestroyFunc FuncFvwmNextWindow
+AddToFunc FuncFvwmNextWindow
++ I Next (CurrentPage, !Iconic, AcceptsFocus) FlipFocus NoWarp
++ I Current Raise
+
+DestroyFunc NewWallFunc
+AddToFunc NewWallFunc
++ I PipeRead 'printf "%s\\n" $* > $[FVWM_USERDIR]/.wallpaper; echo Nop'
++ I Exec exec fvwm-root --dither --retain-pixmap $[fvwm_wallpaper]
+
+DestroyModuleConfig FE-Focus: *
+*FE-Focus: iconify TransferFocus
+*FE-Focus: destroy_window TransferFocus
+AddToFunc TransferFocus
+ + I Prev (!Iconic, CurrentPage, !Overlapped, AcceptsFocus) Focus
+ + I TestRc (NoMatch) ThisWindow (CurrentPage,!Overlapped,AcceptsFocus,!Iconic) Focus
+
+#------------------------------------------------------------------------------
+# Mouse Bindings
+#------------------------------------------------------------------------------
+
+Mouse 1		R   	A       Menu Utilities mouse -1p -1p
+Mouse 2		R    	A       Menu Window mouse -1p -1p
+Mouse 3         R       A       WindowList mouse -1p -1p
+Mouse 3         R       C       WindowList mouse -1p -1p OnlyListSkip
+
+Mouse 1		W   	M       Menu Utilities mouse -1p -1p
+Mouse 2		W    	M       Menu Window mouse -1p -1p
+Mouse 3         W       M       WindowList (CurrentPage) mouse -1p -1p 
+Mouse 3         W       CM      WindowList mouse -1p -1p OnlyListSkip
+
+Mouse 1         1       A       Menu Window-Ops2
+Mouse 2		1	A	Function "CloseWindow"
+Mouse 3         1       A       Destroy
+Mouse 1		2	A	Maximize
+Mouse 3		2	A	WindowShade
+Mouse 1		4    	A     	Function "IconifyWindow"
+Mouse 3         4       A       All ($c) Iconify On
+
+Mouse 1		I	A	Function "MoveOrIconifyOrRaise"
+Mouse 2		I	A	Iconify
+Mouse 3		I	A	Menu Window-Ops3 c+0 -101m
+
+Mouse 1		T	A	Function "MoveOrRaiseOrShade"
+Mouse 3		T	A	Function "RaiseLowerWindow"
+
+#------------------------------------------------------------------------------
+# Key Bindings
+#------------------------------------------------------------------------------
+
+Key F4		A	M	Close
+Key F4		A	MS	Destroy
+Key F5		A	M	RaiseLowerKey
+Key F6		A	M	All (Iconic) Raise  # originally Restore
+Key F7		A	M	Move
+Key F8		A	M	Resize
+Key F9		A	M	Iconify
+Key F10		A	M	Maximize 100 100
+Key F11		A	M	FvwmIdent
+Key F12		A	M	FvwmConsole
+
+Silent Key Tab A M FuncFvwmNextWindow
+
+# Rofi
+Key Space A C Exec exec rofi -show run
+
+# Lock screen
+Key L A MC Exec exec xscreensaver-command -l
+
+#------------------------------------------------------------------------------
+# Modules
+#------------------------------------------------------------------------------
+
+Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 4
+
+DestroyModuleConfig BarButtons: *
+*BarButtons: Columns 1
+*BarButtons: Padding 2 2 
+*BarButtons: Frame 1
+*BarButtons: Colorset 1
+*BarButtons: Geometry 62x530+0+0
+*BarButtons: Font "$[infostore.smallfont]"
+*BarButtons: (Swallow (NoClose,UseOld) "WMClock" `Exec exec wmclock`)
+*BarButtons: (Title Home, Icon FileManager.xpm, Action "Exec exec $[infostore.filemanager]", \
+    Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
+*BarButtons: (Title Terminal, Icon Shell2.xpm, Action "Exec exec $[infostore.terminal]")
+*BarButtons: (Title Editor, Icon TextEditor.xpm, Action "Exec exec $[infostore.editor]", \
+	Action(Mouse 3) 'Exec exec geany')
+*BarButtons: (Title Viewer, Icon Viewer.xpm, Action "Exec exec $[infostore.viewer]", \
+    Action(Mouse 2) 'Exec exec evince', \
+    Action(Mouse 3) 'Exec exec gimp')
+*BarButtons: (Title Media, Icon xmix.xpm, Action "Exec exec $[infostore.audioplayer]", \
+    Action(Mouse 3) "Exec exec $[infostore.videoplayer]")
+*BarButtons: (Title Browser, Icon Terminal.xpm, Action "Exec exec $[infostore.browser]")
+*BarButtons: (Title Mail, Icon Mail.xpm, Action "Exec exec $[infostore.mail]")
+
+Style "FvwmDesker" NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
+Colorset 12 fg white, bg #909090, RootTransparent buffer, Tint #909090 40, hi white, sh #202020, fgsh #303030
+
+DestroyModuleConfig FvwmDesker: *
+*FvwmDesker: UseSkipList
+*FvwmDesker: Colorset * 12
+*FvwmDesker: Fore #b3b3b3
+*FvwmDesker: Font none
+# Comment out or set this option for window names in pager windows
+# also see WindowLabelFormat.
+*FvwmDesker: SmallFont none
+*FvwmDesker: MiniIcons
+*FvwmDesker: Balloons
+*FvwmDesker: BalloonFore black
+*FvwmDesker: BalloonBack bisque
+*FvwmDesker: BalloonFont "$[infostore.normalfont]"
+
+*FvwmDesker: Label 0 Fvwm
+*FvwmDesker: Label 1 Development
+*FvwmDesker: Label 2 Internet
+*FvwmDesker: Label 3 Misc
+*FvwmDesker: SmallFont "$[infostore.smallfont]"
+
+DestroyModuleConfig DeskerPanelButtons: *
+*DeskerPanelButtons: Fore Black
+*DeskerPanelButtons: Colorset 9
+*DeskerPanelButtons: Geometry 220x70+0+0
+*DeskerPanelButtons: Rows 1
+*DeskerPanelButtons: Frame 1
+*DeskerPanelButtons: Padding 1 1
+*DeskerPanelButtons: (1x1, Frame 1, Container(Rows 8, Frame 1))
+*DeskerPanelButtons: (3x3, Frame 0, Left,Swallow (NoClose, UseOld) 'stalonetray' \
+	`Exec exec stalonetray --icon-gravity NW -p --kludges force_icons_size,fix_window_pos,use_icons_hints`)
+*DeskerPanelButtons: (2x3, Frame 0, Center, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript FvwmApplet-DigitalClock 9")
+*DeskerPanelButtons: (5x5, Frame -1, Colorset 9, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
+*DeskerPanelButtons: (End)
+
+Style DeskerPanelButtons NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, FixedSize, NoHandles, BorderWidth 4
+
+
+Style FvwmPager	  NoTitle, Sticky, WindowListSkip, StaysOnBottom, NeverFocus, FixedSize, NoHandles
+
+#------------------------------------------------------------------------------
+# Start
+#------------------------------------------------------------------------------
+
+AddToFunc StartFunction
++ I Test (Init) Exec exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
++ I Test (Init) exec fvwm-root --dither --retain-pixmap "$[FVWM_USERDIR]/Wallpapers/.current--fvwm"
++ I Test (Init) Exec exec nm-applet
++ I Test (Init) Exec exec pnmixer
++ I Test (Init) Exec exec xscreensaver -no-splash
++ I Test (Init) Exec exec redshift
++ I Test (Init) Exec exec xfce4-power-manager
++ I Module FvwmButtons BarButtons -g +0+0 
++ I Module FvwmButtons DeskerPanelButtons -g -0+0
++ I FvwmEvent FE-Focus
+
+AddToFunc ExitFunction
++ I Exec killall stalonetray

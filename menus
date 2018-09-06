@@ -1,0 +1,524 @@
+#-----------------------------------------------------------------------------#
+#
+# 10. Now define the menus
+#
+#-----------------------------------------------------------------------------#
+
+#------------------------------------------------------------------------------
+# Root Menu: This menu will fire up some very common utilities
+#------------------------------------------------------------------------------
+#Read $[HOME]/.fvwm/menus.gen
+PipeRead 'fvwm-menu-desktop --desktop lxde -t Programme'
+
+DestroyMenu Utilities
+AddToMenu   Utilities@side.xpm@^#d0cfcf^
++ "&Terminal%icons/terminal-app-16.png%"	Exec exec $[infostore.terminal]
++ %icons/fman.png%"Home"			Exec exec $[infostore.filemanager]
+#+ %icons/search.png%"Find ..."					Exec exec catfish
++ %icons/run-16.png%"Execute ..."		Exec exec rofi -show run
++ "" Nop
++ "&Favorites%icons/folder-16.png%"		Popup Favorites
++ "&Programs%icons/folder-16.png%"		Popup Programme
++ "FVWM &Modules%icons/folder-16.png%"		Popup Module-Popup
++ "&Settings%icons/system-settings-16.png%"	Popup Settings
++ "&Help%icons/folder-16.png%"		Popup Documents
+#+ "&Screen Saver%icons/folder-16.png%"		Popup Screen
++ "&Restart"	Popup Restart
++ "&Quit FVWM%icons/shutdown.png%"		FvwmForm FvwmForm-QuitVerify
+
+DestroyMenu Favorites
+AddToMenu   Favorites
++ %icons/fman.png%"File Manager"		Exec exec $[infostore.filemanager]
+#+ "Midnight Commander%icons/folder-16.png%"	Exec exec $[infostore.terminal] -e mc
++ "Editor%icons/texteditor-app-16.png%"		Exec exec $[infostore.editor]
++ "Viewer%icons/gallery-app-16.png%"		Exec exec $[infostore.viewer]
++ "Audio Player%icons/music-app-16.png%"	Exec exec $[infostore.audioplayer]
++ "Video Player%icons/mediaplayer-app-16.png%"	Exec exec $[infostore.videoplayer]
+#+ "&Gimp%icons/gallery-app-16.png%"		Exec exec gimp
++ "Web Browser%icons/webbrowser-app-16.png%"	Exec exec $[infostore.browser]
++ "Mail%icons/mail-app-16.png%"			Exec exec $[infostore.mail]
+
+#------------------------------------------------------------------------------
+#--------- Modules
+#------------------------------------------------------------------------------
+
+DestroyMenu Module-Popup
+AddToMenu   Module-Popup
++ "&Autoraise%icons/module.png%"	RestartModule FvwmAuto 500
++ "A&nimate%icons/module.png%"          RestartModule FvwmAnimate
++ "&Backer%icons/module.png%"           RestartModule FvwmBacker
++ "B&anner%icons/module.png%"		RestartModule FvwmBanner
++ "B&utton Panel%icons/module.png%"	RestartModuleByAlias FvwmButtons BarButtons BarButtons
++ "Desker &Panel%icons/module.png%"	RestartModuleByAlias FvwmButtons DeskerPanelButtons DeskerPanelButtons
++ "&Console%icons/module.png%"		Module FvwmConsole -sb
++ "I&conMan%icons/module.png%"		RestartModule FvwmIconMan
++ "Identif&y%icons/module.png%"		RestartModule FvwmIdent
++ "Sound &effect%icons/module.png%"	RestartModule FvwmEvent
++ "&Talk to Fvwm%icons/module.png%"	FvwmForm FvwmForm-Talk
++ "Window &List%icons/module.png%"	RestartModule FvwmWinList
++ "" Nop
++ "&Kill Modules%icons/delete.png%"    Popup Kill-Module-Popup
+
+DestroyMenu Kill-Module-Popup
+AddToMenu   Kill-Module-Popup
++ "&Autoraise%icons/module.png%"	KillModule FvwmAuto
++ "A&nimate%icons/module.png%"          KillModule FvwmAnimate
++ "&Backer%icons/module.png%"           KillModule FvwmBacker
++ "B&anner%icons/module.png%"	        KillModule FvwmBanner
++ "B&utton Panel%icons/module.png%"	All (BarButtons*) Close
++ "&Desker Panel%icons/module.png%"	All (DeskerPanel*) Close
++ "&Console%icons/module.png%"		KillModule FvwmConsole
++ "I&conMan%icons/module.png%"		KillModule FvwmIconMan
++ "Identif&y%icons/module.png%"	KillModule FvwmIdent
++ "Sound &effect%icons/module.png%"	KillModule FvwmEvent
++ "&Talk%icons/module.png%"	        All (FvwmForm-Talk) Close
++ "Window &List%icons/module.png%"	KillModule FvwmWinList
+
+#------------------------------------------------------------------------------
+#--------- Settings
+#------------------------------------------------------------------------------
+
+
+DestroyMenu Settings
+AddToMenu   Settings
+#+  MissingSubmenuFunction WallpaperBrowser
++ "&Animation%icons/window-switch.png%"		Popup Animate-Settings
++ "Auto&Raise%icons/view-restore.png%"		Popup AutoRaise-Settings
++ "Browse Wallpaper%icons/folder-16.png%" 	Popup Back-Image
++ "Browse Pattern%icons/folder-16.png%" 	Popup Back-Pattern
+#+ "Browse Colors%icons/folder-16.png%" 	Popup Back-Solid
++ "" Nop
++ %icons/preferences-color-16.png%"Appearence"	Exec exec lxappearance
++ %icons/battery.png%"Power Management"	Exec exec xfce4-power-manager-settings
++ "Screen Saver%icons/screensaver.png%"		Exec exec xscreensaver-demo
+#+ "&Banner"					Popup Banner-Settings
+#+ "X Settings" 				Popup XsetupScripts
++ "" Nop
++ "&Edit .fvwm2rc%icons/texteditor-app-16.png%"	Popup Edit-Config
++ "Reload .fvwm2rc%icons/refresh.png%"		Popup Reload-Config
++  "Temporary Change:  "			Title
++ "&Focus/Paging%icons/windows.png%"		Popup Focus-Settings
++ "&Bell%icons/audio-volume.png%"		Popup Bell-Settings
++ "&Screen%icons/windows.png%"			Popup X-settings
+
+#------------------------------------------------------------------------------
+#--------- Animate  settings
+
+DestroyMenu Animate-Settings
+AddToMenu   Animate-settings
++ "&Animation on"	ModuleOn FvwmAnimate
++ "Animation &off"	ModuleOff FvwmAnimate
+#+ "Animate &Menu"	Popup MenuFvwmAnimate
+
+#------------------------------------------------------------------------------
+#--------- AutoRaise settings
+
+DestroyMenu AutoRaise-Settings
+AddToMenu   AutoRaise-Settings
++ "Raise &Slow"		ModuleOn 'FvwmAuto' '1000'
++ "Raise &Default"	ModuleOn 'FvwmAuto' '500'
++ "Raise &Fast"		ModuleOn 'FvwmAuto' '250'
++ "Speedy &Gonzales"	ModuleOn 'FvwmAuto' '50'
++ "Raise &Modules Only" StartModulesAutoRaise
++ "AutoRaise &off"	ModuleOff FvwmAuto
+
+#------------------------------------------------------------------------------
+#--------- Background  settings
+
+DestroyMenu Back-Solid
+AddToMenu   Back-Solid
+PipeRead '$FVWM_USERDIR/scripts/colorthumb.sh'
+
+DestroyMenu Back-Image
+AddToMenu   Back-Image
+PipeRead '$FVWM_USERDIR/scripts/wallpaper.sh $[fvwm_wallpaper_dir]'
+
+DestroyMenu Back-Pattern
+AddToMenu   Back-Pattern
+PipeRead "$FVWM_USERDIR/scripts/wallpaper.sh ${HOME}/.fvwm/Pattern"
+
+#------------------------------------------------------------------------------
+#--------- Banner  settings
+
+DestroyMenu Banner-Settings
+AddToMenu   Banner-Settings
++ "&Banner on"	ModuleOn FvwmBanner
++ "Banner &off"	ModuleOff FvwmBanner
+
+#------------------------------------------------------------------------------
+#--------- Buttons  settings
+
+DestroyMenu Buttons-Settings
+AddToMenu   Buttons-Settings
++ "&Buttons Bar" ChangeButtonsOn 'FvwmButtons BarButtons'
++ "&Wharf"	 ChangeButtonsOn  FvwmWharf
++ "&None"	 ChangeButtonsOff
+
+
+#------------------------------------------------------------------------------
+#--------- MiniButtons  settings
+
+DestroyMenu MiniButtons-Settings
+AddToMenu   MiniButtons-Settings
++ "&Mini Buttons on"	ButtonsOn FvwmButtons MiniButtons MiniButtons
++ "Mini Buttons &off"	ButtonsOff MiniButtons MiniButtons
+
+#------------------------------------------------------------------------------
+#---------   DeskerPanel settings
+
+DestroyMenu DeskerPanel-Settings
+AddToMenu   DeskerPanel-Settings
++ "&Desker Panel on"	ButtonsOn FvwmButtons DeskerPanelButtons DeskerPanelButtons
++ "Desker Panel &off"	ButtonsOff DeskerPanelButtons DeskerPanelButtons
+
+#------------------------------------------------------------------------------
+#---------   WMaker Applets settings
+
+DestroyMenu WinMakerApp-Settings
+AddToMenu   WinMakerApp-Settings
++ "&WMaker Applets on"	ButtonsOn FvwmButtons WinMakerAppButtons WinMakerApp*
++ "WMaker Applets &off%"	ButtonsOff WinMakerAppButtons WinMakerApp*
+
+
+#------------------------------------------------------------------------------
+#--------- Sound  settings
+
+DestroyMenu Sound-Settings
+AddToMenu   Sound-Settings
++ "&Sound Effect on%icons/audio-volume-high.png%"	ModuleOn FvwmEvent
++ "Sound Effect &off%icons/audio-volume-muted.png%"	ModuleOff FvwmEvent
+#+ "Sound &card%mini.sound.xpm%"		Exec exec xmixer
+
+#------------------------------------------------------------------------------
+#--------- X setup Script
+
+DestroyMenu XsetupScripts
+AddToMenu   XsetupScripts
++ "&Bell%icons/mixer.png%"		FvwmScript FvwmScript-BellSetup
++ "&KeyBoard%icons/keyboard.png%"	FvwmScript FvwmScript-KeyboardSetup
++ "&Screen%icons/display.png%"		FvwmScript FvwmScript-ScreenSetup
++ "&Mouse%icons/mouse.png%"		FvwmScript FvwmScript-PointerSetup
+
+#------------------------------------------------------------------------------
+#--------- Edit config
+
+#PREF 12
+DestroyMenu Edit-Config
+AddToMenu   Edit-Config
++ "Edit .fvwm2rc%icons/texteditor-app-16.png%" 		Exec exec $[infostore.editor] $FVWM_USERDIR/.fvwm2rc
++ "Edit decorations%icons/texteditor-app-16.png%" 	Exec exec $[infostore.editor] $FVWM_USERDIR/decorations
++ "Edit globalfeel%icons/texteditor-app-16.png%" 	Exec exec $[infostore.editor] $FVWM_USERDIR/globalfeel
++ "Edit startup%icons/texteditor-app-16.png%" 		Exec exec $[infostore.editor] $FVWM_USERDIR/startup
++ "Edit styles%icons/texteditor-app-16.png%" 		Exec exec $[infostore.editor] $FVWM_USERDIR/styles
++ "Edit iconstyles%icons/texteditor-app-16.png%" 	Exec exec $[infostore.editor] $FVWM_USERDIR/iconstyles
++ "Edit functions%icons/texteditor-app-16.png%" 	Exec exec $[infostore.editor] $FVWM_USERDIR/functions
++ "Edit bindings%icons/texteditor-app-16.png%" 		Exec exec $[infostore.editor] $FVWM_USERDIR/bindings
++ "Edit menus%icons/texteditor-app-16.png%" 		Exec exec $[infostore.editor] $FVWM_USERDIR/menus
++ "Edit modules%icons/texteditor-app-16.png%"		Exec exec $[infostore.editor] $FVWM_USERDIR/modules
+
+#------------------------------------------------------------------------------
+#--------- Reload config
+
+DestroyMenu Reload-Config
+AddToMenu   Reload-Config
++ "Reload decorations%icons/redo.png%"		Read decorations
++ "Reload globalfeel%icons/redo.png%"		Read globalfeel
++ "Reload styles%icons/redo.png%"		Read styles
++ "Reload iconstyles && menus%icons/redo.png%"	ReloadIconStylesAndMenus
++ "Reload functions%icons/redo.png%"		Read functions
++ "Reload bindings%icons/redo.png%"		Read bindings
++ "Reload modules%icons/redo.png%"		Read modules
+
+
+#------------------------------------------------------------------------------
+#--------- Focus/Paging  settings
+
+DestroyMenu Focus-Settings
+AddToMenu   Focus-Settings
++ "&Sloppy Focus%icons/mouse.png%"			Style * SloppyFocus
++ "&Click To Focus%icons/mouse.png%"			Style * ClickToFocus
++ "&Focus Follows Mouse%icons/mouse.png%"		Style * FocusFollowsMouse
++ "" Nop
++ "&Colormap Follows Mouse" ColormapFocus FollowsMouse
++ "&Colormap Follows Focus" ColormapFocus FollowsFocus
++ "" Nop
++ "&Full Paging ON%icons/windows.png%"			EdgeScroll 100 100
++ "&All Paging OFF%icons/windows.png%"			EdgeScroll 0 0
++ "&Horizontal Paging Only%icons/windows.png%"		EdgeScroll 100 0
++ "&Vertical Paging Only%icons/windows.png%"		EdgeScroll 0 100
++ "&Partial Paging%icons/windows.png%"			EdgeScroll 50 50
++ "&Full Paging && Edge Wrap%icons/windows.png%" 	EdgeScroll 100000 100000
+
+
+#------------------------------------------------------------------------------
+#--------- Mouse settings
+
+DestroyMenu Mouse-Settings
+AddToMenu   Mouse-Settings
++ "Mouse &Slow%icons/mouse.png%"		Exec	xset m 1 1
++ "Mouse &Default%icons/mouse.png%"		Exec	xset m default
++ "Mouse &Fast%icons/mouse.png%"		Exec	xset m 4 2
++ "Speedy &Gonzales%icons/mouse.png%"		Exec	xset m 10 2
+
+#------------------------------------------------------------------------------
+#--------- Keyboard settings
+
+DestroyMenu Keyboard-Settings
+AddToMenu   Keyboard-Settings
++ "&Auto-repeat on%icons/key-16.png%"	Exec	xset r on
++ "Auto-repeat &off%icons/key-16.png%"	Exec	xset r off
+
+#------------------------------------------------------------------------------
+#--------- Sound  settings
+
+DestroyMenu Bell-Settings
+AddToMenu   Bell-Settings
++ "&Bell on"		Exec xset b on
++ "Bell &off"		Exec xset b off
+#+ "Sound &card"	Exec exec xmixer
+
+#------------------------------------------------------------------------------
+#--------- X & screen settings
+
+DestroyMenu X-Settings
+AddToMenu   X-Settings
+#+ "Back &Color"         Popup Backcolor
+#+ "Back &Animation"   Popup Background-Animation
++ "&Root Cursor Form"	FvwmForm FvwmForm-RootCursor
++ "&Video tuning"	Exec exec xterm -T Xvidtune -e xvidtune
+#+ "&X configuration"	Exec exec xterm -T Xconfig -e Xconfigurator
+
+
+#------------------------------------------------------------------------------
+#--------- Documents
+#------------------------------------------------------------------------------
+
+DestroyMenu Documents
+AddToMenu   Documents
++ "&Manual%icons/help-app-16.png%"	   		Exec exec $[infostore.help]
++ "&FVWM Home Page%icons/webbrowser-app-16.png%" 	Exec exec $[infostore.browser] http://www.fvwm.org/
++ "&Sample 95 MINI-FAQ%icons/help-app-16.png%"		Exec exec $[infostore.terminal] -bg white -fg black -g 80x35 -n "Sample-95 MINI-FAQ" -T "Sample-95 MINI-FAQ" -e less +?"-- Sample-95 MINI-FAQ --" $FVWM_USERDIR/.fvwm2rc
++ "FVWM &Man Pages%icons/help-app-16.png%"		Popup FvwmManPage
+
+DestroyMenu MenuBrowser
+#PREF 1
+AddToMenu   MenuBrowser DynamicPopupAction Piperead 'fvwm-menu-directory --reuse --name MenuBrowser --dir $HOME --special-dirs --exec-file ^"$fvwm_editor" --xterm=" $fvwm_file_manager" --icon-dir=icons/folder.png --icon-title=icons/folder.png --icon-file=icons/doc.png --icon-app=mini.hex.xpm --check-subdir'
+
+DestroyMenu MenuBrowserCached
+#PREF 1
+AddToMenu   MenuBrowserCached DynamicPopupAction Piperead 'fvwm-menu-directory --all --reuse --name MenuBrowserCached --dir $HOME --special-dirs --exec-file ^"$fvwm_editor" --xterm=" $fvwm_file_manager" --icon-dir=icons/folder.png --icon-title=icons/folder.png --icon-file=icons/doc.png --icon-app=mini.hex.xpm --check-subdir'
+
+DestroyFunc FuncFvwmMenuDirectory
+#PREF 1
+AddToFunc FuncFvwmMenuDirectory I PipeRead 'fvwm-menu-directory --dir "$0" --exec-file ^"$fvwm_editor" --xterm=" $fvwm_file_manager" --icon-dir=icons/folder.png --icon-title=icons/folder.png --icon-file=icons/doc.png --icon-app=mini.hex.xpm --check-subdir'
+
+#------------- FvwmManPage
+
+DestroyFunc ViewManPage
+AddToFunc   ViewManPage
++ I Exec exec yelp man:$0 #$[infostore.terminal] -g 80x40 -e man $0
+
+DestroyMenu FvwmManPage
+AddToMenu   FvwmManPage "FVWM Man Pages" Title
++ "%icons/help-app-16.png%fvwm"                ViewManPage fvwm
++ "%icons/help-app-16.png%FvwmAnimate"         ViewManPage FvwmAnimate
++ "%icons/help-app-16.png%FvwmAuto"            ViewManPage FvwmAuto
++ "%icons/help-app-16.png%FvwmBacker"          ViewManPage FvwmBacker
++ "%icons/help-app-16.png%FvwmBanner"          ViewManPage FvwmBanner
++ "%icons/help-app-16.png%FvwmButtons"         ViewManPage FvwmButtons
++ "%icons/help-app-16.png%FvwmCascade"         ViewManPage FvwmCascade
++ "%icons/help-app-16.png%FvwmCommand"         ViewManPage FvwmCommandS
++ "%icons/help-app-16.png%FvwmConsole"         ViewManPage FvwmConsole
++ "%icons/help-app-16.png%FvwmConsoleC.pl"     ViewManPage FvwmConsoleC.pl
++ "%icons/help-app-16.png%FvwmCpp"             ViewManPage FvwmCpp
++ "%icons/help-app-16.png%FvwmEvent"           ViewManPage FvwmEvent
++ "%icons/help-app-16.png%FvwmForm"            ViewManPage FvwmForm
++ "%icons/help-app-16.png%FvwmIconMan"         ViewManPage FvwmIconMan
++ "%icons/help-app-16.png%FvwmIdent"           ViewManPage FvwmIdent
++ "%icons/help-app-16.png%FvwmM4"              ViewManPage FvwmM4
++ "%icons/help-app-16.png%FvwmPager"           ViewManPage FvwmPager
++ "%icons/help-app-16.png%FvwmPerl"            ViewManPage FvwmPerl
++ "%icons/help-app-16.png%FvwmProxy"           ViewManPage FvwmProxy
++ "%icons/help-app-16.png%FvwmRearrange"       ViewManPage FvwmRearrange
++ "%icons/help-app-16.png%FvwmScript"          ViewManPage FvwmScript
++ "%icons/help-app-16.png%FvwmTalk"            ViewManPage FvwmTalk
++ "%icons/help-app-16.png%FvwmTile"            ViewManPage FvwmTile
++ "%icons/help-app-16.png%FvwmWharf"           ViewManPage FvwmWharf
++ "%icons/help-app-16.png%FvwmWinList"         ViewManPage FvwmWinList
++ "" Nop
++ "%icons/help-app-16.png%fvwm-config"         ViewManPage fvwm-config
++ "%icons/help-app-16.png%fvwm-perllib"        ViewManPage fvwm-perllib
++ "%icons/help-app-16.png%fvwm-root"           ViewManPage fvwm-root
++ "%icons/help-app-16.png%fvwm-bug"            ViewManPage fvwm-bug
++ "" Nop
++ "%icons/help-app-16.png%fvwm-menu-desktop"   ViewManPage fvwm-menu-desktop
++ "%icons/help-app-16.png%fvwm-menu-directory" ViewManPage fvwm-menu-directory
++ "%icons/help-app-16.png%fvwm-menu-headlines" ViewManPage fvwm-menu-headlines
++ "%icons/help-app-16.png%fvwm-menu-xlock"     ViewManPage fvwm-menu-xlock
+
+#------------------------------------------------------------------------------
+#--------- ScreenSaver
+#------------------------------------------------------------------------------
+
+DestroyMenu Screen
+AddToMenu   Screen
++ "&Screensaver%icons/screensaver.png%" 	Exec exec xscreensaver-command -a
++ "Screen&lock%icons/system-lock-screen.png%"	Exec exec xscreensaver-command -l
++ "" Nop
++ "Preferences%icons/system.png%"		Exec exec xscreensaver-demo
+
+#------------------------------------------------------------------------------
+#--------- Restart
+#------------------------------------------------------------------------------
+
+DestroyMenu Restart
+AddToMenu   Restart "Restart Window Manager" Title
++ "&Restart Self"	Restart
++ "&Openbox"		Restart openbox
++ "Just &xterm%icons/terminal-app-16.png%"		Restart xterm
+# A bit dangerous in a menu
+#+ ""					Nop
+#+ "Halt%mini.stop.xpm%"	  	Exec exec shutdown -h now
+#+ "Reboot%mini.lightbolt-full.xpm%" 	Exec exec shutdown -r now
+
+
+#------------------------------------------------------------------------------
+#------------- Windows Operations
+#------------------------------------------------------------------------------
+
+#-----------------------------------------------------------------------------
+# The "root" windows ops menu (Mouse 2)
+
+DestroyMenu "Window"
+AddToMenu "Window" "Window Operations" Title
++ "&Move	Alt-f7%icons/view-move.png%"               			Move
++ %icons/window-switch.png%"&Resize"          			Resize
++ %icons/view-restore.png%"(De)&Iconify	Alt-F9"      	Iconify
++ %icons/view-fullscreen.png%"(Un)M&aximize	Alt-F10" 	Maximize 100 100
++ "(Un)&Shade"         						WindowShade
++ "(Un)S&tick"         						Stick
+#+ "R&aise%icons/go-up.png%"             			Raise
++ "&Lower	Alt-F5%icons/go-down.png%"             		Lower
++ ""								Nop
++ %icons/window-close.png%"&Close	Alt-F4" 		Close
++ %icons/edit-delete.png%"&Destroy	Ctrl-Alt-F4"		Destroy
++ ""								Nop
++ "Move to &Page"						Popup Move-window
++ "&Group Ops"							Popup WindowGroupOps
++ ""								Nop
++ "&Identify	Alt-F11%icons/info.png%"			Module FvwmIdent
++ "Switch &to...%icons/windows.png%"				WindowList
+
+#------------------------------------------------------------------------------
+# A trimmed down version of "Window Ops", good for binding to decorations
+
+DestroyMenu "Window-Ops2"
+AddToMenu "Window-Ops2"
++ "&Move	Alt-F7%icons/move.png%"			Move
++ "&Resize"					Resize
++ "(De)&Iconify	Alt-F9%icons/iconify.png%"		Iconify
++ "(Un)M&aximize	Alt-F10%icons/fullscreen.png%"		Maximize 100 100
++ "(Un)&Shade"					WindowShade
++ "(Un)S&tick"					Stick
++ "&Lower	Alt-F5%icons/go-down.png%"      Lower
++ ""			Nop
++ %icons/window-close.png%"&Close	Alt-F4"		Close
++ ""			Nop
++ "&Identify	Alt-F11%icons/info.png%"			Module FvwmIdent
++ "More&...%icons/windows.png%"			Menu Window This 0 0
+
+#------------------------------------------------------------------------------
+# A trimmed down version of "Window Ops", good for binding to TaskBar,
+# WinList ... buttons
+
+DestroyMenu "Window-Ops3"
+AddToMenu "Window-Ops3"
++ %icons/window-switch.png%"Move to &Page"			Popup Move-window
++ "&Group Ops%icons/view-move.png%"				Popup WindowGroupOps
++ ""			Nop
++ %icons/view-restore.png%"(De)&Iconify	Alt-F9"		Iconify
++ "(Un)&Shade"							WindowShade
++ "(Un)S&tick"							Stick
++ %icons/view-fullscreen.png%"(Un)M&aximize   	Alt-F10"	Maximize 95 95
++ ""								Nop
++ %icons/window-close.png%"&Close	Alt-F4"			Close
++ ""								Nop
++ "&Identify	Alt-F11%icons/info.png%"					Module FvwmIdent
++ "More&...%icons/windows.png%"					Menu Window This 0 0
+
+#------------------------------------------------------------------------------
+# A "Move Window" menu
+
+DestroyMenu "Move-Window"
+AddToMenu   "Move-Window" "Move to ..." Title
++ 'Page &1'	MoveToPage 0 0
++ 'Page &2'	MoveToPage 1 0
++ 'Page &3'	MoveToPage 2 0
++ 'Page &4'	MoveToPage 3 0
+
+#------------------------------------------------------------------------------
+# A group version of WindowOps
+
+DestroyMenu WindowGroupOps
+AddToMenu   WindowGroupOps
++ "&Iconify%icons/view-restore.png%"   	Pick All ($[w.class]) Iconify on
++ "&DeIconify%icons/view-restore.png%" 	Pick All ($[w.class]) Iconify off
++ "&Shade"       			Pick All ($[w.class]) WindowShade on
++ "&UnShade"     			Pick All ($[w.class]) WindowShade off
++ "R&aise%icons/go-up.png%"       		Pick All ($[w.class]) Raise
++ "&Lower%icons/go-down.png%"       		Pick All ($[w.class]) Lower
++ "&Close%icons/window-close.png%"				Pick Close
++ "&Destroy%icons/edit-delete.png%"		Pick Destroy
++ "&Quick move to ..." Title
++ 'Page &1%icons/window-switch.png%'		Pick All ($[w.class]) MoveToPage 0 0
++ 'Page &2%icons/window-switch.png%'		Pick All ($[w.class]) MoveToPage 1 0
++ 'Page &3%icons/window-switch.png%'		Pick All ($[w.class]) MoveToPage 2 0
++ 'Page &4%icons/window-switch.png%'		Pick All ($[w.class]) MoveToPage 3 0
+
+DestroyMenu WindowStyle
+AddToMenu   WindowStyle
++ "Title&AtTop" Pick (CirculateHit) Style $n TitleAtTop
++ "&NoTitle"	 Pick (CirculateHit) Style $n NoTitle
++ "&Title"	 Pick (CirculateHit) Style $n NoTitle
++ "TitleAt&Bottom" Pick (CirculateHit) Style $n TitleAtBottom
++ "" Nop
++ "StaysOn&Top" Pick (CirculateHit) StyleAndRecapture $n StaysOnTop
++ "Stays&Put"   Pick (CirculateHit) StyleAndRecapture $n StaysPut
++ "StaysOn&Bottom"  Pick (CirculateHit) StyleAndRecapture $n StaysOnBottom
++ "" Nop
++ "&FvwmBorder"	Pick (CirculateHit) Style $n FvwmBorder
++ "&MWMBorder"		Pick (CirculateHit) Style $n MWMBorder
++ "&DepressableBorder"	Pick (CirculateHit) Style $n DepressableBorder
++ "&FirmBorder"	Pick (CirculateHit) Style $n FirmBorder
++ "&Handles"		Pick (CirculateHit) Style $n Handles
++ "&NoHandles"		Pick (CirculateHit) Style $n NoHandles
++ "BorderWidth &0" Pick (CirculateHit) Style $n BorderWidth 0
++ "BorderWidth &5" Pick (CirculateHit) Style $n BorderWidth 5
++ "HandleWidth &0" Pick (CirculateHit) Style $n HandleWidth 0
++ "HandleWidth &7" Pick (CirculateHit) Style $n HandleWidth 7
++ "" Nop
++ "&ResizeOpaque"  Pick (CirculateHit) Style $n ResizeOpaque
++ "Resize&Outline" Pick (CirculateHit) Style $n ResizeOutline
++ "Sloppy&Focus"    Pick (CirculateHit) Style $n SloppyFocus
++ "&ClickToFocus"   Pick (CirculateHit) Style $n ClickToFocus
++ "&MouseFocus"     Pick (CirculateHit) Style $n MouseFocus
++ "&NeverFocus"     Pick (CirculateHit) Style $n NeverFocus
+
+DestroyMenu WinRearrange
+AddToMenu   WinRearrange
++ "&Cascade%icons/windows.png%" FvwmRearrange -cascade -m 3 3 -incx 2
++ "Tile &horizontally" FvwmRearrange -tile -h -m 2 2 98 98
++ "Tile &vertically" FvwmRearrange -tile -m 2 2 98 98
++ "" Nop
++ "&ScrollBar (1/2 app)"  Module FvwmScroll 2 2
++ "&Scroll&Bar (75%% scr)" Module FvwmScroll 75p 75p
++ "" Nop
++ "&Arrange Icons" All (CurrentDesk Iconic) RecaptureWindow
++ "&Refresh Screen" Refresh
+
+#----------------------------------------------------------------------------
+# Use the winops menus styles for the "Windows Operations Menus"
+# Use it also for big menu
+
+ChangeMenuStyle winops Window Window-Ops2 Window-Ops3 Move-Window WindowGroupOps WindowStyle WinRearrange Back-Solid FvwmManPage
+
