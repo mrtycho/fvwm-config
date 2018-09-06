@@ -1,9 +1,3 @@
-#-----------------------------------------------------------------------------#
-#
-# 10. Now define the menus
-#
-#-----------------------------------------------------------------------------#
-
 #------------------------------------------------------------------------------
 # Root Menu: This menu will fire up some very common utilities
 #------------------------------------------------------------------------------
@@ -11,10 +5,10 @@
 PipeRead 'fvwm-menu-desktop --desktop lxde -t Programme'
 
 DestroyMenu Utilities
-AddToMenu   Utilities@side.xpm@^#d0cfcf^
+AddToMenu   Utilities
 + "&Terminal%icons/terminal-app-16.png%"	Exec exec $[infostore.terminal]
 + %icons/fman.png%"Home"			Exec exec $[infostore.filemanager]
-#+ %icons/search.png%"Find ..."					Exec exec catfish
+#+ %icons/search.png%"Find ..."			Exec exec catfish
 + %icons/run-16.png%"Execute ..."		Exec exec rofi -show run
 + "" Nop
 + "&Favorites%icons/folder-16.png%"		Popup Favorites
@@ -94,8 +88,9 @@ AddToMenu   Settings
 #+ "&Banner"					Popup Banner-Settings
 #+ "X Settings" 				Popup XsetupScripts
 + "" Nop
-+ "&Edit .fvwm2rc%icons/texteditor-app-16.png%"	Popup Edit-Config
-+ "Reload .fvwm2rc%icons/refresh.png%"		Popup Reload-Config
++ "&Edit .fvwm2rc%icons/texteditor-app-16.png%"	Exec exec $[infostore.editor] $FVWM_USERDIR/config
+# + "&Edit .fvwm2rc%icons/texteditor-app-16.png%"	Popup Edit-Config
+# + "Reload .fvwm2rc%icons/refresh.png%"		Popup Reload-Config
 +  "Temporary Change:  "			Title
 + "&Focus/Paging%icons/windows.png%"		Popup Focus-Settings
 + "&Bell%icons/audio-volume.png%"		Popup Bell-Settings
