@@ -1,9 +1,9 @@
 ModulePath $[FVWM_USERDIR]:+
 
-ImagePath ${HOME}/.fvwm/images:${HOME}/.fvwm/3dpixmaps:+
+ImagePath $[FVWM_USERDIR]/images:$[FVWM_USERDIR]/3dpixmaps:+
 
-SetEnv fvwm_wallpaper_dir ${HOME}/.fvwm/Wallpapers
-SetEnv fvwm_script $./scripts
+SetEnv fvwm_wallpaper_dir $[FVWM_USERDIR]/Wallpapers
+SetEnv fvwm_script $[FVWM_USERDIR]/scripts
 
 *FvwmScript: Path $[HOME]/.fvwm/scripts
 
@@ -116,9 +116,14 @@ AddToFunc MoveOrRaiseOrShade I Focus
 + D WindowShade
 
 DestroyFunc MoveOrIconifyOrRaise
-AddToFunc MoveOrIconifyOrRaise M Move
-+ C Raise
-+ D Iconify
+AddToFunc MoveOrIconifyOrRaise 
++ M Move
++ I Iconify
++ D Raise
+
+DestroyFunc MaximizeWindow
+AddToFunc MaximizeWindow
++ C Maximize
 
 DestroyFunc IconifyWindow
 AddToFunc IconifyWindow
@@ -176,9 +181,9 @@ Mouse 3         W       M       WindowList (CurrentPage) mouse -1p -1p
 Mouse 3         W       CM      WindowList mouse -1p -1p OnlyListSkip
 
 Mouse 1         1       A       Menu Window-Ops2
-Mouse 2		1	A	Function "CloseWindow"
-Mouse 3         1       A       Destroy
-Mouse 1		2	A	Maximize
+Mouse 2         1       A       Destroy
+Mouse 3		1	A	Function "CloseWindow"
+Mouse 1		2	A	Function "MaximizeWindow"
 Mouse 3		2	A	WindowShade
 Mouse 1		4    	A     	Function "IconifyWindow"
 Mouse 3         4       A       All ($c) Iconify On
@@ -188,7 +193,8 @@ Mouse 2		I	A	Iconify
 Mouse 3		I	A	Menu Window-Ops3 c+0 -101m
 
 Mouse 1		T	A	Function "MoveOrRaiseOrShade"
-Mouse 3		T	A	Function "RaiseLowerWindow"
+Mouse 2		T	A	Function "RaiseLowerWindow"
+Mouse 3		T	A	Menu Window-Ops3
 
 #------------------------------------------------------------------------------
 # Key Bindings
@@ -229,7 +235,7 @@ DestroyModuleConfig BarButtons: *
 *BarButtons: (Swallow (NoClose,UseOld) "WMClock" `Exec exec wmclock`)
 *BarButtons: (Title Home, Icon FileManager.xpm, Action "Exec exec $[infostore.filemanager]", \
     Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
-*BarButtons: (Title Terminal, Icon Shell2.xpm, Action "Exec exec $[infostore.terminal]")
+*BarButtons: (Title Terminal, Icon cli.xpm, Action "Exec exec $[infostore.terminal]")
 *BarButtons: (Title Editor, Icon TextEditor.xpm, Action "Exec exec $[infostore.editor]", \
 	Action(Mouse 3) 'Exec exec geany')
 *BarButtons: (Title Viewer, Icon Viewer.xpm, Action "Exec exec $[infostore.viewer]", \
@@ -288,7 +294,7 @@ Style FvwmPager	  NoTitle, Sticky, WindowListSkip, StaysOnBottom, NeverFocus, Fi
 
 AddToFunc StartFunction
 + I Test (Init) Exec exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
-+ I Test (Init) exec fvwm-root --dither --retain-pixmap "$[FVWM_USERDIR]/Wallpapers/.current--fvwm"
++ I Test (Init) exec fvwm-root --dither --retain-pixmap "$[FVWM_USERDIR]/.current--fvwm"
 + I Test (Init) Exec exec nm-applet
 + I Test (Init) Exec exec pnmixer
 + I Test (Init) Exec exec xscreensaver -no-splash

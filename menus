@@ -130,7 +130,7 @@ PipeRead '$FVWM_USERDIR/scripts/wallpaper.sh $[fvwm_wallpaper_dir]'
 
 DestroyMenu Back-Pattern
 AddToMenu   Back-Pattern
-PipeRead "$FVWM_USERDIR/scripts/wallpaper.sh ${HOME}/.fvwm/Pattern"
+PipeRead '$FVWM_USERDIR/scripts/wallpaper.sh $FVWM_USERDIR/Pattern'
 
 #------------------------------------------------------------------------------
 #--------- Banner  settings
