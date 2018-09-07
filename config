@@ -44,6 +44,9 @@ CursorStyle MENU         left_ptr
 Colorset 0 fg black, bg cadetblue
 Colorset 1 fg black, bg grey
 Colorset 2 fg white, bg black
+Colorset 3 fg black, bg grey, Pixmap Tile.png, hi white, sh black
+Colorset 4 fg black, bg grey, Pixmap Tile2.png, hi white, bg black, fgsh #f0f0f0
+Colorset 5 fg black, bg grey, hi white, sh black
 
 Style * Colorset 1, HilightColorset 0
 Style * BorderWidth 4, HandleWidth 4
@@ -55,16 +58,17 @@ AddToDecor ClassicDecor
 
 Style *	UseDecor ClassicDecor, MWMBorder 
 Style *	Font "$[infostore.titlefont]"
-Style * IconFont "$[infostore.normalfont]"
+Style * IconFont "$[infostore.smallfont]"
 
-Style * IconBackgroundRelief 1, IconTitleRelief 2	
-Style * IconBackgroundColorset 9, IconTitleColorset 9, HilightIconTitleColorset 7
-Style * IconSize 64 64, # !IconTitle
+Style * IconBackgroundRelief 1, IconTitleRelief 1	
+Style * IconBackgroundColorset 3, IconTitleColorset 5, HilightIconTitleColorset 0
+Style * IconSize 64 64, IconTitle
 
 MenuStyle * MWM
 MenuStyle * Hilight3DThickness 1, PopupOffset 0 100, PopupDelay 300
 MenuStyle * Font "$[infostore.normalfont]"
 MenuStyle * TitleFont "$[infostore.titlefont]"
+MenuStyle * MenuColorset 5
 # MenuStyle * MenuColorset 5, HilightBack, ActiveColorset 7, HilightTitleBack, TitleColorset 5
 MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
 MenuStyle * TrianglesUseFore, TrianglesSolid
@@ -116,10 +120,18 @@ AddToFunc MoveOrRaiseOrShade I Focus
 + D WindowShade
 
 DestroyFunc MoveOrIconifyOrRaise
-AddToFunc MoveOrIconifyOrRaise 
+AddToFunc MoveOrIconifyOrRaise I Focus
 + M Move
-+ I Iconify
-+ D Raise
++ D Iconify
++ C Raise
+
+DestroyFunc IconifyOrFocusAndRaise
+AddToFunc IconifyOrFocusAndRaise
++ I ThisWindow (CurrentPage,!Iconic,Focused) Iconify
++ I TestRc (Match) Break 
++ I Iconify -1
++ I Raise
++ I ThisWindow (AcceptsFocus) Focus
 
 DestroyFunc MaximizeWindow
 AddToFunc MaximizeWindow
@@ -232,19 +244,19 @@ DestroyModuleConfig BarButtons: *
 *BarButtons: Colorset 1
 *BarButtons: Geometry 62x530+0+0
 *BarButtons: Font "$[infostore.smallfont]"
-*BarButtons: (Swallow (NoClose,UseOld) "WMClock" `Exec exec wmclock`)
-*BarButtons: (Title Home, Icon FileManager.xpm, Action "Exec exec $[infostore.filemanager]", \
+*BarButtons: (Colorset 4, Swallow (NoClose,UseOld) "WMClock" `Exec exec wmclock`)
+*BarButtons: (Colorset 4, Title Home, Icon FileManager.xpm, Action "Exec exec $[infostore.filemanager]", \
     Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
-*BarButtons: (Title Terminal, Icon cli.xpm, Action "Exec exec $[infostore.terminal]")
-*BarButtons: (Title Editor, Icon TextEditor.xpm, Action "Exec exec $[infostore.editor]", \
+*BarButtons: (Colorset 4, Title Terminal, Icon cli.xpm, Action "Exec exec $[infostore.terminal]")
+*BarButtons: (Colorset 4, Title Editor, Icon TextEditor.xpm, Action "Exec exec $[infostore.editor]", \
 	Action(Mouse 3) 'Exec exec geany')
-*BarButtons: (Title Viewer, Icon Viewer.xpm, Action "Exec exec $[infostore.viewer]", \
+*BarButtons: (Colorset 4, Title Viewer, Icon Viewer.xpm, Action "Exec exec $[infostore.viewer]", \
     Action(Mouse 2) 'Exec exec evince', \
     Action(Mouse 3) 'Exec exec gimp')
-*BarButtons: (Title Media, Icon xmix.xpm, Action "Exec exec $[infostore.audioplayer]", \
+*BarButtons: (Colorset 4, Title Media, Icon xmix.xpm, Action "Exec exec $[infostore.audioplayer]", \
     Action(Mouse 3) "Exec exec $[infostore.videoplayer]")
-*BarButtons: (Title Browser, Icon Terminal.xpm, Action "Exec exec $[infostore.browser]")
-*BarButtons: (Title Mail, Icon Mail.xpm, Action "Exec exec $[infostore.mail]")
+*BarButtons: (Colorset 4, Title Browser, Icon Terminal.xpm, Action "Exec exec $[infostore.browser]")
+*BarButtons: (Colorset 4, Title Mail, Icon Mail.xpm, Action "Exec exec $[infostore.mail]")
 
 Style "FvwmDesker" NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
 Colorset 12 fg white, bg #909090, RootTransparent buffer, Tint #909090 40, hi white, sh #202020, fgsh #303030
@@ -288,6 +300,56 @@ Style DeskerPanelButtons NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFo
 
 Style FvwmPager	  NoTitle, Sticky, WindowListSkip, StaysOnBottom, NeverFocus, FixedSize, NoHandles
 
+Style "FvwmIconMan" NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
+
+DestroyModuleConfig FvwmIconMan: *
+*FvwmIconMan: Background #d9d8d8
+*FvwmIconMan: Foreground #202020
+*FvwmIconMan: ManagerGeometry 1x1
+*FvwmIconMan: ButtonGeometry 28x28
+*FvwmIconMan: FocusAndSelectButton up #202020 #dfdfdf
+*FvwmIconMan: FocusButton flat
+*FvwmIconMan: IconButton raisededge
+*FvwmIconMan: PlainButton up
+*FvwmIconMan: SelectButton down
+*FvwmIconMan: Font "$[infostore.normalfont]"
+*FvwmIconMan: Sort name
+*FvwmIconMan: IconColorset 8
+# *FvwmIconMan: FocusAndSelectColorset 9
+*FvwmIconMan: FocusColorset 9
+*FvwmIconMan: ReliefThickness 1
+*FvwmIconMan: Resolution global 
+#Page
+*FvwmIconMan: DrawIcons Always
+*FvwmIconMan: FollowFocus True
+*FvwmIconMan: UseWinList True
+*FvwmIconMan: ShowOnlyIcons False
+*FvwmIconMan: ShowOnlyFocused False
+#*FvwmIconMan: Format "%c: %i"
+*FvwmIconMan: Title ""
+
+# action
+*FvwmIconMan: action    Mouse    1 N SendCommand "Function IconifyOrFocusAndRaise"
+*FvwmIconMan: action    Mouse    2 N SendCommand Iconify
+*FvwmIconMan: action    Mouse    3 N SendCommand "Menu Window-Ops3 c+0 -101m "
+*FvwmIconMan: action    Key   	 Left N gotobutton Left, select
+*FvwmIconMan: action    Key    	 Right N gotobutton Right, select
+*FvwmIconMan: action    Key    	 Up N gotobutton Up, select
+*FvwmIconMan: action    Key    	 Down N gotobutton Down, select
+
+# animation
+# *FvwmIconMan: NoIconAction "SendToModule FvwmAnimate animate"
+
+Style FvwmBar     NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, BorderWidth 0
+
+DestroyModuleConfig FvwmBar: *
+*FvwmBar: Font "$[infostore.normalfont]"
+*FvwmBar: Colorset 1
+*FvwmBar: Frame 1
+*FvwmBar: Padding 2 2
+*FvwmBar: Columns 1
+*FvwmBar: (1x1, Colorset 1, Swallow "FvwmIconMan" `FvwmIconMan`)
+
 #------------------------------------------------------------------------------
 # Start
 #------------------------------------------------------------------------------
@@ -302,7 +364,10 @@ AddToFunc StartFunction
 + I Test (Init) Exec exec xfce4-power-manager
 + I Module FvwmButtons BarButtons -g +0+0 
 + I Module FvwmButtons DeskerPanelButtons -g -0+0
+# + I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-0))x30+0-0 FvwmBar"
 + I FvwmEvent FE-Focus
+
+# Style * NoIcon
 
 AddToFunc ExitFunction
 + I Exec killall stalonetray
