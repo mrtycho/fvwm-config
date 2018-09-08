@@ -5,7 +5,7 @@ ImagePath $[FVWM_USERDIR]/themes/magic:$[FVWM_USERDIR]/3dpixmaps:+
 SetEnv fvwm_wallpaper_dir $[FVWM_USERDIR]/Wallpapers
 SetEnv fvwm_script $[FVWM_USERDIR]/scripts
 
-*FvwmScript: Path $[HOME]/.fvwm/scripts
+*FvwmScript: Path $[FVWM_USERDIR]/scripts
 
 InfoStoreAdd filemanager pcmanfm
 InfoStoreAdd editor mousepad
@@ -23,6 +23,7 @@ InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:DejaVu Sans:size=9:minspace=False:ant
 
 DeskTopSize 2x2
 
+ExecUseShell /bin/bash
 Emulate Win
 HideGeometryWindow Move
 IgnoreModifiers L2
@@ -41,9 +42,8 @@ CursorStyle DEFAULT      left_ptr
 CursorStyle SYS          left_ptr
 CursorStyle MENU         left_ptr
 
-Colorset 0 fg white, bg #567390, fgsh black, hi #a5b0ba
-#Colorset 0 fg black, bg #3b67a2, hi white, sh black
-Colorset 1 fg black, bg #a5a2a0, fgsh white
+Colorset 0 fg white, bg #567390, fgsh black, hi #a5b0ba, sh #2b3743
+Colorset 1 fg black, bg #959290, fgsh white, hi #e5e2e0, sh #656260
 Colorset 2 fg black, bg white
 Colorset 3 fg black, bg #d6d3d6, Pixmap Tile.png, hi white, sh black
 Colorset 4 fg black, bg #d6d3d6, Pixmap Tile2.png, hi white, bg black, fgsh #f0f0f0
@@ -64,13 +64,13 @@ AddToDecor ClassicDecor
 + ButtonStyle  	2	Inactive   (Pixmap maximize-inactive.xpm) 
 + ButtonStyle  	4	Active	   (Pixmap iconify-activeup.xpm)
 + ButtonStyle  	4	ActiveDown (Pixmap iconify-activedown.xpm)
-+ ButtonStyle  	4	Inactive (Pixmap iconify-inactive.xpm)
++ ButtonStyle  	4	Inactive (Pixmap iconify-inactive.xpm )
 + ButtonStyle	all	-- UseTitleStyle
 
 + TitleStyle	AllActive 	(TiledPixmap title-active.xpm)
 + TitleStyle	Inactive 	(TiledPixmap title-inactive.xpm)
 # + TitleStyle	-- Flat
-
+#
 #+ BorderStyle	Inactive -- HiddenHandles
 #+ BorderStyle	Active -- HiddenHandles
 
@@ -86,7 +86,7 @@ MenuStyle * MWM
 MenuStyle * Hilight3DThickness 0, PopupOffset 0 100, PopupDelay 300
 MenuStyle * Font "$[infostore.normalfont]"
 MenuStyle * TitleFont "$[infostore.titlefont]"
-MenuStyle * MenuColorset 5, ActiveColorset 6, HilightBack
+MenuStyle * MenuColorset 5, ActiveColorset 6, HilightBack, TitleColorset 0, HilightTitleBack
 # MenuStyle * MenuColorset 5, HilightBack, ActiveColorset 7, HilightTitleBack, TitleColorset 5
 MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
 MenuStyle * TrianglesUseFore, TrianglesSolid
@@ -183,11 +183,6 @@ DestroyFunc FuncFvwmNextWindow
 AddToFunc FuncFvwmNextWindow
 + I Next (CurrentPage, !Iconic, AcceptsFocus) FlipFocus NoWarp
 + I Current Raise
-
-DestroyFunc NewWallFunc
-AddToFunc NewWallFunc
-+ I PipeRead 'printf "%s\\n" $* > $[FVWM_USERDIR]/.wallpaper; echo Nop'
-+ I Exec exec fvwm-root --dither --retain-pixmap $[fvwm_wallpaper]
 
 DestroyModuleConfig FE-Focus: *
 *FE-Focus: iconify TransferFocus
@@ -382,7 +377,7 @@ DestroyModuleConfig FvwmIdent: *
 
 AddToFunc StartFunction
 + I Test (Init) Exec exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
-+ I Test (Init) exec fvwm-root --dither --retain-pixmap "$[FVWM_USERDIR]/.current--fvwm"
++ I Exec exec $(source $[FVWM_USERDIR]/background.cfg)
 + I Test (Init) Exec exec nm-applet
 + I Test (Init) Exec exec pnmixer
 + I Test (Init) Exec exec xscreensaver -no-splash
