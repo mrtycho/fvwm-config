@@ -1,6 +1,6 @@
 ModulePath $[FVWM_USERDIR]:+
 
-ImagePath $[FVWM_USERDIR]/images:$[FVWM_USERDIR]/3dpixmaps:+
+ImagePath $[FVWM_USERDIR]/themes/magic:$[FVWM_USERDIR]/3dpixmaps:+
 
 SetEnv fvwm_wallpaper_dir $[FVWM_USERDIR]/Wallpapers
 SetEnv fvwm_script $[FVWM_USERDIR]/scripts
@@ -41,21 +41,38 @@ CursorStyle DEFAULT      left_ptr
 CursorStyle SYS          left_ptr
 CursorStyle MENU         left_ptr
 
-Colorset 0 fg black, bg cadetblue
-Colorset 1 fg black, bg grey80
+Colorset 0 fg white, bg #567390, fgsh black, hi #a5b0ba
+#Colorset 0 fg black, bg #3b67a2, hi white, sh black
+Colorset 1 fg black, bg #a5a2a0, fgsh white
 Colorset 2 fg black, bg white
 Colorset 3 fg black, bg #d6d3d6, Pixmap Tile.png, hi white, sh black
 Colorset 4 fg black, bg #d6d3d6, Pixmap Tile2.png, hi white, bg black, fgsh #f0f0f0
 Colorset 5 fg black, bg #d6d3d6, hi white, sh black
 Colorset 6 fg white, bg black, fgsh grey10
 
-Style * Colorset 1, HilightColorset 0
+Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
 Style * BorderWidth 4, HandleWidth 4
 
 DestroyDecor ClassicDecor
 AddToDecor ClassicDecor
-+ TitleStyle	Centered Height 22
-+ ButtonStyle	all	-- UseTitleStyle, MWMDecor 
++ TitleStyle	Centered Height 24
++ ButtonStyle	1	Active	   (Pixmap menu-activeup.xpm)
++ ButtonStyle	1	ActiveDown (Pixmap menu-activedown.xpm)
++ ButtonStyle	1	Inactive   (Pixmap menu-inactive.xpm)
++ ButtonStyle  	2	Active	   (Pixmap maximize-activeup.xpm) 
++ ButtonStyle  	2	ActiveDown (Pixmap maximize-activedown.xpm) 
++ ButtonStyle  	2	Inactive   (Pixmap maximize-inactive.xpm) 
++ ButtonStyle  	4	Active	   (Pixmap iconify-activeup.xpm)
++ ButtonStyle  	4	ActiveDown (Pixmap iconify-activedown.xpm)
++ ButtonStyle  	4	Inactive (Pixmap iconify-inactive.xpm)
++ ButtonStyle	all	-- UseTitleStyle
+
++ TitleStyle	AllActive 	(TiledPixmap title-active.xpm)
++ TitleStyle	Inactive 	(TiledPixmap title-inactive.xpm)
+# + TitleStyle	-- Flat
+
+#+ BorderStyle	Inactive -- HiddenHandles
+#+ BorderStyle	Active -- HiddenHandles
 
 Style *	UseDecor ClassicDecor, MWMBorder 
 Style *	Font "$[infostore.titlefont]"
@@ -224,6 +241,11 @@ Key F10		A	M	Maximize 100 100
 Key F11		A	M	FvwmIdent
 Key F12		A	M	FvwmConsole
 
+Key Left     A        SM        GotoPage -1p +0p
+Key Right    A        SM        GotoPage +1p +0p
+Key Up       A        SM        GotoPage +0p -1p
+Key Down     A        SM        GotoPage +0p +1p
+
 Silent Key Tab A M FuncFvwmNextWindow
 
 # Rofi
@@ -236,7 +258,7 @@ Key L A MC Exec exec xscreensaver-command -l
 # Modules
 #------------------------------------------------------------------------------
 
-Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 4, Colorset 0
+Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 4, BorderColorset 0
 # BorderWidth 1, Colorset 6
 DestroyModuleConfig BarButtons: *
 *BarButtons: Columns 1
@@ -296,7 +318,7 @@ DestroyModuleConfig DeskerPanelButtons: *
 *DeskerPanelButtons: (5x5, Frame -1, Colorset 9, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
 *DeskerPanelButtons: (End)
 
-Style DeskerPanelButtons NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, FixedSize, NoHandles, Colorset 6, BorderWidth 1
+Style DeskerPanelButtons NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, FixedSize, NoHandles, BorderColorset 6, BorderWidth 1
 
 Style FvwmPager	  NoTitle, Sticky, WindowListSkip, StaysOnBottom, NeverFocus, FixedSize, NoHandles
 
