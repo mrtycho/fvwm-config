@@ -1,6 +1,6 @@
 ModulePath $[FVWM_USERDIR]:+
 
-ImagePath $[FVWM_USERDIR]/themes/magic:$[FVWM_USERDIR]/3dpixmaps:+
+ImagePath $[FVWM_USERDIR]/themes/magic2:$[FVWM_USERDIR]/3dpixmaps:+
 
 SetEnv fvwm_wallpaper_dir $[FVWM_USERDIR]/Wallpapers
 SetEnv fvwm_script $[FVWM_USERDIR]/scripts
@@ -15,7 +15,7 @@ InfoStoreAdd mail thunderbird
 InfoStoreAdd viewer gthumb
 InfoStoreAdd videoplayer vlc
 InfoStoreAdd audioplayer audacious
-InfoStoreAdd help xman
+InfoStoreAdd help yelp
 
 InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:DejaVu Sans:size=8::minspace=False:antialias=True"
 InfoStoreAdd normalfont "xft:DejaVu Sans:size=9:minspace=False:antialias=True"
@@ -42,12 +42,12 @@ CursorStyle DEFAULT      left_ptr
 CursorStyle SYS          left_ptr
 CursorStyle MENU         left_ptr
 
-Colorset 0 fg white, bg #567390, fgsh black, hi #a5b0ba, sh #2b3743
+Colorset 0 fg white, bg #507bad, fgsh black, hi #a5b0ba, sh #2b3743
 Colorset 1 fg black, bg #959290, fgsh white, hi #e5e2e0, sh #656260
 Colorset 2 fg black, bg white
-Colorset 3 fg black, bg #d6d3d6, Pixmap Tile.png, hi white, sh black
-Colorset 4 fg black, bg #d6d3d6, Pixmap Tile2.png, hi white, bg black, fgsh #f0f0f0
-Colorset 5 fg black, bg #d6d3d6, hi white, sh black
+Colorset 3 fg black, bg #afafaf, Pixmap Tile.png, hi white, sh black
+Colorset 4 fg black, bg #afafaf, Pixmap Tile2.png, hi white, bg black, fgsh #f0f0f0
+Colorset 5 fg black, bg #afafaf, hi white, sh black
 Colorset 6 fg white, bg black, fgsh grey10
 
 Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
@@ -112,6 +112,7 @@ Style * HintOverride
 Style * OLDecor
 Style * EWMHUseStateHints
 Style * GNOMEUseHints
+Style * IconOverride
 
 Style panel        Sticky, NoTitle, WindowListSkip, CirculateSkip, BorderWidth 0
 Style "tint2" !Title, !Handles, !Borders, StaysOnTop, EWMHIgnoreStrutHints, Sticky, EWMHPlacementIgnoreWorkingArea, NeverFocus, WindowListSkip
@@ -120,6 +121,16 @@ Style *lock        NoTitle, NoHandles, Sticky, WindowListSkip
 Style stalonetray  NoTitle, NoHandles, WindowListSkip, CirculateSkip, StaysOnBottom,NeverFocus, EWMHUseStackingOrderHints
 Style FvwmForm-QuitVerify NoButton 1, NoButton 2, NoButton 4, NoButton 6, StaysOnTop, NoHandles, WindowListSkip
 
+Style "$[infostore.terminal]" Icon small/cli.xpm
+Style "$[infostore.filemanager]" Icon small/FileManager.xpm
+Style "$[infostore.editor]" Icon small/TextEditor.xpm
+Style "$[infostore.viewer]" Icon small/Viewer.xpm
+Style "$[infostore.audioplayer]" Icon small/SoundEditor.xpm
+Style "$[infostore.videoplayer]" Icon small/Media.xpm
+Style "$[infostore.browser]" Icon netdn.xpm
+Style "Firefox" Icon small/web.xpm
+Style "$[infostore.mail]" Icon Mail.xpm
+Style "Thunderbird" Icon small/Mail.xpm
 
 #------------------------------------------------------------------------------
 # Menus
@@ -190,6 +201,12 @@ DestroyModuleConfig FE-Focus: *
 AddToFunc TransferFocus
  + I Prev (!Iconic, CurrentPage, !Overlapped, AcceptsFocus) Focus
  + I TestRc (NoMatch) ThisWindow (CurrentPage,!Overlapped,AcceptsFocus,!Iconic) Focus
+
+#------------- FvwmManPage
+
+DestroyFunc ViewManPage
+AddToFunc   ViewManPage
++ I Exec exec yelp man:$0 #$[infostore.terminal] -g 80x40 -e man $0
 
 #------------------------------------------------------------------------------
 # Mouse Bindings
