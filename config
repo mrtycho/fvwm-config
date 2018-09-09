@@ -7,7 +7,7 @@ SetEnv fvwm_script $[FVWM_USERDIR]/scripts
 
 *FvwmScript: Path $[FVWM_USERDIR]/scripts
 
-InfoStoreAdd filemanager pcmanfm
+InfoStoreAdd filemanager caja
 InfoStoreAdd editor mousepad
 InfoStoreAdd terminal xfce4-terminal
 InfoStoreAdd browser firefox
@@ -131,6 +131,7 @@ Style "$[infostore.browser]" Icon netdn.xpm
 Style "Firefox" Icon small/web.xpm
 Style "$[infostore.mail]" Icon Mail.xpm
 Style "Thunderbird" Icon small/Mail.xpm
+Style "Xman" Icon small/Help.xpm
 
 #------------------------------------------------------------------------------
 # Menus
@@ -300,6 +301,8 @@ DestroyModuleConfig FvwmDesker: *
 *FvwmDesker: UseSkipList
 *FvwmDesker: Colorset * 12
 *FvwmDesker: Fore #b3b3b3
+*FvwmDesker: Hilight black
+*FvwmDesker: WindowColorsets 5 0
 *FvwmDesker: Font none
 # Comment out or set this option for window names in pager windows
 # also see WindowLabelFormat.
