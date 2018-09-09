@@ -118,15 +118,15 @@ AddToMenu   AutoRaise-Settings
 
 DestroyMenu Back-Solid
 AddToMenu   Back-Solid
-PipeRead '$FVWM_USERDIR/scripts/colorthumb.sh'
+PipeRead 'sh $FVWM_USERDIR/scripts/colorthumb.sh'
 
 DestroyMenu Back-Image
 AddToMenu   Back-Image
-PipeRead '$FVWM_USERDIR/scripts/wallpaper.sh $[fvwm_wallpaper_dir]'
+PipeRead 'sh $FVWM_USERDIR/scripts/wallpaper.sh $[fvwm_wallpaper_dir]'
 
 DestroyMenu Back-Pattern
 AddToMenu   Back-Pattern
-PipeRead '$FVWM_USERDIR/scripts/wallpaper.sh $FVWM_USERDIR/Pattern'
+PipeRead 'sh $FVWM_USERDIR/scripts/wallpaper.sh $FVWM_USERDIR/Pattern'
 
 #------------------------------------------------------------------------------
 #--------- Banner  settings

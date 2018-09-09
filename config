@@ -1,6 +1,6 @@
 ModulePath $[FVWM_USERDIR]:+
 
-ImagePath $[FVWM_USERDIR]/themes/magic2:$[FVWM_USERDIR]/3dpixmaps:+
+ImagePath $[FVWM_USERDIR]/themes/magic:$[FVWM_USERDIR]/3dpixmaps:+
 
 SetEnv fvwm_wallpaper_dir $[FVWM_USERDIR]/Wallpapers
 SetEnv fvwm_script $[FVWM_USERDIR]/scripts
@@ -9,7 +9,7 @@ SetEnv fvwm_script $[FVWM_USERDIR]/scripts
 
 InfoStoreAdd filemanager caja
 InfoStoreAdd editor mousepad
-InfoStoreAdd terminal xfce4-terminal
+InfoStoreAdd terminal xterm
 InfoStoreAdd browser firefox
 InfoStoreAdd mail thunderbird
 InfoStoreAdd viewer gthumb
