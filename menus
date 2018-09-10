@@ -5,7 +5,7 @@
 PipeRead 'fvwm-menu-desktop --desktop lxde -t Programme'
 
 DestroyMenu Utilities
-AddToMenu   Utilities "Fvwm" Title
+AddToMenu   Utilities "Main Menu" Title
 + "&Terminal"		Exec exec $[infostore.terminal]
 + "Home"		Exec exec $[infostore.filemanager]
 #+ "Find ..."		Exec exec catfish
@@ -314,7 +314,7 @@ AddToMenu   Screen
 #------------------------------------------------------------------------------
 
 DestroyMenu Restart
-AddToMenu   Restart "Restart Window Manager" Title
+AddToMenu   Restart
 + "&Restart Self"	Restart
 + "&Openbox"		Restart openbox
 + "Just &xterm"		Restart xterm

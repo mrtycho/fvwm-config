@@ -121,18 +121,19 @@ Style *lock        NoTitle, NoHandles, Sticky, WindowListSkip
 Style stalonetray  NoTitle, NoHandles, WindowListSkip, CirculateSkip, StaysOnBottom,NeverFocus, EWMHUseStackingOrderHints
 Style FvwmForm-QuitVerify NoButton 1, NoButton 2, NoButton 4, NoButton 6, StaysOnTop, NoHandles, WindowListSkip
 
-Style "$[infostore.terminal]" Icon small/cli.xpm
-Style "$[infostore.filemanager]" Icon small/FileManager.xpm
-Style "$[infostore.editor]" Icon small/TextEditor.xpm
-Style "$[infostore.viewer]" Icon small/Viewer.xpm
-Style "$[infostore.audioplayer]" Icon small/SoundEditor.xpm
-Style "$[infostore.videoplayer]" Icon small/Media.xpm
-Style "$[infostore.browser]" Icon netdn.xpm
-Style "Firefox" Icon small/web.xpm
-Style "$[infostore.mail]" Icon Mail.xpm
-Style "Thunderbird" Icon small/Mail.xpm
-Style "Xman" Icon small/Help.xpm
+#Style "$[infostore.terminal]" Icon small/cli.xpm
+#Style "$[infostore.filemanager]" Icon small/FileManager.xpm
+#Style "$[infostore.editor]" Icon small/TextEditor.xpm
+#Style "$[infostore.viewer]" Icon small/Viewer.xpm
+#Style "$[infostore.audioplayer]" Icon small/SoundEditor.xpm
+#Style "$[infostore.videoplayer]" Icon small/Media.xpm
+#Style "$[infostore.browser]" Icon netdn.xpm
+#Style "$[infostore.mail]" Icon Mail.xpm
+#Style "Thunderbird" Icon small/Mail.xpm
 
+Style "Xman" Icon small/Help.xpm
+Style "Firefox" Icon small/web.xpm
+Style "xterm" Icon small/cli.xpm
 #------------------------------------------------------------------------------
 # Menus
 #------------------------------------------------------------------------------
@@ -328,8 +329,7 @@ DestroyModuleConfig DeskerPanelButtons: *
 *DeskerPanelButtons: Padding 1 1
 *DeskerPanelButtons: (1x1, Frame 1, Container(Rows 6, Frame 1))
 *DeskerPanelButtons: (5x1, Frame 0, Left,Swallow (NoClose, UseOld) 'stalonetray' \
-	`Exec exec stalonetray --icon-gravity NW -p --kludges force_icons_size,fix_window_pos,use_icons_hints`)
-# *DeskerPanelButtons: (2x3, Frame 0, Center, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript FvwmApplet-DigitalClock 9")
+	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NW -p --kludges force_icons_size,fix_window_pos,use_icons_hints`)
 *DeskerPanelButtons: (5x5, Frame -1, Colorset 9, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
 *DeskerPanelButtons: (End)
 
