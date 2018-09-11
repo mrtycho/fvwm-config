@@ -2,9 +2,6 @@ ModulePath $[FVWM_USERDIR]:+
 
 ImagePath $[FVWM_USERDIR]/themes/magic:$[FVWM_USERDIR]/3dpixmaps:+
 
-SetEnv fvwm_wallpaper_dir $[FVWM_USERDIR]/Wallpapers
-SetEnv fvwm_script $[FVWM_USERDIR]/scripts
-
 *FvwmScript: Path $[FVWM_USERDIR]/scripts
 
 InfoStoreAdd filemanager caja
@@ -134,6 +131,9 @@ Style FvwmForm-QuitVerify NoButton 1, NoButton 2, NoButton 4, NoButton 6, StaysO
 Style "Xman" Icon small/Help.xpm
 Style "Firefox" Icon small/web.xpm
 Style "xterm" Icon small/cli.xpm
+Style "gv" Icon small/Postscript.xpm
+Style "xv" Icon small/Viewer.xpm
+
 #------------------------------------------------------------------------------
 # Menus
 #------------------------------------------------------------------------------
@@ -321,6 +321,7 @@ DestroyModuleConfig FvwmDesker: *
 *FvwmDesker: SmallFont "$[infostore.smallfont]"
 
 DestroyModuleConfig DeskerPanelButtons: *
+*DeskerPanelButtons: Font "$[infostore.smallfont]"
 *DeskerPanelButtons: Fore Black
 *DeskerPanelButtons: Colorset 9
 *DeskerPanelButtons: Geometry 180x140+0+0
@@ -396,7 +397,8 @@ DestroyModuleConfig FvwmIdent: *
 #------------------------------------------------------------------------------
 
 AddToFunc StartFunction
-+ I Test (Init) Exec exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
+#+ I Test (Init) Exec exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
++ I Test (Init) Exec exec /usr/bin/lxpolkit & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 + I Exec exec $(source $[FVWM_USERDIR]/background.cfg)
 + I Test (Init) Exec exec nm-applet
 + I Test (Init) Exec exec pnmixer

@@ -22,7 +22,7 @@ AddToMenu   Utilities "Main Menu" Title
 DestroyMenu Favorites
 AddToMenu   Favorites
 + %mini/Folder.xpm%"File Manager"		Exec exec $[infostore.filemanager]
-#+ "Midnight Commander%icons/folder-16.png%"	Exec exec $[infostore.terminal] -e mc
+#+ mini/cli.xpm%"Midnight Commander"	Exec exec $[infostore.terminal] -e mc
 + %mini/Editor.xpm%"Editor"		Exec exec $[infostore.editor]
 + %mini/Viewer.xpm%"Viewer"		Exec exec $[infostore.viewer]
 + %mini/Audio.xpm%"Audio Player"	Exec exec $[infostore.audioplayer]
@@ -85,8 +85,8 @@ AddToMenu   Settings
 + "Screen Saver"	Exec exec xscreensaver-demo
 + "" Nop
 + "&Edit Config"	Exec exec $[infostore.editor] $FVWM_USERDIR/config
-# + "&Edit .fvwm2rc%icons/texteditor-app-16.png%"	Popup Edit-Config
-# + "Reload .fvwm2rc%icons/refresh.png%"		Popup Reload-Config
+# + "&Edit .fvwm2rc"	Popup Edit-Config
+# + "Reload .fvwm2rc"		Popup Reload-Config
 +  "Temporary Change:  "			Title
 + "&Focus/Paging"	Popup Focus-Settings
 + "&Bell"		Popup Bell-Settings
@@ -122,7 +122,7 @@ PipeRead 'sh $FVWM_USERDIR/scripts/colorthumb.sh'
 
 DestroyMenu Back-Image
 AddToMenu   Back-Image
-PipeRead 'sh $FVWM_USERDIR/scripts/wallpaper.sh $[fvwm_wallpaper_dir]'
+PipeRead 'sh $FVWM_USERDIR/scripts/wallpaper.sh $[FVWM_USERDIR]/Wallpapers'
 
 DestroyMenu Back-Pattern
 AddToMenu   Back-Pattern
@@ -246,8 +246,8 @@ AddToMenu   X-Settings
 DestroyMenu Documents
 AddToMenu   Documents
 + %mini/Books.xpm%"&Manuals"	   		Exec exec $[infostore.help]
-+ %mini/Browser.xpm%"&FVWM Home Page" 	Exec exec $[infostore.browser] http://www.fvwm.org/
-+ %mini/Help.xpm%"FVWM &Man Page"                ViewManPage fvwm
++ %mini/Browser.xpm%"&FVWM Home Page" 		Exec exec $[infostore.browser] http://www.fvwm.org/
++ %mini/Help.xpm%"FVWM &Man Page"               ViewManPage fvwm
 #+ %mini/Help.xpm%"FVWM &Man Pages"		Popup FvwmManPage
 
 DestroyMenu MenuBrowser
@@ -260,7 +260,7 @@ AddToMenu   MenuBrowserCached DynamicPopupAction Piperead 'fvwm-menu-directory -
 
 DestroyFunc FuncFvwmMenuDirectory
 #PREF 1
-AddToFunc FuncFvwmMenuDirectory I PipeRead 'fvwm-menu-directory --dir "$0" --exec-file ^"$fvwm_editor" --xterm=" $fvwm_file_manager" --icon-dir=icons/folder.png --icon-title=icons/folder.png --icon-file=icons/doc.png --icon-app=mini.hex.xpm --check-subdir'
+AddToFunc FuncFvwmMenuDirectory I PipeRead 'fvwm-menu-directory --dir "$0" --exec-file ^"$[infostore.editor]" --xterm=" $[infostore.terminal]" --icon-dir=icons/folder.png --icon-title=icons/folder.png --icon-file=icons/doc.png --icon-app=mini.hex.xpm --check-subdir'
 
 DestroyMenu FvwmManPage
 AddToMenu   FvwmManPage "FVWM Man Pages" Title
@@ -304,10 +304,10 @@ AddToMenu   FvwmManPage "FVWM Man Pages" Title
 
 DestroyMenu Screen
 AddToMenu   Screen
-+ "&Screensaver%icons/screensaver.png%" 	Exec exec xscreensaver-command -a
-+ "Screen&lock%icons/system-lock-screen.png%"	Exec exec xscreensaver-command -l
++ "&Screensaver" 	Exec exec xscreensaver-command -a
++ "Screen&lock"		Exec exec xscreensaver-command -l
 + "" Nop
-+ "Preferences%icons/system.png%"		Exec exec xscreensaver-demo
++ "Preferences"		Exec exec xscreensaver-demo
 
 #------------------------------------------------------------------------------
 #--------- Restart
@@ -318,11 +318,6 @@ AddToMenu   Restart
 + "&Restart Self"	Restart
 + "&Openbox"		Restart openbox
 + "Just &xterm"		Restart xterm
-# A bit dangerous in a menu
-#+ ""					Nop
-#+ "Halt%mini.stop.xpm%"	  	Exec exec shutdown -h now
-#+ "Reboot%mini.lightbolt-full.xpm%" 	Exec exec shutdown -r now
-
 
 #------------------------------------------------------------------------------
 #------------- Windows Operations
@@ -336,7 +331,7 @@ AddToMenu "Window" "Window Operations" Title
 + "&Move	Alt-f7"               	Move
 + "&Resize"          			Resize
 + "(De)&Iconify	Alt-F9"      		Iconify
-+ "(Un)M&aximize	Alt-F10" 	Maximize 100 100
++ "(Un)M&aximize	Alt-F10" 	Maximize
 + "(Un)&Shade"         			WindowShade
 + "(Un)S&tick"         			Stick
 + "&Lower	Alt-F5"             	Lower
@@ -355,18 +350,18 @@ AddToMenu "Window" "Window Operations" Title
 
 DestroyMenu "Window-Ops2"
 AddToMenu "Window-Ops2"
-+ "&Move	Alt-F7"		Move
-+ "&Resize"			Resize
-+ "(De)&Iconify	Alt-F9"		Iconify
-+ "(Un)M&aximize	Alt-F10"	Maximize 100 100
-+ "(Un)&Shade"			WindowShade
-+ "(Un)S&tick"			Stick
-+ "&Lower	Alt-F5"      	Lower
++ "&Move	Alt-F7"			Move
++ "&Resize"				Resize
++ "(De)&Iconify	Alt-F9"			Iconify
++ "(Un)M&aximize	Alt-F10"	Maximize
++ "(Un)&Shade"				WindowShade
++ "(Un)S&tick"				Stick
++ "&Lower	Alt-F5"      		Lower
 + ""			Nop
-+ "&Close	Alt-F4"		Close
++ "&Close	Alt-F4"			Close
 + ""			Nop
-+ "&Identify	Alt-F11"	Module FvwmIdent
-+ "More&..."			Menu Window This 0 0
++ "&Identify	Alt-F11"		Module FvwmIdent
++ "More&..."				Menu Window This 0 0
 
 #------------------------------------------------------------------------------
 # A trimmed down version of "Window Ops", good for binding to TaskBar,
@@ -380,7 +375,7 @@ AddToMenu "Window-Ops3"
 + "(De)&Iconify	Alt-F9"			Iconify
 + "(Un)&Shade"				WindowShade
 + "(Un)S&tick"				Stick
-+ "(Un)M&aximize   	Alt-F10"	Maximize 95 95
++ "(Un)M&aximize   	Alt-F10"	Maximize
 + ""					Nop
 + "&Close	Alt-F4"			Close
 + ""					Nop
@@ -447,7 +442,7 @@ AddToMenu   WindowStyle
 
 DestroyMenu WinRearrange
 AddToMenu   WinRearrange
-+ "&Cascade%icons/windows.png%" FvwmRearrange -cascade -m 3 3 -incx 2
++ "&Cascade" FvwmRearrange -cascade -m 3 3 -incx 2
 + "Tile &horizontally" FvwmRearrange -tile -h -m 2 2 98 98
 + "Tile &vertically" FvwmRearrange -tile -m 2 2 98 98
 + "" Nop
@@ -456,10 +451,3 @@ AddToMenu   WinRearrange
 + "" Nop
 + "&Arrange Icons" All (CurrentDesk Iconic) RecaptureWindow
 + "&Refresh Screen" Refresh
-
-#----------------------------------------------------------------------------
-# Use the winops menus styles for the "Windows Operations Menus"
-# Use it also for big menu
-
-ChangeMenuStyle winops Window Window-Ops2 Window-Ops3 Move-Window WindowGroupOps WindowStyle WinRearrange Back-Solid FvwmManPage
-
