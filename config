@@ -118,21 +118,21 @@ Style *lock        NoTitle, NoHandles, Sticky, WindowListSkip
 Style stalonetray  NoTitle, NoHandles, WindowListSkip, CirculateSkip, StaysOnBottom,NeverFocus, EWMHUseStackingOrderHints
 Style FvwmForm-QuitVerify NoButton 1, NoButton 2, NoButton 4, NoButton 6, StaysOnTop, NoHandles, WindowListSkip
 
-#Style "$[infostore.terminal]" Icon small/cli.xpm
-#Style "$[infostore.filemanager]" Icon small/FileManager.xpm
-#Style "$[infostore.editor]" Icon small/TextEditor.xpm
-#Style "$[infostore.viewer]" Icon small/Viewer.xpm
-#Style "$[infostore.audioplayer]" Icon small/SoundEditor.xpm
-#Style "$[infostore.videoplayer]" Icon small/Media.xpm
-#Style "$[infostore.browser]" Icon netdn.xpm
-#Style "$[infostore.mail]" Icon Mail.xpm
-#Style "Thunderbird" Icon small/Mail.xpm
+Style "$[infostore.terminal]" Icon icons/cli.xpm
+Style "$[infostore.filemanager]" Icon icons/FileManager.xpm
+Style "$[infostore.editor]" Icon icons/TextEditor.xpm
+Style "$[infostore.viewer]" Icon icons/Viewer.xpm
+Style "$[infostore.audioplayer]" Icon icons/SoundEditor.xpm
+Style "$[infostore.videoplayer]" Icon icons/Moviemaker.xpm
+Style "$[infostore.browser]" Icon icons/Web.xpm
+Style "$[infostore.mail]" Icon icons/Mail.xpm
 
 Style "Xman" Icon small/Help.xpm
-Style "Firefox" Icon small/web.xpm
-Style "xterm" Icon small/cli.xpm
+Style "Firefox" Icon icons/Web.xpm
+Style "Thunderbird" Icon icons/Mail.xpm
+Style "xterm" Icon icons/cli.xpm
 Style "gv" Icon small/Postscript.xpm
-Style "xv" Icon small/Viewer.xpm
+Style "xv" Icon icons/Viewer.xpm
 
 #------------------------------------------------------------------------------
 # Menus
@@ -292,7 +292,7 @@ DestroyModuleConfig BarButtons: *
     Action(Mouse 3) 'Exec exec gimp')
 *BarButtons: (Colorset 4, Title Media, Icon xmix.xpm, Action "Exec exec $[infostore.audioplayer]", \
     Action(Mouse 3) "Exec exec $[infostore.videoplayer]")
-*BarButtons: (Colorset 4, Title Browser, Icon Terminal.xpm, Action "Exec exec $[infostore.browser]")
+*BarButtons: (Colorset 4, Title Browser, Icon web.xpm, Action "Exec exec $[infostore.browser]")
 *BarButtons: (Colorset 4, Title Mail, Icon Mail.xpm, Action "Exec exec $[infostore.mail]")
 
 Style "FvwmDesker" NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
