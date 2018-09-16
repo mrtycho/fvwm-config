@@ -1,0 +1,62 @@
+Colorset 0 fg white, bg #507bad, fgsh black, hi #a5b0ba, sh #2b3743
+Colorset 1 fg black, bg #959290, fgsh white, hi #e5e2e0, sh #656260
+Colorset 2 fg black, bg white
+Colorset 3 fg black, bg #afafaf, Pixmap Tile.png, hi white, sh black
+Colorset 4 fg black, bg #afafaf, Pixmap Tile2.png, hi white, fgsh #f0f0f0
+Colorset 5 fg black, bg #afafaf, hi white, sh black
+Colorset 6 fg white, bg black, fgsh grey10
+
+Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
+Style * BorderWidth 4, HandleWidth 4
+
+DestroyDecor MagicDecor
+AddToDecor MagicDecor
++ TitleStyle	Centered Height 24
++ ButtonStyle	1	Active	   (Pixmap menu-activeup.xpm)
++ ButtonStyle	1	ActiveDown (Pixmap menu-activedown.xpm)
++ ButtonStyle	1	Inactive   (Pixmap menu-inactive.xpm)
++ ButtonStyle  	2	Active	   (Pixmap maximize-activeup.xpm) 
++ ButtonStyle  	2	ActiveDown (Pixmap maximize-activedown.xpm) 
++ ButtonStyle  	2	Inactive   (Pixmap maximize-inactive.xpm) 
++ ButtonStyle  	4	Active	   (Pixmap iconify-activeup.xpm)
++ ButtonStyle  	4	ActiveDown (Pixmap iconify-activedown.xpm)
++ ButtonStyle  	4	Inactive (Pixmap iconify-inactive.xpm )
++ ButtonStyle	all	-- UseTitleStyle
+
++ TitleStyle	AllActive 	(TiledPixmap title-active.xpm)
++ TitleStyle	Inactive 	(TiledPixmap title-inactive.xpm)
+
+Style *	UseDecor MagicDecor, MWMBorder 
+Style *	Font "$[infostore.titlefont]"
+Style * IconFont "$[infostore.smallfont]"
+
+Style * IconBackgroundRelief 1, IconTitleRelief 0	
+Style * IconBackgroundColorset 3, IconTitleColorset 6, HilightIconTitleColorset 2
+Style * IconSize 64 62, IconTitle
+
+MenuStyle * MWM
+MenuStyle * Hilight3DThickness 0, PopupOffset 0 100, PopupDelay 300
+MenuStyle * Font "$[infostore.normalfont]"
+MenuStyle * TitleFont "$[infostore.titlefont]"
+MenuStyle * MenuColorset 5, ActiveColorset 6, HilightBack, TitleColorset 0, HilightTitleBack
+MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
+MenuStyle * TrianglesUseFore, TrianglesSolid
+MenuStyle * ItemFormat "%s%| %i %l  %r  %i%> %|%"
+MenuStyle * VerticalItemSpacing 4 3, VerticalTitleSpacing 6 3
+MenuStyle * SeparatorsLong
+
+#------------------------------------------------------------------------------
+# Mouse Bindings
+#------------------------------------------------------------------------------
+
+Mouse 1         1       A       Menu Window-Ops2
+Mouse 2         1       A       Destroy
+Mouse 3		1	A	Function "CloseWindow"
+Mouse 1		2	A	Function "MaximizeWindow"
+Mouse 3		2	A	WindowShade
+Mouse 1		4    	A     	Function "IconifyWindow"
+Mouse 3         4       A       All ($c) Iconify On
+
+Mouse 1		T	A	Function "MoveOrRaiseOrShade"
+Mouse 2		T	A	Function "RaiseLowerWindow"
+Mouse 3		T	A	Menu Window-Ops3
