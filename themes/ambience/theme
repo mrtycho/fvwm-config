@@ -1,0 +1,67 @@
+Colorset 0 fg #13315d, bg #7ab5f8, fgsh #abd2ff
+Colorset 1 fg #6a6c6e, bg #e1e1e1, fgsh #d0cfcf
+Colorset 2 fg white, bg black
+Colorset 3 fg black, bg #e1e1e1, hi white, sh black
+Colorset 4 fg black, bg #e1e1e1, hi white, fgsh #f0f0f0
+Colorset 5 fg black, bg #afafaf, hi white, sh black
+Colorset 6 fg white, bg black, fgsh grey10
+
+Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
+Style * BorderWidth 3, HandleWidth 3
+
+DestroyDecor AmbienceDecor
+AddToDecor AmbienceDecor
++ TitleStyle	Centered Height 28
++ ButtonStyle	1	Active	   (Pixmap close-activeup.xpm -- Flat)
++ ButtonStyle	1	ActiveDown (Pixmap close-activedown.xpm -- Flat)
++ ButtonStyle	1	Inactive   (Pixmap close-inactive.xpm -- Flat)
++ ButtonStyle  	2	Active	   (Pixmap shadeup-activeup.xpm -- Flat) 
++ ButtonStyle  	2	ActiveDown (Pixmap shadeup-activedown.xpm -- Flat) 
++ ButtonStyle  	2	Inactive   (Pixmap shadeup-inactive.xpm -- Flat) 
++ ButtonStyle  	4	Active	   (Pixmap iconify-activeup.xpm -- Flat)
++ ButtonStyle  	4	ActiveDown (Pixmap iconify-activedown.xpm -- Flat)
++ ButtonStyle  	4	Inactive (Pixmap iconify-inactive.xpm -- Flat)
++ ButtonStyle	all	-- UseTitleStyle Flat
+
++ TitleStyle	AllActive 	(TiledPixmap title-activeup.xpm -- Flat)
++ TitleStyle	Inactive 	(TiledPixmap title-inactive.xpm -- Flat)
++ TitleStyle	-- Flat
+
++ BorderStyle	Inactive -- HiddenHandles NoInset Flat 
++ BorderStyle	Active -- HiddenHandles NoInset
+
+Style	"*"	UseDecor AmbienceDecor
+Style   "*"	Font "$[infostore.titlefont]"
+Style 	"*" 	IconFont "$[infostore.normalfont]"
+
+Style * IconBackgroundRelief 1, IconTitleRelief 0	
+Style * IconBackgroundColorset 3, IconTitleColorset 6, HilightIconTitleColorset 2
+Style * IconSize 64 62, IconTitle
+
+MenuStyle * Fvwm
+MenuStyle * Hilight3DThickness 0, PopupOffset 0 100, PopupDelay 300
+MenuStyle * Font "$[infostore.normalfont]"
+MenuStyle * TitleFont "$[infostore.titlefont]"
+MenuStyle * MenuColorset 5, HilightBack, ActiveColorset 6, HilightTitleBack, TitleColorset 5
+MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
+MenuStyle * TrianglesUseFore, TrianglesSolid
+MenuStyle * ItemFormat "%s%| %i %l  %r  %i%> %|%"
+MenuStyle * VerticalItemSpacing 4 3, VerticalTitleSpacing 6 3
+MenuStyle * SeparatorsLong
+
+#------------------------------------------------------------------------------
+# Mouse Bindings
+#------------------------------------------------------------------------------
+
+Mouse 1         1       A       Function "CloseWindow"
+Mouse 2		1	A	All ($c) Close
+Mouse 3         1       A       Destroy
+
+Mouse 1		2	A	RaiseLowerWindow
+Mouse 3		2	A	WindowShade
+
+Mouse 1		4    	A     	IconifyWindow
+Mouse 3         4       A       Maximize
+
+Mouse 1		T	A	Function "MoveOrRaiseOrMaximize"
+Mouse 3		T	A	Menu Window-Ops2
