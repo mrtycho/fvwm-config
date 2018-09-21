@@ -1,7 +1,7 @@
 Colorset 0 fg white, bg #507bad, fgsh black, hi #a5b0ba, sh #2b3743
 Colorset 1 fg black, bg #959290, fgsh white, hi #e5e2e0, sh #656260
 Colorset 2 fg black, bg white
-Colorset 3 fg black, bg #afafaf, Pixmap Tile.png, hi white, sh black
+Colorset 3 fg black, bg #afafaf, Pixmap Tile4.png, hi white, sh black
 Colorset 4 fg black, bg #afafaf, Pixmap Tile2.png, hi white, fgsh #f0f0f0
 Colorset 5 fg black, bg #afafaf, hi white, sh black
 Colorset 6 fg white, bg black, fgsh grey10
@@ -32,7 +32,7 @@ Style * IconFont "$[infostore.smallfont]"
 
 Style * IconBackgroundRelief 1, IconTitleRelief 0	
 Style * IconBackgroundColorset 3, IconTitleColorset 6, HilightIconTitleColorset 2
-Style * IconSize 64 62, IconTitle
+Style * IconSize 62 52, IconTitle
 
 MenuStyle * MWM
 MenuStyle * Hilight3DThickness 0, PopupOffset 0 100, PopupDelay 300

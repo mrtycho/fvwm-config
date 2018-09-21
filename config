@@ -61,11 +61,13 @@ Style * EWMHUseStateHints
 Style * GNOMEUseHints
 Style * IconOverride
 
-Style panel        Sticky, NoTitle, WindowListSkip, CirculateSkip, BorderWidth 0
-Style "tint2" !Title, !Handles, !Borders, StaysOnTop, EWMHIgnoreStrutHints, Sticky, EWMHPlacementIgnoreWorkingArea, NeverFocus, WindowListSkip
+Style panel     Sticky, !Title, WindowListSkip, CirculateSkip, BorderWidth 0
+Style "gthumb"  !GNOMEUseHints, EWMHIgnoreWindowType, !MWMDecor
+Style "Catfish"  !GNOMEUseHints, EWMHIgnoreWindowType, !MWMDecor
+Style "tint2" 	!Title, !Handles, !Borders, StaysOnTop, EWMHIgnoreStrutHints, Sticky, EWMHPlacementIgnoreWorkingArea, NeverFocus, WindowListSkip
 Style desktop_icon CirculateSkip, WindowListSkip,  NoTitle
-Style *lock        NoTitle, NoHandles, Sticky, WindowListSkip
-Style stalonetray  NoTitle, NoHandles, WindowListSkip, CirculateSkip, StaysOnBottom,NeverFocus, EWMHUseStackingOrderHints
+Style *lock        !Title, !Handles, Sticky, WindowListSkip
+Style stalonetray  !Title, !Handles, WindowListSkip, CirculateSkip, StaysOnBottom,NeverFocus, EWMHUseStackingOrderHints
 Style FvwmForm-QuitVerify NoButton 1, NoButton 2, NoButton 4, NoButton 6, StaysOnTop, NoHandles, WindowListSkip
 
 Style "$[infostore.terminal]" Icon icons/cli.xpm
