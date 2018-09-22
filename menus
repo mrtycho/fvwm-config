@@ -76,11 +76,9 @@ DestroyMenu Settings
 AddToMenu   Settings
 + "&Animation"		Popup Animate-Settings
 + "Auto&Raise"		Popup AutoRaise-Settings
-+ "Browse Wallpaper" 	Popup Back-Image
-+ "Browse Pattern" 	Popup Back-Pattern
-+ "Browse Colors" 	Popup Back-Solid
 + "" Nop
-+ "Appearence"	Exec exec lxappearance
++ "Background"		Popup Background-Settings
++ "Appearence"		Exec exec lxappearance
 + "Power Management"	Exec exec xfce4-power-manager-settings
 + "Screen Saver"	Exec exec xscreensaver-demo
 + "" Nop
@@ -116,6 +114,14 @@ AddToMenu   AutoRaise-Settings
 #------------------------------------------------------------------------------
 #--------- Background  settings
 
+DestroyMenu Background-Settings
+AddToMenu   Background-Settings
++ "Nitrogen"		Function SetNitrogenBackground
++ "" Nop
++ "Browse Wallpaper" 	Popup Back-Image
++ "Browse Pattern" 	Popup Back-Pattern
++ "Browse Colors" 	Popup Back-Solid
+
 DestroyMenu Back-Solid
 AddToMenu   Back-Solid
 PipeRead 'sh $FVWM_USERDIR/scripts/colorthumb.sh'
@@ -127,6 +133,8 @@ PipeRead 'sh $FVWM_USERDIR/scripts/wallpaper.sh $[FVWM_USERDIR]/Wallpapers'
 DestroyMenu Back-Pattern
 AddToMenu   Back-Pattern
 PipeRead 'sh $FVWM_USERDIR/scripts/wallpaper.sh $FVWM_USERDIR/Pattern'
+
+ChangeMenuStyle bgMenu Back-Solid Back-Image Back-Pattern
 
 #------------------------------------------------------------------------------
 #--------- Banner  settings
@@ -317,6 +325,7 @@ DestroyMenu Restart
 AddToMenu   Restart
 + "&Restart Self"	Restart
 + "&Openbox"		Restart openbox
++ "i3"			Restart i3
 + "Just &xterm"		Restart xterm
 
 #------------------------------------------------------------------------------
@@ -451,3 +460,4 @@ AddToMenu   WinRearrange
 + "" Nop
 + "&Arrange Icons" All (CurrentDesk Iconic) RecaptureWindow
 + "&Refresh Screen" Refresh
+

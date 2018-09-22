@@ -1,6 +1,8 @@
 ModulePath $[FVWM_USERDIR]:+
 
-ImagePath $[FVWM_USERDIR]/themes/magic:$[FVWM_USERDIR]/3dpixmaps:+
+SetEnv fvwm_theme "magic"
+
+ImagePath $[FVWM_USERDIR]/themes/$[fvwm_theme]:$[FVWM_USERDIR]/3dpixmaps:+
 
 *FvwmScript: Path $[FVWM_USERDIR]/scripts
 
@@ -39,7 +41,7 @@ CursorStyle DEFAULT      left_ptr
 CursorStyle SYS          left_ptr
 CursorStyle MENU         left_ptr
 
-Read $[FVWM_USERDIR]/themes/magic/theme
+Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
 
 Style * ClickToFocus
 Style * MouseFocusClickRaises
@@ -163,6 +165,12 @@ AddToFunc TransferFocus
  + I Prev (!Iconic, CurrentPage, !Overlapped, AcceptsFocus) Focus
  + I TestRc (NoMatch) ThisWindow (CurrentPage,!Overlapped,AcceptsFocus,!Iconic) Focus
 
+DestroyFunc SetNitrogenBackground
+AddToFunc   SetNitrogenBackground
++ I Exec exec nitrogen --restore
++ I Exec nitrogen
++ I TestRc (Match) Exec echo "nitrogen --restore" > $[FVWM_USERDIR]/background.cfg
+
 #------------- FvwmManPage
 
 DestroyFunc ViewManPage
@@ -219,11 +227,11 @@ Key L A MC Exec exec xscreensaver-command -l
 # Modules
 #------------------------------------------------------------------------------
 
-Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 4, BorderColorset 0
+Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 1, BorderColorset 6
 # BorderWidth 1, Colorset 6
 DestroyModuleConfig BarButtons: *
 *BarButtons: Columns 1
-*BarButtons: Padding 2 2 
+*BarButtons: Padding 0 2
 *BarButtons: Frame 1
 *BarButtons: Colorset 5
 *BarButtons: Geometry 62x530+0+0
@@ -270,7 +278,7 @@ DestroyModuleConfig FvwmDesker: *
 DestroyModuleConfig DeskerPanelButtons: *
 *DeskerPanelButtons: Font "$[infostore.smallfont]"
 *DeskerPanelButtons: Fore Black
-*DeskerPanelButtons: Colorset 9
+*DeskerPanelButtons: Colorset 5
 *DeskerPanelButtons: Geometry 180x140+0+0
 *DeskerPanelButtons: Rows 1
 *DeskerPanelButtons: Frame 1

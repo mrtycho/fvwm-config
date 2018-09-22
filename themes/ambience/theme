@@ -3,8 +3,8 @@ Colorset 1 fg #6a6c6e, bg #e1e1e1, fgsh #d0cfcf
 Colorset 2 fg white, bg black
 Colorset 3 fg black, bg #e1e1e1, hi white, sh black
 Colorset 4 fg black, bg #e1e1e1, hi white, fgsh #f0f0f0
-Colorset 5 fg black, bg #afafaf, hi white, sh black
-Colorset 6 fg white, bg black, fgsh grey10
+Colorset 5 fg #202020, bg #fafafa, hi #ffffff, sh #ced1d4, fgsh #ced1d4
+Colorset 6 fg white, bg #3983d5
 
 Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
 Style * BorderWidth 3, HandleWidth 3
@@ -36,7 +36,7 @@ Style 	"*" 	IconFont "$[infostore.normalfont]"
 
 Style * IconBackgroundRelief 1, IconTitleRelief 0	
 Style * IconBackgroundColorset 3, IconTitleColorset 6, HilightIconTitleColorset 2
-Style * IconSize 64 62, IconTitle
+Style * IconSize 64 52, IconTitle
 
 MenuStyle * Fvwm
 MenuStyle * Hilight3DThickness 0, PopupOffset 0 100, PopupDelay 300
@@ -64,4 +64,5 @@ Mouse 1		4    	A     	IconifyWindow
 Mouse 3         4       A       Maximize
 
 Mouse 1		T	A	Function "MoveOrRaiseOrMaximize"
+Mouse 2		T	A	Function "RaiseLowerWindow"
 Mouse 3		T	A	Menu Window-Ops2
