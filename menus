@@ -398,8 +398,8 @@ DestroyMenu "Move-Window"
 AddToMenu   "Move-Window" "Move to ..." Title
 + 'Page &1'	MoveToPage 0 0
 + 'Page &2'	MoveToPage 1 0
-+ 'Page &3'	MoveToPage 2 0
-+ 'Page &4'	MoveToPage 3 0
++ 'Page &3'	MoveToPage 0 1
++ 'Page &4'	MoveToPage 1 1
 
 #------------------------------------------------------------------------------
 # A group version of WindowOps
@@ -417,8 +417,8 @@ AddToMenu   WindowGroupOps
 + "&Quick move to ..." Title
 + 'Page &1'		Pick All ($[w.class]) MoveToPage 0 0
 + 'Page &2'		Pick All ($[w.class]) MoveToPage 1 0
-+ 'Page &3'		Pick All ($[w.class]) MoveToPage 2 0
-+ 'Page &4'		Pick All ($[w.class]) MoveToPage 3 0
++ 'Page &3'		Pick All ($[w.class]) MoveToPage 0 1
++ 'Page &4'		Pick All ($[w.class]) MoveToPage 1 1
 
 DestroyMenu WindowStyle
 AddToMenu   WindowStyle

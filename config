@@ -300,19 +300,24 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Foreground #202020
 *FvwmIconMan: ManagerGeometry 1x1
 *FvwmIconMan: ButtonGeometry 28x28
-*FvwmIconMan: FocusAndSelectButton up #202020 #dfdfdf
-*FvwmIconMan: FocusButton flat
-*FvwmIconMan: IconButton raisededge
-*FvwmIconMan: PlainButton up
-*FvwmIconMan: SelectButton down
-*FvwmIconMan: Font "$[infostore.normalfont]"
+
+*FvwmIconMan: Font "$[infostore.smallfont]"
 *FvwmIconMan: Sort name
-*FvwmIconMan: IconColorset 8
-# *FvwmIconMan: FocusAndSelectColorset 9
-*FvwmIconMan: FocusColorset 9
+*FvwmIconMan: IconColorset 1
+*FvwmIconMan: IconButton up
+*FvwmIconMan: IconAndSelectButton up
+*FvwmIconMan: IconAndSelectColorset 1
+*FvwmIconMan: PlainButton flat
+*FvwmIconMan: PlainColorset 9
+*FvwmIconMan: SelectColorset 9
+*FvwmIconMan: SelectButton flat
+*FvwmIconMan: FocusColorset 7
+*FvwmIconMan: FocusButton down
+*FvwmIconMan: FocusAndSelectColorset 7
+*FvwmIconMan: FocusAndSelectButton down
 *FvwmIconMan: ReliefThickness 1
-*FvwmIconMan: Resolution global 
-#Page
+*FvwmIconMan: Resolution page 
+#global
 *FvwmIconMan: DrawIcons Always
 *FvwmIconMan: FollowFocus True
 *FvwmIconMan: UseWinList True
@@ -365,7 +370,7 @@ AddToFunc StartFunction
 #+ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-0))x30+0-0 FvwmBar"
 + I FvwmEvent FE-Focus
 
-# Style * NoIcon
+#Style * NoIcon
 
 AddToFunc ExitFunction
 + I Exec killall stalonetray
