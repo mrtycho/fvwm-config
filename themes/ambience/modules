@@ -1,0 +1,130 @@
+Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 1, BorderColorset 2
+# BorderWidth 1, Colorset 6
+DestroyModuleConfig BarButtons: *
+*BarButtons: Columns 1
+*BarButtons: Padding 0 2
+*BarButtons: Frame 1
+*BarButtons: Colorset 5
+*BarButtons: Geometry 62x530+0+0
+*BarButtons: Font "$[infostore.smallfont]"
+*BarButtons: (Colorset 4, Swallow (NoClose,UseOld) "WMClock" `Exec exec wmclock`)
+*BarButtons: (Colorset 4, Title Home, Icon FileManager.xpm, Action "Exec exec $[infostore.filemanager]", \
+    Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
+*BarButtons: (Colorset 4, Title Terminal, Icon cli.xpm, Action "Exec exec $[infostore.terminal]")
+*BarButtons: (Colorset 4, Title Editor, Icon TextEditor.xpm, Action "Exec exec $[infostore.editor]", \
+	Action(Mouse 3) 'Exec exec geany')
+*BarButtons: (Colorset 4, Title Viewer, Icon Viewer.xpm, Action "Exec exec $[infostore.viewer]", \
+    Action(Mouse 2) 'Exec exec evince', \
+    Action(Mouse 3) 'Exec exec gimp')
+*BarButtons: (Colorset 4, Title Media, Icon xmix.xpm, Action "Exec exec $[infostore.audioplayer]", \
+    Action(Mouse 3) "Exec exec $[infostore.videoplayer]")
+*BarButtons: (Colorset 4, Title Browser, Icon web.xpm, Action "Exec exec $[infostore.browser]")
+*BarButtons: (Colorset 4, Title Mail, Icon Mail.xpm, Action "Exec exec $[infostore.mail]")
+
+Style "FvwmDesker" NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
+Colorset 12 fg white, bg #909090, RootTransparent buffer, Tint #909090 40, hi white, sh #202020, fgsh #303030
+
+DestroyModuleConfig FvwmDesker: *
+*FvwmDesker: UseSkipList
+*FvwmDesker: Colorset * 12
+*FvwmDesker: Fore #b3b3b3
+*FvwmDesker: Hilight black
+*FvwmDesker: WindowColorsets 5 0
+*FvwmDesker: Font none
+# Comment out or set this option for window names in pager windows
+# also see WindowLabelFormat.
+*FvwmDesker: SmallFont none
+*FvwmDesker: MiniIcons
+*FvwmDesker: Balloons
+*FvwmDesker: BalloonFore black
+*FvwmDesker: BalloonBack bisque
+*FvwmDesker: BalloonFont "$[infostore.normalfont]"
+
+*FvwmDesker: Label 0 Fvwm
+*FvwmDesker: Label 1 Development
+*FvwmDesker: Label 2 Internet
+*FvwmDesker: Label 3 Misc
+*FvwmDesker: SmallFont "$[infostore.smallfont]"
+
+DestroyModuleConfig DeskerPanelButtons: *
+*DeskerPanelButtons: Font "$[infostore.smallfont]"
+*DeskerPanelButtons: Fore Black
+*DeskerPanelButtons: Colorset 5
+*DeskerPanelButtons: Geometry 180x140+0+0
+*DeskerPanelButtons: Rows 1
+*DeskerPanelButtons: Frame 1
+*DeskerPanelButtons: Padding 1 1
+*DeskerPanelButtons: (1x1, Frame 1, Container(Rows 6, Frame 1))
+*DeskerPanelButtons: (5x5, Frame -1, Colorset 9, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
+*DeskerPanelButtons: (5x1, Frame 0, Left,Swallow (NoClose, UseOld) 'stalonetray' \
+	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NW -p --kludges force_icons_size,fix_window_pos,use_icons_hints`)
+*DeskerPanelButtons: (End)
+
+Style DeskerPanelButtons NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, FixedSize, NoHandles, BorderColorset 2, BorderWidth 1
+
+Style FvwmPager	  NoTitle, Sticky, WindowListSkip, StaysOnBottom, NeverFocus, FixedSize, NoHandles
+
+Style "FvwmIconMan" NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
+
+DestroyModuleConfig FvwmIconMan: *
+*FvwmIconMan: Background #d9d8d8
+*FvwmIconMan: Foreground #202020
+*FvwmIconMan: ManagerGeometry 1x1
+*FvwmIconMan: ButtonGeometry 28x28
+
+*FvwmIconMan: Font "$[infostore.smallfont]"
+*FvwmIconMan: Sort name
+*FvwmIconMan: IconColorset 8
+*FvwmIconMan: IconButton up
+*FvwmIconMan: IconAndSelectButton up
+*FvwmIconMan: IconAndSelectColorset 8
+*FvwmIconMan: PlainButton flat
+*FvwmIconMan: PlainColorset 9
+*FvwmIconMan: SelectColorset 9
+*FvwmIconMan: SelectButton flat
+*FvwmIconMan: FocusColorset 7
+*FvwmIconMan: FocusButton down
+*FvwmIconMan: FocusAndSelectColorset 7
+*FvwmIconMan: FocusAndSelectButton down
+*FvwmIconMan: ReliefThickness 1
+*FvwmIconMan: Resolution page 
+#global
+*FvwmIconMan: DrawIcons Always
+*FvwmIconMan: FollowFocus True
+*FvwmIconMan: UseWinList True
+*FvwmIconMan: ShowOnlyIcons False
+*FvwmIconMan: ShowOnlyFocused False
+#*FvwmIconMan: Format "%c: %i"
+*FvwmIconMan: Title ""
+
+# action
+*FvwmIconMan: action    Mouse    1 N SendCommand "Function IconifyOrFocusAndRaise"
+*FvwmIconMan: action    Mouse    2 N SendCommand Iconify
+*FvwmIconMan: action    Mouse    3 N SendCommand "Menu Window-Ops3 c+0 -101m "
+*FvwmIconMan: action    Key   	 Left N gotobutton Left, select
+*FvwmIconMan: action    Key    	 Right N gotobutton Right, select
+*FvwmIconMan: action    Key    	 Up N gotobutton Up, select
+*FvwmIconMan: action    Key    	 Down N gotobutton Down, select
+
+# animation
+*FvwmIconMan: NoIconAction "SendToModule FvwmAnimate animate"
+
+Style FvwmBar     NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, BorderWidth 1, BorderColorset 2
+DestroyModuleConfig FvwmBar: *
+*FvwmBar: Font "$[infostore.normalfont]"
+*FvwmBar: Colorset 2
+*FvwmBar: Frame 1
+*FvwmBar: Padding 2 0
+*FvwmBar: Columns 1
+*FvwmBar: (1x1, Frame 0, Colorset 9, Swallow "FvwmIconMan" `FvwmIconMan`)
+
+Style "FvwmIdent" NoButton 2, NoButton 4, NoButton 6
+DestroyModuleConfig FvwmIdent: *
+*FvwmIdent: Colorset 5 *
+*FvwmIdent: Font "$[infostore.normalfont]"
+
+DestroyFunc StartModules
+AddToFunc   StartModules
++ I Module FvwmButtons BarButtons -g -0-0 
++ I Module FvwmButtons DeskerPanelButtons -g +0-0
++ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-0))x28+0+0 FvwmBar"
