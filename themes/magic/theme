@@ -83,7 +83,8 @@ Mouse 1         1       A       Menu Window-Ops2
 Mouse 2         1       A       Destroy
 Mouse 3		1	A	Function "CloseWindow"
 Mouse 1		2	A	Function "MaximizeWindow"
-Mouse 3		2	A	WindowShade
+Mouse 2		2	A	MaximizeToSide -0
+Mouse 3		2	A	MaximizeToSide +0
 Mouse 1		4    	A     	Function "IconifyWindow"
 Mouse 3         4       A       All ($c) Iconify On
 

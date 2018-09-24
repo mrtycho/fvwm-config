@@ -8,7 +8,7 @@ ImagePath $[FVWM_USERDIR]/themes/$[fvwm_theme]:$[FVWM_USERDIR]/3dpixmaps:+
 
 InfoStoreAdd filemanager caja
 InfoStoreAdd editor mousepad
-InfoStoreAdd terminal xterm
+InfoStoreAdd terminal xfce4-terminal #xterm
 InfoStoreAdd browser firefox
 InfoStoreAdd mail thunderbird
 InfoStoreAdd viewer gthumb
@@ -80,6 +80,12 @@ Read menus
 #------------------------------------------------------------------------------
 # Functions
 #------------------------------------------------------------------------------
+
+DestroyFunc MoveAndRaise
+AddToFunc MoveAndRaise I Focus
++ I Raise
++ M Move
++ C Raise
 
 DestroyFunc MoveOrRaiseOrShade
 AddToFunc MoveOrRaiseOrShade I Focus
@@ -155,6 +161,11 @@ AddToFunc   SetNitrogenBackground
 + I Exec nitrogen
 + I TestRc (Match) Exec echo "nitrogen --restore" > $[FVWM_USERDIR]/background.cfg
 
+DestroyFunc MaximizeToSide
+AddToFunc   MaximizeToSide
++ I Maximize 50 100
++ I Move $0 +0
+
 #------------- FvwmManPage
 
 DestroyFunc ViewManPage
@@ -170,7 +181,7 @@ Mouse 2		R    	A       Menu Window mouse -1p -1p
 Mouse 3         R       A       WindowList mouse -1p -1p
 Mouse 3         R       C       WindowList mouse -1p -1p OnlyListSkip
 
-Mouse 1		W   	M       Menu Utilities mouse -1p -1p
+Mouse 1		W   	M       Function "MoveAndRaise"
 Mouse 2		W    	M       Menu Window mouse -1p -1p
 Mouse 3         W       M       WindowList (CurrentPage) mouse -1p -1p 
 Mouse 3         W       CM      WindowList mouse -1p -1p OnlyListSkip
@@ -198,6 +209,10 @@ Key Left     A        SM        GotoPage -1p +0p
 Key Right    A        SM        GotoPage +1p +0p
 Key Up       A        SM        GotoPage +0p -1p
 Key Down     A        SM        GotoPage +0p +1p
+
+Key 1	A	4	MaximizeToSide +0	
+Key 2	A	4	MaximizeToSide -0 		
+
 
 Silent Key Tab A M FuncFvwmNextWindow
 
