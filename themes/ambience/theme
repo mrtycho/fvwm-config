@@ -6,11 +6,11 @@ Colorset 4 fg black, bg #e1e1e1, hi white, fgsh #f0f0f0
 Colorset 5 fg #202020, bg #fafafa, hi #ffffff, sh #ced1d4, fgsh #ced1d4
 Colorset 6 fg white, bg #3983d5
 
-Colorset 7 fg #202020, bg #507bad, TiledPixmap taskbar_down.xpm,fgsh #f0f0f0, hi #ffffff, sh #8e919b
+Colorset 7 fg black, bg #507bad, TiledPixmap taskbar_down.xpm,fgsh #f0f0f0, hi #ffffff, sh #8e919b
 Colorset 8 fg #7a7c7e, bg #afafaf, TiledPixmap taskbar.xpm, hi white, fgsh #e1e1e1
-Colorset 9 fg black, bg #afafaf, TiledPixmap taskbar.xpm, hi white, fgsh #f0f0f0
+Colorset 9 fg #202020, bg #afafaf, TiledPixmap taskbar.xpm, hi white, fgsh #f0f0f0
 
-Colorset 10 fg white, bg #black, hi #202020, sh #202020
+Colorset 10 fg white, bg black, hi #202020, sh #202020
 
 Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
 Style * BorderWidth 3, HandleWidth 3
@@ -45,11 +45,11 @@ MenuStyle * Fvwm
 MenuStyle * Hilight3DThickness 0, PopupOffset 0 100, PopupDelay 300
 MenuStyle * Font "$[infostore.normalfont]"
 MenuStyle * TitleFont "$[infostore.titlefont]"
-MenuStyle * MenuColorset 5, HilightBack, ActiveColorset 6, HilightTitleBack, TitleColorset 5
+MenuStyle * MenuColorset 5, HilightBack, ActiveColorset 6, HilightTitleBack, TitleColorset 6
 MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
 MenuStyle * TrianglesUseFore, TrianglesSolid
 MenuStyle * ItemFormat "%s%| %i %l  %r  %i%> %|%"
-MenuStyle * VerticalItemSpacing 4 3, VerticalTitleSpacing 6 3
+MenuStyle * VerticalItemSpacing 4 3, VerticalTitleSpacing 4 3
 MenuStyle * SeparatorsLong
 
 #------------------------------------------------------------------------------

@@ -67,13 +67,15 @@ Style FvwmPager	  NoTitle, Sticky, WindowListSkip, StaysOnBottom, NeverFocus, Fi
 Style "FvwmIconMan" NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
 
 DestroyModuleConfig FvwmIconMan: *
-*FvwmIconMan: Background #d9d8d8
+*FvwmIconMan: Background #afafaf
 *FvwmIconMan: Foreground #202020
 *FvwmIconMan: ManagerGeometry 1x1
 *FvwmIconMan: ButtonGeometry 28x28
+*FvwmIconMan: MaxButtonWidthByColumns 6
 
 *FvwmIconMan: Font "$[infostore.smallfont]"
-*FvwmIconMan: Sort name
+*FvwmIconMan: Sort none
+*FvwmIconMan: Colorset 9
 *FvwmIconMan: IconColorset 8
 *FvwmIconMan: IconButton up
 *FvwmIconMan: IconAndSelectButton up
@@ -86,6 +88,8 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: FocusButton down
 *FvwmIconMan: FocusAndSelectColorset 7
 *FvwmIconMan: FocusAndSelectButton down
+*FvwmIconMan: TitleButton flat
+*FvwmIconMan: TitleColorset 9
 *FvwmIconMan: ReliefThickness 1
 *FvwmIconMan: Resolution page 
 #global
@@ -109,14 +113,14 @@ DestroyModuleConfig FvwmIconMan: *
 # animation
 *FvwmIconMan: NoIconAction "SendToModule FvwmAnimate animate"
 
-Style FvwmBar     NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, BorderWidth 1, BorderColorset 9
+Style FvwmBar     NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, BorderWidth 1, BorderColorset 2
 DestroyModuleConfig FvwmBar: *
 *FvwmBar: Font "$[infostore.normalfont]"
-*FvwmBar: Colorset 2
+*FvwmBar: Colorset 9
 *FvwmBar: Frame 1
 *FvwmBar: Padding 2 0
 *FvwmBar: Columns 1
-*FvwmBar: (1x1, Frame 0, Colorset 9, Swallow "FvwmIconMan" `FvwmIconMan`)
+*FvwmBar: (1x1, Frame 1, Colorset 9, Swallow "FvwmIconMan" `FvwmIconMan`)
 
 Style "FvwmIdent" NoButton 2, NoButton 4, NoButton 6
 DestroyModuleConfig FvwmIdent: *
@@ -127,3 +131,6 @@ DestroyFunc StartModules
 AddToFunc   StartModules
 + I Module FvwmButtons BarButtons -g -0+0 
 + I Module FvwmButtons DeskerPanelButtons -g +0+0
+#+ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-0))x30+0-0 FvwmBar"
+
+#Style * NoIcon

@@ -1,28 +1,38 @@
 Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 1, BorderColorset 2
-# BorderWidth 1, Colorset 6
+Colorset 11 fg white, bg #303030, RootTransparent buffer, Tint #505050 65
+Colorset 12 fg white, bg #909090, RootTransparent buffer, Tint #909090 40, hi white, sh #202020, fgsh #303030
+Colorset 13 bg #bebebe, hi white, Pixmap buttons_bg.xpm, sh #202020
+
 DestroyModuleConfig BarButtons: *
-*BarButtons: Columns 1
-*BarButtons: Padding 0 2
-*BarButtons: Frame 1
-*BarButtons: Colorset 5
-*BarButtons: Geometry 62x530+0+0
+*BarButtons: Colorset 12
 *BarButtons: Font "$[infostore.smallfont]"
-*BarButtons: (Colorset 4, Swallow (NoClose,UseOld) "WMClock" `Exec exec wmclock`)
-*BarButtons: (Colorset 4, Title Home, Icon FileManager.xpm, Action "Exec exec $[infostore.filemanager]", \
+
+# Layout: specify rows or columns, not both
+*BarButtons: Rows 1
+*BarButtons: Padding 0 0 
+*BarButtons: Frame 1
+
+*BarButtons: (1x1, Padding 1 1, Icon arrow.xpm, Colorset 4, Action Menu Utilities Rectangle +$left+$top 0 -100m)
+*BarButtons: (9x1, Frame 1, Container(Columns 9, Frame 0 ))
+*BarButtons: (3x1, Title Home, Icon icons/folder.png, PressColorset 11, Action "Exec exec $[infostore.filemanager]", \
     Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
-*BarButtons: (Colorset 4, Title Terminal, Icon cli.xpm, Action "Exec exec $[infostore.terminal]")
-*BarButtons: (Colorset 4, Title Editor, Icon TextEditor.xpm, Action "Exec exec $[infostore.editor]", \
+*BarButtons: (3x1, Title Terminal, Icon icons/terminal-app.png, PressColorset 11, Action "Exec exec $[infostore.terminal]")
+*BarButtons: (3x1, Title Editor, Icon icons/text-editor-app.png, PressColorset 11, Action "Exec exec $[infostore.editor]", \
 	Action(Mouse 3) 'Exec exec geany')
-*BarButtons: (Colorset 4, Title Viewer, Icon Viewer.xpm, Action "Exec exec $[infostore.viewer]", \
+*BarButtons: (End)
+*BarButtons: (6x1, Frame 1, Container(Columns 6, Frame 0))
+*BarButtons: (3x1, Title Viewer, Icon icons/gallery-app.png, PressColorset 11, Action "Exec exec $[infostore.viewer]", \
     Action(Mouse 2) 'Exec exec evince', \
     Action(Mouse 3) 'Exec exec gimp')
-*BarButtons: (Colorset 4, Title Media, Icon xmix.xpm, Action "Exec exec $[infostore.audioplayer]", \
+*BarButtons: (3x1, Title Media, Icon icons/music-app.png, PressColorset 11, Action "Exec exec $[infostore.audioplayer]", \
     Action(Mouse 3) "Exec exec $[infostore.videoplayer]")
-*BarButtons: (Colorset 4, Title Browser, Icon web.xpm, Action "Exec exec $[infostore.browser]")
-*BarButtons: (Colorset 4, Title Mail, Icon Mail.xpm, Action "Exec exec $[infostore.mail]")
+*BarButtons: (End)
+*BarButtons: (6x1, Frame 1, Container(Columns 6, Frame 0))
+*BarButtons: (3x1, Title Browser, Icon icons/webbrowser-app.png, PressColorset 11, Action "Exec exec $[infostore.browser]")
+*BarButtons: (3x1, Title Mail, Icon icons/mail-app.png, PressColorset 11, Action "Exec exec $[infostore.mail]")
+*BarButtons: (End)
 
 Style "FvwmDesker" NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
-Colorset 12 fg white, bg #909090, RootTransparent buffer, Tint #909090 40, hi white, sh #202020, fgsh #303030
 
 DestroyModuleConfig FvwmDesker: *
 *FvwmDesker: UseSkipList
@@ -71,14 +81,17 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Foreground #202020
 *FvwmIconMan: ManagerGeometry 1x1
 *FvwmIconMan: ButtonGeometry 28x28
+# *FvwmIconMan: MaxButtonWidth 26
+# *FvwmIconMan: MaxButtonWidthByColumns 5
 
 *FvwmIconMan: Font "$[infostore.smallfont]"
-*FvwmIconMan: Sort name
+*FvwmIconMan: Sort none
 *FvwmIconMan: IconColorset 8
 *FvwmIconMan: IconButton up
 *FvwmIconMan: IconAndSelectButton up
 *FvwmIconMan: IconAndSelectColorset 8
 *FvwmIconMan: PlainButton flat
+*FvwmIconMan: Colorset 9
 *FvwmIconMan: PlainColorset 9
 *FvwmIconMan: SelectColorset 9
 *FvwmIconMan: SelectButton flat
@@ -86,16 +99,19 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: FocusButton down
 *FvwmIconMan: FocusAndSelectColorset 7
 *FvwmIconMan: FocusAndSelectButton down
+*FvwmIconMan: TitleButton flat
+*FvwmIconMan: TitleColorset 9
 *FvwmIconMan: ReliefThickness 1
 *FvwmIconMan: Resolution page 
 #global
-*FvwmIconMan: DrawIcons Always
+*FvwmIconMan: DrawIcons always
 *FvwmIconMan: FollowFocus True
 *FvwmIconMan: UseWinList True
 *FvwmIconMan: ShowOnlyIcons False
 *FvwmIconMan: ShowOnlyFocused False
 #*FvwmIconMan: Format "%c: %i"
-*FvwmIconMan: Title ""
+*FvwmIconMan: Title "FVWM Screen"
+
 
 # action
 *FvwmIconMan: action    Mouse    1 N SendCommand "Function IconifyOrFocusAndRaise"
@@ -125,6 +141,6 @@ DestroyModuleConfig FvwmIdent: *
 
 DestroyFunc StartModules
 AddToFunc   StartModules
-+ I Module FvwmButtons BarButtons -g -0-0 
-+ I Module FvwmButtons DeskerPanelButtons -g +0-0
++ I Module FvwmButtons BarButtons -g +0-0 
++ I Module FvwmButtons DeskerPanelButtons -g -0-0
 + I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-0))x28+0+0 FvwmBar"
