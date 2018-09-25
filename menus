@@ -82,9 +82,7 @@ AddToMenu   Settings
 + "Power Management"	Exec exec xfce4-power-manager-settings
 + "Screen Saver"	Exec exec xscreensaver-demo
 + "" Nop
-+ "&Edit Config"	Exec exec $[infostore.editor] $FVWM_USERDIR/config
-# + "&Edit .fvwm2rc"	Popup Edit-Config
-# + "Reload .fvwm2rc"		Popup Reload-Config
++ "Configuration"	Popup Edit-Config
 +  "Temporary Change:  "			Title
 + "&Focus/Paging"	Popup Focus-Settings
 + "&Bell"		Popup Bell-Settings
@@ -111,6 +109,16 @@ AddToMenu   AutoRaise-Settings
 + "Raise &Modules Only" StartModulesAutoRaise
 + "AutoRaise &off"	ModuleOff FvwmAuto
 
+
+
+DestroyMenu Edit-Config
+AddToMenu   Edit-Config
++ %mini/Editor.xpm%"Edit Config"		Exec exec $[infostore.editor] $[FVWM_USERDIR]/config
++ %mini/Editor.xpm%"Edit Menus"		Exec exec $[infostore.editor] $[FVWM_USERDIR]/menus
++ %mini/Editor.xpm%"Edit Theme"		Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
++ %mini/Editor.xpm%"Edit Modules"	Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/modules
++ "" Nop
++ %mini/Reload.xpm%"Reload Config" 	Restart
 #------------------------------------------------------------------------------
 #--------- Background  settings
 

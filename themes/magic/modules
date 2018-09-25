@@ -129,6 +129,26 @@ DestroyModuleConfig FvwmIdent: *
 *FvwmIdent: Colorset 5 *
 *FvwmIdent: Font "$[infostore.normalfont]"
 
+DestroyModuleConfig FvwmFormDefault: *
+*FvwmFormDefault: Font "$[infostore.normalfont]"
+*FvwmFormDefault: InputFont "$[infostore.normalfont]"
+*FvwmFormDefault: ButtonFont "$[infostore.normalfont]"
+*FvwmFormDefault: TimeoutFont "$[infostore.smallfont]"
+*FvwmFormDefault: Fore #202020
+*FvwmFormDefault: Back #fafafa
+*FvwmFormDefault: Colorset 5
+*FvwmFormDefault: ItemFore black
+*FvwmFormDefault: ItemBack #d9d8d8
+# *FvwmFormDefault: ItemColorset 5
+
+DestroyModuleConfig FvwmScript: *
+*FvwmScript: DefaultFont ""$[infostore.normalfont]"
+*FvwmScript: DefaultFore black
+*FvwmScript: DefaultBack #afafaf
+*FvwmScript: DefaultHilight grey100
+*FvwmScript: DefaultShadow grey55
+*FvwmScript: Colorset 5
+
 DestroyFunc StartModules
 AddToFunc   StartModules
 + I Module FvwmButtons BarButtons -g -0+0 
