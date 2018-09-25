@@ -164,7 +164,7 @@ AddToFunc   SetNitrogenBackground
 DestroyFunc MaximizeToSide
 AddToFunc   MaximizeToSide
 + I Maximize 50 100
-+ I Move $0 +0
++ I ThisWindow (Maximized) Move $0 +0
 
 #------------- FvwmManPage
 
@@ -181,9 +181,9 @@ Mouse 2		R    	A       Menu Window mouse -1p -1p
 Mouse 3         R       A       WindowList mouse -1p -1p
 Mouse 3         R       C       WindowList mouse -1p -1p OnlyListSkip
 
-Mouse 1		W   	M       Function "MoveAndRaise"
-Mouse 2		W    	M       Menu Window mouse -1p -1p
-Mouse 3         W       M       WindowList (CurrentPage) mouse -1p -1p 
+Mouse 1		W   	4       Function "MoveAndRaise"
+Mouse 2		W    	4       Menu Window mouse -1p -1p
+Mouse 3         W       4       WindowList (CurrentPage) mouse -1p -1p 
 Mouse 3         W       CM      WindowList mouse -1p -1p OnlyListSkip
 
 Mouse 1		I	A	Function "MoveOrIconifyOrRaise"
