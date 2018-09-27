@@ -21,7 +21,8 @@ AddToMenu   Utilities "Main Menu" Title
 
 DestroyMenu Favorites
 AddToMenu   Favorites
-+ %mini/Folder.xpm%"File Manager"		Exec exec $[infostore.filemanager]
+#+ %mini/Shell.xpm%"Terminal"		Exec exec $[infostore.terminal]
++ %mini/Folder.xpm%"File Manager"	Exec exec $[infostore.filemanager]
 #+ mini/cli.xpm%"Midnight Commander"	Exec exec $[infostore.terminal] -e mc
 + %mini/Editor.xpm%"Editor"		Exec exec $[infostore.editor]
 + %mini/Viewer.xpm%"Viewer"		Exec exec $[infostore.viewer]
@@ -113,10 +114,10 @@ AddToMenu   AutoRaise-Settings
 
 DestroyMenu Edit-Config
 AddToMenu   Edit-Config
-+ %mini/Editor.xpm%"Edit Config"		Exec exec $[infostore.editor] $[FVWM_USERDIR]/config
-+ %mini/Editor.xpm%"Edit Menus"		Exec exec $[infostore.editor] $[FVWM_USERDIR]/menus
-+ %mini/Editor.xpm%"Edit Theme"		Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
-+ %mini/Editor.xpm%"Edit Modules"	Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/modules
++ %mini/Document.xpm%"Edit Config"		Exec exec $[infostore.editor] $[FVWM_USERDIR]/config
++ %mini/Document.xpm%"Edit Menus"		Exec exec $[infostore.editor] $[FVWM_USERDIR]/menus
++ %mini/Document.xpm%"Edit Theme"		Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
++ %mini/Document.xpm%"Edit Modules"	Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/modules
 + "" Nop
 + %mini/Reload.xpm%"Reload Config" 	Restart
 #------------------------------------------------------------------------------
