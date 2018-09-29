@@ -3,11 +3,11 @@ Colorset 1 fg #6a6c6e, bg #e1e1e1, fgsh #d0cfcf
 Colorset 2 fg white, bg #505050
 Colorset 3 fg black, bg #e1e1e1, Pixmap taskbar2.xpm, hi white, sh black
 Colorset 4 fg black, bg #e1e1e1, hi white, fgsh #f0f0f0
-Colorset 5 fg #202020, bg #fafafa, hi #ffffff, sh #ced1d4, fgsh #ced1d4
+Colorset 5 fg #404040, bg #e1e1e1, hi #ffffff, sh #bec1c4, fgsh #ced1d4
 Colorset 6 fg white, bg #3983d5
 
-Colorset 7 fg black, bg #507bad, TiledPixmap taskbar_down.xpm,fgsh #f0f0f0, hi #ffffff, sh #8e919b
-Colorset 8 fg #7a7c7e, bg #afafaf, TiledPixmap taskbar.xpm, hi white, fgsh #e1e1e1
+Colorset 7 fg black, bg #507bad, TiledPixmap taskbar_down.xpm, fgsh #f0f0f0, hi #ffffff, sh #8e919b
+Colorset 8 fg #6a6c6e, bg #afafaf, TiledPixmap taskbar.xpm, hi white, fgsh #f0f0f0
 Colorset 9 fg #202020, bg #afafaf, TiledPixmap taskbar.xpm, hi white, fgsh #f0f0f0
 
 Colorset 10 fg white, bg black, hi #202020, sh #202020
@@ -41,6 +41,23 @@ Style   "*"	Font "$[infostore.titlefont]"
 Style 	"*" 	IconFont "$[infostore.normalfont]"
 Style * NoIcon
 
+Style "$[infostore.terminal]" MiniIcon mini/Shell.xpm
+Style "$[infostore.filemanager]" MiniIcon mini/Folder.xpm
+Style "$[infostore.editor]" MiniIcon mini/Editor.xpm
+Style "$[infostore.viewer]" MiniIcon mini/Viewer.xpm
+Style "$[infostore.audioplayer]" MiniIcon mini/Audio.xpm
+Style "$[infostore.videoplayer]" MiniIcon mini/Movie.xpm
+Style "$[infostore.browser]" MiniIcon mini/Browser.xpm
+Style "$[infostore.mail]" MiniIcon mini/Mail.xpm
+
+Style "Xman" MiniIcon mini/Help.xpm
+Style "Firefox" MiniIcon mini/Browser.xpm
+Style "Thunderbird" MiniIcon mini/Mail.xpm
+Style "xterm" MiniIcon mini/Shell.xpm
+Style "xfce4-terminal" MiniIcon mini/Shell.xpm
+Style "gpodder" MiniIcon mini/Audio.xpm
+Style "xv" Icon MiniIcon mini/Viewer.xpm
+
 MenuStyle * Fvwm
 MenuStyle * Hilight3DThickness 0, PopupOffset 0 100, PopupDelay 300
 MenuStyle * Font "$[infostore.normalfont]"
@@ -48,9 +65,17 @@ MenuStyle * TitleFont "$[infostore.titlefont]"
 MenuStyle * MenuColorset 5, HilightBack, ActiveColorset 6, HilightTitleBack, TitleColorset 6
 MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
 MenuStyle * TrianglesUseFore, TrianglesSolid
-MenuStyle * ItemFormat "%s%| %i %l  %r  %i%> %|%"
-MenuStyle * VerticalItemSpacing 4 3, VerticalTitleSpacing 4 3
+MenuStyle * ItemFormat "%s%| %i %l  %r  %i%> %|%s"
+MenuStyle * VerticalItemSpacing 6 5, VerticalTitleSpacing 6 5
 MenuStyle * SeparatorsLong
+#MenuStyle * VerticalMargins 1 1
+
+CopyMenuStyle * bgMenu
+MenuStyle bgMenu VerticalItemSpacing 2 6, VerticalTitleSpacing 4 3
+MenuStyle bgMenu Hilight3DThickness 0
+MenuStyle bgMenu ActiveColorset 6, HilightBack, MenuColorset 10
+MenuStyle bgMenu ItemFormat "%s%|%i  %l|%"
+MenuStyle bgMenu VerticalMargins 0 0
 
 #------------------------------------------------------------------------------
 # Mouse Bindings
@@ -67,5 +92,5 @@ Mouse 1		4    	A     	IconifyWindow
 Mouse 3         4       A       Maximize
 
 Mouse 1		T	A	Function "MoveOrRaiseOrMaximize"
-Mouse 2		T	A	Function "RaiseLowerWindow"
+Mouse 2		T	A	WindowList (CurrentPage) NoGeometry, NoCurrentDeskTitle, IconifiedAtEnd
 Mouse 3		T	A	Menu Window-Ops2

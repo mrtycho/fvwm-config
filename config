@@ -48,7 +48,9 @@ Style * MouseFocusClickRaises
 Style * TileCascadePlacement
 Style * ResizeOpaque
 Style * WindowShadeSteps 20
-Style * SnapAttraction 5
+Style * SnapAttraction 5 All ScreenAll
+Style * SnapGrid 5 5
+Style * EdgeMoveResistance 5
 Style * UsePPosition
 Style * GrabFocus, GrabFocusTransient
 Style * !FPReleaseFocus
@@ -60,16 +62,15 @@ Style * MWMDecor
 Style * HintOverride
 Style * OLDecor
 Style * EWMHUseStateHints
-Style * GNOMEUseHints
-Style * IconOverride
 
 Style panel     Sticky, !Title, WindowListSkip, CirculateSkip, BorderWidth 0
-Style "gthumb"  !GNOMEUseHints, EWMHIgnoreWindowType, !MWMDecor
-Style "Catfish"  !GNOMEUseHints, EWMHIgnoreWindowType, !MWMDecor
+Style "gthumb"  EWMHIgnoreWindowType, !MWMDecor
+Style "Catfish"  EWMHIgnoreWindowType, !MWMDecor
 Style "tint2" 	!Title, !Handles, !Borders, StaysOnTop, EWMHIgnoreStrutHints, Sticky, EWMHPlacementIgnoreWorkingArea, NeverFocus, WindowListSkip
 Style desktop_icon CirculateSkip, WindowListSkip,  NoTitle
 Style *lock        !Title, !Handles, Sticky, WindowListSkip
 Style stalonetray  !Title, !Handles, WindowListSkip, CirculateSkip, StaysOnBottom,NeverFocus, EWMHUseStackingOrderHints
+Style fvwm_menu	NoButton 2, NoButton 4, WindowListSkip
 Style FvwmForm-QuitVerify NoButton 1, NoButton 2, NoButton 4, NoButton 6, StaysOnTop, NoHandles, WindowListSkip
 
 #------------------------------------------------------------------------------
@@ -178,13 +179,13 @@ AddToFunc   ViewManPage
 
 Mouse 1		R   	A       Menu Utilities mouse -1p -1p
 Mouse 2		R    	A       Menu Window mouse -1p -1p
-Mouse 3         R       A       WindowList mouse -1p -1p
-Mouse 3         R       C       WindowList mouse -1p -1p OnlyListSkip
+Mouse 3         R       A       WindowList mouse -1p -1p NoGeometry
+Mouse 3         R       C       WindowList mouse -1p -1p OnlyListSkip, NoGeometry
 
 Mouse 1		W   	4       Function "MoveAndRaise"
 Mouse 2		W    	4       Menu Window mouse -1p -1p
-Mouse 3         W       4       WindowList (CurrentPage) mouse -1p -1p 
-Mouse 3         W       CM      WindowList mouse -1p -1p OnlyListSkip
+Mouse 3         W       4       WindowList (CurrentPage) mouse -1p -1p, NoGeometry 
+Mouse 3         W       CM      WindowList mouse -1p -1p OnlyListSkip, NoGeometry
 
 Mouse 1		I	A	Function "MoveOrIconifyOrRaise"
 Mouse 2		I	A	Iconify
@@ -238,6 +239,7 @@ AddToFunc StartFunction
 + I Exec exec $(source $[FVWM_USERDIR]/background.cfg)
 + I Test (Init) Exec exec nm-applet
 + I Test (Init) Exec exec pnmixer
++ I Test (Init) Exec exec update-notifier
 + I Test (Init) Exec exec xscreensaver -no-splash
 + I Test (Init) Exec exec redshift
 + I Test (Init) Exec exec xfce4-power-manager

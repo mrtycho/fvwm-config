@@ -1,3 +1,5 @@
+EwmhBaseStruts 0 0 30 0
+
 Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 1, BorderColorset 2
 Colorset 11 fg white, bg #303030, RootTransparent buffer, Tint #505050 65
 Colorset 12 fg white, bg #909090, RootTransparent buffer, Tint #909090 40, hi white, sh #202020, fgsh #303030
@@ -82,16 +84,16 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: ManagerGeometry 1x1
 *FvwmIconMan: ButtonGeometry 28x28
 # *FvwmIconMan: MaxButtonWidth 26
-# *FvwmIconMan: MaxButtonWidthByColumns 5
+*FvwmIconMan: MaxButtonWidthByColumns 2
 
 *FvwmIconMan: Font "$[infostore.smallfont]"
 *FvwmIconMan: Sort none
+*FvwmIconMan: Colorset 9
 *FvwmIconMan: IconColorset 8
 *FvwmIconMan: IconButton up
 *FvwmIconMan: IconAndSelectButton up
 *FvwmIconMan: IconAndSelectColorset 8
 *FvwmIconMan: PlainButton flat
-*FvwmIconMan: Colorset 9
 *FvwmIconMan: PlainColorset 9
 *FvwmIconMan: SelectColorset 9
 *FvwmIconMan: SelectButton flat

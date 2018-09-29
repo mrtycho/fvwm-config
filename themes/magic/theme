@@ -8,7 +8,7 @@ Colorset 6 fg white, bg black, fgsh grey10
 Colorset 7 fg white, bg #507bad, fgsh grey10, hi #ffffff, sh #2b3743
 Colorset 8 fg #404040, bg #afafaf, TiledPixmap Tile2.png, hi #e0e0e0, fgsh #f0f0f0
 Colorset 9 fg black, bg #afafaf, TiledPixmap Tile2.png, hi white, fgsh #f0f0f0
-Colorset 10 fg white, bg #black, hi #202020, sh #202020
+Colorset 10 fg white, bg black, hi #202020, sh #202020
 
 Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
 Style * BorderWidth 4, HandleWidth 4
@@ -37,23 +37,26 @@ Style * IconFont "$[infostore.smallfont]"
 Style * IconBackgroundRelief 1, IconTitleRelief 0	
 Style * IconBackgroundColorset 3, IconTitleColorset 6, HilightIconTitleColorset 2
 Style * IconSize 62 52, IconTitle
+Style * IconOverride
+# , EWMHMiniIconOverride
 
-Style "$[infostore.terminal]" Icon icons/cli.xpm
-Style "$[infostore.filemanager]" Icon icons/FileManager.xpm
-Style "$[infostore.editor]" Icon icons/TextEditor.xpm
-Style "$[infostore.viewer]" Icon icons/Viewer.xpm
-Style "$[infostore.audioplayer]" Icon icons/SoundEditor.xpm
-Style "$[infostore.videoplayer]" Icon icons/Moviemaker.xpm
-Style "$[infostore.browser]" Icon icons/Web.xpm
-Style "$[infostore.mail]" Icon icons/Mail.xpm
+Style "$[infostore.terminal]" Icon icons/cli.xpm, MiniIcon mini/Shell.xpm
+Style "$[infostore.filemanager]" Icon icons/FileManager.xpm, MiniIcon mini/Folder.xpm
+Style "$[infostore.editor]" Icon icons/TextEditor.xpm, MiniIcon mini/Editor.xpm
+Style "$[infostore.viewer]" Icon icons/Viewer.xpm, MiniIcon mini/Viewer.xpm
+Style "$[infostore.audioplayer]" Icon icons/SoundEditor.xpm, MiniIcon mini/Audio.xpm
+Style "$[infostore.videoplayer]" Icon icons/Moviemaker.xpm, MiniIcon mini/Movie.xpm
+Style "$[infostore.browser]" Icon icons/Web.xpm, MiniIcon mini/Browser.xpm
+Style "$[infostore.mail]" Icon icons/Mail.xpm, MiniIcon mini/Mail.xpm
 
-Style "Xman" Icon small/Help.xpm
-Style "Firefox" Icon icons/Web.xpm
-Style "Thunderbird" Icon icons/Mail.xpm
-Style "xterm" Icon icons/cli.xpm
-Style "xfce4-terminal" Icon icons/cli.xpm
+Style "Xman" Icon small/Help.xpm, MiniIcon mini/Help.xpm
+Style "Firefox" Icon icons/Web.xpm, MiniIcon mini/Browser.xpm
+Style "Thunderbird" Icon icons/Mail.xpm, MiniIcon mini/Mail.xpm
+Style "xterm" Icon icons/cli.xpm, MiniIcon mini/Shell.xpm
+Style "xfce4-terminal" Icon icons/cli.xpm, MiniIcon mini/Shell.xpm
 Style "gv" Icon small/Postscript.xpm
-Style "xv" Icon icons/Viewer.xpm
+Style "gpodder" MiniIcon mini/Audio.xpm
+Style "xv" Icon icons/Viewer.xpm, MiniIcon mini/Viewer.xpm
 
 MenuStyle * MWM
 MenuStyle * Hilight3DThickness -1, PopupOffset 0 96, PopupDelay 300
@@ -79,7 +82,7 @@ MenuStyle bgMenu VerticalMargins 0 0
 # Mouse Bindings
 #------------------------------------------------------------------------------
 
-Mouse 1         1       A       Menu Window-Ops2
+Mouse 1         1       A       Menu Window-Ops3
 Mouse 2         1       A       Destroy
 Mouse 3		1	A	Function "CloseWindow"
 Mouse 1		2	A	Function "MaximizeWindow"
@@ -90,4 +93,5 @@ Mouse 3         4       A       All ($c) Iconify On
 
 Mouse 1		T	A	Function "MoveOrRaiseOrShade"
 Mouse 2		T	A	Function "RaiseLowerWindow"
-Mouse 3		T	A	Menu Window-Ops3
+Mouse 3		T	A	WindowList (CurrentPage) NoGeometry, NoCurrentDeskTitle, IconifiedAtEnd
+#Menu Window-Ops3

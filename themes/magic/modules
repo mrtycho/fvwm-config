@@ -1,4 +1,6 @@
+#EwmhBaseStruts 0 65 0 32 
 EwmhBaseStruts 0 65 0 0 
+
 
 Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 1, BorderColorset 2
 # BorderWidth 1, Colorset 6
