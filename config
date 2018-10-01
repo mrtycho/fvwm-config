@@ -6,7 +6,7 @@ ImagePath $[FVWM_USERDIR]/themes/$[fvwm_theme]:$[FVWM_USERDIR]/3dpixmaps:+
 
 *FvwmScript: Path $[FVWM_USERDIR]/scripts
 
-InfoStoreAdd filemanager caja
+InfoStoreAdd filemanager pcmanfm
 InfoStoreAdd editor mousepad
 InfoStoreAdd terminal xfce4-terminal #xterm
 InfoStoreAdd browser firefox
@@ -20,7 +20,7 @@ InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:DejaVu Sans:size=8::minspace=False:an
 InfoStoreAdd normalfont "xft:DejaVu Sans:size=9:minspace=False:antialias=True"
 InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:DejaVu Sans:size=9:minspace=False:antialias=True"
 
-DeskTopSize 2x2
+DeskTopSize 4x1
 
 ExecUseShell /bin/bash
 Emulate Win

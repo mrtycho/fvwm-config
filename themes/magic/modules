@@ -1,6 +1,10 @@
 #EwmhBaseStruts 0 65 0 32 
 EwmhBaseStruts 0 65 0 0 
 
+DestroyModuleConfig FvwmPager: *
+*FvwmPager: Colorset * 4
+*FvwmPager: Font none
+*FvwmPager: SolidSeparators
 
 Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 1, BorderColorset 2
 # BorderWidth 1, Colorset 6
@@ -54,14 +58,15 @@ DestroyModuleConfig DeskerPanelButtons: *
 *DeskerPanelButtons: Font "$[infostore.smallfont]"
 *DeskerPanelButtons: Fore Black
 *DeskerPanelButtons: Colorset 5
-*DeskerPanelButtons: Geometry 180x140+0+0
+*DeskerPanelButtons: Geometry 230x75+0+0
 *DeskerPanelButtons: Rows 1
 *DeskerPanelButtons: Frame 1
 *DeskerPanelButtons: Padding 1 1
 *DeskerPanelButtons: (1x1, Frame 1, Container(Rows 6, Frame 1))
-*DeskerPanelButtons: (5x1, Frame 0, Left,Swallow (NoClose, UseOld) 'stalonetray' \
+*DeskerPanelButtons: (3x2, Frame 0, Left, Swallow (NoClose, UseOld) 'stalonetray' \
 	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NW -p --kludges force_icons_size,fix_window_pos,use_icons_hints`)
-*DeskerPanelButtons: (5x5, Frame -1, Colorset 9, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
+*DeskerPanelButtons: (2x2, Frame 0, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 5")
+*DeskerPanelButtons: (5x4, Frame -1, Colorset 9, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
 *DeskerPanelButtons: (End)
 
 Style DeskerPanelButtons NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, FixedSize, NoHandles, BorderColorset 2, BorderWidth 1

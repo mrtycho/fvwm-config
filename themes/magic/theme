@@ -40,22 +40,21 @@ Style * IconSize 62 52, IconTitle
 Style * IconOverride
 # , EWMHMiniIconOverride
 
-Style "$[infostore.terminal]" Icon icons/cli.xpm, MiniIcon mini/Shell.xpm
-Style "$[infostore.filemanager]" Icon icons/FileManager.xpm, MiniIcon mini/Folder.xpm
-Style "$[infostore.editor]" Icon icons/TextEditor.xpm, MiniIcon mini/Editor.xpm
-Style "$[infostore.viewer]" Icon icons/Viewer.xpm, MiniIcon mini/Viewer.xpm
-Style "$[infostore.audioplayer]" Icon icons/SoundEditor.xpm, MiniIcon mini/Audio.xpm
-Style "$[infostore.videoplayer]" Icon icons/Moviemaker.xpm, MiniIcon mini/Movie.xpm
-Style "$[infostore.browser]" Icon icons/Web.xpm, MiniIcon mini/Browser.xpm
-Style "$[infostore.mail]" Icon icons/Mail.xpm, MiniIcon mini/Mail.xpm
+Style "$[infostore.terminal]" EWMHMiniIconOverride, Icon icons/cli.xpm, MiniIcon mini/Shell.xpm
+Style "$[infostore.filemanager]" EWMHMiniIconOverride,Icon icons/FileManager.xpm, MiniIcon mini/Folder.xpm
+Style "$[infostore.editor]" EWMHMiniIconOverride,Icon icons/TextEditor.xpm, MiniIcon mini/Editor.xpm
+Style "$[infostore.viewer]" EWMHMiniIconOverride,Icon icons/Viewer.xpm, MiniIcon mini/Viewer.xpm
+Style "$[infostore.audioplayer]" EWMHMiniIconOverride,Icon icons/SoundEditor.xpm, MiniIcon mini/Audio.xpm
+Style "$[infostore.videoplayer]" EWMHMiniIconOverride, Icon icons/Moviemaker.xpm, MiniIcon mini/Movie.xpm
+Style "$[infostore.browser]" EWMHMiniIconOverride,Icon icons/Web.xpm, MiniIcon mini/Browser.xpm
+Style "$[infostore.mail]" EWMHMiniIconOverride, Icon icons/Mail.xpm, MiniIcon mini/Mail.xpm
 
 Style "Xman" Icon small/Help.xpm, MiniIcon mini/Help.xpm
-Style "Firefox" Icon icons/Web.xpm, MiniIcon mini/Browser.xpm
-Style "Thunderbird" Icon icons/Mail.xpm, MiniIcon mini/Mail.xpm
+Style "Firefox" EWMHMiniIconOverride, Icon icons/Web.xpm, MiniIcon mini/Browser.xpm
+Style "Thunderbird" EWMHMiniIconOverride, Icon icons/Mail.xpm, MiniIcon mini/Mail.xpm
 Style "xterm" Icon icons/cli.xpm, MiniIcon mini/Shell.xpm
-Style "xfce4-terminal" Icon icons/cli.xpm, MiniIcon mini/Shell.xpm
+Style "xfce4-terminal" EWMHMiniIconOverride, Icon icons/cli.xpm, MiniIcon mini/Shell.xpm
 Style "gv" Icon small/Postscript.xpm
-Style "gpodder" MiniIcon mini/Audio.xpm
 Style "xv" Icon icons/Viewer.xpm, MiniIcon mini/Viewer.xpm
 
 MenuStyle * MWM
