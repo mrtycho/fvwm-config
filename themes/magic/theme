@@ -1,3 +1,4 @@
+CleanupColorSets
 Colorset 0 fg white, bg #507bad, fgsh black, hi #a5b0ba, sh #2b3743
 Colorset 1 fg black, bg #959290, fgsh white, hi #e5e2e0, sh #656260
 Colorset 2 fg white, bg #303030
@@ -56,6 +57,7 @@ Style "xterm" Icon icons/cli.xpm, MiniIcon mini/Shell.xpm
 Style "xfce4-terminal" EWMHMiniIconOverride, Icon icons/cli.xpm, MiniIcon mini/Shell.xpm
 Style "gv" Icon small/Postscript.xpm
 Style "xv" Icon icons/Viewer.xpm, MiniIcon mini/Viewer.xpm
+Style "Synaptic" Icon Packer.xpm
 
 MenuStyle * MWM
 MenuStyle * Hilight3DThickness -1, PopupOffset 0 96, PopupDelay 300
@@ -64,8 +66,8 @@ MenuStyle * TitleFont "$[infostore.titlefont]"
 MenuStyle * MenuColorset 5, ActiveColorset 7, HilightBack, TitleColorset 0, HilightTitleBack
 MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
 MenuStyle * TrianglesUseFore, TrianglesSolid
-MenuStyle * ItemFormat " %s%| %i  %l  %r  %i%> %|% "
-MenuStyle * VerticalItemSpacing 3 4, VerticalTitleSpacing 4 5
+MenuStyle * ItemFormat "%3p%s%|%3p%i %l  %r  %i%>%3p%|%3p"
+MenuStyle * VerticalItemSpacing 3 4, VerticalTitleSpacing 4 3
 MenuStyle * SeparatorsLong
 MenuStyle * VerticalMargins 0 2
 

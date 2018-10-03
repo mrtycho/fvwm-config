@@ -7,26 +7,29 @@ AddToMenu   Utilities "$[gt.Root Menu]" Title
 #+ "Find ..."		Exec exec catfish
 + %mini/Execute_icon.xpm%"$[gt.Execute] ..."		Exec exec rofi -show run
 + "" Nop
-+ "&$[gt.Favorites]"		Popup Favorites
-+ "&$[gt.Programs]"		Popup Programme
-+ "FVWM $[gt.Modules]"	Popup Module-Popup
-+ "$[gt.Settings]"		Popup Settings
++ "&$[gt.Favorites]"	Popup Favorites
++ "&$[gt.Programs]"	Popup Programme
++ "Fvwm $[gt.Modules]"	Popup Module-Popup
++ "$[gt.Settings]"	Popup Settings
 + "$[gt.Help]"		Popup Documents
-+ "$[gt.Restart]"	Popup Restart
++ "" Nop
+#+ "$[gt.Restart]"	Popup Restart
++ "$[gt.Restart Fvwm]"	Restart
++ "" Nop
 + "$[gt.Exit Fvwm]"	FvwmForm FvwmForm-QuitVerify
 
 DestroyMenu Favorites
 AddToMenu   Favorites
-#+ %mini/Shell.xpm%"Terminal"		Exec exec $[infostore.terminal]
-+ %mini/Folder.xpm%"File Manager"	Exec exec $[infostore.filemanager]
+#+ %mini/Shell.xpm%"$[gt.Terminal]"		Exec exec $[infostore.terminal]
++ %mini/Folder.xpm%"$[gt.File Manager]"	Exec exec $[infostore.filemanager]
 #+ mini/cli.xpm%"Midnight Commander"	Exec exec $[infostore.terminal] -e mc
-+ %mini/Editor.xpm%"Editor"		Exec exec $[infostore.editor]
-+ %mini/Viewer.xpm%"Viewer"		Exec exec $[infostore.viewer]
-+ %mini/Audio.xpm%"Audio Player"	Exec exec $[infostore.audioplayer]
-+ %mini/Movie.xpm%"Video Player"	Exec exec $[infostore.videoplayer]
++ %mini/Editor.xpm%"$[gt.Editor]"		Exec exec $[infostore.editor]
++ %mini/Viewer.xpm%"$[gt.Viewer]"		Exec exec $[infostore.viewer]
++ %mini/Audio.xpm%"$[gt.Audio Player]"	Exec exec $[infostore.audioplayer]
++ %mini/Movie.xpm%"$[gt.Video Player]"	Exec exec $[infostore.videoplayer]
 #+ "&Gimp"		Exec exec gimp
-+ %mini/Browser.xpm%"Web Browser"		Exec exec $[infostore.browser]
-+ %mini/Mail.xpm%"Mail"		Exec exec $[infostore.mail]
++ %mini/Browser.xpm%"$[gt.Web Browser]"		Exec exec $[infostore.browser]
++ %mini/Mail.xpm%"$[gt.Mail]"		Exec exec $[infostore.mail]
 
 #------------------------------------------------------------------------------
 #--------- Modules
@@ -75,15 +78,16 @@ AddToMenu   Settings
 + "Auto&Raise"				Popup AutoRaise-Settings
 + "" Nop
 + "$[gt.Background]"		Popup Background-Settings
-+ "$[gt.Appearance]"		Exec exec lxappearance
++ "$[gt.Appearance] (GTK)"	Exec exec lxappearance
++ "$[gt.Appearance] (Qt5)"	Exec exec qt5ct
 + "$[gt.Power Management]"	Exec exec xfce4-power-manager-settings
 + "$[gt.Screen Saver]"		Exec exec xscreensaver-demo
 + "" Nop
 + "$[gt.Fvwm Config Ops]"	Popup Edit-Config
-+  "Temporary Change:  "			Title
++ " $[gt.Temporary Change] "	Title
 + "&Focus/Paging"	Popup Focus-Settings
 + "&Bell"		Popup Bell-Settings
-+ "&Screen"		Popup X-settings
++ "$[gt.&Screen]"	Popup X-settings
 
 #------------------------------------------------------------------------------
 #--------- Animate  settings
@@ -350,7 +354,7 @@ AddToMenu "Window" "$[gt.Window Ops]" Title
 + "$[gt.(Un)Stick]"         		Stick
 + "$[gt.&Lower]	Alt-F5"             	Lower
 + ""					Nop
-+ "$[gt.Close]	Alt-F4" 		Close
++ "$[gt.&Close]	Alt-F4" 		Close
 + "$[gt.Destroy]	Ctrl-Alt-F4"	Destroy
 + ""					Nop
 + "$[gt.Move to Page]"			Popup Move-window
@@ -384,23 +388,23 @@ AddToMenu "Window-Ops2"
 DestroyMenu "Window-Ops3"
 AddToMenu "Window-Ops3"
 + "$[gt.Move to Page]"			Popup Move-window
-+ "$[gt.&Group Ops]"				Popup WindowGroupOps
++ "$[gt.&Group Ops]"			Popup WindowGroupOps
 + ""			Nop
-+ "$[gt.(De)Iconify]	Alt-F9"			Iconify
-+ "$[gt.(Un)Shade]"				WindowShade
-+ "$[gt.(Un)Stick]"				Stick
-+ "$[gt.(Un)Maximize]   	Alt-F10"	Maximize
++ "$[gt.(De)Iconify]	Alt-F9"		Iconify
++ "$[gt.(Un)Maximize]   Alt-F10"	Maximize
++ "$[gt.(Un)Shade]"			WindowShade
++ "$[gt.(Un)Stick]"			Stick
 + ""					Nop
-+ "$[gt.Close]	Alt-F4"			Close
++ "$[gt.&Close]	Alt-F4"			Close
 + ""					Nop
-+ "$[gt.Identify]	Alt-F11"		Module FvwmIdent
++ "$[gt.Identify]	Alt-F11"	Module FvwmIdent
 + "$[gt.More&...]"			Menu Window This 0 0
 
 #------------------------------------------------------------------------------
 # A "Move Window" menu
 
 DestroyMenu "Move-Window"
-AddToMenu   "Move-Window" "$[gt.Move to Page]" Title
+AddToMenu   "Move-Window"
 + '$[gt.Page] &1'	MoveToPage 0 0
 + '$[gt.Page] &2'	MoveToPage 1 0
 + '$[gt.Page] &3'	MoveToPage 0 1
@@ -417,7 +421,7 @@ AddToMenu   WindowGroupOps
 + "$[gt.UnShade]"     			Pick All ($[w.class]) WindowShade off
 + "$[gt.R&aise]"       		Pick All ($[w.class]) Raise
 + "$[gt.&Lower]"       		Pick All ($[w.class]) Lower
-+ "$[gt.Close]"			Pick Close
++ "$[gt.&Close]"			Pick Close
 + "$[gt.Destroy]"		Pick Destroy
 + " $[gt.Quick move to...] " Title
 + '$[gt.Page] &1'		Pick All ($[w.class]) MoveToPage 0 0

@@ -17,8 +17,8 @@ msgstr ""
 
 # Window menu
 
-msgid "Close"
-msgstr "Schließen"
+msgid "&Close"
+msgstr "&Schließen"
 
 msgid "Destroy"
 msgstr "Zerstören"
@@ -36,19 +36,22 @@ msgid "(Un)Maximize"
 msgstr "(De)Maximieren"
 
 msgid "Shade"
-msgstr "Zuklappen"
+msgstr "Einrollen"
 
 msgid "UnShade"
-msgstr "Aufklappen"
+msgstr "Ausrollen"
 
 msgid "(Un)Shade"
-msgstr "Auf/Zuklappen"
+msgstr "Aus/Einrollen"
 
 msgid "(Un)Stick"
 msgstr "(Ent)Pinnen"
 
+msgid "&Resize"
+msgstr "&Größe ändern"
+
 msgid "Move to Page"
-msgstr "Verschieben auf"
+msgstr "Verschieben nach"
 
 msgid "Quick move to..."
 msgstr "Schnell verschieben..."
@@ -60,7 +63,7 @@ msgid "Switch to..."
 msgstr "Wechseln zu..."
 
 msgid "Page"
-msgstr "Bildschirm"
+msgstr "Desktop"
 
 # Apps
 
@@ -70,10 +73,28 @@ msgstr "Identifizieren"
 msgid "Manuals"
 msgstr "Handbücher"
 
+msgid "File Manager"
+msgstr "Dateiverwaltung"
+
+msgid "Audio Player"
+msgstr "Audioplayer"
+
+msgid "Video Player"
+msgstr "Videoplayer"
+
+msgid "Mail"
+msgstr "E-Mail"
+
+msgid "Files"
+msgstr "Dateien"
+
+msgid "Media"
+msgstr "Medien"
+
 # Main menu
 
 msgid "Home"
-msgstr "Eigener Ordner"
+msgstr "Benutzerordner"
 
 msgid "Execute"
 msgstr "Ausführen"
@@ -103,9 +124,21 @@ msgid "Screen Saver"
 msgstr "Bildschirmschoner"
 
 msgid "Restart Self"
-msgstr "FVWM neustarten"
+msgstr "Fvwm neustarten"
+
+msgid "Restart Fvwm"
+msgstr "Fvwm neu starten"
 
 # Config
+
+msgid "Temporary Change"
+msgstr "Temporär ändern"
+
+msgid "&Screen"
+msgstr "Bild&schirm"
+
+msgid "Change Theme"
+msgstr "Thema ändern"
 
 msgid "Edit Config"
 msgstr "Konfiguation bearbeiten"

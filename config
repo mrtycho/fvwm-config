@@ -64,6 +64,7 @@ Style * MWMDecor
 Style * HintOverride
 Style * OLDecor
 Style * EWMHUseStateHints
+Style * ParentalRelativity
 
 Style panel     Sticky, !Title, WindowListSkip, CirculateSkip, BorderWidth 0
 Style "gthumb"  EWMHIgnoreWindowType, !MWMDecor
