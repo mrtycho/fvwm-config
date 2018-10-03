@@ -1,0 +1,134 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: config\n"
+"POT-Creation-Date: 2018-10-03 08:47+0200\n"
+"PO-Revision-Date: 2018-10-03 10:14+0200\n"
+"Last-Translator: Stefan Mayer\n"
+"Language: de\n"
+"Language-Team: German\n"
+"Language: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: gt.\n"
+
+# Window menu
+
+msgid "Close"
+msgstr "Schließen"
+
+msgid "Destroy"
+msgstr "Zerstören"
+
+msgid "&Iconify"
+msgstr "M&inimieren"
+
+msgid "&DeIconify"
+msgstr "&DeMinimieren"
+
+msgid "(De)Iconify"
+msgstr "(De)Minimieren"
+
+msgid "(Un)Maximize"
+msgstr "(De)Maximieren"
+
+msgid "Shade"
+msgstr "Zuklappen"
+
+msgid "UnShade"
+msgstr "Aufklappen"
+
+msgid "(Un)Shade"
+msgstr "Auf/Zuklappen"
+
+msgid "(Un)Stick"
+msgstr "(Ent)Pinnen"
+
+msgid "Move to Page"
+msgstr "Verschieben auf"
+
+msgid "Quick move to..."
+msgstr "Schnell verschieben..."
+
+msgid "&Group Ops"
+msgstr "Fenster&gruppe"
+
+msgid "Switch to..."
+msgstr "Wechseln zu..."
+
+msgid "Page"
+msgstr "Bildschirm"
+
+# Apps
+
+msgid "Identify"
+msgstr "Identifizieren"
+
+msgid "Manuals"
+msgstr "Handbücher"
+
+# Main menu
+
+msgid "Home"
+msgstr "Eigener Ordner"
+
+msgid "Execute"
+msgstr "Ausführen"
+
+msgid "Programs"
+msgstr "Programme"
+
+msgid "Favorites"
+msgstr "Favoriten"
+
+msgid "Modules"
+msgstr "Module"
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Background"
+msgstr "Hintergrund"
+
+msgid "Appearance"
+msgstr "Erscheinungsbild"
+
+msgid "Power Management"
+msgstr "Energieverwaltung"
+
+msgid "Screen Saver"
+msgstr "Bildschirmschoner"
+
+msgid "Restart Self"
+msgstr "FVWM neustarten"
+
+# Config
+
+msgid "Edit Config"
+msgstr "Konfiguation bearbeiten"
+
+msgid "Edit Menus"
+msgstr "Menüs bearbeiten"
+
+msgid "Edit Theme"
+msgstr "Thema bearbeiten"
+
+msgid "Edit Modules"
+msgstr "Module bearbeiten"
+
+msgid "Reload Config"
+msgstr "Konfiguration neu laden"
+
+# Wallpaper
+
+msgid "Browse Wallpapers"
+msgstr "Bild wählen"
+
+msgid "Browse Patterns"
+msgstr "Kachel wählen"
+
+msgid "Browse Colors"
+msgstr "Farbe wählen"

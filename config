@@ -2,6 +2,8 @@ ModulePath $[FVWM_USERDIR]:+
 
 SetEnv fvwm_theme "magic"
 
+LocalePath $[FVWM_USERDIR]/locale;config:+
+
 ImagePath $[FVWM_USERDIR]/themes/$[fvwm_theme]:$[FVWM_USERDIR]/3dpixmaps:+
 
 *FvwmScript: Path $[FVWM_USERDIR]/scripts
