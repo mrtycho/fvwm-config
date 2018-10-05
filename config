@@ -20,7 +20,7 @@ InfoStoreAdd help yelp
 
 InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:DejaVu Sans:size=8::minspace=False:antialias=True"
 InfoStoreAdd normalfont "xft:DejaVu Sans:size=9:minspace=False:antialias=True"
-InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:DejaVu Sans:size=9:minspace=False:antialias=True"
+InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:DejaVu Sans:size=10:minspace=False:antialias=True"
 
 DeskTopSize 4x1
 
@@ -221,7 +221,7 @@ Key 2	A	4	MaximizeToSide -0
 Silent Key Tab A M FuncFvwmNextWindow
 
 # Rofi
-Key Space A C Exec exec rofi -show run
+Key Space A 4 Exec exec rofi -show run
 
 # Lock screen
 Key L A MC Exec exec xscreensaver-command -l

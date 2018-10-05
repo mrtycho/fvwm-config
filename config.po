@@ -65,6 +65,9 @@ msgstr "Wechseln zu..."
 msgid "Page"
 msgstr "Desktop"
 
+msgid "All to Current Page"
+msgstr "Alle Fenster sammeln"
+
 # Apps
 
 msgid "Identify"

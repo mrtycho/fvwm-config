@@ -16,7 +16,7 @@ Style * BorderWidth 4, HandleWidth 4
 
 DestroyDecor MagicDecor
 AddToDecor MagicDecor
-+ TitleStyle	Centered Height 24
++ TitleStyle	Centered Height 26
 + ButtonStyle	1	Active	   (Pixmap menu-activeup.xpm)
 + ButtonStyle	1	ActiveDown (Pixmap menu-activedown.xpm)
 + ButtonStyle	1	Inactive   (Pixmap menu-inactive.xpm)
