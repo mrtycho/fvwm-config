@@ -1,0 +1,102 @@
+CleanupColorSets
+Colorset 0 fg white, bg #507bad, fgsh black, hi #a5b0ba 
+#, hi #a5b0ba, sh #2b3743
+Colorset 1 fg black, bg #9a9a9a, fgsh white, hi #e5e2e0, sh #656565
+Colorset 2 fg white, bg #303030
+Colorset 3 fg black, bg #afafaf, Pixmap Tile.png, hi white, sh black
+Colorset 4 fg black, bg #afafaf, Pixmap Tile2.png, hi white, fgsh #f0f0f0
+Colorset 5 fg black, bg #afafaf, hi white, sh black
+Colorset 6 fg white, bg black, fgsh grey10
+Colorset 7 fg white, bg #507bad, fgsh grey10, hi #ffffff, sh #2b3743
+Colorset 8 fg #404040, bg #afafaf, TiledPixmap Tile2.png, hi #e0e0e0, fgsh #f0f0f0
+Colorset 9 fg black, bg #afafaf, TiledPixmap Tile2.png, hi white, fgsh #f0f0f0
+Colorset 10 fg white, bg black, hi #202020, sh #202020
+
+Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
+Style * BorderWidth 4, HandleWidth 4
+
+DestroyDecor MagicDecor
+AddToDecor MagicDecor
++ TitleStyle	Centered Height 26
++ TitleStyle	AllActive 	(TiledPixmap title-active.xpm)
++ TitleStyle	Inactive 	(TiledPixmap title-inactive.xpm)
++ ButtonStyle	1	Active	   (Pixmap close-activeup.xpm )  -- Flat
++ ButtonStyle	1	ActiveDown (Pixmap close-activedown.xpm)
++ ButtonStyle	1	Inactive   (Pixmap close-inactive.xpm)
++ ButtonStyle  	2	Active	   (Pixmap maximize-activeup.xpm)  -- Flat
++ ButtonStyle  	2	ActiveDown (Pixmap maximize-activedown.xpm) 
++ ButtonStyle  	2	Inactive   (Pixmap maximize-inactive.xpm) -- Flat
++ ButtonStyle  	4	Active	   (Pixmap iconify-activeup.xpm)  -- Flat
++ ButtonStyle  	4	ActiveDown (Pixmap iconify-activedown.xpm) 
++ ButtonStyle  	4	Inactive (Pixmap iconify-inactive.xpm ) -- Flat
++ ButtonStyle	all	-- UseTitleStyle
+
+
++ BorderStyle	Active -- HiddenHandles 
++ BorderStyle	Inactive -- HiddenHandles 
+
+Style *	UseDecor MagicDecor, MWMBorder 
+Style *	Font "$[infostore.titlefont]"
+Style * IconFont "$[infostore.smallfont]"
+
+Style * IconBackgroundRelief 1, IconTitleRelief 0	
+Style * IconBackgroundColorset 3, IconTitleColorset 6, HilightIconTitleColorset 2
+Style * IconSize 62 52, IconTitle
+Style * IconOverride
+# , EWMHMiniIconOverride
+
+Style "$[infostore.terminal]" EWMHMiniIconOverride, Icon icons/cli.xpm, MiniIcon mini/Shell.xpm
+Style "$[infostore.filemanager]" EWMHMiniIconOverride,Icon icons/FileManager.xpm, MiniIcon mini/Folder.xpm
+Style "$[infostore.editor]" EWMHMiniIconOverride,Icon icons/TextEditor.xpm, MiniIcon mini/Editor.xpm
+Style "$[infostore.viewer]" EWMHMiniIconOverride,Icon icons/Viewer.xpm, MiniIcon mini/Viewer.xpm
+Style "$[infostore.audioplayer]" EWMHMiniIconOverride,Icon icons/SoundEditor.xpm, MiniIcon mini/Audio.xpm
+Style "$[infostore.videoplayer]" EWMHMiniIconOverride, Icon icons/Moviemaker.xpm, MiniIcon mini/Movie.xpm
+Style "$[infostore.browser]" EWMHMiniIconOverride,Icon icons/Web.xpm, MiniIcon mini/Browser.xpm
+Style "$[infostore.mail]" EWMHMiniIconOverride, Icon icons/Mail.xpm, MiniIcon mini/Mail.xpm
+
+Style "Xman" Icon small/Help.xpm, MiniIcon mini/Help.xpm
+Style "Firefox" EWMHMiniIconOverride, Icon icons/Web.xpm, MiniIcon mini/Browser.xpm
+Style "Thunderbird" EWMHMiniIconOverride, Icon icons/Mail.xpm, MiniIcon mini/Mail.xpm
+Style "xterm" Icon icons/cli.xpm, MiniIcon mini/Shell.xpm
+Style "xfce4-terminal" EWMHMiniIconOverride, Icon icons/cli.xpm, MiniIcon mini/Shell.xpm
+Style "gv" Icon small/Postscript.xpm
+Style "xv" Icon icons/Viewer.xpm, MiniIcon mini/Viewer.xpm
+Style "Synaptic" Icon Packer.xpm
+
+MenuStyle * MWM
+MenuStyle * Hilight3DThickness -1, PopupOffset 0 96, PopupDelay 300
+MenuStyle * Font "$[infostore.normalfont]"
+MenuStyle * TitleFont "$[infostore.titlefont]"
+MenuStyle * MenuColorset 5, ActiveColorset 7, HilightBack, TitleColorset 0, HilightTitleBack
+MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
+MenuStyle * TrianglesUseFore, TrianglesSolid
+MenuStyle * ItemFormat "%3p%s%|%3p%i %l  %r  %i%>%3p%|%3p"
+MenuStyle * VerticalItemSpacing 3 4, VerticalTitleSpacing 4 3
+MenuStyle * SeparatorsLong
+MenuStyle * VerticalMargins 0 2
+
+CopyMenuStyle * bgMenu
+MenuStyle bgMenu VerticalItemSpacing 2 6, VerticalTitleSpacing 4 3
+MenuStyle bgMenu Hilight3DThickness 0
+MenuStyle bgMenu ActiveColorset 7, HilightBack, MenuColorset 10
+MenuStyle bgMenu ItemFormat "%s%|%i  %l|%"
+MenuStyle bgMenu VerticalMargins 0 0
+
+
+#------------------------------------------------------------------------------
+# Mouse Bindings
+#------------------------------------------------------------------------------
+
+Mouse 1         1       A     Function "CloseWindow"
+Mouse 2         1       A     Destroy
+Mouse 3		1	A	Menu Window-Ops3
+Mouse 1		2	A	Function "MaximizeWindow"
+Mouse 2		2	A	MaximizeToSide -0
+Mouse 3		2	A	MaximizeToSide +0
+Mouse 1		4    	A     	Function "IconifyWindow"
+Mouse 3         4       A       All ($c) Iconify On
+
+Mouse 1		T	A	Function "MoveOrRaiseOrShade"
+Mouse 2		T	A	Function "RaiseLowerWindow"
+Mouse 3		T	A	WindowList (CurrentPage) NoGeometry, NoCurrentDeskTitle, IconifiedAtEnd
+#Menu Window-Ops3

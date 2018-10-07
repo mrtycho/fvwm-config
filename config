@@ -1,6 +1,6 @@
 ModulePath $[FVWM_USERDIR]:+
 
-SetEnv fvwm_theme "magic"
+SetEnv fvwm_theme "magic2"
 
 LocalePath $[FVWM_USERDIR]/locale;config:+
 
@@ -221,7 +221,7 @@ Key 2	A	4	MaximizeToSide -0
 Silent Key Tab A M FuncFvwmNextWindow
 
 # Rofi
-Key Space A C Exec exec rofi -show run
+Key Space A 4 Exec exec rofi -show run
 
 # Lock screen
 Key L A MC Exec exec xscreensaver-command -l

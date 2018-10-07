@@ -346,21 +346,22 @@ AddToMenu   Restart
 
 DestroyMenu "Window"
 AddToMenu "Window" "$[gt.Window Ops]" Title
-+ "$[gt.&Move]	Alt-f7"               	Move
++ "$[gt.&Move]	Alt-f7"           Move
 + "$[gt.&Resize]"          		Resize
-+ "$[gt.(De)Iconify]	Alt-F9"      	Iconify
++ "$[gt.(De)Iconify]	Alt-F9"     Iconify
 + "$[gt.(Un)Maximize]	Alt-F10" 	Maximize
 + "$[gt.(Un)Shade]"         		WindowShade
 + "$[gt.(Un)Stick]"         		Stick
-+ "$[gt.&Lower]	Alt-F5"             	Lower
++ "$[gt.&Lower]	Alt-F5"           Lower
 + ""					Nop
 + "$[gt.&Close]	Alt-F4" 		Close
 + "$[gt.Destroy]	Ctrl-Alt-F4"	Destroy
 + ""					Nop
 + "$[gt.Move to Page]"			Popup Move-window
 + "$[gt.&Group Ops]"			Popup WindowGroupOps
++ "$[gt.All to Current Page]"		All MoveToPage $($[page.nx]) $($[page.ny])
 + ""					Nop
-+ "$[gt.Identify]	Alt-F11"	Module FvwmIdent
++ "$[gt.Identify]	Alt-F11"		Module FvwmIdent
 + "$[gt.Switch to...]"			WindowList
 
 #------------------------------------------------------------------------------
@@ -391,7 +392,7 @@ AddToMenu "Window-Ops3"
 + "$[gt.&Group Ops]"			Popup WindowGroupOps
 + ""			Nop
 + "$[gt.(De)Iconify]	Alt-F9"		Iconify
-+ "$[gt.(Un)Maximize]   Alt-F10"	Maximize
++ "$[gt.(Un)Maximize]	Alt-F10"	Maximize
 + "$[gt.(Un)Shade]"			WindowShade
 + "$[gt.(Un)Stick]"			Stick
 + ""					Nop
@@ -407,8 +408,8 @@ DestroyMenu "Move-Window"
 AddToMenu   "Move-Window"
 + '$[gt.Page] &1'	MoveToPage 0 0
 + '$[gt.Page] &2'	MoveToPage 1 0
-+ '$[gt.Page] &3'	MoveToPage 0 1
-+ '$[gt.Page] &4'	MoveToPage 1 1
++ '$[gt.Page] &3'	MoveToPage 2 0
++ '$[gt.Page] &4'	MoveToPage 3 0
 
 #------------------------------------------------------------------------------
 # A group version of WindowOps
@@ -426,8 +427,8 @@ AddToMenu   WindowGroupOps
 + " $[gt.Quick move to...] " Title
 + '$[gt.Page] &1'		Pick All ($[w.class]) MoveToPage 0 0
 + '$[gt.Page] &2'		Pick All ($[w.class]) MoveToPage 1 0
-+ '$[gt.Page] &3'		Pick All ($[w.class]) MoveToPage 0 1
-+ '$[gt.Page] &4'		Pick All ($[w.class]) MoveToPage 1 1
++ '$[gt.Page] &3'		Pick All ($[w.class]) MoveToPage 2 0
++ '$[gt.Page] &4'		Pick All ($[w.class]) MoveToPage 3 0
 
 DestroyMenu WindowStyle
 AddToMenu   WindowStyle
