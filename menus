@@ -16,7 +16,7 @@ AddToMenu   Utilities "$[gt.Root Menu]" Title
 #+ "$[gt.Restart]"	Popup Restart
 + "$[gt.Restart Fvwm]"	Restart
 + "" Nop
-+ "$[gt.Exit Fvwm]"	FvwmForm FvwmForm-QuitVerify
++ "$[gt.Exit Fvwm]"	FvwmForm FvwmForm-VerifyQuit
 
 DestroyMenu Favorites
 AddToMenu   Favorites

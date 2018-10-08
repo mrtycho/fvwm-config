@@ -15,8 +15,8 @@ DestroyModuleConfig BarButtons: *
 *BarButtons: Colorset 5
 *BarButtons: Geometry 62x530+0+0
 *BarButtons: Font "$[infostore.smallfont]"
-# *BarButtons: (Colorset 4, Swallow (NoClose,UseOld) "WMClock" `Exec exec wmclock`)
-*BarButtons: (Colorset 4, Swallow(UseOld,Respawn) wmtime "Exec exec wmtime")
+*BarButtons: (Colorset 4, Swallow (NoClose,UseOld) "WMClock" `Exec exec wmclock`)
+#*BarButtons: (Colorset 4, Swallow(UseOld,Respawn) wmtime "Exec exec wmtime")
 *BarButtons: (Colorset 4, Title $[gt.Files], Icon FileManager.xpm, Action "Exec exec $[infostore.filemanager]", \
     Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
 *BarButtons: (Colorset 4, Title $[gt.Terminal], Icon cli.xpm, Action "Exec exec $[infostore.terminal]")
@@ -60,7 +60,7 @@ DestroyModuleConfig DeskerPanelButtons: *
 *DeskerPanelButtons: Font "$[infostore.smallfont]"
 *DeskerPanelButtons: Fore Black
 *DeskerPanelButtons: Colorset 9
-*DeskerPanelButtons: Geometry 230x75+0+0
+*DeskerPanelButtons: Geometry 250x75+0+0
 *DeskerPanelButtons: Rows 1
 *DeskerPanelButtons: Frame 1
 *DeskerPanelButtons: Padding 1 1

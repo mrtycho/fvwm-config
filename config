@@ -13,7 +13,7 @@ InfoStoreAdd editor mousepad
 InfoStoreAdd terminal xfce4-terminal #xterm
 InfoStoreAdd browser firefox
 InfoStoreAdd mail thunderbird
-InfoStoreAdd viewer gthumb
+InfoStoreAdd viewer phototonic
 InfoStoreAdd videoplayer vlc
 InfoStoreAdd audioplayer audacious
 InfoStoreAdd help yelp
@@ -77,8 +77,30 @@ Style fvwm_menu	NoButton 2, NoButton 4, WindowListSkip
 Style FvwmForm-QuitVerify NoButton 1, NoButton 2, NoButton 4, NoButton 6, StaysOnTop, NoHandles, WindowListSkip
 
 #------------------------------------------------------------------------------
+# Forms
+#------------------------------------------------------------------------------
+
+DestroyModuleConfig  FvwmForm-VerifyQuit: *
+*FvwmForm-VerifyQuit: Title	  "$[gt.Exit Fvwm]?"
+*FvwmForm-VerifyQuit: GrabServer
+*FvwmForm-VerifyQuit: WarpPointer
+*FvwmForm-VerifyQuit: Line        center
+*FvwmForm-VerifyQuit: Text        "$[gt.Do you really want to logout?]"
+*FvwmForm-VerifyQuit: Line        expand
+*FvwmForm-VerifyQuit: Button      quit "$[gt.Logout]" ^M
+*FvwmForm-VerifyQuit: Command     Quit
+*FvwmForm-VerifyQuit: Button      restart   "$[gt.Restart]" ^R
+*FvwmForm-VerifyQuit: Command     Restart
+*FvwmForm-VerifyQuit: Text        "   "
+*FvwmForm-VerifyQuit: Button      quit "$[gt.Cancel]" ^[
+*FvwmForm-VerifyQuit: Command     Nop
+
+Style FvwmForm-VerifyQuit !Button 1, !Button 2, !Button 4, StaysOnTop, NoHandles, WindowListSkip
+
+#------------------------------------------------------------------------------
 # Menus
 #------------------------------------------------------------------------------
+
 Read menus
 
 #------------------------------------------------------------------------------
@@ -223,6 +245,9 @@ Silent Key Tab A M FuncFvwmNextWindow
 # Rofi
 Key Space A 4 Exec exec rofi -show run
 
+# Terminal
+Key T A MC Exec exec $[infostore.terminal]
+
 # Lock screen
 Key L A MC Exec exec xscreensaver-command -l
 
@@ -240,12 +265,14 @@ AddToFunc StartFunction
 #+ I Test (Init) Exec exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 + I Test (Init) Exec exec /usr/bin/lxpolkit & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 + I Exec exec $(source $[FVWM_USERDIR]/background.cfg)
-+ I Test (Init) Exec exec nm-applet
++ I Test (Init,x nm-applet) Exec exec nm-applet
++ I TestRc (!Match) Test (Init,x wicd-gtk) exec exec wicd-gtk -t
 + I Test (Init) Exec exec pnmixer
 + I Test (Init) Exec exec update-notifier
 + I Test (Init) Exec exec xscreensaver -no-splash
-+ I Test (Init) Exec exec redshift
++ I Test (Init,x redshift) Exec exec redshift
 + I Test (Init) Exec exec xfce4-power-manager
++ I Test (Init,x clipit) exec exec clipit
 + I Function StartModules
 + I FvwmEvent FE-Focus
 
