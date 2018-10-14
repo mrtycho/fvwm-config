@@ -42,6 +42,7 @@ Style * IconFont "$[infostore.smallfont]"
 Style * IconBackgroundRelief 1, IconTitleRelief 0	
 Style * IconBackgroundColorset 3, IconTitleColorset 6, HilightIconTitleColorset 2
 Style * IconSize 62 52, IconTitle
+Style * IconBox 10 5 -10 -5, IconGrid 15 15, IconFill left bottom
 Style * IconOverride
 # , EWMHMiniIconOverride
 

@@ -1,5 +1,5 @@
-#EwmhBaseStruts 0 65 0 32 
-EwmhBaseStruts 0 65 0 0 
+EwmhBaseStruts 0 65 0 32 
+#EwmhBaseStruts 0 65 0 0 
 
 DestroyModuleConfig FvwmPager: *
 *FvwmPager: Colorset * 4
@@ -59,15 +59,15 @@ DestroyModuleConfig FvwmDesker: *
 DestroyModuleConfig DeskerPanelButtons: *
 *DeskerPanelButtons: Font "$[infostore.smallfont]"
 *DeskerPanelButtons: Fore Black
-*DeskerPanelButtons: Colorset 9
-*DeskerPanelButtons: Geometry 250x75+0+0
+*DeskerPanelButtons: Colorset 5
+*DeskerPanelButtons: Geometry 250x75-0-0
 *DeskerPanelButtons: Rows 1
 *DeskerPanelButtons: Frame 1
 *DeskerPanelButtons: Padding 1 1
 *DeskerPanelButtons: (1x1, Frame 1, Container(Rows 6, Frame 1))
-*DeskerPanelButtons: (3x2, Frame 0, Left, Swallow (NoClose, UseOld) 'stalonetray' \
+*DeskerPanelButtons: (3x2, Colorset 9, Frame 0, Left, Swallow (NoClose, UseOld) 'stalonetray' \
 	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NW -p --kludges force_icons_size,fix_window_pos,use_icons_hints`)
-*DeskerPanelButtons: (2x2, Frame 0, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 9")
+*DeskerPanelButtons: (2x2, Colorset 9, Frame 0, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 9")
 *DeskerPanelButtons: (5x4, Frame -1 , Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
 *DeskerPanelButtons: (End)
 
@@ -130,8 +130,14 @@ DestroyModuleConfig FvwmBar: *
 *FvwmBar: Colorset 9
 *FvwmBar: Frame 1
 *FvwmBar: Padding 2 0
-*FvwmBar: Columns 1
-*FvwmBar: (1x1, Frame 1, Colorset 9, Swallow "FvwmIconMan" `FvwmIconMan`)
+*FvwmBar: Rows 1
+
+*FvwmBar: (1x1, Frame 1, Container(Columns 10, Frame 0 ))
+*FvwmBar: (8x1, Colorset 9, Swallow "FvwmIconMan" `FvwmIconMan`)
+*FvwmBar: (1x1, Padding 6 0, Colorset 9, Right, Swallow (NoClose, UseOld) 'stalonetray' \
+	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NE -p --kludges force_icons_size,fix_window_pos,use_icons_hints`)
+*FvwmBar: (1x1, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
+*FvwmBar: (End)
 
 Style "FvwmIdent" NoButton 2, NoButton 4, NoButton 6
 DestroyModuleConfig FvwmIdent: *
@@ -161,7 +167,7 @@ DestroyModuleConfig FvwmScript: *
 DestroyFunc StartModules
 AddToFunc   StartModules
 + I Module FvwmButtons BarButtons -g -0+0 
-+ I Module FvwmButtons DeskerPanelButtons -g +0+0
-#+ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-0))x30+0-0 FvwmBar"
+#+ I Module FvwmButtons DeskerPanelButtons -g +0+0
++ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-2))x30+0-0 FvwmBar"
 
-#Style * NoIcon
+Style * NoIcon
