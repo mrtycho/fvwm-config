@@ -22,7 +22,7 @@ InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:DejaVu Sans:size=8::minspace=False:an
 InfoStoreAdd normalfont "xft:DejaVu Sans:size=9:minspace=False:antialias=True"
 InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:DejaVu Sans:size=9:minspace=False:antialias=True"
 
-DeskTopSize 4x1
+DesktopSize 4x1
 
 ExecUseShell /bin/bash
 Emulate Win
@@ -30,6 +30,7 @@ HideGeometryWindow Move
 IgnoreModifiers L2
 ClickTime 550
 OpaqueMoveSize 100
+IgnoreModifiers L25
 
 EdgeScroll 0 0
 EdgeResistance 500
@@ -263,7 +264,6 @@ Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/modules
 AddToFunc StartFunction
 #+ I Test (Init) Exec exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 + I Test (Init) Exec exec /usr/bin/lxpolkit & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
-+ I Exec exec $(source $[FVWM_USERDIR]/background.cfg)
 + I Test (Init,x nm-applet) Exec exec nm-applet
 + I TestRc (!Match) Test (Init,x wicd-gtk) exec exec wicd-gtk -t
 + I Test (Init) Exec exec pnmixer
@@ -272,6 +272,7 @@ AddToFunc StartFunction
 + I Test (Init,x redshift) Exec exec redshift
 + I Test (Init) Exec exec xfce4-power-manager
 + I Test (Init,x clipit) exec exec clipit
++ I Exec exec $(source $[FVWM_USERDIR]/background.cfg)
 + I Function StartModules
 + I FvwmEvent FE-Focus
 

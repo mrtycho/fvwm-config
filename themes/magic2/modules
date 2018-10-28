@@ -6,7 +6,7 @@ DestroyModuleConfig FvwmPager: *
 *FvwmPager: Font none
 *FvwmPager: SolidSeparators
 
-Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 1, BorderColorset 2
+Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 1, BorderColorset 6
 # BorderWidth 1, Colorset 6
 DestroyModuleConfig BarButtons: *
 *BarButtons: Columns 1
@@ -71,7 +71,7 @@ DestroyModuleConfig DeskerPanelButtons: *
 *DeskerPanelButtons: (5x4, Frame -1 , Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
 *DeskerPanelButtons: (End)
 
-Style DeskerPanelButtons NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, FixedSize, NoHandles, BorderColorset 2, BorderWidth 1
+Style DeskerPanelButtons NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, FixedSize, NoHandles, BorderColorset 6, BorderWidth 1
 
 Style FvwmPager	  NoTitle, Sticky, WindowListSkip, StaysOnBottom, NeverFocus, FixedSize, NoHandles
 
@@ -124,7 +124,7 @@ DestroyModuleConfig FvwmIconMan: *
 # animation
 *FvwmIconMan: NoIconAction "SendToModule FvwmAnimate animate"
 
-Style FvwmBar     NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, BorderWidth 1, BorderColorset 2
+Style FvwmBar     NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, BorderWidth 1, BorderColorset 6
 DestroyModuleConfig FvwmBar: *
 *FvwmBar: Font "$[infostore.normalfont]"
 *FvwmBar: Colorset 9
