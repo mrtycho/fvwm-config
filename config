@@ -251,6 +251,17 @@ Key T A MC Exec exec $[infostore.terminal]
 # Lock screen
 Key L A MC Exec exec xscreensaver-command -l
 
+# Audacious
+Key XF86AudioPlay	A	N	Exec exec audtool playback-playpause
+Key XF86AudioStop	A	N	Exec exec audtool playback-stop
+Key XF86AudioNext	A	N	Exec exec audtool playlist-advance
+Key XF86AudioPrev	A	N	Exec exec audtool playlist-reverse
+
+#Audio
+Key XF86AudioMute		A	N	Exec exec amixer -D pulse sset Master toggle
+Key XF86AudioRaiseVolume	A	N	Exec exec amixer -D pulse sset Master 5%+
+Key XF86AudioLowerVolume	A	N	Exec exec amixer -D pulse sset Master 5%-
+
 #------------------------------------------------------------------------------
 # Modules
 #------------------------------------------------------------------------------
