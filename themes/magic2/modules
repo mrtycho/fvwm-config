@@ -1,4 +1,4 @@
-EwmhBaseStruts 0 65 0 32 
+EwmhBaseStruts 0 65 32 0 
 #EwmhBaseStruts 0 65 0 0 
 
 DestroyModuleConfig FvwmPager: *
@@ -36,7 +36,7 @@ Colorset 12 fg white, bg #909090, RootTransparent buffer, Tint #909090 40, hi wh
 
 DestroyModuleConfig FvwmDesker: *
 *FvwmDesker: UseSkipList
-*FvwmDesker: Colorset * 12
+*FvwmDesker: Colorset * 8
 *FvwmDesker: Fore #b3b3b3
 *FvwmDesker: Hilight black
 *FvwmDesker: WindowColorsets 5 0
@@ -49,6 +49,7 @@ DestroyModuleConfig FvwmDesker: *
 *FvwmDesker: BalloonFore black
 *FvwmDesker: BalloonBack bisque
 *FvwmDesker: BalloonFont "$[infostore.normalfont]"
+*FvwmDesker: SolidSeparators
 
 *FvwmDesker: Label 0 Fvwm
 *FvwmDesker: Label 1 Development
@@ -82,7 +83,7 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Foreground #202020
 *FvwmIconMan: ManagerGeometry 1x1
 *FvwmIconMan: ButtonGeometry 28x28
-*FvwmIconMan: MaxButtonWidthByColumns 6
+*FvwmIconMan: MaxButtonWidthByColumns 5
 
 *FvwmIconMan: Font "$[infostore.smallfont]"
 *FvwmIconMan: Sort none
@@ -102,7 +103,7 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: TitleButton flat
 *FvwmIconMan: TitleColorset 9
 *FvwmIconMan: ReliefThickness 1
-*FvwmIconMan: Resolution global 
+*FvwmIconMan: Resolution page 
 #global
 *FvwmIconMan: DrawIcons Always
 *FvwmIconMan: FollowFocus True
@@ -136,7 +137,7 @@ DestroyModuleConfig FvwmBar: *
 *FvwmBar: (8x1, Colorset 9, Swallow "FvwmIconMan" `FvwmIconMan`)
 *FvwmBar: (1x1, Padding 6 0, Colorset 9, Right, Swallow (NoClose, UseOld) 'stalonetray' \
 	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NE -p --kludges force_icons_size,fix_window_pos,use_icons_hints`)
-*FvwmBar: (1x1, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
+*FvwmBar: (1x1, Frame -1, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
 *FvwmBar: (End)
 
 Style "FvwmIdent" NoButton 2, NoButton 4, NoButton 6
@@ -166,8 +167,9 @@ DestroyModuleConfig FvwmScript: *
 
 DestroyFunc StartModules
 AddToFunc   StartModules
-+ I Module FvwmButtons BarButtons -g -0+0 
+#+ I Module FvwmButtons BarButtons -g -0+0 
 #+ I Module FvwmButtons DeskerPanelButtons -g +0+0
-+ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-2))x30+0-0 FvwmBar"
++ I PipeRead "echo Module FvwmButtons -g 62x530-0+$$((($[vp.height]-520)/2)) BarButtons"
++ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-2))x30+0+0 FvwmBar"
 
 Style * NoIcon
