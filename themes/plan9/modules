@@ -1,31 +1,32 @@
 EwmhBaseStruts 0 0 30 30
 
 Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 2, BorderColorset 1
-Colorset 11 fg white, bg #303030, RootTransparent buffer, Tint #505050 65
+Colorset 11 fg #202020, bg #ffffe9, hi #9BF2EC, sh #9BF2EC
 Colorset 12 fg #202020, bg #ffffff, hi #9BF2EC, sh #9BF2EC, fgsh #e0e0e0
 Colorset 13 bg #bebebe, hi white, Pixmap buttons_bg.xpm, sh #202020
 
 DestroyModuleConfig BarButtons: *
-*BarButtons: Colorset 12
+*BarButtons: Colorset 11
 *BarButtons: Font "$[infostore.smallfont]"
 
 # Layout: specify rows or columns, not both
 *BarButtons: Rows 1
 *BarButtons: Padding 5 5 
 *BarButtons: Frame 1
+*BarButtons: Geometry 630x36+0-0
 
-*BarButtons: (Title Home, PressColorset 0, Action "Exec exec $[infostore.filemanager]", \
+*BarButtons: (Title (Side) Home, Icon icons/folder.png, PressColorset 6, Action "Exec exec $[infostore.filemanager]", \
     Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
-*BarButtons: (Title Terminal, PressColorset 0, Action "Exec exec $[infostore.terminal]")
-*BarButtons: (Title Editor, PressColorset 0, Action "Exec exec $[infostore.editor]", \
+*BarButtons: (Title (Side) Terminal, Icon icons/terminal.png, PressColorset 6, Action "Exec exec $[infostore.terminal]")
+*BarButtons: (Title (Side) Editor, Icon icons/editor.png, PressColorset 6, Action "Exec exec $[infostore.editor]", \
 	Action(Mouse 3) 'Exec exec geany')
-*BarButtons: (Title Viewer, PressColorset 0, Action "Exec exec $[infostore.viewer]", \
+*BarButtons: (Title (Side) Viewer, Icon icons/viewer.png, PressColorset 6, Action "Exec exec $[infostore.viewer]", \
     Action(Mouse 2) 'Exec exec evince', \
     Action(Mouse 3) 'Exec exec gimp')
-*BarButtons: (Title Media, PressColorset 0, Action "Exec exec $[infostore.audioplayer]", \
+*BarButtons: (Title (Side) Media, Icon icons/media.png, PressColorset 6, Action "Exec exec $[infostore.audioplayer]", \
     Action(Mouse 3) "Exec exec $[infostore.videoplayer]")
-*BarButtons: (Title Browser, PressColorset 0, Action "Exec exec $[infostore.browser]")
-*BarButtons: (Title Mail, PressColorset 0, Action "Exec exec $[infostore.mail]")
+*BarButtons: (Title (Side) Browser, Icon icons/browser.png, PressColorset 6, Action "Exec exec $[infostore.browser]")
+*BarButtons: (Title (Side) Mail, Icon icons/mail.png, PressColorset 6, Action "Exec exec $[infostore.mail]")
 
 Style "FvwmDesker" NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
 
@@ -138,6 +139,6 @@ DestroyModuleConfig FvwmIdent: *
 
 DestroyFunc StartModules
 AddToFunc   StartModules
-+ I Module FvwmButtons BarButtons -g +0-0 
++ I Module FvwmButtons BarButtons
 + I Module FvwmButtons DeskerPanelButtons -g -0-0
 + I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-6))x28+0+0 FvwmBar"

@@ -5,7 +5,7 @@ DestroyModuleConfig FvwmPager: *
 *FvwmPager: Font none
 *FvwmPager: SolidSeparators
 
-Style BarButtons   !Title, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, !Handles, FixedSize, BorderWidth 1, BorderColorset 6
+Style BarButtons   !Title, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, !Handles, FixedSize, BorderWidth 3, BorderColorset 0
 # BorderWidth 1, Colorset 6
 DestroyModuleConfig BarButtons: *
 *BarButtons: Columns 1
@@ -13,6 +13,8 @@ DestroyModuleConfig BarButtons: *
 *BarButtons: Frame 1
 *BarButtons: Colorset 5
 *BarButtons: Geometry 62x530-0+0 
+#*BarButtons: Geometry 510x66-0+0 
+#PipeRead "echo *BarButtons: Geometry 62x530-0+$$((($[vp.height]-520)/2))"
 *BarButtons: Font "$[infostore.smallfont]"
 *BarButtons: (Colorset 4, Swallow (NoClose,UseOld) "WMClock" `Exec exec wmclock`)
 *BarButtons: (Colorset 4, Title $[gt.Files], Icon FileManager.xpm, Action "Exec exec $[infostore.filemanager]", \
@@ -28,6 +30,27 @@ DestroyModuleConfig BarButtons: *
 *BarButtons: (Colorset 4, Title $[gt.Browser], Icon web.xpm, Action "Exec exec $[infostore.browser]")
 *BarButtons: (Colorset 4, Title $[gt.Mail], Icon Mail.xpm, Action "Exec exec $[infostore.mail]")
 
+Style MiniBarButtons   !Title, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, !Handles, FixedSize, BorderWidth 1, BorderColorset 6
+DestroyModuleConfig MiniBarButtons: *
+*MiniBarButtons: Rows 1
+*MiniBarButtons: Padding 0 0
+*MiniBarButtons: Frame 1
+*MiniBarButtons: Colorset 5
+*MiniBarButtons: Geometry -0+0 
+*MiniBarButtons: Font "$[infostore.smallfont]"
+*MiniBarButtons: (Colorset 4, Icon small/FileManager.xpm, Action "Exec exec $[infostore.filemanager]", \
+    Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
+*MiniBarButtons: (Colorset 4, Icon small/cli.xpm, Action "Exec exec $[infostore.terminal]")
+*MiniBarButtons: (Colorset 4, Icon small/TextEditor.xpm, Action "Exec exec $[infostore.editor]", \
+	Action(Mouse 3) 'Exec exec geany')
+*MiniBarButtons: (Colorset 4, Icon small/Viewer.xpm, Action "Exec exec $[infostore.viewer]", \
+    Action(Mouse 2) 'Exec exec evince', \
+    Action(Mouse 3) 'Exec exec gimp')
+*MiniBarButtons: (Colorset 4, Icon small/SoundEditor.xpm, Action "Exec exec $[infostore.audioplayer]", \
+    Action(Mouse 3) "Exec exec $[infostore.videoplayer]")
+*MiniBarButtons: (Colorset 4, Icon small/web.xpm, Action "Exec exec $[infostore.browser]")
+*MiniBarButtons: (Colorset 4, Icon small/Mail.xpm, Action "Exec exec $[infostore.mail]")
+
 Style "FvwmDesker" NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
 Colorset 11 fg black, bg white
 Colorset 12 fg white, bg #909090, RootTransparent buffer, Tint #909090 40, hi white, sh #202020, fgsh #303030
@@ -37,7 +60,7 @@ DestroyModuleConfig FvwmDesker: *
 *FvwmDesker: Colorset * 12
 *FvwmDesker: Fore #b3b3b3
 *FvwmDesker: Hilight black
-*FvwmDesker: WindowColorsets 5 0
+*FvwmDesker: WindowColorsets 8 0
 *FvwmDesker: Font none
 # Comment out or set this option for window names in pager windows
 # also see WindowLabelFormat.
@@ -70,7 +93,7 @@ DestroyModuleConfig DeskerPanelButtons: *
 *DeskerPanelButtons: (5x3, Frame -1, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
 *DeskerPanelButtons: (End)
 
-Style DeskerPanelButtons NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, FixedSize, NoHandles, BorderColorset 6, BorderWidth 1
+Style DeskerPanelButtons NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, FixedSize, NoHandles, BorderColorset 0, BorderWidth 3
 
 Style FvwmPager	  NoTitle, Sticky, WindowListSkip, StaysOnBottom, NeverFocus, FixedSize, NoHandles
 

@@ -1,4 +1,4 @@
-Colorset 0 fg #202020, bg #54AAAB, fgsh #FFFFFF, hi #202020, sh #202020
+Colorset 0 fg #207A7B, bg #9BF2EC, fgsh #FFFFFF, hi #207A7B, sh #207A7B
 Colorset 1 fg #54AAAB, bg #9BF2EC, fgsh #FFFFFF, hi #54AAAB, sh #54AAAB
 Colorset 2 fg white, bg #505050
 Colorset 3 fg black, bg #e1e1e1, Pixmap taskbar2.xpm, hi white, sh black
@@ -21,15 +21,6 @@ AddToDecor MorphDecor
 + TitleStyle	AllActive 	(Solid #EAFFEA -- Flat)
 + TitleStyle	Inactive 	(Solid #EAFFFF -- Flat)
 + TitleStyle	-- Flat
-#+ ButtonStyle	1	Active	   (Pixmap close-activeup.xpm -- Flat)
-#+ ButtonStyle	1	ActiveDown (Pixmap close-activedown.xpm -- Flat)
-#+ ButtonStyle	1	Inactive   (Pixmap close-inactive.xpm -- Flat)
-#+ ButtonStyle  	2	Active	   (Pixmap shadeup-activeup.xpm -- Flat) 
-#+ ButtonStyle  	2	ActiveDown (Pixmap shadeup-activedown.xpm -- Flat) 
-#+ ButtonStyle  	2	Inactive   (Pixmap shadeup-inactive.xpm -- Flat) 
-#+ ButtonStyle  	4	Active	   (Pixmap iconify-activeup.xpm -- Flat)
-#+ ButtonStyle  	4	ActiveDown (Pixmap iconify-activedown.xpm -- Flat)
-#+ ButtonStyle  	4	Inactive (Pixmap iconify-inactive.xpm -- Flat)
 + ButtonStyle	all	-- UseTitleStyle Flat
 
 + BorderStyle	Inactive -- HiddenHandles NoInset Flat 
