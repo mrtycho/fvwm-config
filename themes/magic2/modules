@@ -1,5 +1,4 @@
 EwmhBaseStruts 0 65 32 0 
-#EwmhBaseStruts 0 65 0 0 
 
 DestroyModuleConfig FvwmPager: *
 *FvwmPager: Colorset * 4
@@ -10,13 +9,13 @@ Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, S
 # BorderWidth 1, Colorset 6
 DestroyModuleConfig BarButtons: *
 *BarButtons: Columns 1
-*BarButtons: Padding 0 2
+*BarButtons: Padding 0 0
 *BarButtons: Frame 1
 *BarButtons: Colorset 5
-*BarButtons: Geometry 62x530+0+0
+PipeRead "echo *BarButtons: Geometry 62x530-0+$$((($[vp.height]-520)/2))"
 *BarButtons: Font "$[infostore.smallfont]"
 *BarButtons: (Colorset 4, Swallow (NoClose,UseOld) "WMClock" `Exec exec wmclock`)
-#*BarButtons: (Colorset 4, Swallow(UseOld,Respawn) wmtime "Exec exec wmtime")
+#*BarButtons: (Colorset 4, Swallow(UseOld,Respawn) wmtime "Exec exec wmtime -d")
 *BarButtons: (Colorset 4, Title $[gt.Files], Icon FileManager.xpm, Action "Exec exec $[infostore.filemanager]", \
     Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
 *BarButtons: (Colorset 4, Title $[gt.Terminal], Icon cli.xpm, Action "Exec exec $[infostore.terminal]")
@@ -36,7 +35,7 @@ Colorset 12 fg white, bg #909090, RootTransparent buffer, Tint #909090 40, hi wh
 
 DestroyModuleConfig FvwmDesker: *
 *FvwmDesker: UseSkipList
-*FvwmDesker: Colorset * 8
+*FvwmDesker: Colorset * 1
 *FvwmDesker: Fore #b3b3b3
 *FvwmDesker: Hilight black
 *FvwmDesker: WindowColorsets 5 0
@@ -110,7 +109,7 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: UseWinList True
 *FvwmIconMan: ShowOnlyIcons False
 *FvwmIconMan: ShowOnlyFocused False
-#*FvwmIconMan: Format "%c: %i"
+*FvwmIconMan: Format "%c: %i"
 *FvwmIconMan: Title ""
 
 # action
@@ -130,7 +129,8 @@ DestroyModuleConfig FvwmBar: *
 *FvwmBar: Font "$[infostore.normalfont]"
 *FvwmBar: Colorset 9
 *FvwmBar: Frame 1
-*FvwmBar: Padding 2 0
+*FvwmBar: Padding 0 0
+PipeRead "echo *FvwmBar: Geometry $$(($[vp.width]-2))x30+0+0"
 *FvwmBar: Rows 1
 
 *FvwmBar: (1x1, Frame 1, Container(Columns 10, Frame 0 ))
@@ -167,9 +167,9 @@ DestroyModuleConfig FvwmScript: *
 
 DestroyFunc StartModules
 AddToFunc   StartModules
-#+ I Module FvwmButtons BarButtons -g -0+0 
-#+ I Module FvwmButtons DeskerPanelButtons -g +0+0
-+ I PipeRead "echo Module FvwmButtons -g 62x530-0+$$((($[vp.height]-520)/2)) BarButtons"
-+ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-2))x30+0+0 FvwmBar"
++ I Module FvwmButtons BarButtons 
++ I Module FvwmButtons FvwmBar
+#+ I PipeRead "echo Module FvwmButtons -g 62x530-0+$$((($[vp.height]-520)/2)) BarButtons"
+#+ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-2))x30+0+0 FvwmBar"
 
 Style * NoIcon

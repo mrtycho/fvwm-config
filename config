@@ -18,9 +18,9 @@ InfoStoreAdd videoplayer vlc
 InfoStoreAdd audioplayer audacious
 InfoStoreAdd help yelp
 
-InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:DejaVu Sans:size=8::minspace=False:antialias=True"
-InfoStoreAdd normalfont "xft:DejaVu Sans:size=9:minspace=False:antialias=True"
-InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:DejaVu Sans:size=9:minspace=False:antialias=True"
+InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:Noto Sans:size=8::minspace=False:antialias=True"
+InfoStoreAdd normalfont "xft:Noto Sans:size=9:minspace=False:antialias=True"
+InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:Noto Sans:size=9:minspace=False:antialias=True"
 
 DesktopSize 4x1
 
@@ -191,6 +191,18 @@ DestroyFunc MaximizeToSide
 AddToFunc   MaximizeToSide
 + I Maximize 50 100
 + I ThisWindow (Maximized) Move $0 +0
+
+// Module function
+
+DestroyFunc RestartModule
+AddToFunc RestartModule
++ I KillModule $0
++ I Module $0
+
+DestroyFunc RestartModuleByAlias
+AddToFunc RestartModuleByAlias
++ I All ($2) Close
++ I Module $0 $1
 
 #------------- FvwmManPage
 

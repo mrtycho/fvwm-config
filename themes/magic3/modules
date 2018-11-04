@@ -1,4 +1,3 @@
-#EwmhBaseStruts 0 65 0 32 
 EwmhBaseStruts 0 65 0 0 
 
 DestroyModuleConfig FvwmPager: *
@@ -10,10 +9,10 @@ Style BarButtons   !Title, WindowListSkip, CirculateSkip, Sticky, NeverFocus, St
 # BorderWidth 1, Colorset 6
 DestroyModuleConfig BarButtons: *
 *BarButtons: Columns 1
-*BarButtons: Padding 0 2
+*BarButtons: Padding 0 0
 *BarButtons: Frame 1
 *BarButtons: Colorset 5
-*BarButtons: Geometry 62x530+0+0
+*BarButtons: Geometry 62x530-0+0 
 *BarButtons: Font "$[infostore.smallfont]"
 *BarButtons: (Colorset 4, Swallow (NoClose,UseOld) "WMClock" `Exec exec wmclock`)
 *BarButtons: (Colorset 4, Title $[gt.Files], Icon FileManager.xpm, Action "Exec exec $[infostore.filemanager]", \
@@ -48,6 +47,7 @@ DestroyModuleConfig FvwmDesker: *
 *FvwmDesker: BalloonFore black
 *FvwmDesker: BalloonBack bisque
 *FvwmDesker: BalloonFont "$[infostore.normalfont]"
+*FvwmDesker: SolidSeparators
 
 *FvwmDesker: Label 0 Fvwm
 *FvwmDesker: Label 1 Development
@@ -127,6 +127,7 @@ Style FvwmBar     NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, St
 DestroyModuleConfig FvwmBar: *
 *FvwmBar: Font "$[infostore.normalfont]"
 *FvwmBar: Colorset 9
+*FvwmBar: Geometry $[vp.width]x30+0-0
 *FvwmBar: Frame 1
 *FvwmBar: Padding 2 0
 *FvwmBar: Columns 1
@@ -159,6 +160,5 @@ DestroyModuleConfig FvwmScript: *
 
 DestroyFunc StartModules
 AddToFunc   StartModules
-+ I Module FvwmButtons BarButtons -g -0+0 
-#+ I PipeRead "echo Module FvwmButtons -g 62x530-0+$$((($[vp.height]-530)/2)) BarButtons"
-+ I Module FvwmButtons DeskerPanelButtons -g +0+0
++ I Module FvwmButtons BarButtons
++ I Module FvwmButtons DeskerPanelButtons
