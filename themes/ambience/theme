@@ -1,12 +1,12 @@
 Colorset 0 fg #13315d, bg #7ab5f8, fgsh #abd2ff
 Colorset 1 fg #6a6c6e, bg #e1e1e1, fgsh #d0cfcf
 Colorset 2 fg white, bg #505050
-Colorset 3 fg black, bg #e1e1e1, Pixmap taskbar2.xpm, hi white, sh black
+Colorset 3 fg black, bg #e1e1e1, Pixmap taskbar2.xpm, hi white, sh black, fgsh #f0f0f0
 Colorset 4 fg black, bg #e1e1e1, hi white, fgsh #f0f0f0
 Colorset 5 fg #404040, bg #e1e1e1, hi #ffffff, sh #bec1c4, fgsh #ced1d4
 Colorset 6 fg white, bg #3983d5
 
-Colorset 7 fg black, bg #507bad, TiledPixmap taskbar_down.xpm, fgsh #f0f0f0, hi #ffffff, sh #8e919b
+Colorset 7 fg black, bg #507bad, TiledPixmap taskbar_down.xpm, fgsh #f0f0f0, hi white, sh #8e919b
 Colorset 8 fg #6a6c6e, bg #afafaf, TiledPixmap taskbar.xpm, hi white, fgsh #f0f0f0
 Colorset 9 fg #202020, bg #afafaf, TiledPixmap taskbar.xpm, hi white, fgsh #f0f0f0
 
@@ -21,9 +21,9 @@ AddToDecor AmbienceDecor
 + ButtonStyle	1	Active	   (Pixmap close-activeup.xpm -- Flat)
 + ButtonStyle	1	ActiveDown (Pixmap close-activedown.xpm -- Flat)
 + ButtonStyle	1	Inactive   (Pixmap close-inactive.xpm -- Flat)
-+ ButtonStyle  	2	Active	   (Pixmap shadeup-activeup.xpm -- Flat) 
-+ ButtonStyle  	2	ActiveDown (Pixmap shadeup-activedown.xpm -- Flat) 
-+ ButtonStyle  	2	Inactive   (Pixmap shadeup-inactive.xpm -- Flat) 
++ ButtonStyle  	2	Active	   (Pixmap maximize-activeup.xpm -- Flat) 
++ ButtonStyle  	2	ActiveDown (Pixmap maximize-activedown.xpm -- Flat) 
++ ButtonStyle  	2	Inactive   (Pixmap maximize-inactive.xpm -- Flat) 
 + ButtonStyle  	4	Active	   (Pixmap iconify-activeup.xpm -- Flat)
 + ButtonStyle  	4	ActiveDown (Pixmap iconify-activedown.xpm -- Flat)
 + ButtonStyle  	4	Inactive (Pixmap iconify-inactive.xpm -- Flat)
@@ -85,8 +85,9 @@ Mouse 1         1       A       Function "CloseWindow"
 Mouse 2		1	A	All ($c) Close
 Mouse 3         1       A       Destroy
 
-Mouse 1		2	A	RaiseLowerWindow
-Mouse 3		2	A	WindowShade
+Mouse 1		2	A	Function "MaximizeWindow"
+Mouse 2		2	A	MaximizeToSide -0
+Mouse 3		2	A	MaximizeToSide +0
 
 Mouse 1		4    	A     	IconifyWindow
 Mouse 3         4       A       Maximize

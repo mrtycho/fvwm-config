@@ -1,4 +1,4 @@
-EwmhBaseStruts 0 0 30 0
+EwmhBaseStruts 0 0 30 32
 
 Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 1, BorderColorset 2
 Colorset 11 fg white, bg #303030, RootTransparent buffer, Tint #505050 65
@@ -6,7 +6,7 @@ Colorset 12 fg white, bg #909090, RootTransparent buffer, Tint #909090 40, hi wh
 Colorset 13 bg #bebebe, hi white, Pixmap buttons_bg.xpm, sh #202020
 
 DestroyModuleConfig BarButtons: *
-*BarButtons: Colorset 4
+*BarButtons: Colorset 3
 *BarButtons: Font "$[infostore.smallfont]"
 
 # Layout: specify rows or columns, not both
