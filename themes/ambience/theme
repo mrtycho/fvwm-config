@@ -1,5 +1,5 @@
-Colorset 0 fg #13315d, bg #7ab5f8, fgsh #abd2ff
-Colorset 1 fg #6a6c6e, bg #e1e1e1, fgsh #d0cfcf
+Colorset 0 fg #13315d, bg #7ab5f8, fgsh #abd2ff, hi #abd2ff, sh #43618d
+Colorset 1 fg #6a6c6e, bg #e1e1e1, fgsh #d0cfcf, hi #f2f2f2, sh #9a9c9e
 Colorset 2 fg white, bg #505050
 Colorset 3 fg black, bg #e1e1e1, Pixmap taskbar2.xpm, hi white, sh black, fgsh #f0f0f0
 Colorset 4 fg black, bg #e1e1e1, hi white, fgsh #f0f0f0
@@ -33,7 +33,7 @@ AddToDecor AmbienceDecor
 + TitleStyle	Inactive 	(TiledPixmap title-inactive.xpm -- Flat)
 + TitleStyle	-- Flat
 
-+ BorderStyle	Inactive -- HiddenHandles NoInset Flat 
++ BorderStyle	Inactive -- HiddenHandles NoInset 
 + BorderStyle	Active -- HiddenHandles NoInset
 
 Style	"*"	UseDecor AmbienceDecor

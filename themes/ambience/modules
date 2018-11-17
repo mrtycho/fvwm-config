@@ -13,7 +13,8 @@ DestroyModuleConfig BarButtons: *
 *BarButtons: Rows 1
 *BarButtons: Padding 4 4
 *BarButtons: Frame 0
-*BarButtons: Geometry 625x34+0-0
+#*BarButtons: Geometry 625x34+0-0
+PipeRead "echo *BarButtons: Geometry 625x34+$$((($[vp.width]-625)/2))-0"
 
 *BarButtons: (Title (Side) Home, Icon icons/folder.png, PressColorset 6, Action "Exec exec $[infostore.filemanager]", \
     Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
@@ -147,7 +148,6 @@ DestroyModuleConfig FvwmIdent: *
 
 DestroyFunc StartModules
 AddToFunc   StartModules
-+ I Module FvwmButtons BarButtons -g +0-0 
-+ I Module FvwmButtons FvwmBar -g +0+0 
-# + I Module FvwmButtons DeskerPanelButtons -g -0-0
-#+ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-0))x28+0+0 FvwmBar"
++ I Module FvwmButtons BarButtons
++ I Module FvwmButtons FvwmBar
+
