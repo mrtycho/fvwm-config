@@ -18,15 +18,9 @@ InfoStoreAdd videoplayer vlc
 InfoStoreAdd audioplayer audacious
 InfoStoreAdd help yelp
 
-<<<<<<< HEAD
-InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:DejaVu Sans:size=8::minspace=False:antialias=True"
-InfoStoreAdd normalfont "xft:DejaVu Sans:size=9:minspace=False:antialias=True"
-InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:DejaVu Sans:size=10:minspace=False:antialias=True"
-=======
 InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:Noto Sans:size=8::minspace=False:antialias=True"
 InfoStoreAdd normalfont "xft:Noto Sans:size=9:minspace=False:antialias=True"
 InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:Noto Sans:size=9:minspace=False:antialias=True"
->>>>>>> 6dcde17a2ee2302b13d93d738f51d3d480b3d812
 
 DesktopSize 4x1
 
@@ -262,12 +256,9 @@ Silent Key Tab A M FuncFvwmNextWindow
 
 # Rofi
 Key Space A 4 Exec exec rofi -show run
-<<<<<<< HEAD
-=======
 
 # Terminal
 Key T A MC Exec exec $[infostore.terminal]
->>>>>>> 6dcde17a2ee2302b13d93d738f51d3d480b3d812
 
 # Lock screen
 Key L A MC Exec exec xscreensaver-command -l
