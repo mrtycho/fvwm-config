@@ -1,6 +1,6 @@
 ModulePath $[FVWM_USERDIR]:+
 
-SetEnv fvwm_theme "magic"
+SetEnv fvwm_theme "magic2"
 
 LocalePath $[FVWM_USERDIR]/locale;config:+
 
@@ -13,16 +13,22 @@ InfoStoreAdd editor mousepad
 InfoStoreAdd terminal xfce4-terminal #xterm
 InfoStoreAdd browser firefox
 InfoStoreAdd mail thunderbird
-InfoStoreAdd viewer gthumb
+InfoStoreAdd viewer phototonic
 InfoStoreAdd videoplayer vlc
 InfoStoreAdd audioplayer audacious
 InfoStoreAdd help yelp
 
+<<<<<<< HEAD
 InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:DejaVu Sans:size=8::minspace=False:antialias=True"
 InfoStoreAdd normalfont "xft:DejaVu Sans:size=9:minspace=False:antialias=True"
 InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:DejaVu Sans:size=10:minspace=False:antialias=True"
+=======
+InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:Noto Sans:size=8::minspace=False:antialias=True"
+InfoStoreAdd normalfont "xft:Noto Sans:size=9:minspace=False:antialias=True"
+InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:Noto Sans:size=9:minspace=False:antialias=True"
+>>>>>>> 6dcde17a2ee2302b13d93d738f51d3d480b3d812
 
-DeskTopSize 4x1
+DesktopSize 4x1
 
 ExecUseShell /bin/bash
 Emulate Win
@@ -30,6 +36,7 @@ HideGeometryWindow Move
 IgnoreModifiers L2
 ClickTime 550
 OpaqueMoveSize 100
+IgnoreModifiers L25
 
 EdgeScroll 0 0
 EdgeResistance 500
@@ -57,7 +64,6 @@ Style * UsePPosition
 Style * GrabFocus, GrabFocusTransient
 Style * !FPReleaseFocus
 Style * FPLenient
-Style * IconBox 10 5 -10 -5, IconGrid 15 15, IconFill left bottom
 Style * DecorateTransient, DontLowerTransient, UseTransientPPosition
 Style * MWMFunctions
 Style * MWMDecor
@@ -77,8 +83,30 @@ Style fvwm_menu	NoButton 2, NoButton 4, WindowListSkip
 Style FvwmForm-QuitVerify NoButton 1, NoButton 2, NoButton 4, NoButton 6, StaysOnTop, NoHandles, WindowListSkip
 
 #------------------------------------------------------------------------------
+# Forms
+#------------------------------------------------------------------------------
+
+DestroyModuleConfig  FvwmForm-VerifyQuit: *
+*FvwmForm-VerifyQuit: Title	  "$[gt.Exit Fvwm]?"
+*FvwmForm-VerifyQuit: GrabServer
+*FvwmForm-VerifyQuit: WarpPointer
+*FvwmForm-VerifyQuit: Line        center
+*FvwmForm-VerifyQuit: Text        "$[gt.Do you really want to logout?]"
+*FvwmForm-VerifyQuit: Line        expand
+*FvwmForm-VerifyQuit: Button      quit "$[gt.Logout]" ^M
+*FvwmForm-VerifyQuit: Command     Quit
+*FvwmForm-VerifyQuit: Button      restart   "$[gt.Restart]" ^R
+*FvwmForm-VerifyQuit: Command     Restart
+*FvwmForm-VerifyQuit: Text        "   "
+*FvwmForm-VerifyQuit: Button      quit "$[gt.Cancel]" ^[
+*FvwmForm-VerifyQuit: Command     Nop
+
+Style FvwmForm-VerifyQuit !Button 1, !Button 2, !Button 4, StaysOnTop, NoHandles, WindowListSkip
+
+#------------------------------------------------------------------------------
 # Menus
 #------------------------------------------------------------------------------
+
 Read menus
 
 #------------------------------------------------------------------------------
@@ -170,6 +198,18 @@ AddToFunc   MaximizeToSide
 + I Maximize 50 100
 + I ThisWindow (Maximized) Move $0 +0
 
+// Module function
+
+DestroyFunc RestartModule
+AddToFunc RestartModule
++ I KillModule $0
++ I Module $0
+
+DestroyFunc RestartModuleByAlias
+AddToFunc RestartModuleByAlias
++ I All ($2) Close
++ I Module $0 $1
+
 #------------- FvwmManPage
 
 DestroyFunc ViewManPage
@@ -222,9 +262,26 @@ Silent Key Tab A M FuncFvwmNextWindow
 
 # Rofi
 Key Space A 4 Exec exec rofi -show run
+<<<<<<< HEAD
+=======
+
+# Terminal
+Key T A MC Exec exec $[infostore.terminal]
+>>>>>>> 6dcde17a2ee2302b13d93d738f51d3d480b3d812
 
 # Lock screen
 Key L A MC Exec exec xscreensaver-command -l
+
+# Audacious
+Key XF86AudioPlay	A	N	Exec exec audtool playback-playpause
+Key XF86AudioStop	A	N	Exec exec audtool playback-stop
+Key XF86AudioNext	A	N	Exec exec audtool playlist-advance
+Key XF86AudioPrev	A	N	Exec exec audtool playlist-reverse
+
+#Audio
+Key XF86AudioMute		A	N	Exec exec amixer -D pulse sset Master toggle
+Key XF86AudioRaiseVolume	A	N	Exec exec amixer -D pulse sset Master 5%+
+Key XF86AudioLowerVolume	A	N	Exec exec amixer -D pulse sset Master 5%-
 
 #------------------------------------------------------------------------------
 # Modules
@@ -239,13 +296,15 @@ Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/modules
 AddToFunc StartFunction
 #+ I Test (Init) Exec exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 + I Test (Init) Exec exec /usr/bin/lxpolkit & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
-+ I Exec exec $(source $[FVWM_USERDIR]/background.cfg)
-+ I Test (Init) Exec exec nm-applet
++ I Test (Init,x nm-applet) Exec exec nm-applet
++ I TestRc (!Match) Test (Init,x wicd-gtk) exec exec wicd-gtk -t
 + I Test (Init) Exec exec pnmixer
 + I Test (Init) Exec exec update-notifier
 + I Test (Init) Exec exec xscreensaver -no-splash
-+ I Test (Init) Exec exec redshift
++ I Test (Init,x redshift) Exec exec redshift
 + I Test (Init) Exec exec xfce4-power-manager
++ I Test (Init,x clipit) exec exec clipit
++ I Exec exec $(source $[FVWM_USERDIR]/background.cfg)
 + I Function StartModules
 + I FvwmEvent FE-Focus
 

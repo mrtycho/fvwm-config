@@ -168,3 +168,21 @@ msgstr "Kachel wählen"
 
 msgid "Browse Colors"
 msgstr "Farbe wählen"
+
+# Forms
+
+msgid "Do you really want to logout?"
+msgstr "Wollen Sie sich wirklich abmelden?"
+
+msgid "Logout"
+msgstr "Abmelden"
+
+msgid "Restart"
+msgstr "Neu starten"
+
+msgid "Cancel"
+msgstr "Abbruch"
+
+msgid "Automatic logout will occur in %% seconds."
+msgstr "Automatische Abmeldung in %% Sekunden."
+

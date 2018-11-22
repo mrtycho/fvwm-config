@@ -1,4 +1,4 @@
-PipeRead 'fvwm-menu-desktop --desktop lxde -t Programme'
+PipeRead 'fvwm-menu-desktop --desktop lxde -t Programs'
 
 DestroyMenu Utilities
 AddToMenu   Utilities "$[gt.Root Menu]" Title 
@@ -8,7 +8,7 @@ AddToMenu   Utilities "$[gt.Root Menu]" Title
 + %mini/Execute_icon.xpm%"$[gt.Execute] ..."		Exec exec rofi -show run
 + "" Nop
 + "&$[gt.Favorites]"	Popup Favorites
-+ "&$[gt.Programs]"	Popup Programme
++ "&$[gt.Programs]"	Popup Programs
 + "Fvwm $[gt.Modules]"	Popup Module-Popup
 + "$[gt.Settings]"	Popup Settings
 + "$[gt.Help]"		Popup Documents
@@ -16,7 +16,7 @@ AddToMenu   Utilities "$[gt.Root Menu]" Title
 #+ "$[gt.Restart]"	Popup Restart
 + "$[gt.Restart Fvwm]"	Restart
 + "" Nop
-+ "$[gt.Exit Fvwm]"	FvwmForm FvwmForm-QuitVerify
++ "$[gt.Exit Fvwm]"	FvwmForm FvwmForm-VerifyQuit
 
 DestroyMenu Favorites
 AddToMenu   Favorites
@@ -43,6 +43,7 @@ AddToMenu   Module-Popup
 + %mini/Module.xpm%"B&anner"		RestartModule FvwmBanner
 + %mini/Module.xpm%"B&utton Panel"	RestartModuleByAlias FvwmButtons BarButtons BarButtons
 + %mini/Module.xpm%"Desker &Panel"	RestartModuleByAlias FvwmButtons DeskerPanelButtons DeskerPanelButtons
++ %mini/Module.xpm%"Taskbar Panel"	RestartModuleByAlias FvwmButtons FvwmBar FvwmBar
 + %mini/Module.xpm%"&Console"		Module FvwmConsole -sb
 + %mini/Module.xpm%"I&conMan"		RestartModule FvwmIconMan
 + %mini/Module.xpm%"Identif&y"		RestartModule FvwmIdent
@@ -55,11 +56,12 @@ AddToMenu   Module-Popup
 DestroyMenu Kill-Module-Popup
 AddToMenu   Kill-Module-Popup
 + %mini/Module.xpm%"&Autoraise"		KillModule FvwmAuto
-+ %mini/Module.xpm%"A&nimate"          	KillModule FvwmAnimate
-+ %mini/Module.xpm%"&Backer"           	KillModule FvwmBacker
-+ %mini/Module.xpm%"B&anner"	        KillModule FvwmBanner
++ %mini/Module.xpm%"A&nimate"       KillModule FvwmAnimate
++ %mini/Module.xpm%"&Backer"        KillModule FvwmBacker
++ %mini/Module.xpm%"B&anner"	    KillModule FvwmBanner
 + %mini/Module.xpm%"B&utton Panel"	All (BarButtons*) Close
 + %mini/Module.xpm%"&Desker Panel"	All (DeskerPanel*) Close
++ %mini/Module.xpm%"Taskbar Panel"	All (FvwmBar*) Close
 + %mini/Module.xpm%"&Console"		KillModule FvwmConsole
 + %mini/Module.xpm%"I&conMan"		KillModule FvwmIconMan
 + %mini/Module.xpm%"Identif&y"		KillModule FvwmIdent

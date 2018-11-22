@@ -1,42 +1,32 @@
-Colorset 0 fg #13315d, bg #7ab5f8, fgsh #abd2ff
-Colorset 1 fg #6a6c6e, bg #e1e1e1, fgsh #d0cfcf
+Colorset 0 fg #207A7B, bg #9BF2EC, fgsh #FFFFFF, hi #207A7B, sh #207A7B
+Colorset 1 fg #54AAAB, bg #9BF2EC, fgsh #FFFFFF, hi #54AAAB, sh #54AAAB
 Colorset 2 fg white, bg #505050
-Colorset 3 fg black, bg #e1e1e1, Pixmap taskbar2.xpm, hi white, sh black, fgsh #f0f0f0
+Colorset 3 fg black, bg #e1e1e1, Pixmap taskbar2.xpm, hi white, sh black
 Colorset 4 fg black, bg #e1e1e1, hi white, fgsh #f0f0f0
-Colorset 5 fg #404040, bg #e1e1e1, hi #ffffff, sh #bec1c4, fgsh #ced1d4
-Colorset 6 fg white, bg #3983d5
+Colorset 5 fg #202020, bg #E9FFE9, hi #8CCE8C, sh #8CCE8C, fgsh #2b435c
+Colorset 6 fg #E9FFE9, bg #418641, hi #418641, sh #418641, fgsh #418641
 
-Colorset 7 fg black, bg #507bad, TiledPixmap taskbar_down.xpm, fgsh #f0f0f0, hi white, sh #8e919b
-Colorset 8 fg #6a6c6e, bg #afafaf, TiledPixmap taskbar.xpm, hi white, fgsh #f0f0f0
-Colorset 9 fg #202020, bg #afafaf, TiledPixmap taskbar.xpm, hi white, fgsh #f0f0f0
+Colorset 7 fg #202020, bg #EAFFEA, fgsh #EAFFEA, hi #BB5D5D, sh #BB5D5D
+Colorset 8 fg #8888CC, bg #EAFFFF, hi #8888CC, fgsh #FFFFEA, sh #8888CC
+Colorset 9 fg #202020, bg #FFFFFF, hi #a8c2e0, fgsh #FFFFFF
 
 Colorset 10 fg white, bg black, hi #202020, sh #202020
 
 Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
-Style * BorderWidth 3, HandleWidth 3
+Style * BorderWidth 5, HandleWidth 5
 
-DestroyDecor AmbienceDecor
-AddToDecor AmbienceDecor
+DestroyDecor MorphDecor
+AddToDecor MorphDecor
 + TitleStyle	Centered Height 28
-+ ButtonStyle	1	Active	   (Pixmap close-activeup.xpm -- Flat)
-+ ButtonStyle	1	ActiveDown (Pixmap close-activedown.xpm -- Flat)
-+ ButtonStyle	1	Inactive   (Pixmap close-inactive.xpm -- Flat)
-+ ButtonStyle  	2	Active	   (Pixmap maximize-activeup.xpm -- Flat) 
-+ ButtonStyle  	2	ActiveDown (Pixmap maximize-activedown.xpm -- Flat) 
-+ ButtonStyle  	2	Inactive   (Pixmap maximize-inactive.xpm -- Flat) 
-+ ButtonStyle  	4	Active	   (Pixmap iconify-activeup.xpm -- Flat)
-+ ButtonStyle  	4	ActiveDown (Pixmap iconify-activedown.xpm -- Flat)
-+ ButtonStyle  	4	Inactive (Pixmap iconify-inactive.xpm -- Flat)
++ TitleStyle	AllActive 	(Solid #EAFFEA -- Flat)
++ TitleStyle	Inactive 	(Solid #EAFFFF -- Flat)
++ TitleStyle	-- Flat
 + ButtonStyle	all	-- UseTitleStyle Flat
 
-+ TitleStyle	AllActive 	(TiledPixmap title-activeup.xpm -- Flat)
-+ TitleStyle	Inactive 	(TiledPixmap title-inactive.xpm -- Flat)
-+ TitleStyle	-- Flat
-
 + BorderStyle	Inactive -- HiddenHandles NoInset Flat 
-+ BorderStyle	Active -- HiddenHandles NoInset
++ BorderStyle	Active -- HiddenHandles NoInset Flat
 
-Style	"*"	UseDecor AmbienceDecor
+Style	"*"	UseDecor MorphDecor
 Style   "*"	Font "$[infostore.titlefont]"
 Style 	"*" 	IconFont "$[infostore.normalfont]"
 Style * NoIcon
@@ -63,7 +53,7 @@ MenuStyle * Hilight3DThickness 0, PopupOffset 0 100, PopupDelay 300
 MenuStyle * Font "$[infostore.normalfont]"
 MenuStyle * TitleFont "$[infostore.titlefont]"
 MenuStyle * MenuColorset 5, HilightBack, ActiveColorset 6, HilightTitleBack, TitleColorset 6
-MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
+MenuStyle * BorderWidth 2, TitleUnderlines1, Animation
 MenuStyle * TrianglesUseFore, TrianglesSolid
 MenuStyle * ItemFormat "%s%| %i %l  %r  %i%> %|%s"
 MenuStyle * VerticalItemSpacing 6 5, VerticalTitleSpacing 6 5
@@ -81,17 +71,17 @@ MenuStyle bgMenu VerticalMargins 0 0
 # Mouse Bindings
 #------------------------------------------------------------------------------
 
-Mouse 1         1       A       Function "CloseWindow"
+Mouse 1         1       A       Menu Window-Ops3
 Mouse 2		1	A	All ($c) Close
-Mouse 3         1       A       Destroy
+Mouse 3         1       A       Function "CloseWindow"
 
-Mouse 1		2	A	Function "MaximizeWindow"
+Mouse 1		2	A	MaximizeWindow
 Mouse 2		2	A	MaximizeToSide -0
 Mouse 3		2	A	MaximizeToSide +0
 
 Mouse 1		4    	A     	IconifyWindow
-Mouse 3         4       A       Maximize
+Mouse 3         4       A       All ($c) Iconify On
 
 Mouse 1		T	A	Function "MoveOrRaiseOrMaximize"
-Mouse 2		T	A	Function "RaiseLowerWindow"
-Mouse 3		T	A	Menu Window-Ops3
+Mouse 2		T	A	RaiseLowerWindow
+Mouse 3		T	A	WindowList (CurrentPage) NoGeometry, NoCurrentDeskTitle, IconifiedAtEnd
