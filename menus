@@ -2,10 +2,10 @@ PipeRead 'fvwm-menu-desktop --desktop lxde -t Programs'
 
 DestroyMenu Utilities
 AddToMenu   Utilities "$[gt.Root Menu]" Title 
-+ %mini/Shell_icon.xpm%"&Terminal"		Exec exec $[infostore.terminal]
-+ %mini/Folder_icon.xpm%"$[gt.Home]"		Exec exec $[infostore.filemanager]
++ %icons/mini/terminal.png%"&Terminal"		Exec exec $[infostore.terminal]
++ %icons/mini/folder.png%"$[gt.Home]"		Exec exec $[infostore.filemanager]
 #+ "Find ..."		Exec exec catfish
-+ %mini/Execute_icon.xpm%"$[gt.Execute] ..."		Exec exec rofi -show run
++ %icons/mini/execute.png%"$[gt.Execute] ..."		Exec exec rofi -show run
 + "" Nop
 + "&$[gt.Favorites]"	Popup Favorites
 + "&$[gt.Programs]"	Popup Programs
@@ -21,15 +21,15 @@ AddToMenu   Utilities "$[gt.Root Menu]" Title
 DestroyMenu Favorites
 AddToMenu   Favorites
 #+ %mini/Shell.xpm%"$[gt.Terminal]"		Exec exec $[infostore.terminal]
-+ %mini/Folder.xpm%"$[gt.File Manager]"	Exec exec $[infostore.filemanager]
++ %icons/mini/folder.png%"$[gt.File Manager]"	Exec exec $[infostore.filemanager]
 #+ mini/cli.xpm%"Midnight Commander"	Exec exec $[infostore.terminal] -e mc
-+ %mini/Editor.xpm%"$[gt.Editor]"		Exec exec $[infostore.editor]
-+ %mini/Viewer.xpm%"$[gt.Viewer]"		Exec exec $[infostore.viewer]
-+ %mini/Audio.xpm%"$[gt.Audio Player]"	Exec exec $[infostore.audioplayer]
-+ %mini/Movie.xpm%"$[gt.Video Player]"	Exec exec $[infostore.videoplayer]
++ %icons/mini/editor.png%"$[gt.Editor]"		Exec exec $[infostore.editor]
++ %icons/mini/viewer.png%"$[gt.Viewer]"		Exec exec $[infostore.viewer]
++ %icons/mini/audio.png%"$[gt.Audio Player]"	Exec exec $[infostore.audioplayer]
++ %icons/mini/video.png%"$[gt.Video Player]"	Exec exec $[infostore.videoplayer]
 #+ "&Gimp"		Exec exec gimp
-+ %mini/Browser.xpm%"$[gt.Web Browser]"		Exec exec $[infostore.browser]
-+ %mini/Mail.xpm%"$[gt.Mail]"		Exec exec $[infostore.mail]
++ %icons/mini/browser.png%"$[gt.Web Browser]"		Exec exec $[infostore.browser]
++ %icons/mini/mail.png%"$[gt.Mail]"		Exec exec $[infostore.mail]
 
 #------------------------------------------------------------------------------
 #--------- Modules
@@ -37,37 +37,37 @@ AddToMenu   Favorites
 
 DestroyMenu Module-Popup
 AddToMenu   Module-Popup
-+ %mini/Module.xpm%"&Autoraise"		RestartModule FvwmAuto 500
-+ %mini/Module.xpm%"A&nimate"          	RestartModule FvwmAnimate
-+ %mini/Module.xpm%"&Backer"           	RestartModule FvwmBacker
-+ %mini/Module.xpm%"B&anner"		RestartModule FvwmBanner
-+ %mini/Module.xpm%"B&utton Panel"	RestartModuleByAlias FvwmButtons BarButtons BarButtons
-+ %mini/Module.xpm%"Desker &Panel"	RestartModuleByAlias FvwmButtons DeskerPanelButtons DeskerPanelButtons
-+ %mini/Module.xpm%"Taskbar Panel"	RestartModuleByAlias FvwmButtons FvwmBar FvwmBar
-+ %mini/Module.xpm%"&Console"		Module FvwmConsole -sb
-+ %mini/Module.xpm%"I&conMan"		RestartModule FvwmIconMan
-+ %mini/Module.xpm%"Identif&y"		RestartModule FvwmIdent
-+ %mini/Module.xpm%"Sound &effect"	RestartModule FvwmEvent
-+ %mini/Module.xpm%"&Talk to Fvwm"	FvwmForm FvwmForm-Talk
-+ %mini/Module.xpm%"Window &List"	RestartModule FvwmWinList
++ %icons/mini/module.png%"&Autoraise"		RestartModule FvwmAuto 500
++ %icons/mini/module.png%"A&nimate"          	RestartModule FvwmAnimate
++ %icons/mini/module.png%"&Backer"           	RestartModule FvwmBacker
++ %icons/mini/module.png%"B&anner"		RestartModule FvwmBanner
++ %icons/mini/module.png%"B&utton Panel"	RestartModuleByAlias FvwmButtons BarButtons BarButtons
++ %icons/mini/module.png%"Desker &Panel"	RestartModuleByAlias FvwmButtons DeskerPanelButtons DeskerPanelButtons
++ %icons/mini/module.png%"Taskbar Panel"	RestartModuleByAlias FvwmButtons FvwmBar FvwmBar
++ %icons/mini/module.png%"&Console"		Module FvwmConsole -sb
++ %icons/mini/module.png%"I&conMan"		RestartModule FvwmIconMan
++ %icons/mini/module.png%"Identif&y"		RestartModule FvwmIdent
++ %icons/mini/module.png%"Sound &effect"	RestartModule FvwmEvent
++ %icons/mini/module.png%"&Talk to Fvwm"	FvwmForm FvwmForm-Talk
++ %icons/mini/module.png%"Window &List"	RestartModule FvwmWinList
 + "" Nop
-+ %mini/Kill.xpm%"&Kill Modules"  	Popup Kill-Module-Popup
++ %icons/mini/delete.png%"&Kill Modules"  	Popup Kill-Module-Popup
 
 DestroyMenu Kill-Module-Popup
 AddToMenu   Kill-Module-Popup
-+ %mini/Module.xpm%"&Autoraise"		KillModule FvwmAuto
-+ %mini/Module.xpm%"A&nimate"       KillModule FvwmAnimate
-+ %mini/Module.xpm%"&Backer"        KillModule FvwmBacker
-+ %mini/Module.xpm%"B&anner"	    KillModule FvwmBanner
-+ %mini/Module.xpm%"B&utton Panel"	All (BarButtons*) Close
-+ %mini/Module.xpm%"&Desker Panel"	All (DeskerPanel*) Close
-+ %mini/Module.xpm%"Taskbar Panel"	All (FvwmBar*) Close
-+ %mini/Module.xpm%"&Console"		KillModule FvwmConsole
-+ %mini/Module.xpm%"I&conMan"		KillModule FvwmIconMan
-+ %mini/Module.xpm%"Identif&y"		KillModule FvwmIdent
-+ %mini/Module.xpm%"Sound &effect"	KillModule FvwmEvent
-+ %mini/Module.xpm%"&Talk"	        All (FvwmForm-Talk) Close
-+ %mini/Module.xpm%"Window &List"	KillModule FvwmWinList
++ %icons/mini/module.png%"&Autoraise"		KillModule FvwmAuto
++ %icons/mini/module.png%"A&nimate"       KillModule FvwmAnimate
++ %icons/mini/module.png%"&Backer"        KillModule FvwmBacker
++ %icons/mini/module.png%"B&anner"	    KillModule FvwmBanner
++ %icons/mini/module.png%"B&utton Panel"	All (BarButtons*) Close
++ %icons/mini/module.png%"&Desker Panel"	All (DeskerPanel*) Close
++ %icons/mini/module.png%"Taskbar Panel"	All (FvwmBar*) Close
++ %icons/mini/module.png%"&Console"		KillModule FvwmConsole
++ %icons/mini/module.png%"I&conMan"		KillModule FvwmIconMan
++ %icons/mini/module.png%"Identif&y"		KillModule FvwmIdent
++ %icons/mini/module.png%"Sound &effect"	KillModule FvwmEvent
++ %icons/mini/module.png%"&Talk"	        All (FvwmForm-Talk) Close
++ %icons/mini/module.png%"Window &List"	KillModule FvwmWinList
 
 #------------------------------------------------------------------------------
 #--------- Settings
@@ -116,12 +116,12 @@ AddToMenu   AutoRaise-Settings
 
 DestroyMenu Edit-Config
 AddToMenu   Edit-Config
-+ %mini/Document.xpm%"$[gt.Edit Config]"	Exec exec $[infostore.editor] $[FVWM_USERDIR]/config
-+ %mini/Document.xpm%"$[gt.Edit Menus]"		Exec exec $[infostore.editor] $[FVWM_USERDIR]/menus
-+ %mini/Document.xpm%"$[gt.Edit Theme]"		Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
-+ %mini/Document.xpm%"$[gt.Edit Modules]"	Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/modules
++ %icons/mini/Document.xpm%"$[gt.Edit Config]"	Exec exec $[infostore.editor] $[FVWM_USERDIR]/config
++ %icons/mini/Document.xpm%"$[gt.Edit Menus]"		Exec exec $[infostore.editor] $[FVWM_USERDIR]/menus
++ %icons/mini/Document.xpm%"$[gt.Edit Theme]"		Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
++ %icons/mini/Document.xpm%"$[gt.Edit Modules]"	Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/modules
 + "" Nop
-+ %mini/Reload.xpm%"$[gt.Reload Config]" 	Restart
++ %icons/mini/Reload.xpm%"$[gt.Reload Config]" 	Restart
 #------------------------------------------------------------------------------
 #--------- Background  settings
 
@@ -264,9 +264,9 @@ AddToMenu   X-Settings
 
 DestroyMenu Documents
 AddToMenu   Documents
-+ %mini/Books.xpm%"&$[gt.Manuals]"	   		Exec exec $[infostore.help]
-+ %mini/Browser.xpm%"&FVWM Home Page" 		Exec exec $[infostore.browser] http://www.fvwm.org/
-+ %mini/Help.xpm%"FVWM &Man Page"               ViewManPage fvwm
++ %icons/mini/Books.xpm%"&$[gt.Manuals]"	   		Exec exec $[infostore.help]
++ %icons/mini/browser.png%"&FVWM Home Page" 		Exec exec $[infostore.browser] http://www.fvwm.org/
++ %icons/mini/Help.xpm%"FVWM &Man Page"               ViewManPage fvwm
 #+ %mini/Help.xpm%"FVWM &Man Pages"		Popup FvwmManPage
 
 DestroyMenu MenuBrowser
@@ -283,39 +283,39 @@ AddToFunc FuncFvwmMenuDirectory I PipeRead 'fvwm-menu-directory --dir "$0" --exe
 
 DestroyMenu FvwmManPage
 AddToMenu   FvwmManPage "FVWM Man Pages" Title
-+ %mini/Help.xpm%"fvwm"                ViewManPage fvwm
-+ %mini/Help.xpm%"FvwmAnimate"         ViewManPage FvwmAnimate
-+ %mini/Help.xpm%"FvwmAuto"            ViewManPage FvwmAuto
-+ %mini/Help.xpm%"FvwmBacker"          ViewManPage FvwmBacker
-+ %mini/Help.xpm%"FvwmBanner"          ViewManPage FvwmBanner
-+ %mini/Help.xpm%"FvwmButtons"         ViewManPage FvwmButtons
-+ %mini/Help.xpm%"FvwmCascade"         ViewManPage FvwmCascade
-+ %mini/Help.xpm%"FvwmCommand"         ViewManPage FvwmCommandS
-+ %mini/Help.xpm%"FvwmConsole"         ViewManPage FvwmConsole
-+ %mini/Help.xpm%"FvwmConsoleC.pl"     ViewManPage FvwmConsoleC.pl
-+ %mini/Help.xpm%"FvwmCpp"             ViewManPage FvwmCpp
-+ %mini/Help.xpm%"FvwmEvent"           ViewManPage FvwmEvent
-+ %mini/Help.xpm%"FvwmForm"            ViewManPage FvwmForm
-+ %mini/Help.xpm%"FvwmIconMan"         ViewManPage FvwmIconMan
-+ %mini/Help.xpm%"FvwmIdent"           ViewManPage FvwmIdent
-+ %mini/Help.xpm%"FvwmM4"              ViewManPage FvwmM4
-+ %mini/Help.xpm%"FvwmPager"           ViewManPage FvwmPager
-+ %mini/Help.xpm%"FvwmPerl"            ViewManPage FvwmPerl
-+ %mini/Help.xpm%"FvwmProxy"           ViewManPage FvwmProxy
-+ %mini/Help.xpm%"FvwmRearrange"       ViewManPage FvwmRearrange
-+ %mini/Help.xpm%"FvwmScript"          ViewManPage FvwmScript
-+ %mini/Help.xpm%"FvwmTalk"            ViewManPage FvwmTalk
-+ %mini/Help.xpm%"FvwmTile"            ViewManPage FvwmTile
++ %icons/mini/Help.xpm%"fvwm"                ViewManPage fvwm
++ %icons/mini/Help.xpm%"FvwmAnimate"         ViewManPage FvwmAnimate
++ %icons/mini/Help.xpm%"FvwmAuto"            ViewManPage FvwmAuto
++ %icons/mini/Help.xpm%"FvwmBacker"          ViewManPage FvwmBacker
++ %icons/mini/Help.xpm%"FvwmBanner"          ViewManPage FvwmBanner
++ %icons/mini/Help.xpm%"FvwmButtons"         ViewManPage FvwmButtons
++ %icons/mini/Help.xpm%"FvwmCascade"         ViewManPage FvwmCascade
++ %icons/mini/Help.xpm%"FvwmCommand"         ViewManPage FvwmCommandS
++ %icons/mini/Help.xpm%"FvwmConsole"         ViewManPage FvwmConsole
++ %icons/mini/Help.xpm%"FvwmConsoleC.pl"     ViewManPage FvwmConsoleC.pl
++ %icons/mini/Help.xpm%"FvwmCpp"             ViewManPage FvwmCpp
++ %icons/mini/Help.xpm%"FvwmEvent"           ViewManPage FvwmEvent
++ %icons/mini/Help.xpm%"FvwmForm"            ViewManPage FvwmForm
++ %icons/mini/Help.xpm%"FvwmIconMan"         ViewManPage FvwmIconMan
++ %icons/mini/Help.xpm%"FvwmIdent"           ViewManPage FvwmIdent
++ %icons/mini/Help.xpm%"FvwmM4"              ViewManPage FvwmM4
++ %icons/mini/Help.xpm%"FvwmPager"           ViewManPage FvwmPager
++ %icons/mini/Help.xpm%"FvwmPerl"            ViewManPage FvwmPerl
++ %icons/mini/Help.xpm%"FvwmProxy"           ViewManPage FvwmProxy
++ %icons/mini/Help.xpm%"FvwmRearrange"       ViewManPage FvwmRearrange
++ %icons/mini/Help.xpm%"FvwmScript"          ViewManPage FvwmScript
++ %icons/mini/Help.xpm%"FvwmTalk"            ViewManPage FvwmTalk
++ %icons/mini/Help.xpm%"FvwmTile"            ViewManPage FvwmTile
 + "" Nop
-+ %mini/Help.xpm%"fvwm-config"         ViewManPage fvwm-config
-+ %mini/Help.xpm%"fvwm-perllib"        ViewManPage fvwm-perllib
-+ %mini/Help.xpm%"fvwm-root"           ViewManPage fvwm-root
-+ %mini/Help.xpm%"fvwm-bug"            ViewManPage fvwm-bug
++ %icons/mini/Help.xpm%"fvwm-config"         ViewManPage fvwm-config
++ %icons/mini/Help.xpm%"fvwm-perllib"        ViewManPage fvwm-perllib
++ %icons/mini/Help.xpm%"fvwm-root"           ViewManPage fvwm-root
++ %icons/mini/Help.xpm%"fvwm-bug"            ViewManPage fvwm-bug
 + "" Nop
-+ %mini/Help.xpm%"fvwm-menu-desktop"   ViewManPage fvwm-menu-desktop
-+ %mini/Help.xpm%"fvwm-menu-directory" ViewManPage fvwm-menu-directory
-+ %mini/Help.xpm%"fvwm-menu-headlines" ViewManPage fvwm-menu-headlines
-+ %mini/Help.xpm%"fvwm-menu-xlock"     ViewManPage fvwm-menu-xlock
++ %icons/mini/Help.xpm%"fvwm-menu-desktop"   ViewManPage fvwm-menu-desktop
++ %icons/mini/Help.xpm%"fvwm-menu-directory" ViewManPage fvwm-menu-directory
++ %icons/mini/Help.xpm%"fvwm-menu-headlines" ViewManPage fvwm-menu-headlines
++ %icons/mini/Help.xpm%"fvwm-menu-xlock"     ViewManPage fvwm-menu-xlock
 
 #------------------------------------------------------------------------------
 #--------- ScreenSaver

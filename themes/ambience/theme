@@ -65,7 +65,7 @@ MenuStyle * TitleFont "$[infostore.titlefont]"
 MenuStyle * MenuColorset 5, HilightBack, ActiveColorset 6, HilightTitleBack, TitleColorset 6
 MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
 MenuStyle * TrianglesUseFore, TrianglesSolid
-MenuStyle * ItemFormat "%s%| %i %l  %r  %i%> %|%s"
+MenuStyle * ItemFormat "%s%| %0.2p%i%0.2p %l  %r  %i%> %|%s"
 MenuStyle * VerticalItemSpacing 6 5, VerticalTitleSpacing 6 5
 MenuStyle * SeparatorsLong
 #MenuStyle * VerticalMargins 1 1
@@ -74,7 +74,7 @@ CopyMenuStyle * bgMenu
 MenuStyle bgMenu VerticalItemSpacing 2 6, VerticalTitleSpacing 4 3
 MenuStyle bgMenu Hilight3DThickness 0
 MenuStyle bgMenu ActiveColorset 6, HilightBack, MenuColorset 10
-MenuStyle bgMenu ItemFormat "%s%|%i  %l|%"
+MenuStyle bgMenu ItemFormat "%s%|%i  %l|%s"
 MenuStyle bgMenu VerticalMargins 0 0
 
 #------------------------------------------------------------------------------
