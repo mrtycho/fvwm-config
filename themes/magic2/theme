@@ -45,22 +45,22 @@ Style * IconBox 10 5 -10 -5, IconGrid 15 15, IconFill left bottom
 Style * IconOverride
 # , EWMHMiniIconOverride
 
-Style "$[infostore.terminal]" EWMHMiniIconOverride, Icon icons/cli.xpm, MiniIcon mini/Shell.xpm
-Style "$[infostore.filemanager]" EWMHMiniIconOverride,Icon icons/FileManager.xpm, MiniIcon mini/Folder.xpm
-Style "$[infostore.editor]" EWMHMiniIconOverride,Icon icons/TextEditor.xpm, MiniIcon mini/Editor.xpm
-Style "$[infostore.viewer]" EWMHMiniIconOverride,Icon icons/Viewer.xpm, MiniIcon mini/Viewer.xpm
-Style "$[infostore.audioplayer]" EWMHMiniIconOverride,Icon icons/SoundEditor.xpm, MiniIcon mini/Audio.xpm
-Style "$[infostore.videoplayer]" EWMHMiniIconOverride, Icon icons/Moviemaker.xpm, MiniIcon mini/Movie.xpm
-Style "$[infostore.browser]" EWMHMiniIconOverride,Icon icons/Web.xpm, MiniIcon mini/Browser.xpm
-Style "$[infostore.mail]" EWMHMiniIconOverride, Icon icons/Mail.xpm, MiniIcon mini/Mail.xpm
+Style "$[infostore.terminal]" EWMHMiniIconOverride, Icon icons/cli.xpm, MiniIcon icons/mini/terminal.png
+Style "$[infostore.filemanager]" EWMHMiniIconOverride,Icon icons/FileManager.xpm, MiniIcon icons/mini/folder.png
+Style "$[infostore.editor]" EWMHMiniIconOverride,Icon icons/TextEditor.xpm, MiniIcon icons/mini/editor.png
+Style "$[infostore.viewer]" EWMHMiniIconOverride,Icon icons/Viewer.xpm, MiniIcon icons/mini/viewer.png
+Style "$[infostore.audioplayer]" EWMHMiniIconOverride,Icon icons/SoundEditor.xpm, MiniIcon icons/mini/audio.png
+Style "$[infostore.videoplayer]" EWMHMiniIconOverride, Icon icons/Moviemaker.xpm, MiniIcon icons/mini/video.png
+Style "$[infostore.browser]" EWMHMiniIconOverride,Icon icons/Web.xpm, MiniIcon icons/mini/browser.png
+Style "$[infostore.mail]" EWMHMiniIconOverride, Icon icons/Mail.xpm, MiniIcon icons/mini/mail.png
 
-Style "Xman" Icon small/Help.xpm, MiniIcon mini/Help.xpm
-Style "Firefox" EWMHMiniIconOverride, Icon icons/Web.xpm, MiniIcon mini/Browser.xpm
-Style "Thunderbird" EWMHMiniIconOverride, Icon icons/Mail.xpm, MiniIcon mini/Mail.xpm
-Style "xterm" Icon icons/cli.xpm, MiniIcon mini/Shell.xpm
-Style "xfce4-terminal" EWMHMiniIconOverride, Icon icons/cli.xpm, MiniIcon mini/Shell.xpm
+Style "Xman" Icon small/Help.xpm, MiniIcon icons/mini/Help.xpm
+Style "Firefox" EWMHMiniIconOverride, Icon icons/Web.xpm, icons/mini/browser.png
+Style "Thunderbird" EWMHMiniIconOverride, Icon icons/Mail.xpm, MiniIcon icons/mini/mail.png
+Style "xterm" Icon icons/cli.xpm, MiniIcon icons/mini/terminal.png
+Style "xfce4-terminal" EWMHMiniIconOverride, Icon icons/cli.xpm, MiniIcon icons/mini/terminal.png
 Style "gv" Icon small/Postscript.xpm
-Style "xv" Icon icons/Viewer.xpm, MiniIcon mini/Viewer.xpm
+Style "xv" Icon icons/Viewer.xpm, MiniIcon icons/mini/viewer.png
 Style "Synaptic" Icon Packer.xpm
 
 MenuStyle * MWM
