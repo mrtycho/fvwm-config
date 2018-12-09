@@ -1,6 +1,6 @@
 ModulePath $[FVWM_USERDIR]:+
 
-SetEnv fvwm_theme "ambience"
+SetEnv fvwm_theme "magic2"
 
 LocalePath $[FVWM_USERDIR]/locale;config:+
 

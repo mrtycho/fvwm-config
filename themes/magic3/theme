@@ -52,7 +52,7 @@ Style "$[infostore.browser]" EWMHMiniIconOverride,Icon icons/Web.xpm, MiniIcon i
 Style "$[infostore.mail]" EWMHMiniIconOverride, Icon icons/Mail.xpm, MiniIcon icons/mini/mail.png
 
 Style "Xman" Icon small/Help.xpm, MiniIcon icons/mini/Help.xpm
-Style "Firefox" EWMHMiniIconOverride, Icon icons/Web.xpm, icons/mini/browser.png
+Style "Firefox" EWMHMiniIconOverride, Icon icons/Web.xpm, MiniIcon icons/mini/browser.png
 Style "Thunderbird" EWMHMiniIconOverride, Icon icons/Mail.xpm, MiniIcon icons/mini/mail.png
 Style "xterm" Icon icons/cli.xpm, MiniIcon icons/mini/terminal.png
 Style "xfce4-terminal" EWMHMiniIconOverride, Icon icons/cli.xpm, MiniIcon icons/mini/terminal.png
