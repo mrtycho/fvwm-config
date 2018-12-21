@@ -5,7 +5,7 @@ DestroyModuleConfig FvwmPager: *
 *FvwmPager: Font none
 *FvwmPager: SolidSeparators
 
-Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 1, BorderColorset 6
+Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 3, BorderColorset 0
 # BorderWidth 1, Colorset 6
 DestroyModuleConfig BarButtons: *
 *BarButtons: Columns 1
@@ -28,6 +28,28 @@ PipeRead "echo *BarButtons: Geometry 62x530-0+$$((($[vp.height]-520)/2))"
     Action(Mouse 3) "Exec exec $[infostore.videoplayer]")
 *BarButtons: (Colorset 4, Title $[gt.Browser], Icon web.xpm, Action "Exec exec $[infostore.browser]")
 *BarButtons: (Colorset 4, Title $[gt.Mail], Icon Mail.xpm, Action "Exec exec $[infostore.mail]")
+
+Style MiniBarButtons   !Title, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, !Handles, FixedSize, BorderWidth 1, BorderColorset 6
+DestroyModuleConfig MiniBarButtons: *
+*MiniBarButtons: Rows 1
+*MiniBarButtons: Padding 0 0
+*MiniBarButtons: Frame 1
+*MiniBarButtons: Colorset 5
+*MiniBarButtons: Geometry -0+0 
+*MiniBarButtons: Font "$[infostore.smallfont]"
+*MiniBarButtons: (Colorset 4, Icon small/FileManager.xpm, Action "Exec exec $[infostore.filemanager]", \
+    Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
+*MiniBarButtons: (Colorset 4, Icon small/cli.xpm, Action "Exec exec $[infostore.terminal]")
+*MiniBarButtons: (Colorset 4, Icon small/TextEditor.xpm, Action "Exec exec $[infostore.editor]", \
+	Action(Mouse 3) 'Exec exec geany')
+*MiniBarButtons: (Colorset 4, Icon small/Viewer.xpm, Action "Exec exec $[infostore.viewer]", \
+    Action(Mouse 2) 'Exec exec evince', \
+    Action(Mouse 3) 'Exec exec gimp')
+*MiniBarButtons: (Colorset 4, Icon small/SoundEditor.xpm, Action "Exec exec $[infostore.audioplayer]", \
+    Action(Mouse 3) "Exec exec $[infostore.videoplayer]")
+*MiniBarButtons: (Colorset 4, Icon small/web.xpm, Action "Exec exec $[infostore.browser]")
+*MiniBarButtons: (Colorset 4, Icon small/Mail.xpm, Action "Exec exec $[infostore.mail]")
+
 
 Style "FvwmDesker" NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
 Colorset 11 fg black, bg white

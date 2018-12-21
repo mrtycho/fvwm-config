@@ -1,5 +1,5 @@
-Colorset 0 fg #13315d, bg #7ab5f8, fgsh #abd2ff
-Colorset 1 fg #6a6c6e, bg #e1e1e1, fgsh #d0cfcf
+Colorset 0 fg #13315d, bg #7ab5f8, fgsh #abd2ff, hi #abd2ff, sh #43618d
+Colorset 1 fg #6a6c6e, bg #e1e1e1, fgsh #d0cfcf, hi #f2f2f2, sh #9a9c9e
 Colorset 2 fg white, bg #505050
 Colorset 3 fg black, bg #e1e1e1, Pixmap taskbar2.xpm, hi white, sh black, fgsh #f0f0f0
 Colorset 4 fg black, bg #e1e1e1, hi white, fgsh #f0f0f0
@@ -33,7 +33,7 @@ AddToDecor AmbienceDecor
 + TitleStyle	Inactive 	(TiledPixmap title-inactive.xpm -- Flat)
 + TitleStyle	-- Flat
 
-+ BorderStyle	Inactive -- HiddenHandles NoInset Flat 
++ BorderStyle	Inactive -- HiddenHandles NoInset 
 + BorderStyle	Active -- HiddenHandles NoInset
 
 Style	"*"	UseDecor AmbienceDecor
@@ -41,22 +41,22 @@ Style   "*"	Font "$[infostore.titlefont]"
 Style 	"*" 	IconFont "$[infostore.normalfont]"
 Style * NoIcon
 
-Style "$[infostore.terminal]" MiniIcon mini/Shell.xpm
-Style "$[infostore.filemanager]" MiniIcon mini/Folder.xpm
-Style "$[infostore.editor]" MiniIcon mini/Editor.xpm
-Style "$[infostore.viewer]" MiniIcon mini/Viewer.xpm
-Style "$[infostore.audioplayer]" MiniIcon mini/Audio.xpm
-Style "$[infostore.videoplayer]" MiniIcon mini/Movie.xpm
-Style "$[infostore.browser]" MiniIcon mini/Browser.xpm
-Style "$[infostore.mail]" MiniIcon mini/Mail.xpm
+Style "$[infostore.terminal]" EWMHMiniIconOverride, MiniIcon icons/mini/terminal.png
+Style "$[infostore.filemanager]" EWMHMiniIconOverride, MiniIcon icons/mini/folder.png
+Style "$[infostore.editor]" EWMHMiniIconOverride, MiniIcon icons/mini/editor.png
+Style "$[infostore.viewer]" EWMHMiniIconOverride, MiniIcon icons/mini/viewer.png
+Style "$[infostore.audioplayer]" EWMHMiniIconOverride, MiniIcon icons/mini/audio.png
+Style "$[infostore.videoplayer]" EWMHMiniIconOverride, MiniIcon icons/mini/video.png
+Style "$[infostore.browser]" EWMHMiniIconOverride, MiniIcon icons/mini/browser.png
+Style "$[infostore.mail]" EWMHMiniIconOverride, MiniIcon icons/mini/mail.png
 
 Style "Xman" MiniIcon mini/Help.xpm
-Style "Firefox" MiniIcon mini/Browser.xpm
-Style "Thunderbird" MiniIcon mini/Mail.xpm
-Style "xterm" MiniIcon mini/Shell.xpm
-Style "xfce4-terminal" MiniIcon mini/Shell.xpm
-Style "gpodder" MiniIcon mini/Audio.xpm
-Style "xv" Icon MiniIcon mini/Viewer.xpm
+Style "Firefox" EWMHMiniIconOverride, MiniIcon icons/mini/browser.png
+Style "Thunderbird" EWMHMiniIconOverride, MiniIcon icons/mini/mail.png
+Style "xterm" MiniIcon icons/mini/terminal.png
+Style "xfce4-terminal" icons/mini/terminal.png
+Style "gpodder" MiniIcon icons/mini/audio.png
+Style "xv" Icon MiniIcon icons/mini/viewer.png
 
 MenuStyle * Fvwm
 MenuStyle * Hilight3DThickness 0, PopupOffset 0 100, PopupDelay 300
@@ -65,7 +65,7 @@ MenuStyle * TitleFont "$[infostore.titlefont]"
 MenuStyle * MenuColorset 5, HilightBack, ActiveColorset 6, HilightTitleBack, TitleColorset 6
 MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
 MenuStyle * TrianglesUseFore, TrianglesSolid
-MenuStyle * ItemFormat "%s%| %i %l  %r  %i%> %|%s"
+MenuStyle * ItemFormat "%s%| %0.2p%i%0.2p %l  %r  %i%> %|%s"
 MenuStyle * VerticalItemSpacing 6 5, VerticalTitleSpacing 6 5
 MenuStyle * SeparatorsLong
 #MenuStyle * VerticalMargins 1 1
@@ -74,7 +74,7 @@ CopyMenuStyle * bgMenu
 MenuStyle bgMenu VerticalItemSpacing 2 6, VerticalTitleSpacing 4 3
 MenuStyle bgMenu Hilight3DThickness 0
 MenuStyle bgMenu ActiveColorset 6, HilightBack, MenuColorset 10
-MenuStyle bgMenu ItemFormat "%s%|%i  %l|%"
+MenuStyle bgMenu ItemFormat "%s%|%i  %l|%s"
 MenuStyle bgMenu VerticalMargins 0 0
 
 #------------------------------------------------------------------------------

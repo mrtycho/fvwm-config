@@ -1,8 +1,8 @@
 /* XPM */
-static char * taskbar2_xpm[] = {
+static char * taskbar3_xpm[] = {
 "22 36 63 1",
 " 	c None",
-".	c #FFFFFF",
+".	c #EEEEEE",
 "+	c #E1E1E1",
 "@	c #E0E0E0",
 "#	c #E1E0E1",
