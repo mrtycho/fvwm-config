@@ -1,6 +1,6 @@
 ModulePath $[FVWM_USERDIR]:+
 
-SetEnv fvwm_theme "magic2"
+SetEnv fvwm_theme "ambience"
 
 LocalePath $[FVWM_USERDIR]/locale;config:+
 
@@ -10,7 +10,7 @@ ImagePath $[FVWM_USERDIR]/themes/$[fvwm_theme]:$[FVWM_USERDIR]/3dpixmaps:+
 
 InfoStoreAdd filemanager pcmanfm
 InfoStoreAdd editor mousepad
-InfoStoreAdd terminal xfce4-terminal #xterm
+InfoStoreAdd terminal terminator #xfce4-terminal #xterm
 InfoStoreAdd browser firefox
 InfoStoreAdd mail thunderbird
 InfoStoreAdd viewer phototonic
