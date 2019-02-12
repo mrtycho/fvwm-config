@@ -14,7 +14,7 @@ DestroyModuleConfig BarButtons: *
 *BarButtons: Padding 4 4
 *BarButtons: Frame 0
 #*BarButtons: Geometry 625x34+0-0
-PipeRead "echo *BarButtons: Geometry 625x34+$$((($[vp.width]-625)/2))-0"
+PipeRead "echo *BarButtons: Geometry 625x34+$$((($[wa.width]-625)/2))-0"
 
 *BarButtons: (Title (Side) Home, Icon icons/folder.png, PressColorset 6, Action "Exec exec $[infostore.filemanager]", \
     Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
@@ -65,7 +65,7 @@ DestroyModuleConfig DeskerPanelButtons: *
 *DeskerPanelButtons: (5x4, Frame -1, Colorset 9, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
 *DeskerPanelButtons: (3x2, Frame 0, Left, Swallow (NoClose, UseOld) 'stalonetray' \
 	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NW -p --kludges force_icons_size,fix_window_pos,use_icons_hints`)
-*DeskerPanelButtons: (2x2, Frame 0, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 5")
+*DeskerPanelButtons: (2x2, Frame 0, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 5z")
 
 *DeskerPanelButtons: (End)
 
@@ -131,14 +131,14 @@ DestroyModuleConfig FvwmBar: *
 *FvwmBar: Frame 0
 *FvwmBar: Padding 2 0
 *FvwmBar: Rows 1
-PipeRead "echo *FvwmBar: Geometry $$(($[vp.width]-2))x30+0+0"
+PipeRead "echo *FvwmBar: Geometry $$(($[wa.width]-2))x30+0+0"
 
-*FvwmBar: (1x1, Frame 1, Container(Columns 24, Frame 0 ))
-*FvwmBar: (19x1, Colorset 9, Swallow "FvwmIconMan" `FvwmIconMan`)
+*FvwmBar: (1x1, Frame 1, Container(Columns 23, Frame 0 ))
+*FvwmBar: (18x1, Colorset 9, Swallow "FvwmIconMan" `FvwmIconMan`)
 *FvwmBar: (2x1, Frame -1, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
-*FvwmBar: (2x1, Colorset 5, Right, Swallow (NoClose, UseOld) 'stalonetray' \
+*FvwmBar: (2x1, Padding 10, Colorset 5, Right, Swallow (NoClose, UseOld) 'stalonetray' \
 	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NE -p --kludges force_icons_size,fix_window_pos,use_icons_hints`)
-*FvwmBar: (1x1, Frame 0, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 5")
+*FvwmBar: (1x1, Frame -1, Colorset 6, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 6")
 *FvwmBar: (End)
 
 Style "FvwmIdent" NoButton 2, NoButton 4, NoButton 6
