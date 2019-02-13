@@ -2,7 +2,7 @@ CleanupColorSets
 Colorset 0 fg white, bg #507bad, fgsh black, hi #a5b0ba 
 Colorset 1 fg black, bg #9a9a9a, fgsh white, hi #e5e2e0, sh #656565
 Colorset 2 fg white, bg #303030
-Colorset 3 fg black, bg #afafaf, Pixmap Tile.png, hi white, sh black
+Colorset 3 fg #efefef, bg #404040, TiledPixmap Tile4.png, hi white, sh black
 Colorset 4 fg black, bg #afafaf, Pixmap Tile2.png, hi white, fgsh #f0f0f0
 Colorset 5 fg black, bg #afafaf, hi white, sh black
 Colorset 6 fg white, bg black, fgsh grey10
