@@ -8,7 +8,7 @@ Colorset 5 fg black, bg #afafaf, hi white, sh black
 Colorset 6 fg white, bg black, fgsh grey10
 Colorset 7 fg white, bg #507bad, fgsh grey10, hi #ffffff, sh #2b3743
 Colorset 8 fg #404040, bg #afafaf, TiledPixmap Tile2.png, hi #e0e0e0, fgsh #f0f0f0
-Colorset 9 fg black, bg #afafaf, TiledPixmap Tile2.png, hi white, fgsh #f0f0f0
+Colorset 9 fg black, bg #afafaf, TiledPixmap Tile2.png, hi white, fgsh #fce9dc
 Colorset 10 fg white, bg black, hi #202020, sh #202020
 
 Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
@@ -47,6 +47,13 @@ Style "$[infostore.audioplayer]" EWMHMiniIconOverride, MiniIcon icons/mini/audio
 Style "$[infostore.videoplayer]" EWMHMiniIconOverride, MiniIcon icons/mini/video.png
 Style "$[infostore.browser]" EWMHMiniIconOverride, MiniIcon icons/mini/browser.png
 Style "$[infostore.mail]" EWMHMiniIconOverride, MiniIcon icons/mini/mail.png
+
+Style "Xman" MiniIcon icons/mini/Help.xpm
+Style "Firefox" EWMHMiniIconOverride, MiniIcon icons/mini/browser.png
+Style "Thunderbird" EWMHMiniIconOverride, MiniIcon icons/mini/mail.png
+Style "xterm" MiniIcon icons/mini/terminal.png
+Style "xfce4-terminal" EWMHMiniIconOverride, MiniIcon icons/mini/terminal.png
+Style "xv" MiniIcon icons/mini/viewer.png
 
 MenuStyle * MWM
 MenuStyle * Hilight3DThickness -1, PopupOffset 0 96, PopupDelay 300
