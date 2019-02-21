@@ -5,7 +5,7 @@ AddToMenu   Utilities "$[gt.Root Menu]" Title
 + %icons/mini/terminal.png%"&Terminal"		Exec exec $[infostore.terminal]
 + %icons/mini/folder.png%"$[gt.Home]"		Exec exec $[infostore.filemanager]
 #+ "Find ..."		Exec exec catfish
-+ %icons/mini/execute.png%"$[gt.Execute] ..."		Exec exec rofi -show run
++ %icons/mini/execute.png%"$[gt.Execute] ..."		Exec exec $[infostore.launcher]
 + "" Nop
 + "&$[gt.Favorites]"	Popup Favorites
 + "&$[gt.Programs]"	Popup Programs

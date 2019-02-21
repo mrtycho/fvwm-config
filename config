@@ -1,6 +1,6 @@
 ModulePath $[FVWM_USERDIR]:+
 
-SetEnv fvwm_theme "ambience"
+SetEnv fvwm_theme "magic"
 
 LocalePath $[FVWM_USERDIR]/locale;config:+
 
@@ -8,8 +8,8 @@ ImagePath $[FVWM_USERDIR]/themes/$[fvwm_theme]:$[FVWM_USERDIR]/3dpixmaps:+
 
 *FvwmScript: Path $[FVWM_USERDIR]/scripts
 
-InfoStoreAdd filemanager pcmanfm
-InfoStoreAdd editor mousepad
+InfoStoreAdd filemanager pcmanfm # rox pcmanfm doublecmd
+InfoStoreAdd editor emacs # mousepad
 InfoStoreAdd terminal terminator #xfce4-terminal #xterm
 InfoStoreAdd browser firefox
 InfoStoreAdd mail thunderbird
@@ -17,6 +17,7 @@ InfoStoreAdd viewer phototonic
 InfoStoreAdd videoplayer vlc
 InfoStoreAdd audioplayer audacious
 InfoStoreAdd help yelp
+InfoStoreAdd launcher xfce4-appfinder #rofi -show run
 
 InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:Noto Sans:size=8::minspace=False:antialias=True"
 InfoStoreAdd normalfont "xft:Noto Sans:size=9:minspace=False:antialias=True"
@@ -256,6 +257,7 @@ Silent Key Tab A M FuncFvwmNextWindow
 
 # Rofi
 Key Space A 4 Exec exec rofi -show run
+Key e A 4 Exec exec $[infostore.launcher]
 
 # Terminal
 Key T A MC Exec exec $[infostore.terminal]
