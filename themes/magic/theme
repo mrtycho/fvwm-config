@@ -50,6 +50,7 @@ Style "$[infostore.mail]" EWMHMiniIconOverride, MiniIcon icons/mini/mail.png
 
 Style "Xman" MiniIcon icons/mini/Help.xpm
 Style "Firefox" EWMHMiniIconOverride, MiniIcon icons/mini/browser.png
+Style "Firefox-esr" EWMHMiniIconOverride, MiniIcon icons/mini/browser.png
 Style "Thunderbird" EWMHMiniIconOverride, MiniIcon icons/mini/mail.png
 Style "xterm" MiniIcon icons/mini/terminal.png
 Style "xfce4-terminal" EWMHMiniIconOverride, MiniIcon icons/mini/terminal.png

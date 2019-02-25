@@ -15,18 +15,18 @@ DestroyModuleConfig BarButtons: *
 *BarButtons: Frame 0
 PipeRead "echo *BarButtons: Geometry 760x35+$$((($[wa.width]-760)/2))-0"
 
-*BarButtons: (Title (Side,Center) Home, Icon icons/folder.png, PressColorset 6, Action "Exec exec $[infostore.filemanager]", \
+*BarButtons: (Title (Side,Left) Home, Icon icons/folder.png, PressColorset 6, Action "Exec exec $[infostore.filemanager]", \
     Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
 *BarButtons: (Title (Side,Center) Terminal, Icon icons/terminal.png, PressColorset 6, Action "Exec exec $[infostore.terminal]")
-*BarButtons: (Title (Side,Center) Editor, Icon icons/editor.png, PressColorset 6, Action "Exec exec $[infostore.editor]", \
+*BarButtons: (Title (Side,Left) Editor, Icon icons/editor.png, PressColorset 6, Action "Exec exec $[infostore.editor]", \
 	Action(Mouse 3) 'Exec exec geany')
-*BarButtons: (Title (Side,Center) Viewer, Icon icons/viewer.png, PressColorset 6, Action "Exec exec $[infostore.viewer]", \
+*BarButtons: (Title (Side,Left) Viewer, Icon icons/viewer.png, PressColorset 6, Action "Exec exec $[infostore.viewer]", \
     Action(Mouse 2) 'Exec exec evince', \
     Action(Mouse 3) 'Exec exec gimp')
-*BarButtons: (Title (Side,Center) Media, Icon icons/media.png, PressColorset 6, Action "Exec exec $[infostore.audioplayer]", \
+*BarButtons: (Title (Side,Left) Media, Icon icons/media.png, PressColorset 6, Action "Exec exec $[infostore.audioplayer]", \
     Action(Mouse 3) "Exec exec $[infostore.videoplayer]")
-*BarButtons: (Title (Side,Center) Browser, Icon icons/browser.png, PressColorset 6, Action "Exec exec $[infostore.browser]")
-*BarButtons: (Title (Side,Center) Mail, Icon icons/mail.png, PressColorset 6, Action "Exec exec $[infostore.mail]")
+*BarButtons: (Title (Side,Left) Browser, Icon icons/browser.png, PressColorset 6, Action "Exec exec $[infostore.browser]")
+*BarButtons: (Title (Side,Left) Mail, Icon icons/mail.png, PressColorset 6, Action "Exec exec $[infostore.mail]")
 *BarButtons: (1x1, Frame 0, Padding 1, Container(Rows 1, Frame 0 ))
 *BarButtons: (Frame -1, Colorset 13, Swallow(UseOld,NoHints,NoRespawn) "xload" 'Exec xload -nolabel')
 +BarButtons: (End)

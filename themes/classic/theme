@@ -1,0 +1,78 @@
+CleanupColorSets
+Colorset 0 fg white, bg cadetblue, fgsh black
+Colorset 1 fg black, bg #afafaf, fgsh white
+Colorset 2 fg white, bg #101010
+Colorset 3 fg black, bg #afafaf, hi white, sh black
+Colorset 4 fg black, bg #9f9f9f, hi white, fgsh #f0f0f0
+Colorset 5 fg black, bg #afafaf
+Colorset 6 fg white, bg cadetblue, fgsh black, hi white
+Colorset 7 fg black, bg #afafaf, fgsh #dee2f3
+Colorset 8 fg #404040, bg #afafaf, fgsh #f0f0f0
+Colorset 9 fg black, bg #afafaf, fgsh #f0f0f0
+Colorset 10 fg white, bg black, hi #202020, sh #202020
+
+Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
+Style * BorderWidth 4, HandleWidth 4
+
+DestroyDecor MagicDecor
+AddToDecor MagicDecor
++ TitleStyle	Centered MinHeight 24
++ ButtonStyle	all	-- UseTitleStyle
+
+Style *	UseDecor MagicDecor, MWMBorder 
+Style *	Font "$[infostore.titlefont]"
+Style * NoIcon
+
+Style "$[infostore.terminal]" EWMHMiniIconOverride, MiniIcon icons/mini/terminal.png
+Style "$[infostore.filemanager]" EWMHMiniIconOverride, MiniIcon icons/mini/folder.png
+Style "$[infostore.editor]" EWMHMiniIconOverride, MiniIcon icons/mini/editor.png
+Style "$[infostore.viewer]" EWMHMiniIconOverride, MiniIcon icons/mini/viewer.png
+Style "$[infostore.audioplayer]" EWMHMiniIconOverride, MiniIcon icons/mini/audio.png
+Style "$[infostore.videoplayer]" EWMHMiniIconOverride, MiniIcon icons/mini/video.png
+Style "$[infostore.browser]" EWMHMiniIconOverride,MiniIcon icons/mini/browser.png
+Style "$[infostore.mail]" EWMHMiniIconOverride, MiniIcon icons/mini/mail.png
+
+Style "Xman" Icon small/Help.xpm, MiniIcon icons/mini/Help.xpm
+Style "Firefox" EWMHMiniIconOverride, MiniIcon icons/mini/browser.png
+Style "Firefox-esr" EWMHMiniIconOverride, MiniIcon icons/mini/browser.png
+Style "Thunderbird" EWMHMiniIconOverride, MiniIcon icons/mini/mail.png
+Style "xterm" Icon icons/cli.xpm, MiniIcon icons/mini/terminal.png
+Style "xfce4-terminal" EWMHMiniIconOverride, MiniIcon icons/mini/terminal.png
+
+MenuStyle * MWM
+MenuStyle * Hilight3DThickness 0, PopupOffset 0 98, PopupDelay 300
+MenuStyle * Font "$[infostore.normalfont]"
+MenuStyle * TitleFont "$[infostore.titlefont]"
+MenuStyle * MenuColorset 5, ActiveColorset 2, HilightBack, TitleColorset 6, HilightTitleBack
+MenuStyle * BorderWidth 2, TitleUnderlines1, Animation
+MenuStyle * TrianglesUseFore, TrianglesSolid
+MenuStyle * ItemFormat "%1p%s%|%3p%i %l  %r  %i%>%3p%|%1p"
+MenuStyle * VerticalItemSpacing 3 4, VerticalTitleSpacing 4 3
+MenuStyle * SeparatorsLong
+MenuStyle * VerticalMargins 0 0
+
+CopyMenuStyle * bgMenu
+MenuStyle bgMenu VerticalItemSpacing 2 6, VerticalTitleSpacing 4 3
+MenuStyle bgMenu Hilight3DThickness 0
+MenuStyle bgMenu ActiveColorset 0, HilightBack, MenuColorset 10
+MenuStyle bgMenu ItemFormat "%s%|%i  %l|%"
+MenuStyle bgMenu VerticalMargins 0 0
+
+
+#------------------------------------------------------------------------------
+# Mouse Bindings
+#------------------------------------------------------------------------------
+
+Mouse 1         1       A       Menu Window-Ops3
+Mouse 2         1       A       Destroy
+Mouse 3		1	A	Function "CloseWindow"
+Mouse 1		2	A	Function "MaximizeWindow"
+Mouse 2		2	A	MaximizeToSide -0
+Mouse 3		2	A	MaximizeToSide +0
+Mouse 1		4    	A     	Function "IconifyWindow"
+Mouse 3         4       A       All ($c) Iconify On
+
+Mouse 1		T	A	Function "MoveOrRaiseOrShade"
+Mouse 2		T	A	Function "RaiseLowerWindow"
+Mouse 3		T	A	WindowList (CurrentPage) NoGeometry, NoCurrentDeskTitle, IconifiedAtEnd, CurrentAtEnd, MaxLabelWidth 80
+#Menu Window-Ops3
