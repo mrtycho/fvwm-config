@@ -140,7 +140,7 @@ PipeRead "echo *FvwmBar: Geometry $$(($[wa.width]))x30+0+0"
 #*FvwmBar: (1x1, Frame 1, Colorset 7, Icon icons/mini/execute.png, Action "Exec exec $[infostore.launcher]")
 *FvwmBar: (18x1, Colorset 9, Swallow "FvwmIconMan" `FvwmIconMan`)
 *FvwmBar: (2x1, Frame 0, Padding 10, Colorset 9, Right, Swallow (NoClose, UseOld) 'stalonetray' \
-	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NE -p --kludges force_icons_size,fix_window_pos,use_icons_hints`)
+	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NE -p --max-geometry 8x1 --kludges force_icons_size,fix_window_pos,use_icons_hints`)
 *FvwmBar: (1x1, Colorset 9, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 9")
 *FvwmBar: (2x1, Frame -1, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
 *FvwmBar: (End)

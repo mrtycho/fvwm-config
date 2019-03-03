@@ -1,14 +1,14 @@
 CleanupColorSets
-Colorset 0 fg white, bg cadetblue, fgsh black
-Colorset 1 fg black, bg #afafaf, fgsh white
-Colorset 2 fg white, bg #101010
+Colorset 0 fg white, bg #507bad, fgsh black, hi #a5b0ba, sh #2b3743
+Colorset 1 fg black, bg #afafaf, fgsh white, hi #e5e2e0, sh #656260
+Colorset 2 fg white, bg #303030
 Colorset 3 fg black, bg #afafaf, hi white, sh black
-Colorset 4 fg black, bg #9f9f9f, hi white, fgsh #f0f0f0
-Colorset 5 fg black, bg #afafaf
-Colorset 6 fg white, bg cadetblue, fgsh black, hi white
-Colorset 7 fg black, bg #afafaf, fgsh #dee2f3
-Colorset 8 fg #404040, bg #afafaf, fgsh #f0f0f0
-Colorset 9 fg black, bg #afafaf, fgsh #f0f0f0
+Colorset 4 fg black, bg #898989, hi white, fgsh #f0f0f0
+Colorset 5 fg black, bg #afafaf, hi white, sh black
+Colorset 6 fg white, bg black, fgsh grey10
+Colorset 7 fg white, bg #507bad, fgsh grey10, hi #ffffff, sh #2b3743
+Colorset 8 fg #505050, bg #9f9f9f, hi #d0d0d0, fgsh #d0d0d0
+Colorset 9 fg black, bg #afafaf, hi white, fgsh #e0e0e0
 Colorset 10 fg white, bg black, hi #202020, sh #202020
 
 Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
@@ -17,7 +17,19 @@ Style * BorderWidth 4, HandleWidth 4
 DestroyDecor MagicDecor
 AddToDecor MagicDecor
 + TitleStyle	Centered MinHeight 24
++ ButtonStyle	1	Active	   Vector 5 25x40@0 75x40@0 75x60@1 25x60@1 25x40@0 25+1px40+1p@4 75-1px40+1p@1 75-1px60-1p@0 25+1px60-1p@0 25+1px40+1p@1
++ ButtonStyle	1	ActiveDown Vector 5 25x40@0 75x40@0 75x60@1 25x60@1 25x40@0
++ ButtonStyle	1	Inactive   Vector 5 25x40@0 75x40@0 75x60@1 25x60@1 25x40@0 25+1px40+1p@4 75-1px40+1p@1 75-1px60-1p@0 25+1px60-1p@0 25+1px40+1p@1
++ ButtonStyle  	2	Active	   Vector 5 25x25@0 75x25@0 75x75@1 25x75@1 25x25@0 25+1px25+1p@4 75-1px25+1p@1 75-1px75-1p@0 25+1px75-1p@0 25+1px25+1p@1
++ ButtonStyle  	2	ActiveDown Vector 5 25x25@0 75x25@0 75x75@1 25x75@1 25x25@0 
++ ButtonStyle  	2	Inactive   Vector 5 25x25@0 75x25@0 75x75@1 25x75@1 25x25@0 25+1px25+1p@4 75-1px25+1p@1 75-1px75-1p@0 25+1px75-1p@0 25+1px25+1p@1
++ ButtonStyle  	4	Active	   Vector 5 40x40@0 60x40@0 60x60@1 40x60@1 40x40@0 40+1px40+1p@4 60-1px40+1p@1 60-1px60-1p@0 40+1px60-1p@0 40+1px40+1p@1
++ ButtonStyle  	4	ActiveDown Vector 5 40x40@0 60x40@0 60x60@1 40x60@1 40x40@0
++ ButtonStyle  	4	Inactive   Vector 5 40x40@0 60x40@0 60x60@1 40x60@1 40x40@0 40+1px40+1p@4 60-1px40+1p@1 60-1px60-1p@0 40+1px60-1p@0 40+1px40+1p@1
 + ButtonStyle	all	-- UseTitleStyle
+
+#+ TitleStyle	AllActive 	(TiledPixmap title-active.xpm)
+#+ TitleStyle	Inactive 	(TiledPixmap title-inactive.xpm)
 
 Style *	UseDecor MagicDecor, MWMBorder 
 Style *	Font "$[infostore.titlefont]"
@@ -40,21 +52,21 @@ Style "xterm" Icon icons/cli.xpm, MiniIcon icons/mini/terminal.png
 Style "xfce4-terminal" EWMHMiniIconOverride, MiniIcon icons/mini/terminal.png
 
 MenuStyle * MWM
-MenuStyle * Hilight3DThickness 0, PopupOffset 0 98, PopupDelay 300
+MenuStyle * Hilight3DThickness -1, PopupOffset 0 96, PopupDelay 300
 MenuStyle * Font "$[infostore.normalfont]"
 MenuStyle * TitleFont "$[infostore.titlefont]"
-MenuStyle * MenuColorset 5, ActiveColorset 2, HilightBack, TitleColorset 6, HilightTitleBack
-MenuStyle * BorderWidth 2, TitleUnderlines1, Animation
+MenuStyle * MenuColorset 5, ActiveColorset 7, HilightBack, TitleColorset 0, HilightTitleBack
+MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
 MenuStyle * TrianglesUseFore, TrianglesSolid
-MenuStyle * ItemFormat "%1p%s%|%3p%i %l  %r  %i%>%3p%|%1p"
+MenuStyle * ItemFormat "%3p%s%|%3p%i %l  %r  %i%>%3p%|%3p"
 MenuStyle * VerticalItemSpacing 3 4, VerticalTitleSpacing 4 3
 MenuStyle * SeparatorsLong
-MenuStyle * VerticalMargins 0 0
+MenuStyle * VerticalMargins 0 2
 
 CopyMenuStyle * bgMenu
 MenuStyle bgMenu VerticalItemSpacing 2 6, VerticalTitleSpacing 4 3
 MenuStyle bgMenu Hilight3DThickness 0
-MenuStyle bgMenu ActiveColorset 0, HilightBack, MenuColorset 10
+MenuStyle bgMenu ActiveColorset 7, HilightBack, MenuColorset 10
 MenuStyle bgMenu ItemFormat "%s%|%i  %l|%"
 MenuStyle bgMenu VerticalMargins 0 0
 
