@@ -1,9 +1,10 @@
 EwmhBaseStruts 0 0 30 40
 
-Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 1, BorderColorset 2
+Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 3, BorderColorset 9
 Colorset 11 fg white, bg #303030, RootTransparent buffer, Tint #505050 65
 Colorset 12 fg white, bg #909090, RootTransparent buffer, Tint #909090 40, hi white, sh #202020, fgsh #303030
 Colorset 13 bg #bebebe, hi white, Pixmap buttons_bg.xpm, sh #202020
+Colorset 14 fg black, bg #afafaf, hi white, sh #808080
 
 DestroyModuleConfig BarButtons: *
 *BarButtons: Colorset 9
@@ -13,8 +14,8 @@ DestroyModuleConfig BarButtons: *
 *BarButtons: Rows 1
 *BarButtons: Padding 2 0
 *BarButtons: Frame 1
-# *BarButtons: Geometry 775x38+0-0
-PipeRead "echo *BarButtons: Geometry 775x38+$$((($[wa.width]-775)/2))-0"
+# *BarButtons: Geometry 780x38+0-0
+PipeRead "echo *BarButtons: Geometry 780x38+$$((($[wa.width]-780)/2))-0"
 
 *BarButtons: (Title (Side,Center) Home, Icon icons/FileManager.xpm, PressColorset 6, Action "Exec exec $[infostore.filemanager]", \
     Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
@@ -79,7 +80,7 @@ Style FvwmPager	  NoTitle, Sticky, WindowListSkip, StaysOnBottom, NeverFocus, Fi
 Style "FvwmIconMan" NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
 
 DestroyModuleConfig FvwmIconMan: *
-*FvwmIconMan: Background #d9d8d8
+*FvwmIconMan: Background #afafaf
 *FvwmIconMan: Foreground #202020
 *FvwmIconMan: ManagerGeometry 1x1
 *FvwmIconMan: ButtonGeometry 28x28
@@ -93,10 +94,10 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: IconButton up
 *FvwmIconMan: IconAndSelectButton up
 *FvwmIconMan: IconAndSelectColorset 8
-*FvwmIconMan: PlainButton flat
+*FvwmIconMan: PlainButton up
 *FvwmIconMan: PlainColorset 9
 *FvwmIconMan: SelectColorset 9
-*FvwmIconMan: SelectButton flat
+*FvwmIconMan: SelectButton up
 *FvwmIconMan: FocusColorset 7
 *FvwmIconMan: FocusButton down
 *FvwmIconMan: FocusAndSelectColorset 7
@@ -127,18 +128,18 @@ DestroyModuleConfig FvwmIconMan: *
 # animation
 *FvwmIconMan: NoIconAction "SendToModule FvwmAnimate animate"
 
-Style FvwmBar     NoTitle, WindowListSkip, FixedSize, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, BorderWidth 0, BorderColorset 2
+Style FvwmBar     NoTitle, FixedSize, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, BorderWidth 1, BorderColorset 2
 DestroyModuleConfig FvwmBar: *
 *FvwmBar: Font "$[infostore.normalfont]"
-*FvwmBar: Colorset 5
+*FvwmBar: Colorset 14
 *FvwmBar: Frame 0
-*FvwmBar: Padding 1 0
+*FvwmBar: Padding 0 0
 *FvwmBar: Rows 1
-PipeRead "echo *FvwmBar: Geometry $$(($[wa.width]))x30+0+0"
+PipeRead "echo *FvwmBar: Geometry $$(($[wa.width]))x32+0+0"
 
-*FvwmBar: (1x1, Frame 1, Padding 1, Container(Columns 23, Frame 0 ))
+*FvwmBar: (1x1, Frame 1, Padding 0, Container(Columns 23, Frame 0 ))
 #*FvwmBar: (1x1, Frame 1, Colorset 7, Icon icons/mini/execute.png, Action "Exec exec $[infostore.launcher]")
-*FvwmBar: (18x1, Colorset 9, Swallow "FvwmIconMan" `FvwmIconMan`)
+*FvwmBar: (18x1, Padding 2, Colorset 9, Swallow "FvwmIconMan" `FvwmIconMan`)
 *FvwmBar: (2x1, Frame 0, Padding 10, Colorset 9, Right, Swallow (NoClose, UseOld) 'stalonetray' \
 	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NE -p --max-geometry 8x1 --kludges force_icons_size,fix_window_pos,use_icons_hints`)
 *FvwmBar: (1x1, Colorset 9, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 9")

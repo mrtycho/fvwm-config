@@ -1,14 +1,14 @@
 CleanupColorSets
 Colorset 0 fg white, bg #507bad, fgsh black, hi #a5b0ba, sh #2b3743
 Colorset 1 fg black, bg #afafaf, fgsh white, hi #e5e2e0, sh #656260
-Colorset 2 fg white, bg #303030
+Colorset 2 fg white, bg #101010
 Colorset 3 fg black, bg #afafaf, hi white, sh black
 Colorset 4 fg black, bg #898989, hi white, fgsh #f0f0f0
-Colorset 5 fg black, bg #afafaf, hi white, sh black
+Colorset 5 fg black, bg #afafaf, hi white, sh #202020
 Colorset 6 fg white, bg black, fgsh grey10
 Colorset 7 fg white, bg #507bad, fgsh grey10, hi #ffffff, sh #2b3743
 Colorset 8 fg #505050, bg #9f9f9f, hi #d0d0d0, fgsh #d0d0d0
-Colorset 9 fg black, bg #afafaf, hi white, fgsh #e0e0e0
+Colorset 9 fg black, bg #afafaf, hi white, sh #606060, fgsh #e0e0e0
 Colorset 10 fg white, bg black, hi #202020, sh #202020
 
 Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
