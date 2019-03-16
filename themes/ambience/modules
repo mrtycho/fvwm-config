@@ -68,7 +68,7 @@ DestroyModuleConfig DeskerPanelButtons: *
 *DeskerPanelButtons: (5x4, Frame -1, Colorset 9, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
 *DeskerPanelButtons: (3x2, Frame 0, Left, Swallow (NoClose, UseOld) 'stalonetray' \
 	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NW -p --kludges --max-geometry 8x1  force_icons_size,fix_window_pos,use_icons_hints`)
-*DeskerPanelButtons: (2x2, Frame 0, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 5z")
+*DeskerPanelButtons: (2x2, Frame 0, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 5")
 
 *DeskerPanelButtons: (End)
 
@@ -93,13 +93,13 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: IconButton up
 *FvwmIconMan: IconAndSelectButton up
 *FvwmIconMan: IconAndSelectColorset 8
-*FvwmIconMan: PlainButton flat
+*FvwmIconMan: PlainButton up
 *FvwmIconMan: PlainColorset 9
 *FvwmIconMan: SelectColorset 9
-*FvwmIconMan: SelectButton flat
-*FvwmIconMan: FocusColorset 7
+*FvwmIconMan: SelectButton up
+*FvwmIconMan: FocusColorset 6
 *FvwmIconMan: FocusButton down
-*FvwmIconMan: FocusAndSelectColorset 7
+*FvwmIconMan: FocusAndSelectColorset 6
 *FvwmIconMan: FocusAndSelectButton down
 *FvwmIconMan: TitleButton flat
 *FvwmIconMan: TitleColorset 9
@@ -127,12 +127,12 @@ DestroyModuleConfig FvwmIconMan: *
 # animation
 *FvwmIconMan: NoIconAction "SendToModule FvwmAnimate animate"
 
-Style FvwmBar     NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, BorderWidth 1, BorderColorset 2
+Style FvwmBar     NoTitle, WindowListSkip, CirculateSkip, FixedSize, Sticky, NeverFocus, StaysOnBottom, NoHandles, BorderWidth 1, BorderColorset 2
 DestroyModuleConfig FvwmBar: *
 *FvwmBar: Font "$[infostore.normalfont]"
 *FvwmBar: Colorset 5
 *FvwmBar: Frame 0
-*FvwmBar: Padding 2 0
+*FvwmBar: Padding 2 2
 *FvwmBar: Rows 1
 PipeRead "echo *FvwmBar: Geometry $$(($[wa.width]-2))x30+0+0"
 
@@ -165,4 +165,3 @@ DestroyFunc StartModules
 AddToFunc   StartModules
 + I Module FvwmButtons BarButtons
 + I Module FvwmButtons FvwmBar
-

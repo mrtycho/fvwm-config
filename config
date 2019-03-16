@@ -299,8 +299,8 @@ AddToFunc StartFunction
 + I Test (Init) Exec exec xfce4-power-manager
 + I Test (Init,x clipit) Exec exec clipit
 + I Exec exec $(source $[FVWM_USERDIR]/background.cfg)
-+ I Function StartModules
 + I FvwmEvent FE-Focus
++ I Schedule 1000 Function StartModules
 
 AddToFunc ExitFunction
 + I Exec killall stalonetray
