@@ -1,4 +1,4 @@
-EwmhBaseStruts 0 0 30 40
+EwmhBaseStruts 0 0 34 44
 
 Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 3, BorderColorset 1
 Colorset 11 fg white, bg #303030, RootTransparent buffer, Tint #505050 65
