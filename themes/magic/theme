@@ -10,6 +10,7 @@ Colorset 7 fg white, bg #507bad, fgsh grey10, hi #ffffff, sh #2b3743
 Colorset 8 fg #404040, bg #afafaf, TiledPixmap Tile2.png, hi #e0e0e0, fgsh #f0f0f0
 Colorset 9 fg black, bg #afafaf, TiledPixmap Tile2.png, hi white, sh #505050,fgsh #fce9dc
 Colorset 10 fg white, bg black, hi #202020, sh #202020
+Colorset 11 fg black, bg #afafaf, hi #eaeaea, sh #404040
 
 Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
 Style * BorderWidth 4, HandleWidth 4
@@ -17,28 +18,36 @@ Style * BorderWidth 4, HandleWidth 4
 DestroyDecor MagicDecor
 AddToDecor MagicDecor
 + TitleStyle	Centered Height 26
-+ TitleStyle	AllActive 	(TiledPixmap title-active.xpm)
-+ TitleStyle	Inactive 	(TiledPixmap title-inactive.xpm)
++ TitleStyle	AllActive 	(TiledPixmap title-active.xpm) -- Flat
++ TitleStyle	Inactive 	(TiledPixmap title-inactive.xpm) -- Flat
 + ButtonStyle	1	Active	   (Pixmap close-activeup.xpm)  -- Flat
 + ButtonStyle	1	ActiveDown (Pixmap close-activedown.xpm)
-+ ButtonStyle	1	Inactive   (Pixmap close-inactive.xpm)
++ ButtonStyle	1	Inactive   (Pixmap close-inactive.xpm) -- Flat
 + ButtonStyle  	2	Active	   (Pixmap maximize-activeup.xpm)  -- Flat
 + ButtonStyle  	2	ActiveDown (Pixmap maximize-activedown.xpm) 
 + ButtonStyle  	2	Inactive   (Pixmap maximize-inactive.xpm) -- Flat
 + ButtonStyle  	4	Active	   (Pixmap iconify-activeup.xpm)  -- Flat
 + ButtonStyle  	4	ActiveDown (Pixmap iconify-activedown.xpm) 
-+ ButtonStyle  	4	Inactive (Pixmap iconify-inactive.xpm ) -- Flat
-+ ButtonStyle	all	-- UseTitleStyle
-
-
++ ButtonStyle  	4	Inactive   (Pixmap iconify-inactive.xpm ) -- Flat
+#+ ButtonStyle	all	-- UseTitleStyle
 + BorderStyle	Active -- HiddenHandles 
 + BorderStyle	Inactive -- HiddenHandles 
 
-Style *	UseDecor MagicDecor, MWMBorder 
+Style *	UseDecor MagicDecor, FvwmButtons, FvwmBorder 
 Style *	Font "$[infostore.titlefont]"
 Style * IconFont "$[infostore.smallfont]"
 Style * NoIcon
 
+DestroyDecor MagicPanelDecor
+AddToDecor MagicPanelDecor
++ TitleStyle	-- flat
++ BorderStyle	Active -- NoInset HiddenHandles 
++ BorderStyle	Inactive -- NoInset HiddenHandles
+
+Style PanelStyle \
+  UseDecor MagicPanelDecor, FvwmBorder, FvwmButtons, NoTitle, FixedSize, WindowListSkip, CirculateSkip, \
+  Sticky, NeverFocus, StaysOnBottom, NoHandles, BorderWidth 2, BorderColorset 11
+	
 Style "$[infostore.terminal]" EWMHMiniIconOverride, MiniIcon icons/mini/terminal.png
 Style "$[infostore.filemanager]" EWMHMiniIconOverride, MiniIcon icons/mini/folder.png
 Style "$[infostore.editor]" EWMHMiniIconOverride, MiniIcon icons/mini/editor.png
