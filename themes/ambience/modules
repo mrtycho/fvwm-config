@@ -1,7 +1,7 @@
-EwmhBaseStruts 0 0 32 34
+EwmhBaseStruts 0 0 30 32
 
-Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 1, BorderColorset 2
-Colorset 11 fg white, bg #303030, RootTransparent buffer, Tint #505050 65
+Style BarButtons UseStyle PanelStyle
+Colorset 11 fg #202020, bg #dbdbdb, hi white, sh #bababa, fgsh #f0f0f0
 Colorset 12 fg white, bg #909090, RootTransparent buffer, Tint #909090 40, hi white, sh #202020, fgsh #303030
 Colorset 13 fb black, bg #bebebe, hi white, fgsh#e0e0e0
 Colorset 14 fg #101010, bg #e1e1e1, fgsh #d0cfcf, hi #f2f2f2, sh #babcbe, Pixmap taskbar2.xpm
@@ -97,9 +97,9 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: PlainColorset 9
 *FvwmIconMan: SelectColorset 9
 *FvwmIconMan: SelectButton up
-*FvwmIconMan: FocusColorset 6
+*FvwmIconMan: FocusColorset 7
 *FvwmIconMan: FocusButton down
-*FvwmIconMan: FocusAndSelectColorset 6
+*FvwmIconMan: FocusAndSelectColorset 7
 *FvwmIconMan: FocusAndSelectButton down
 *FvwmIconMan: TitleButton flat
 *FvwmIconMan: TitleColorset 9
@@ -127,22 +127,22 @@ DestroyModuleConfig FvwmIconMan: *
 # animation
 *FvwmIconMan: NoIconAction "SendToModule FvwmAnimate animate"
 
-Style FvwmBar     NoTitle, WindowListSkip, CirculateSkip, FixedSize, Sticky, NeverFocus, StaysOnBottom, NoHandles, BorderWidth 1, BorderColorset 2
+Style FvwmBar UseStyle PanelStyle
 DestroyModuleConfig FvwmBar: *
 *FvwmBar: Font "$[infostore.normalfont]"
-*FvwmBar: Colorset 5
+*FvwmBar: Colorset 9
 *FvwmBar: Frame 0
-*FvwmBar: Padding 2 2
-*FvwmBar: Rows 1
-PipeRead "echo *FvwmBar: Geometry $$(($[wa.width]-2))x30+0+0"
+*FvwmBar: Padding 0 0
+*FvwmBar: Columns 23
+PipeRead "echo *FvwmBar: Geometry $$(($[wa.width]-2))x28+0+0"
 
-*FvwmBar: (1x1, Frame 1, Container(Columns 23, Frame 0 ))
-*FvwmBar: (18x1, Colorset 9, Swallow "FvwmIconMan" `FvwmIconMan`)
-*FvwmBar: (2x1, Frame -1, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
-*FvwmBar: (2x1, Padding 10, Colorset 5, Right, Swallow (NoClose, UseOld) 'stalonetray' \
+#*FvwmBar: (1x1, Frame 0, Container(Columns 23, Frame 0 ))
+*FvwmBar: (18x1, Frame 0, Padding 2, Swallow "FvwmIconMan" `FvwmIconMan`)
+*FvwmBar: (2x1, Padding 10, Right, Swallow (NoClose, UseOld) 'stalonetray' \
 	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NE -p --max-geometry 8x1 --kludges force_icons_size,fix_window_pos,use_icons_hints`)
-*FvwmBar: (1x1, Frame -1, Colorset 6, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 6")
-*FvwmBar: (End)
+*FvwmBar: (2x1, Frame 0, Padding 2, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
+*FvwmBar: (1x1, Frame 0, Padding 2, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 11")
+#*FvwmBar: (End)
 
 Style "FvwmIdent" NoButton 2, NoButton 4, NoButton 6
 DestroyModuleConfig FvwmIdent: *
@@ -165,3 +165,4 @@ DestroyFunc StartModules
 AddToFunc   StartModules
 + I Module FvwmButtons BarButtons
 + I Module FvwmButtons FvwmBar
+

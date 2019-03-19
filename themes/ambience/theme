@@ -6,9 +6,9 @@ Colorset 4 fg black, bg #e1e1e1, hi white, fgsh #f0f0f0
 Colorset 5 fg #404040, bg #e1e1e1, hi #ffffff, sh #bec1c4, fgsh #ced1d4
 Colorset 6 fg white, bg #3983d5
 
-Colorset 7 fg black, bg #507bad, TiledPixmap taskbar_down.xpm, fgsh #f0f0f0, hi white, sh #8e919b
-Colorset 8 fg #6a6c6e, bg #afafaf, TiledPixmap taskbar.xpm, hi white, fgsh #f0f0f0
-Colorset 9 fg #202020, bg #afafaf, TiledPixmap taskbar.xpm, hi white, fgsh #f0f0f0
+Colorset 7 fg black, bg #507bad, TiledPixmap taskbar_down.xpm, fgsh #f0f0f0, hi #efefef, sh #8e919b
+Colorset 8 fg #6a6c6e, bg #afafaf, TiledPixmap taskbar.xpm, hi #efefef, sh #bababa, fgsh #f0f0f0
+Colorset 9 fg #202020, bg #afafaf, TiledPixmap taskbar.xpm, hi white, sh #bababa, fgsh #f0f0f0
 
 Colorset 10 fg white, bg black, hi #202020, sh #202020
 
@@ -41,6 +41,16 @@ Style   "*"	Font "$[infostore.titlefont]"
 Style 	"*" 	IconFont "$[infostore.normalfont]"
 Style * NoIcon
 
+DestroyDecor PanelDecor
+AddToDecor PanelDecor
++ TitleStyle	-- flat
++ BorderStyle	Active -- NoInset HiddenHandles 
++ BorderStyle	Inactive -- NoInset HiddenHandles
+
+Style PanelStyle \
+  UseDecor PanelDecor, FvwmBorder, FvwmButtons, NoTitle, FixedSize, WindowListSkip, CirculateSkip, \
+  Sticky, NeverFocus, StaysOnBottom, NoHandles, BorderWidth 1, BorderColorset 2
+
 Style "$[infostore.terminal]" EWMHMiniIconOverride, MiniIcon icons/mini/terminal.png
 Style "$[infostore.filemanager]" EWMHMiniIconOverride, MiniIcon icons/mini/folder.png
 Style "$[infostore.editor]" EWMHMiniIconOverride, MiniIcon icons/mini/editor.png
@@ -54,9 +64,9 @@ Style "Xman" MiniIcon mini/Help.xpm
 Style "Firefox" EWMHMiniIconOverride, MiniIcon icons/mini/browser.png
 Style "Thunderbird" EWMHMiniIconOverride, MiniIcon icons/mini/mail.png
 Style "xterm" MiniIcon icons/mini/terminal.png
-Style "xfce4-terminal" icons/mini/terminal.png
+Style "xfce4-terminal" MiniIcon icons/mini/terminal.png
 Style "gpodder" MiniIcon icons/mini/audio.png
-Style "xv" Icon MiniIcon icons/mini/viewer.png
+Style "xv" MiniIcon icons/mini/viewer.png
 
 MenuStyle * Fvwm
 MenuStyle * Hilight3DThickness 0, PopupOffset 0 100, PopupDelay 300
