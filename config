@@ -8,7 +8,7 @@ ImagePath $[FVWM_USERDIR]/themes/$[fvwm_theme]:$[FVWM_USERDIR]/3dpixmaps:+
 
 *FvwmScript: Path $[FVWM_USERDIR]/scripts
 
-InfoStoreAdd filemanager pcmanfm # rox pcmanfm doublecmd
+InfoStoreAdd filemanager pcmanfm #nautilus rox pcmanfm doublecmd
 InfoStoreAdd editor emacs # mousepad
 InfoStoreAdd terminal terminator #xfce4-terminal #xterm
 InfoStoreAdd browser firefox
@@ -49,7 +49,7 @@ Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
 
 Style * ClickToFocus
 Style * MouseFocusClickRaises
-Style * TileCascadePlacement
+Style * TileCascadePlacement # PositionPlacement Center
 Style * ResizeOpaque
 Style * WindowShadeSteps 20
 Style * SnapAttraction 5 All ScreenAll
@@ -65,24 +65,27 @@ Style * MWMDecor
 Style * HintOverride
 Style * OLDecor
 Style * EWMHUseStateHints
-Style * ParentalRelativity
+#Style * ParentalRelativity
 
-Style panel     Sticky, !Title, WindowListSkip, CirculateSkip, BorderWidth 0
-Style "gthumb"  EWMHIgnoreWindowType, !MWMDecor
-Style "Catfish"  EWMHIgnoreWindowType, !MWMDecor
-Style "tint2" 	!Title, !Handles, !Borders, StaysOnTop, EWMHIgnoreStrutHints, Sticky, EWMHPlacementIgnoreWorkingArea, NeverFocus, WindowListSkip
-Style desktop_icon CirculateSkip, WindowListSkip,  NoTitle
-Style *lock        !Title, !Handles, Sticky, WindowListSkip
-Style stalonetray  !Title, !Handles, WindowListSkip, CirculateSkip, StaysOnBottom,NeverFocus, EWMHUseStackingOrderHints
-Style fvwm_menu	NoButton 2, NoButton 4, WindowListSkip
-Style FvwmForm-QuitVerify NoButton 1, NoButton 2, NoButton 4, NoButton 6, StaysOnTop, NoHandles, WindowListSkip
+Style gpodder        !UsePPosition, EWMHIgnoreStateHints
+Style Evolution      !UsePPosition, EWMHIgnoreStateHints
+Style panel          Sticky, !Title, WindowListSkip, CirculateSkip, BorderWidth 0
+Style "gthumb"       EWMHIgnoreWindowType, !MWMDecor
+Style "Catfish"      EWMHIgnoreWindowType, !MWMDecor
+Style "nautilus"     EWMHIgnoreWindowType, !MWMDecor
+Style "tint2"        !Title, !Handles, !Borders, StaysOnTop, EWMHIgnoreStrutHints, Sticky, EWMHPlacementIgnoreWorkingArea, NeverFocus, WindowListSkip
+Style desktop_icon   CirculateSkip, WindowListSkip,  NoTitle
+Style *lock          !Title, !Handles, Sticky, WindowListSkip
+Style stalonetray    !Title, !Handles, WindowListSkip, CirculateSkip, StaysOnBottom,NeverFocus, EWMHUseStackingOrderHints
+Style fvwm_menu      NoButton 2, NoButton 4, WindowListSkip
 
 #------------------------------------------------------------------------------
 # Forms
 #------------------------------------------------------------------------------
 
+Style FvwmForm-QuitVerify NoButton 1, NoButton 2, NoButton 4, NoButton 6, StaysOnTop, NoHandles, WindowListSkip
 DestroyModuleConfig  FvwmForm-VerifyQuit: *
-*FvwmForm-VerifyQuit: Title	  "$[gt.Exit Fvwm]?"
+*FvwmForm-VerifyQuit: Title	      "$[gt.Exit Fvwm]?"
 *FvwmForm-VerifyQuit: GrabServer
 *FvwmForm-VerifyQuit: WarpPointer
 *FvwmForm-VerifyQuit: Line        center
@@ -205,7 +208,7 @@ AddToFunc RestartModuleByAlias
 + I All ($2) Close
 + I Module $0 $1
 
-#------------- FvwmManPage
+# FvwmManPage
 
 DestroyFunc ViewManPage
 AddToFunc   ViewManPage
@@ -215,66 +218,65 @@ AddToFunc   ViewManPage
 # Mouse Bindings
 #------------------------------------------------------------------------------
 
-Mouse 1		R   	A       Menu Utilities mouse -1p -1p
-Mouse 2		R    	A       Menu Window mouse -1p -1p
-Mouse 3         R       A       WindowList mouse -1p -1p NoGeometry
-Mouse 3         R       C       WindowList mouse -1p -1p OnlyListSkip, NoGeometry
+Mouse 1  R  A     Menu Utilities mouse -1p -1p
+Mouse 2  R  A     Menu Window mouse -1p -1p
+Mouse 3  R  A     WindowList mouse -1p -1p NoGeometry
+Mouse 3  R  C     WindowList mouse -1p -1p OnlyListSkip, NoGeometry
 
-Mouse 1		W   	4       Function "MoveAndRaise"
-Mouse 2		W    	4       Menu Window mouse -1p -1p
-Mouse 3         W       4       WindowList (CurrentPage) mouse -1p -1p, NoGeometry 
-Mouse 3         W       CM      WindowList mouse -1p -1p OnlyListSkip, NoGeometry
+Mouse 1  W  4     Function "MoveAndRaise"
+Mouse 2  W  4     Menu Window mouse -1p -1p
+Mouse 3  W  4     WindowList (CurrentPage) mouse -1p -1p, NoGeometry 
+Mouse 3  W  CM    WindowList mouse -1p -1p OnlyListSkip, NoGeometry
 
-Mouse 1		I	A	Function "MoveOrIconifyOrRaise"
-Mouse 2		I	A	Iconify
-Mouse 3		I	A	Menu Window-Ops3 c+0 -101m
+Mouse 1  I  A     Function "MoveOrIconifyOrRaise"
+Mouse 2  I  A     Iconify
+Mouse 3  I  A     Menu Window-Ops3 c+0 -101m
 
 #------------------------------------------------------------------------------
 # Key Bindings
 #------------------------------------------------------------------------------
 
-Key F4		A	M	Close
-Key F4		A	MS	Destroy
-Key F5		A	M	RaiseLowerKey
-Key F6		A	M	All (Iconic) Raise  # originally Restore
-Key F7		A	M	Move
-Key F8		A	M	Resize
-Key F9		A	M	Iconify
-Key F10		A	M	Maximize 100 100
-Key F11		A	M	FvwmIdent
-Key F12		A	M	FvwmConsole
+Key F4                     A  M  Close
+Key F4                     A  MS Destroy
+Key F5                     A  M  Function "RaiseLowerKey"
+Key F6                     A  M  All (Iconic) Raise  # originally Restore
+Key F7                     A  M  Move
+Key F8                     A  M  Resize
+Key F9                     A  M  Iconify
+Key F10                    A  M  Maximize 100 100
+Key F11                    A  M  FvwmIdent
+Key F12                    A  M  FvwmConsole
 
-Key Left     A        SM        GotoPage -1p +0p
-Key Right    A        SM        GotoPage +1p +0p
-Key Up       A        SM        GotoPage +0p -1p
-Key Down     A        SM        GotoPage +0p +1p
+Key Left                   A  SM GotoPage -1p +0p
+Key Right                  A  SM GotoPage +1p +0p
+Key Up                     A  SM GotoPage +0p -1p
+Key Down                   A  SM GotoPage +0p +1p
 
-Key 1	A	4	MaximizeToSide +0	
-Key 2	A	4	MaximizeToSide -0 		
+Key 1                      A  4  MaximizeToSide +0	
+Key 2                      A  4  MaximizeToSide -0 		
 
-
-Silent Key Tab A M FuncFvwmNextWindow
+Silent Key Tab             A  M  FuncFvwmNextWindow
 
 # Rofi
-Key Space A 4 Exec exec rofi -show run
-Key e A 4 Exec exec $[infostore.launcher]
+Key Space                  A  4  Exec exec rofi -show run
+Key e                      A  4  Exec exec $[infostore.launcher]
 
 # Terminal
-Key T A MC Exec exec $[infostore.terminal]
+Key T                      A  MC Exec exec $[infostore.terminal]
 
 # Lock screen
-Key L A MC Exec exec xscreensaver-command -l
+Key L                      A  MC Exec exec xscreensaver-command -l
 
 # Audacious
-Key XF86AudioPlay	A	N	Exec exec audtool playback-playpause
-Key XF86AudioStop	A	N	Exec exec audtool playback-stop
-Key XF86AudioNext	A	N	Exec exec audtool playlist-advance
-Key XF86AudioPrev	A	N	Exec exec audtool playlist-reverse
+Key XF86AudioPlay          A  N  Exec exec audtool playback-playpause
+Key XF86AudioStop          A  N  Exec exec audtool playback-stop
+Key XF86AudioNext          A  N  Exec exec audtool playlist-advance
+Key XF86AudioPrev          A  N  Exec exec audtool playlist-reverse
 
 #Audio
-Key XF86AudioMute		A	N	Exec exec amixer -D pulse sset Master toggle
-Key XF86AudioRaiseVolume	A	N	Exec exec amixer -D pulse sset Master 5%+
-Key XF86AudioLowerVolume	A	N	Exec exec amixer -D pulse sset Master 5%-
+Key XF86AudioMute          A  N  Exec exec amixer -D pulse sset Master toggle
+Key XF86AudioRaiseVolume   A  N  Exec exec amixer -D pulse sset Master 5%+
+Key XF86AudioLowerVolume   A  N  Exec exec amixer -D pulse sset Master 5%-
 
 #------------------------------------------------------------------------------
 # Modules
@@ -290,7 +292,7 @@ AddToFunc StartFunction
 #+ I Test (Init) Exec exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 + I Test (Init) Exec exec /usr/bin/lxpolkit & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 #+ I Test (Init,x xsettingsd) Exec exec xsettingsd -c  $[FVWM_USERDIR]/xsettingsd
-+ I Test (Init,x nm-applet) Exec exec nm-applet
++ I Test (Init,x nm-applet) Schedule 2000 Exec exec nm-applet
 + I TestRc (!Match) Test (Init,x wicd-gtk) exec exec wicd-gtk -t
 + I Test (Init) Exec exec pnmixer
 + I Test (Init) Exec exec update-notifier

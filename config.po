@@ -102,6 +102,9 @@ msgstr "Benutzerordner"
 msgid "Execute"
 msgstr "Ausführen"
 
+msgid "Search"
+msgstr "Suchen"
+
 msgid "Programs"
 msgstr "Programme"
 
@@ -181,7 +184,7 @@ msgid "Restart"
 msgstr "Neu starten"
 
 msgid "Cancel"
-msgstr "Abbruch"
+msgstr "Abbrechen"
 
 msgid "Automatic logout will occur in %% seconds."
 msgstr "Automatische Abmeldung in %% Sekunden."
