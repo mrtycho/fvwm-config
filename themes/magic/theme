@@ -17,24 +17,23 @@ Style * BorderWidth 4, HandleWidth 4
 
 DestroyDecor MagicDecor
 AddToDecor MagicDecor
-+ TitleStyle	Centered Height 26
-+ TitleStyle	AllActive 	(TiledPixmap title-active.xpm) -- Flat
-+ TitleStyle	Inactive 	(TiledPixmap title-inactive.xpm) -- Flat
-+ ButtonStyle	1	Active	   (Pixmap close-activeup.xpm)  -- Flat
-+ ButtonStyle	1	ActiveDown (Pixmap close-activedown.xpm)
-+ ButtonStyle	1	Inactive   (Pixmap close-inactive.xpm) -- Flat
-+ ButtonStyle  	2	Active	   (Pixmap maximize-activeup.xpm)  -- Flat
-+ ButtonStyle  	2	ActiveDown (Pixmap maximize-activedown.xpm) 
-+ ButtonStyle  	2	Inactive   (Pixmap maximize-inactive.xpm) -- Flat
-+ ButtonStyle  	4	Active	   (Pixmap iconify-activeup.xpm)  -- Flat
-+ ButtonStyle  	4	ActiveDown (Pixmap iconify-activedown.xpm) 
-+ ButtonStyle  	4	Inactive   (Pixmap iconify-inactive.xpm ) -- Flat
-#+ ButtonStyle	all	-- UseTitleStyle
-+ BorderStyle	Active -- HiddenHandles 
++ TitleStyle   Centered Height 26
++ TitleStyle   AllActive       (TiledPixmap title-active.xpm) -- Flat
++ TitleStyle   Inactive        (TiledPixmap title-inactive.xpm) -- Flat
++ ButtonStyle  1  Active	    (Pixmap close-activeup.xpm)  -- Flat
++ ButtonStyle  1	ActiveDown   (Pixmap close-activedown.xpm)
++ ButtonStyle  1	Inactive     (Pixmap close-inactive.xpm) -- Flat
++ ButtonStyle  2	Active	    (Pixmap maximize-activeup.xpm)  -- Flat
++ ButtonStyle  2	ActiveDown   (Pixmap maximize-activedown.xpm) 
++ ButtonStyle  2	Inactive     (Pixmap maximize-inactive.xpm) -- Flat
++ ButtonStyle  4	Active	    (Pixmap iconify-activeup.xpm)  -- Flat
++ ButtonStyle  4	ActiveDown   (Pixmap iconify-activedown.xpm) 
++ ButtonStyle  4	Inactive     (Pixmap iconify-inactive.xpm ) -- Flat
++ BorderStyle	Active   -- HiddenHandles 
 + BorderStyle	Inactive -- HiddenHandles 
 
-Style *	UseDecor MagicDecor, FvwmButtons, FvwmBorder 
-Style *	Font "$[infostore.titlefont]"
+Style * UseDecor MagicDecor, FvwmButtons, FvwmBorder 
+Style * Font "$[infostore.titlefont]"
 Style * IconFont "$[infostore.smallfont]"
 Style * NoIcon
 
@@ -89,16 +88,15 @@ MenuStyle bgMenu VerticalMargins 0 0
 # Mouse Bindings
 #------------------------------------------------------------------------------
 
-Mouse 1         1       A     	Function "CloseWindow"
-Mouse 2         1       A     	Destroy
-Mouse 3		1	A	WindowList (CurrentPage) NoGeometry, NoCurrentDeskTitle, IconifiedAtEnd
-Mouse 1		2	A	Function "MaximizeWindow"
-Mouse 2		2	A	MaximizeToSide -0
-Mouse 3		2	A	MaximizeToSide +0
-Mouse 1		4    	A     	Function "IconifyWindow"
-Mouse 3         4       A       All ($c) Iconify On
+Mouse 1  1  A  Function "CloseWindow"
+Mouse 2  1  A  Destroy
+Mouse 3  1  A	WindowList (CurrentPage) NoGeometry, NoCurrentDeskTitle, IconifiedAtEnd
+Mouse 1  2  A  Function "MaximizeWindow"
+Mouse 2  2  A  MaximizeToSide -0
+Mouse 3  2  A  MaximizeToSide +0
+Mouse 1  4  A  Function "IconifyWindow"
+Mouse 3  4  A  All ($c) Iconify On
 
-Mouse 1		T	A	Function "MoveOrRaiseOrShade"
-Mouse 2		T	A	Function "RaiseLowerWindow"
-Mouse 3		T	A	Menu Window-Ops3
-#Menu Window-Ops3
+Mouse 1  T  A  Function "MoveOrRaiseOrShade"
+Mouse 2  T  A  Function "RaiseLowerWindow"
+Mouse 3  T  A  Menu Window-Ops3

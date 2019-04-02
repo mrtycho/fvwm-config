@@ -112,12 +112,12 @@ AddToMenu   AutoRaise-Settings
 
 DestroyMenu Edit-Config
 AddToMenu   Edit-Config
-+ %icons/mini/Document.xpm%"$[gt.Edit Config]"     Exec exec $[infostore.editor] $[FVWM_USERDIR]/config
-+ %icons/mini/Document.xpm%"$[gt.Edit Menus]"      Exec exec $[infostore.editor] $[FVWM_USERDIR]/menus
-+ %icons/mini/Document.xpm%"$[gt.Edit Theme]"      Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
-+ %icons/mini/Document.xpm%"$[gt.Edit Modules]"    Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/modules
++ %icons/mini/config.png%"$[gt.Edit Config]"     Exec exec $[infostore.editor] $[FVWM_USERDIR]/config
++ %icons/mini/config.png%"$[gt.Edit Menus]"      Exec exec $[infostore.editor] $[FVWM_USERDIR]/menus
++ %icons/mini/config.png%"$[gt.Edit Theme]"      Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
++ %icons/mini/config.png%"$[gt.Edit Modules]"    Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/modules
 + "" Nop
-+ %icons/mini/Reload.xpm%"$[gt.Reload Config]"     Restart
++ %icons/mini/reload.png%"$[gt.Reload Config]"     Restart
 
 #------------------------------------------------------------------------------
 # Background  settings

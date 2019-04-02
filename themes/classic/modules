@@ -14,7 +14,6 @@ DestroyModuleConfig BarButtons: *
 *BarButtons: Rows 1
 *BarButtons: Padding 2 0
 *BarButtons: Frame 1
-# *BarButtons: Geometry 780x38+0-0
 PipeRead "echo *BarButtons: Geometry 780x38+$$((($[wa.width]-780)/2))-0"
 
 *BarButtons: (Title (Side,Center) Home, Icon icons/FileManager.xpm, PressColorset 6, Action "Exec exec $[infostore.filemanager]", \
@@ -31,7 +30,7 @@ PipeRead "echo *BarButtons: Geometry 780x38+$$((($[wa.width]-780)/2))-0"
 *BarButtons: (Title (Side,Center) Mail, Icon icons/Mail.xpm, PressColorset 6, Action "Exec exec $[infostore.mail]")
 *BarButtons: (1x1, Frame 1, Padding 1, Container(Rows 1, Frame 0 ))
 *BarButtons: (Frame -1, Colorset 4, Swallow(UseOld,NoHints,NoRespawn) "xload" 'Exec xload -nolabel')
-+BarButtons: (End)
+*BarButtons: (End)
 
 Style "FvwmDesker" NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
 
@@ -42,15 +41,12 @@ DestroyModuleConfig FvwmDesker: *
 *FvwmDesker: Hilight black
 *FvwmDesker: WindowColorsets 5 0
 *FvwmDesker: Font none
-# Comment out or set this option for window names in pager windows
-# also see WindowLabelFormat.
 *FvwmDesker: SmallFont none
 *FvwmDesker: MiniIcons
 *FvwmDesker: Balloons
 *FvwmDesker: BalloonFore black
 *FvwmDesker: BalloonBack bisque
 *FvwmDesker: BalloonFont "$[infostore.normalfont]"
-
 *FvwmDesker: Label 0 Fvwm
 *FvwmDesker: Label 1 Development
 *FvwmDesker: Label 2 Internet
@@ -74,22 +70,18 @@ DestroyModuleConfig DeskerPanelButtons: *
 *DeskerPanelButtons: (End)
 
 Style DeskerPanelButtons NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, FixedSize, NoHandles, BorderColorset 2, BorderWidth 1
-
-Style FvwmPager	  NoTitle, Sticky, WindowListSkip, StaysOnBottom, NeverFocus, FixedSize, NoHandles
-
-Style "FvwmIconMan" NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
+Style FvwmPager	       NoTitle, Sticky, WindowListSkip, StaysOnBottom, NeverFocus, FixedSize, NoHandles
+Style "FvwmIconMan"      NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
 
 DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Background #afafaf
 *FvwmIconMan: Foreground #202020
 *FvwmIconMan: ManagerGeometry 1x1
 *FvwmIconMan: ButtonGeometry 28x28
-# *FvwmIconMan: MaxButtonWidth 26
 *FvwmIconMan: MaxButtonWidthByColumns 2
 
 *FvwmIconMan: Font "$[infostore.smallfont]"
 *FvwmIconMan: Sort none
-#*FvwmIconMan: Colorset 9
 *FvwmIconMan: IconColorset 8
 *FvwmIconMan: IconButton up
 *FvwmIconMan: IconAndSelectButton up
@@ -105,30 +97,27 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: TitleButton flat
 *FvwmIconMan: TitleColorset 9
 *FvwmIconMan: ReliefThickness 1
-*FvwmIconMan: Resolution page 
-#global
+*FvwmIconMan: Resolution page #global
 *FvwmIconMan: DrawIcons always
 *FvwmIconMan: FollowFocus True
 *FvwmIconMan: UseWinList True
 *FvwmIconMan: ShowOnlyIcons False
 *FvwmIconMan: ShowOnlyFocused False
-#*FvwmIconMan: Format "%c: %i"
 *FvwmIconMan: Title "FVWM Screen"
-
 
 # action
 *FvwmIconMan: action    Mouse    1 N SendCommand "Function IconifyOrFocusAndRaise"
 *FvwmIconMan: action    Mouse    2 N SendCommand Iconify
 *FvwmIconMan: action    Mouse    3 N SendCommand "Menu Window-Ops3 c+0 -101m "
-*FvwmIconMan: action    Key   	 Left N gotobutton Left, select
-*FvwmIconMan: action    Key    	 Right N gotobutton Right, select
-*FvwmIconMan: action    Key    	 Up N gotobutton Up, select
-*FvwmIconMan: action    Key    	 Down N gotobutton Down, select
+*FvwmIconMan: action    Key Left   N gotobutton Left, select
+*FvwmIconMan: action    Key Right  N gotobutton Right, select
+*FvwmIconMan: action    Key Up     N gotobutton Up, select
+*FvwmIconMan: action    Key Down   N gotobutton Down, select
 
 # animation
 *FvwmIconMan: NoIconAction "SendToModule FvwmAnimate animate"
 
-Style FvwmBar     NoTitle, FixedSize, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, BorderWidth 1, BorderColorset 2
+Style FvwmBar NoTitle, FixedSize, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, BorderWidth 1, BorderColorset 2
 DestroyModuleConfig FvwmBar: *
 *FvwmBar: Font "$[infostore.normalfont]"
 *FvwmBar: Colorset 14
@@ -161,7 +150,6 @@ DestroyModuleConfig FvwmFormDefault: *
 *FvwmFormDefault: Colorset 5
 *FvwmFormDefault: ItemFore black
 *FvwmFormDefault: ItemBack #d9d8d8
-#*FvwmFormDefault: ItemColorset 5
 
 DestroyFunc StartModules
 AddToFunc   StartModules
