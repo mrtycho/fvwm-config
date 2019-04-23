@@ -1,0 +1,15 @@
+#--------------------------------------------------------------------------
+# Default Applications
+#--------------------------------------------------------------------------
+
+InfoStoreAdd filemanager pcmanfm
+InfoStoreAdd editor      mousepad
+InfoStoreAdd terminal    xterm
+InfoStoreAdd browser     firefox
+InfoStoreAdd mail        evolution
+InfoStoreAdd viewer      phototonic
+InfoStoreAdd videoplayer vlc
+InfoStoreAdd audioplayer audacious
+InfoStoreAdd help        yelp
+InfoStoreAdd launcher    xfce4-appfinder
+InfoStoreAdd search      catfish

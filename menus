@@ -4,7 +4,7 @@ DestroyMenu Utilities
 AddToMenu   Utilities "$[gt.Root Menu]" Title 
 + %icons/mini/terminal.png%"&Terminal"             Exec exec $[infostore.terminal]
 + %icons/mini/folder.png%"$[gt.Home]"              Exec exec $[infostore.filemanager]
-+ %icons/mini/search2.png%"$[gt.Search] ..."		   Exec exec catfish
++ %icons/mini/search2.png%"$[gt.Search] ..."		   Exec exec $[infostore.search]
 + %icons/mini/execute.png%"$[gt.Execute] ..."      Exec exec $[infostore.launcher]
 + "" Nop
 + "&$[gt.Favorites]"                               Popup Favorites
@@ -112,10 +112,11 @@ AddToMenu   AutoRaise-Settings
 
 DestroyMenu Edit-Config
 AddToMenu   Edit-Config
-+ %icons/mini/config.png%"$[gt.Edit Config]"     Exec exec $[infostore.editor] $[FVWM_USERDIR]/config
-+ %icons/mini/config.png%"$[gt.Edit Menus]"      Exec exec $[infostore.editor] $[FVWM_USERDIR]/menus
-+ %icons/mini/config.png%"$[gt.Edit Theme]"      Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
-+ %icons/mini/config.png%"$[gt.Edit Modules]"    Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/modules
++ %icons/mini/config.png%"$[gt.Edit Config]"       Exec exec $[infostore.editor] $[FVWM_USERDIR]/config
++ %icons/mini/config.png%"$[gt.Edit Menus]"        Exec exec $[infostore.editor] $[FVWM_USERDIR]/menus
++ %icons/mini/config.png%"$[gt.Edit Applications]" Exec exec $[infostore.editor] $[FVWM_USERDIR]/applications
++ %icons/mini/config.png%"$[gt.Edit Theme]"        Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
++ %icons/mini/config.png%"$[gt.Edit Modules]"      Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/modules
 + "" Nop
 + %icons/mini/reload.png%"$[gt.Reload Config]"     Restart
 

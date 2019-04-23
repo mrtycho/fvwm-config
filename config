@@ -2,30 +2,30 @@ ModulePath $[FVWM_USERDIR]:+
 
 SetEnv fvwm_theme "magic"
 
+ExecUseShell /bin/bash
+
 LocalePath $[FVWM_USERDIR]/locale;config:+
 
 ImagePath $[FVWM_USERDIR]/themes/$[fvwm_theme]:$[FVWM_USERDIR]/3dpixmaps:+
 
 *FvwmScript: Path $[FVWM_USERDIR]/scripts
 
-InfoStoreAdd filemanager pcmanfm #nautilus rox pcmanfm doublecmd
-InfoStoreAdd editor emacs # mousepad
-InfoStoreAdd terminal terminator #xfce4-terminal #xterm
-InfoStoreAdd browser firefox
-InfoStoreAdd mail thunderbird
-InfoStoreAdd viewer phototonic
-InfoStoreAdd videoplayer vlc
-InfoStoreAdd audioplayer audacious
-InfoStoreAdd help yelp
-InfoStoreAdd launcher xfce4-appfinder #rofi -show run
-
 InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:Noto Sans:size=8::minspace=False:antialias=True"
 InfoStoreAdd normalfont "xft:Noto Sans:size=9:minspace=False:antialias=True"
 InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:Noto Sans:size=9:minspace=False:antialias=True"
 
+#------------------------------------------------------------------------------
+# Applications
+#------------------------------------------------------------------------------
+
+Read applications
+
+#------------------------------------------------------------------------------
+# WM Settings
+#------------------------------------------------------------------------------
+
 DesktopSize 4x1
 
-ExecUseShell /bin/bash
 Emulate Win
 HideGeometryWindow Move
 IgnoreModifiers L2
@@ -44,8 +44,6 @@ CursorStyle TITLE        left_ptr
 CursorStyle DEFAULT      left_ptr
 CursorStyle SYS          left_ptr
 CursorStyle MENU         left_ptr
-
-Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
 
 Style * ClickToFocus
 Style * MouseFocusClickRaises
@@ -68,6 +66,7 @@ Style * EWMHUseStateHints
 #Style * ParentalRelativity
 
 Style gpodder        !UsePPosition, EWMHIgnoreStateHints
+Style Rhythmbox      !UsePPosition, EWMHIgnoreStateHints
 Style Evolution      !UsePPosition, EWMHIgnoreStateHints
 Style panel          Sticky, !Title, WindowListSkip, CirculateSkip, BorderWidth 0
 Style "gthumb"       EWMHIgnoreWindowType, !MWMDecor
@@ -80,12 +79,18 @@ Style stalonetray    !Title, !Handles, WindowListSkip, CirculateSkip, StaysOnBot
 Style fvwm_menu      NoButton 2, NoButton 4, WindowListSkip
 
 #------------------------------------------------------------------------------
+# Theme
+#------------------------------------------------------------------------------
+
+Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
+
+#------------------------------------------------------------------------------
 # Forms
 #------------------------------------------------------------------------------
 
 Style FvwmForm-QuitVerify NoButton 1, NoButton 2, NoButton 4, NoButton 6, StaysOnTop, NoHandles, WindowListSkip
 DestroyModuleConfig  FvwmForm-VerifyQuit: *
-*FvwmForm-VerifyQuit: Title	      "$[gt.Exit Fvwm]?"
+*FvwmForm-VerifyQuit: Title	  "$[gt.Exit Fvwm]?"
 *FvwmForm-VerifyQuit: GrabServer
 *FvwmForm-VerifyQuit: WarpPointer
 *FvwmForm-VerifyQuit: Line        center
@@ -178,6 +183,11 @@ AddToFunc FuncFvwmNextWindow
 + I Next (CurrentPage, !Iconic, AcceptsFocus) FlipFocus NoWarp
 + I Current Raise
 
+DestroyFunc FuncFvwmNextAppWindow
+AddToFunc FuncFvwmNextAppWindow
++ I Next ($[w.resource], !Iconic, AcceptsFocus) FlipFocus
++ I Current Raise
+
 DestroyModuleConfig FE-Focus: *
 *FE-Focus: iconify TransferFocus
 *FE-Focus: destroy_window TransferFocus
@@ -247,25 +257,27 @@ Key F10                    A  M  Maximize 100 100
 Key F11                    A  M  FvwmIdent
 Key F12                    A  M  FvwmConsole
 
-Key Left                   A  SM GotoPage -1p +0p
-Key Right                  A  SM GotoPage +1p +0p
-Key Up                     A  SM GotoPage +0p -1p
-Key Down                   A  SM GotoPage +0p +1p
+Key Left                   A  4  GotoPage -1p +0p
+Key Right                  A  4  GotoPage +1p +0p
+Key Up                     A  4  GotoPage +0p -1p
+Key Down                   A  4  GotoPage +0p +1p
 
 Key 1                      A  4  MaximizeToSide +0	
 Key 2                      A  4  MaximizeToSide -0 		
 
 Silent Key Tab             A  M  FuncFvwmNextWindow
+Silent Key Tab             A  4  FuncFvwmNextAppWindow
 
 # Rofi
 Key Space                  A  4  Exec exec rofi -show run
+Key W                      A  4  Exec exec rofi -show windowcd
 Key e                      A  4  Exec exec $[infostore.launcher]
 
 # Terminal
 Key T                      A  MC Exec exec $[infostore.terminal]
 
 # Lock screen
-Key L                      A  MC Exec exec xscreensaver-command -l
+Key L                      A  4 Exec exec xscreensaver-command -l
 
 # Audacious
 Key XF86AudioPlay          A  N  Exec exec audtool playback-playpause
@@ -295,6 +307,7 @@ AddToFunc StartFunction
 + I Test (Init,x nm-applet) Schedule 2000 Exec exec nm-applet
 + I TestRc (!Match) Test (Init,x wicd-gtk) exec exec wicd-gtk -t
 + I Test (Init) Exec exec pnmixer
+#+ I Test (Init) Exec exec compton
 + I Test (Init) Exec exec update-notifier
 + I Test (Init) Exec exec xscreensaver -no-splash
 + I Test (Init,x redshift) Exec exec redshift

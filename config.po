@@ -149,6 +149,9 @@ msgstr "Thema ändern"
 msgid "Edit Config"
 msgstr "Konfiguation bearbeiten"
 
+msgid "Edit Applications"
+msgstr "Anwendungen bearbeiten"
+
 msgid "Edit Menus"
 msgstr "Menüs bearbeiten"
 
