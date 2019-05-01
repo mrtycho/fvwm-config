@@ -88,7 +88,6 @@ Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
 # Forms
 #------------------------------------------------------------------------------
 
-Style FvwmForm-QuitVerify NoButton 1, NoButton 2, NoButton 4, NoButton 6, StaysOnTop, NoHandles, WindowListSkip
 DestroyModuleConfig  FvwmForm-VerifyQuit: *
 *FvwmForm-VerifyQuit: Title	  "$[gt.Exit Fvwm]?"
 *FvwmForm-VerifyQuit: GrabServer
@@ -104,6 +103,7 @@ DestroyModuleConfig  FvwmForm-VerifyQuit: *
 *FvwmForm-VerifyQuit: Button      quit "$[gt.Cancel]" ^[
 *FvwmForm-VerifyQuit: Command     Nop
 
+Style FvwmForm-QuitVerify NoButton 1, NoButton 2, NoButton 4, NoButton 6, StaysOnTop, NoHandles, WindowListSkip
 Style FvwmForm-VerifyQuit !Button 1, !Button 2, !Button 4, StaysOnTop, NoHandles, WindowListSkip
 
 #------------------------------------------------------------------------------
@@ -300,6 +300,7 @@ Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/modules
 # Start
 #------------------------------------------------------------------------------
 
+DestroyFunc StartFunction
 AddToFunc StartFunction
 #+ I Test (Init) Exec exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 + I Test (Init) Exec exec /usr/bin/lxpolkit & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
@@ -317,5 +318,6 @@ AddToFunc StartFunction
 + I FvwmEvent FE-Focus
 + I Schedule 1000 Function StartModules
 
+DestroyFunc ExitFunction
 AddToFunc ExitFunction
 + I Exec killall stalonetray
