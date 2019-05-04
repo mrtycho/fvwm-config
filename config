@@ -88,6 +88,7 @@ Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
 # Forms
 #------------------------------------------------------------------------------
 
+Style FvwmForm-QuitVerify NoButton 1, NoButton 2, NoButton 4, NoButton 6, StaysOnTop, NoHandles, WindowListSkip
 DestroyModuleConfig  FvwmForm-VerifyQuit: *
 *FvwmForm-VerifyQuit: Title	  "$[gt.Exit Fvwm]?"
 *FvwmForm-VerifyQuit: GrabServer
@@ -103,7 +104,6 @@ DestroyModuleConfig  FvwmForm-VerifyQuit: *
 *FvwmForm-VerifyQuit: Button      quit "$[gt.Cancel]" ^[
 *FvwmForm-VerifyQuit: Command     Nop
 
-Style FvwmForm-QuitVerify NoButton 1, NoButton 2, NoButton 4, NoButton 6, StaysOnTop, NoHandles, WindowListSkip
 Style FvwmForm-VerifyQuit !Button 1, !Button 2, !Button 4, StaysOnTop, NoHandles, WindowListSkip
 
 #------------------------------------------------------------------------------
@@ -150,6 +150,16 @@ AddToFunc IconifyOrFocusAndRaise
 + I Raise
 + I ThisWindow (AcceptsFocus) Focus
 
+DestroyFunc IconifyOrUnmaximize
+AddToFunc IconifyOrUnmaximize
++ I ThisWindow (CurrentGlobalPage,!Maximized,Focused) Iconify
++ I TestRc (Match) Break 
++ I ThisWindow (CurrentGlobalPage,Maximized,Focused) Maximize -1
+
+DestroyFunc MaximizeOrUnmaximize
+AddToFunc MaximizeOrUnmaximize
++ I ThisWindow (CurrentGlobalPage,Focused) Maximize
+
 DestroyFunc MaximizeWindow
 AddToFunc MaximizeWindow
 + C Maximize
@@ -191,9 +201,19 @@ AddToFunc FuncFvwmNextAppWindow
 DestroyModuleConfig FE-Focus: *
 *FE-Focus: iconify TransferFocus
 *FE-Focus: destroy_window TransferFocus
+
+DestroyFunc TransferFocus
 AddToFunc TransferFocus
  + I Prev (!Iconic, CurrentPage, !Overlapped, AcceptsFocus) Focus
  + I TestRc (NoMatch) ThisWindow (CurrentPage,!Overlapped,AcceptsFocus,!Iconic) Focus
+
+DestroyModuleConfig FE-Page: *
+*FE-Page: new_page FocusPage
+*FE-Page: new_desk FocusPage
+
+DestroyFunc FocusPage
+AddToFunc FocusPage
++ I Next (CurrentPage, Raised, AcceptsFocus) Focus
 
 DestroyFunc SetNitrogenBackground
 AddToFunc   SetNitrogenBackground
@@ -203,6 +223,7 @@ AddToFunc   SetNitrogenBackground
 
 DestroyFunc MaximizeToSide
 AddToFunc   MaximizeToSide
++ I ThisWindow (!CurrentPage) Break
 + I Maximize 50 100
 + I ThisWindow (Maximized) Move $0 +0
 
@@ -253,7 +274,7 @@ Key F6                     A  M  All (Iconic) Raise  # originally Restore
 Key F7                     A  M  Move
 Key F8                     A  M  Resize
 Key F9                     A  M  Iconify
-Key F10                    A  M  Maximize 100 100
+Key F10                    A  M  Maximize
 Key F11                    A  M  FvwmIdent
 Key F12                    A  M  FvwmConsole
 
@@ -262,8 +283,13 @@ Key Right                  A  4  GotoPage +1p +0p
 Key Up                     A  4  GotoPage +0p -1p
 Key Down                   A  4  GotoPage +0p +1p
 
+Key Left                   A  C4 MaximizeToSide +0
+Key Right                  A  C4 MaximizeToSide -0
+Key Up                     A  C4 MaximizeOrUnmaximize
+Key Down                   A  C4 IconifyOrUnmaximize
+
 Key 1                      A  4  MaximizeToSide +0	
-Key 2                      A  4  MaximizeToSide -0 		
+Key 2                      A  4  MaximizeToSide -0
 
 Silent Key Tab             A  M  FuncFvwmNextWindow
 Silent Key Tab             A  4  FuncFvwmNextAppWindow
@@ -316,7 +342,8 @@ AddToFunc StartFunction
 + I Test (Init,x clipit) Exec exec clipit
 + I Exec exec $(source $[FVWM_USERDIR]/background.cfg)
 + I FvwmEvent FE-Focus
-+ I Schedule 1000 Function StartModules
++ I FvwmEvent FE-Page
++ I Schedule 100 Function StartModules
 
 DestroyFunc ExitFunction
 AddToFunc ExitFunction
