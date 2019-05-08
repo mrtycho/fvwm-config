@@ -213,7 +213,7 @@ DestroyModuleConfig FE-Page: *
 
 DestroyFunc FocusPage
 AddToFunc FocusPage
-+ I Next (CurrentPage, Raised, AcceptsFocus) Focus
++ I Next (CurrentPage, !Iconic, !Overlapped, AcceptsFocus) Focus
 
 DestroyFunc SetNitrogenBackground
 AddToFunc   SetNitrogenBackground

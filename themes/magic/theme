@@ -10,7 +10,7 @@ Colorset 7 fg white, bg #507bad, fgsh grey10, hi #ffffff, sh #2b3743
 Colorset 8 fg #404040, bg #afafaf, TiledPixmap Tile2.png, hi #e0e0e0, fgsh #f0f0f0
 Colorset 9 fg black, bg #afafaf, TiledPixmap Tile2.png, hi white, sh #505050,fgsh #fce9dc
 Colorset 10 fg white, bg black, hi #202020, sh #202020
-Colorset 11 fg black, bg #afafaf, hi #eaeaea, sh #404040
+Colorset 11 fg black, bg #afafaf, hi #eaeaea, sh #4a4a4a
 
 Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
 Style * BorderWidth 4, HandleWidth 4
@@ -45,7 +45,7 @@ AddToDecor MagicPanelDecor
 
 Style PanelStyle \
   UseDecor MagicPanelDecor, FvwmBorder, FvwmButtons, NoTitle, FixedSize, WindowListSkip, CirculateSkip, \
-  Sticky, NeverFocus, StaysOnBottom, NoHandles, BorderWidth 2, BorderColorset 11
+  Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedPosition, BorderWidth 2, BorderColorset 11
 	
 Style "$[infostore.terminal]" EWMHMiniIconOverride, MiniIcon icons/mini/terminal.png
 Style "$[infostore.filemanager]" EWMHMiniIconOverride, MiniIcon icons/mini/folder.png

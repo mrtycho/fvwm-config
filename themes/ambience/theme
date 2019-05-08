@@ -48,7 +48,7 @@ AddToDecor PanelDecor
 
 Style PanelStyle \
   UseDecor PanelDecor, FvwmBorder, FvwmButtons, NoTitle, FixedSize, WindowListSkip, CirculateSkip, \
-  Sticky, NeverFocus, StaysOnBottom, NoHandles, BorderWidth 1, BorderColorset 2
+  Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedPosition, BorderWidth 1, BorderColorset 2
 
 Style "$[infostore.terminal]" EWMHMiniIconOverride, MiniIcon icons/mini/terminal.png
 Style "$[infostore.filemanager]" EWMHMiniIconOverride, MiniIcon icons/mini/folder.png

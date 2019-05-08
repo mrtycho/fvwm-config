@@ -100,7 +100,7 @@ DestroyModuleConfig FvwmBar: *
 PipeRead "echo *FvwmBar: Geometry $$(($[wa.width]-4))x30+0+0"
 
 *FvwmBar: (18x1, Padding 1, Colorset 9, Swallow "FvwmIconMan" `FvwmIconMan`)
-*FvwmBar: (2x1, Frame 0, Padding 10, Right, Swallow (SwallowNew) 'stalonetray' \
+*FvwmBar: (2x1, Frame 0, Padding 10, Right, Swallow (NoClose,NoTitle,UseOld) 'stalonetray' \
 	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NE -p --max-geometry 8x1 --kludges force_icons_size,fix_window_pos,use_icons_hints`)
 *FvwmBar: (1x1, Right, Swallow (Kill,NoTitle) "FvwmApplet-DigitalClock" "Module FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 9")
 *FvwmBar: (2x1, Frame 0, Padding 1, Swallow(NoTitle) "FvwmDesker" 'Module FvwmPager FvwmDesker')
@@ -126,7 +126,8 @@ AddToFunc   StartModules
 + I Module FvwmButtons FvwmBar
 
 
-Style BarButtons 	     UseStyle PanelStyle, BorderWidth 3
+Style BarButtons 	     MWMBorder, NoTitle, FixedSize, WindowListSkip, CirculateSkip, \
+  FixedPosition, Sticky, NeverFocus, StaysOnBottom, NoHandles, BorderWidth 3, BorderColorset 11
 Style "FvwmDesker" 	  NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
 Style FvwmPager	     NoTitle, Sticky, WindowListSkip, StaysOnBottom, NeverFocus, FixedSize, NoHandles
 Style "FvwmIconMan"    NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
