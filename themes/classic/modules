@@ -26,7 +26,7 @@ PipeRead "echo *BarButtons: Geometry 780x38+$$((($[wa.width]-780)/2))-0"
     Action(Mouse 3) 'Exec exec gimp')
 *BarButtons: (Title (Side,Center) Media, Icon icons/Media.xpm, PressColorset 6, Action "Exec exec $[infostore.audioplayer]", \
     Action(Mouse 3) "Exec exec $[infostore.videoplayer]")
-*BarButtons: (Title (Side,Center) Browser, Icon icons/Web.xpm, PressColorset 6, Action "Exec exec $[infostore.browser]")
+*BarButtons: (Title (Side,Center) Browser, Icon icons/web.xpm, PressColorset 6, Action "Exec exec $[infostore.browser]")
 *BarButtons: (Title (Side,Center) Mail, Icon icons/Mail.xpm, PressColorset 6, Action "Exec exec $[infostore.mail]")
 *BarButtons: (1x1, Frame 1, Padding 1, Container(Rows 1, Frame 0 ))
 *BarButtons: (Frame -1, Colorset 4, Swallow(UseOld,NoHints,NoRespawn) "xload" 'Exec xload -nolabel')

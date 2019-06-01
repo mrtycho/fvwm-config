@@ -1,4 +1,4 @@
-PipeRead "fvwm-menu-desktop --desktop lxde -t Programs --term-cmd '$[infostore.terminal] -e '"
+PipeRead "python3 $FVWM_USERDIR/scripts/fvwm-menu-desktop --desktop lxde -t Programs --term-cmd '$[infostore.terminal] -e '"
 
 DestroyMenu Utilities
 AddToMenu   Utilities "$[gt.Root Menu]" Title 

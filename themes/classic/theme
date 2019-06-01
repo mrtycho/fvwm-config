@@ -30,32 +30,40 @@ AddToDecor MagicDecor
 
 Style * UseDecor MagicDecor, MWMBorder 
 Style * Font "$[infostore.titlefont]"
-Style * NoIcon
+Style * IconFont "$[infostore.smallfont]"
 
-Style "$[infostore.terminal]" EWMHMiniIconOverride, MiniIcon icons/mini/terminal.png
-Style "$[infostore.filemanager]" EWMHMiniIconOverride, MiniIcon icons/mini/folder.png
-Style "$[infostore.editor]" EWMHMiniIconOverride, MiniIcon icons/mini/editor.png
-Style "$[infostore.viewer]" EWMHMiniIconOverride, MiniIcon icons/mini/viewer.png
-Style "$[infostore.audioplayer]" EWMHMiniIconOverride, MiniIcon icons/mini/audio.png
-Style "$[infostore.videoplayer]" EWMHMiniIconOverride, MiniIcon icons/mini/video.png
-Style "$[infostore.browser]" EWMHMiniIconOverride,MiniIcon icons/mini/browser.png
-Style "$[infostore.mail]" EWMHMiniIconOverride, MiniIcon icons/mini/mail.png
+Style * IconBackgroundRelief 1, IconTitleRelief 0	
+Style * IconBackgroundColorset 3, IconTitleColorset 6, HilightIconTitleColorset 2
+Style * IconSize 60 50, IconTitle
+Style * IconBox 10 45 -10 -5, IconGrid 20 20, IconFill top left
+Style * IconOverride
 
-Style "Xman" Icon small/Help.xpm, MiniIcon icons/mini/Help.xpm
-Style "Firefox" EWMHMiniIconOverride, MiniIcon icons/mini/browser.png
-Style "Firefox-esr" EWMHMiniIconOverride, MiniIcon icons/mini/browser.png
-Style "Thunderbird" EWMHMiniIconOverride, MiniIcon icons/mini/mail.png
-Style "xterm" Icon icons/cli.xpm, MiniIcon icons/mini/terminal.png
-Style "xfce4-terminal" EWMHMiniIconOverride, MiniIcon icons/mini/terminal.png
+Style "$[infostore.terminal]" EWMHMiniIconOverride, Icon cli.xpm, MiniIcon icons/mini/terminal.png
+Style "$[infostore.filemanager]" EWMHMiniIconOverride,Icon FileManager.xpm, MiniIcon icons/mini/folder.png
+Style "$[infostore.editor]" EWMHMiniIconOverride,Icon TextEditor.xpm, MiniIcon icons/mini/editor.png
+Style "$[infostore.viewer]" EWMHMiniIconOverride,Icon Viewer.xpm, MiniIcon icons/mini/viewer.png
+Style "$[infostore.audioplayer]" EWMHMiniIconOverride,Icon SoundEditor.xpm, MiniIcon icons/mini/audio.png
+Style "$[infostore.videoplayer]" EWMHMiniIconOverride, Icon Moviemaker.xpm, MiniIcon icons/mini/video.png
+Style "$[infostore.browser]" EWMHMiniIconOverride,Icon web.xpm, MiniIcon icons/mini/browser.png
+Style "$[infostore.mail]" EWMHMiniIconOverride, Icon Mail.xpm, MiniIcon icons/mini/mail.png
+
+Style "Xman" Icon Help.xpm, MiniIcon icons/mini/Help.xpm
+Style "Firefox" EWMHMiniIconOverride, Icon web.xpm, MiniIcon icons/mini/browser.png
+Style "Thunderbird" EWMHMiniIconOverride, Icon Mail.xpm, MiniIcon icons/mini/mail.png
+Style "xterm" Icon cli.xpm, MiniIcon icons/mini/terminal.png
+Style "xfce4-terminal" EWMHMiniIconOverride, Icon cli.xpm, MiniIcon icons/mini/terminal.png
+Style "gv" Icon small/Postscript.xpm
+Style "xv" Icon Viewer.xpm, MiniIcon icons/mini/viewer.png
+Style "Synaptic" Icon Packer.xpm
 
 MenuStyle * MWM
-MenuStyle * Hilight3DThickness -1, PopupOffset 0 96, PopupDelay 300
+MenuStyle * Hilight3DThickness 0, PopupOffset 0 100, PopupDelay 300
 MenuStyle * Font "$[infostore.normalfont]"
 MenuStyle * TitleFont "$[infostore.titlefont]"
-MenuStyle * MenuColorset 5, ActiveColorset 7, HilightBack, TitleColorset 0, HilightTitleBack
+MenuStyle * MenuColorset 5, ActiveColorset 0, HilightBack, TitleColorset 0, HilightTitleBack
 MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
 MenuStyle * TrianglesUseFore, TrianglesSolid
-MenuStyle * ItemFormat "%3p%s%|%3p%i %l  %r  %i%>%3p%|%3p"
+MenuStyle * ItemFormat "%s%|%3p%i %l  %r  %i%>%3p%|"
 MenuStyle * VerticalItemSpacing 3 4, VerticalTitleSpacing 4 3
 MenuStyle * SeparatorsLong
 MenuStyle * VerticalMargins 0 2
