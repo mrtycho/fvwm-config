@@ -1,8 +1,12 @@
+#------------------------------------------------------------------------------
+# FVWM Configuration
+#------------------------------------------------------------------------------
+
+ExecUseShell /bin/bash
+
 ModulePath $[FVWM_USERDIR]:+
 
 SetEnv fvwm_theme "magic"
-
-ExecUseShell /bin/bash
 
 LocalePath $[FVWM_USERDIR]/locale;config:+
 
@@ -14,103 +18,32 @@ InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:Noto Sans:size=8::minspace=False:anti
 InfoStoreAdd normalfont "xft:Noto Sans:size=9:minspace=False:antialias=True"
 InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:Noto Sans:size=9:minspace=False:antialias=True"
 
-#------------------------------------------------------------------------------
-# Applications
-#------------------------------------------------------------------------------
-
-Read applications
+BugOpts FlickeringMoveWorkaround True
 
 #------------------------------------------------------------------------------
-# WM Settings
+# Start
 #------------------------------------------------------------------------------
 
-DesktopSize 4x1
-
-Emulate Win
-HideGeometryWindow Move
-IgnoreModifiers L2
-ClickTime 550
-OpaqueMoveSize 100
-IgnoreModifiers L25
-
-EdgeScroll 0 0
-EdgeResistance 500
-EdgeThickness 1
-
-BusyCursor DynamicMenu True, Read True
-
-CursorStyle ROOT         left_ptr
-CursorStyle TITLE        left_ptr
-CursorStyle DEFAULT      left_ptr
-CursorStyle SYS          left_ptr
-CursorStyle MENU         left_ptr
-
-Style * ClickToFocus
-Style * MouseFocusClickRaises
-Style * TileCascadePlacement # PositionPlacement Center
-Style * ResizeOpaque
-Style * WindowShadeSteps 20
-Style * SnapAttraction 5 All ScreenAll
-Style * SnapGrid 5 5
-Style * EdgeMoveResistance 5
-Style * UsePPosition
-Style * GrabFocus, GrabFocusTransient
-Style * !FPReleaseFocus
-Style * FPLenient
-Style * DecorateTransient, DontLowerTransient, UseTransientPPosition
-Style * MWMFunctions
-Style * MWMDecor
-Style * HintOverride
-Style * OLDecor
-Style * EWMHUseStateHints
-#Style * ParentalRelativity
-
-Style gpodder        !UsePPosition, EWMHIgnoreStateHints
-Style Rhythmbox      !UsePPosition, EWMHIgnoreStateHints
-Style Evolution      !UsePPosition, EWMHIgnoreStateHints
-Style panel          Sticky, !Title, WindowListSkip, CirculateSkip, BorderWidth 0
-Style "gthumb"       EWMHIgnoreWindowType, !MWMDecor
-Style "Catfish"      EWMHIgnoreWindowType, !MWMDecor
-Style "nautilus"     EWMHIgnoreWindowType, !MWMDecor
-Style "tint2"        !Title, !Handles, !Borders, StaysOnTop, EWMHIgnoreStrutHints, Sticky, EWMHPlacementIgnoreWorkingArea, NeverFocus, WindowListSkip
-Style desktop_icon   CirculateSkip, WindowListSkip,  NoTitle
-Style *lock          !Title, !Handles, Sticky, WindowListSkip
-Style stalonetray    !Title, !Handles, WindowListSkip, CirculateSkip, StaysOnBottom,NeverFocus, EWMHUseStackingOrderHints
-Style fvwm_menu      NoButton 2, NoButton 4, WindowListSkip
-
-#------------------------------------------------------------------------------
-# Theme
-#------------------------------------------------------------------------------
-
-Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
-
-#------------------------------------------------------------------------------
-# Forms
-#------------------------------------------------------------------------------
-
-Style FvwmForm-QuitVerify NoButton 1, NoButton 2, NoButton 4, NoButton 6, StaysOnTop, NoHandles, WindowListSkip
-DestroyModuleConfig  FvwmForm-VerifyQuit: *
-*FvwmForm-VerifyQuit: Title	  "$[gt.Exit Fvwm]?"
-*FvwmForm-VerifyQuit: GrabServer
-*FvwmForm-VerifyQuit: WarpPointer
-*FvwmForm-VerifyQuit: Line        center
-*FvwmForm-VerifyQuit: Text        "$[gt.Do you really want to logout?]"
-*FvwmForm-VerifyQuit: Line        expand
-*FvwmForm-VerifyQuit: Button      quit "$[gt.Logout]" ^M
-*FvwmForm-VerifyQuit: Command     Quit
-*FvwmForm-VerifyQuit: Button      restart   "$[gt.Restart]" ^R
-*FvwmForm-VerifyQuit: Command     Restart
-*FvwmForm-VerifyQuit: Text        "   "
-*FvwmForm-VerifyQuit: Button      quit "$[gt.Cancel]" ^[
-*FvwmForm-VerifyQuit: Command     Nop
-
-Style FvwmForm-VerifyQuit !Button 1, !Button 2, !Button 4, StaysOnTop, NoHandles, WindowListSkip
-
-#------------------------------------------------------------------------------
-# Menus
-#------------------------------------------------------------------------------
-
-Read menus
+DestroyFunc StartFunction
+AddToFunc StartFunction
+#+ I Test (Init) Exec exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
++ I Test (Init) Exec exec /usr/bin/lxpolkit & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
+#+ I Test (Init,x xsettingsd) Exec exec xsettingsd -c  $[FVWM_USERDIR]/xsettingsd
++ I Test (Init,x nm-applet) Exec exec nm-applet
++ I TestRc (!Match) Test (Init,x wicd-gtk) exec exec wicd-gtk -t
++ I Test (Init) Exec exec pnmixer
+#+ I Test (Init) Exec exec compton
++ I Test (Init) Exec exec update-notifier
++ I Test (Init) Exec exec xscreensaver -no-splash
++ I Test (Init,x redshift) Exec exec redshift
++ I Test (Init) Exec exec xfce4-power-manager
++ I Test (Init,x clipit) Exec exec clipit
++ I Exec exec $(source $[FVWM_USERDIR]/background.cfg)
++ I FvwmEvent FE-Focus
++ I FvwmEvent FE-Page
++ I Module FvwmCommandS
++ I Module FvwmAuto 300
++ I Schedule 100 Function StartModules
 
 #------------------------------------------------------------------------------
 # Functions
@@ -246,6 +179,110 @@ AddToFunc   ViewManPage
 + I Exec exec yelp man:$0 #$[infostore.terminal] -g 80x40 -e man $0
 
 #------------------------------------------------------------------------------
+# Applications
+#------------------------------------------------------------------------------
+
+Read applications
+
+#------------------------------------------------------------------------------
+# WM Settings
+#------------------------------------------------------------------------------
+
+Xinerama on
+
+DesktopSize 4x1
+
+Emulate Win
+HideGeometryWindow Move
+IgnoreModifiers L2
+ClickTime 550
+OpaqueMoveSize 100
+IgnoreModifiers L25
+
+EdgeScroll 0 0
+EdgeResistance 500
+EdgeThickness 1
+
+BusyCursor DynamicMenu True, Read True
+
+CursorStyle ROOT         left_ptr
+CursorStyle TITLE        left_ptr
+CursorStyle DEFAULT      left_ptr
+CursorStyle SYS          left_ptr
+CursorStyle MENU         left_ptr
+
+Style * ClickToFocus
+Style * MouseFocusClickRaises
+Style * PositionPlacement Center #TileCascadePlacement
+Style * ResizeOpaque
+Style * WindowShadeSteps 20
+Style * SnapAttraction 5 All ScreenAll
+Style * SnapGrid 5 5
+Style * EdgeMoveResistance 5
+Style * !UsePPosition
+Style * GrabFocus, GrabFocusTransient
+Style * !FPReleaseFocus
+Style * FPLenient
+Style * DecorateTransient, DontLowerTransient, UseTransientPPosition
+Style * MWMFunctions
+Style * MWMDecor
+Style * HintOverride
+Style * OLDecor
+Style * EWMHUseStackingOrderHints
+Style * EWMHUseStateHints, EWMHPlacementIgnoreWorkingArea
+#Style * ParentalRelativity
+Style * EWMHIgnoreStateHints
+
+Style gpodder        !UsePPosition, EWMHIgnoreStateHints
+Style Rhythmbox      !UsePPosition, EWMHIgnoreStateHints
+Style Evolution      !UsePPosition, EWMHIgnoreStateHints
+Style Audacious      !UsePPosition, EWMHIgnoreStateHints
+Style panel          Sticky, !Title, WindowListSkip, CirculateSkip, BorderWidth 0
+Style "gthumb"       EWMHIgnoreWindowType, !MWMDecor
+Style "Catfish"      EWMHIgnoreWindowType, !MWMDecor
+Style Xfce4-appfinder UsePPosition, EWMHUseStateHints
+Style "nautilus"     EWMHIgnoreWindowType, !MWMDecor
+Style "tint2"        !Title, !Handles, !Borders, StaysOnTop, EWMHIgnoreStrutHints, Sticky, EWMHPlacementIgnoreWorkingArea, NeverFocus, WindowListSkip
+Style desktop_icon   CirculateSkip, WindowListSkip,  NoTitle
+Style *lock          !Title, !Handles, Sticky, WindowListSkip
+Style stalonetray    !Title, !Handles, WindowListSkip, CirculateSkip, StaysOnBottom,NeverFocus, EWMHUseStackingOrderHints
+Style fvwm_menu      NoButton 2, NoButton 4, WindowListSkip
+
+#------------------------------------------------------------------------------
+# Theme
+#------------------------------------------------------------------------------
+
+Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
+
+#------------------------------------------------------------------------------
+# Forms
+#------------------------------------------------------------------------------
+
+Style FvwmForm-QuitVerify NoButton 1, NoButton 2, NoButton 4, NoButton 6, StaysOnTop, NoHandles, WindowListSkip
+DestroyModuleConfig  FvwmForm-VerifyQuit: *
+*FvwmForm-VerifyQuit: Title	  "$[gt.Exit Fvwm]?"
+*FvwmForm-VerifyQuit: GrabServer
+*FvwmForm-VerifyQuit: WarpPointer
+*FvwmForm-VerifyQuit: Line        center
+*FvwmForm-VerifyQuit: Text        "$[gt.Do you really want to logout?]"
+*FvwmForm-VerifyQuit: Line        expand
+*FvwmForm-VerifyQuit: Button      quit "$[gt.Logout]" ^M
+*FvwmForm-VerifyQuit: Command     Quit
+*FvwmForm-VerifyQuit: Button      restart   "$[gt.Restart]" ^R
+*FvwmForm-VerifyQuit: Command     Restart
+*FvwmForm-VerifyQuit: Text        "   "
+*FvwmForm-VerifyQuit: Button      quit "$[gt.Cancel]" ^[
+*FvwmForm-VerifyQuit: Command     Nop
+
+Style FvwmForm-VerifyQuit !Button 1, !Button 2, !Button 4, StaysOnTop, NoHandles, WindowListSkip
+
+#------------------------------------------------------------------------------
+# Menus
+#------------------------------------------------------------------------------
+
+Read menus
+
+#------------------------------------------------------------------------------
 # Mouse Bindings
 #------------------------------------------------------------------------------
 
@@ -322,29 +359,3 @@ Key XF86AudioLowerVolume   A  N  Exec exec amixer -D pulse sset Master 5%-
 
 Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/modules
 
-#------------------------------------------------------------------------------
-# Start
-#------------------------------------------------------------------------------
-
-DestroyFunc StartFunction
-AddToFunc StartFunction
-#+ I Test (Init) Exec exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
-+ I Test (Init) Exec exec /usr/bin/lxpolkit & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
-#+ I Test (Init,x xsettingsd) Exec exec xsettingsd -c  $[FVWM_USERDIR]/xsettingsd
-+ I Test (Init,x nm-applet) Schedule 2000 Exec exec nm-applet
-+ I TestRc (!Match) Test (Init,x wicd-gtk) exec exec wicd-gtk -t
-+ I Test (Init) Exec exec pnmixer
-#+ I Test (Init) Exec exec compton
-+ I Test (Init) Exec exec update-notifier
-+ I Test (Init) Exec exec xscreensaver -no-splash
-+ I Test (Init,x redshift) Exec exec redshift
-+ I Test (Init) Exec exec xfce4-power-manager
-+ I Test (Init,x clipit) Exec exec clipit
-+ I Exec exec $(source $[FVWM_USERDIR]/background.cfg)
-+ I FvwmEvent FE-Focus
-+ I FvwmEvent FE-Page
-+ I Schedule 100 Function StartModules
-
-DestroyFunc ExitFunction
-AddToFunc ExitFunction
-+ I Exec killall stalonetray
