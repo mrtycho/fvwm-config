@@ -26,6 +26,7 @@ BugOpts FlickeringMoveWorkaround True
 
 DestroyFunc StartFunction
 AddToFunc StartFunction
+#+ I Test (Init) Exec exec xrandr --output HDMI-1 --mode 1920x1080 --rate 60.00 --output eDP-1 --mode 1920x1080 --rate 60.00 --right-of HDMI-1
 #+ I Test (Init) Exec exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 + I Test (Init) Exec exec /usr/bin/lxpolkit & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 #+ I Test (Init,x xsettingsd) Exec exec xsettingsd -c  $[FVWM_USERDIR]/xsettingsd
@@ -189,6 +190,9 @@ Read applications
 #------------------------------------------------------------------------------
 
 Xinerama on
+#XineramaSls on
+#XineramaSlsSize 2x1
+XineramaPrimaryScreen 1
 
 DesktopSize 4x1
 
@@ -229,11 +233,13 @@ Style * MWMDecor
 Style * HintOverride
 Style * OLDecor
 Style * EWMHUseStackingOrderHints
-Style * EWMHUseStateHints, EWMHPlacementIgnoreWorkingArea
+Style * EWMHPlacementIgnoreWorkingArea
 #Style * ParentalRelativity
 Style * EWMHIgnoreStateHints
 
+Style gnomesu        UsePPosition, EWMHUseStateHints
 Style gpodder        !UsePPosition, EWMHIgnoreStateHints
+Style gcolor3        NoButton 2, NoButton 4, WindowListSkip
 Style Rhythmbox      !UsePPosition, EWMHIgnoreStateHints
 Style Evolution      !UsePPosition, EWMHIgnoreStateHints
 Style Audacious      !UsePPosition, EWMHIgnoreStateHints

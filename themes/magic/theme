@@ -2,7 +2,7 @@ CleanupColorSets
 Colorset 0 fg white, bg #507bad, fgsh black, hi #a5b0ba 
 Colorset 1 fg black, bg #9a9a9a, fgsh white, hi #e5e2e0, sh #656565
 Colorset 2 fg white, bg #000000, sh #000000
-Colorset 3 fg #efefef, bg #404040, TiledPixmap Tile4.png, hi white, sh #404040
+Colorset 3 fg #efefef, bg #404040, TiledPixmap Tile.png, hi white, sh #404040
 Colorset 4 fg black, bg #afafaf, Pixmap Tile2.png, hi white, fgsh #f0f0f0
 Colorset 5 fg black, bg #afafaf, hi white, sh black
 Colorset 6 fg white, bg black, fgsh grey10
@@ -35,7 +35,13 @@ AddToDecor MagicDecor
 Style * UseDecor MagicDecor, FvwmButtons, FvwmBorder 
 Style * Font "$[infostore.titlefont]"
 Style * IconFont "$[infostore.smallfont]"
-Style * NoIcon
+# Style * NoIcon
+
+Style * IconBackgroundRelief 1, IconTitleRelief 0	
+Style * IconBackgroundColorset 3, IconTitleColorset 6, HilightIconTitleColorset 2
+Style * IconSize 62 52, IconTitle
+Style * IconBox 10 45 -10 -5, IconGrid 20 20, IconFill top left
+Style * IconOverride
 
 DestroyDecor MagicPanelDecor
 AddToDecor MagicPanelDecor
@@ -47,22 +53,28 @@ Style PanelStyle \
   UseDecor MagicPanelDecor, FvwmBorder, FvwmButtons, NoTitle, FixedSize, WindowListSkip, CirculateSkip, \
   Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedPosition, BorderWidth 2, BorderColorset 11
 	
-Style "$[infostore.terminal]" EWMHMiniIconOverride, MiniIcon icons/mini/terminal.png
-Style "$[infostore.filemanager]" EWMHMiniIconOverride, MiniIcon icons/mini/folder.png
-Style "$[infostore.editor]" EWMHMiniIconOverride, MiniIcon icons/mini/editor.png
-Style "$[infostore.viewer]" EWMHMiniIconOverride, MiniIcon icons/mini/viewer.png
-Style "$[infostore.audioplayer]" EWMHMiniIconOverride, MiniIcon icons/mini/audio.png
-Style "$[infostore.videoplayer]" EWMHMiniIconOverride, MiniIcon icons/mini/video.png
-Style "$[infostore.browser]" EWMHMiniIconOverride, MiniIcon icons/mini/browser.png
-Style "$[infostore.mail]" EWMHMiniIconOverride, MiniIcon icons/mini/mail.png
+Style "$[infostore.terminal]" EWMHMiniIconOverride, Icon cli.xpm, MiniIcon icons/mini/terminal.png
+Style "$[infostore.filemanager]" EWMHMiniIconOverride,Icon FileManager.xpm, MiniIcon icons/mini/folder.png
+Style "$[infostore.editor]" EWMHMiniIconOverride,Icon TextEditor.xpm, MiniIcon icons/mini/editor.png
+Style "$[infostore.viewer]" EWMHMiniIconOverride,Icon Viewer.xpm, MiniIcon icons/mini/viewer.png
+Style "$[infostore.audioplayer]" EWMHMiniIconOverride,Icon SoundEditor.xpm, MiniIcon icons/mini/audio.png
+Style "$[infostore.videoplayer]" EWMHMiniIconOverride, Icon Moviemaker.xpm, MiniIcon icons/mini/video.png
+Style "$[infostore.browser]" EWMHMiniIconOverride, Icon web.xpm, MiniIcon icons/mini/browser.png
+Style "$[infostore.mail]" EWMHMiniIconOverride, Icon Mail.xpm, MiniIcon icons/mini/mail.png
 
-Style "Xman" MiniIcon icons/mini/Help.xpm
-Style "Firefox" EWMHMiniIconOverride, MiniIcon icons/mini/browser.png
-Style "Firefox-esr" EWMHMiniIconOverride, MiniIcon icons/mini/browser.png
-Style "Thunderbird" EWMHMiniIconOverride, MiniIcon icons/mini/mail.png
-Style "xterm" MiniIcon icons/mini/terminal.png
-Style "xfce4-terminal" EWMHMiniIconOverride, MiniIcon icons/mini/terminal.png
-Style "xv" MiniIcon icons/mini/viewer.png
+Style "Xman" Icon Help.xpm, MiniIcon icons/mini/Help.xpm
+Style "Firefox" EWMHMiniIconOverride, Icon web.xpm, MiniIcon icons/mini/browser.png
+Style "Firefox-esr" EWMHMiniIconOverride, Icon web.xpm, MiniIcon icons/mini/browser.png
+Style "Thunderbird" EWMHMiniIconOverride, Icon Mail.xpm, MiniIcon icons/mini/mail.png
+Style "xterm" Icon cli.xpm, MiniIcon icons/mini/terminal.png
+Style "xfce4-terminal" EWMHMiniIconOverride, Icon cli.xpm, MiniIcon icons/mini/terminal.png
+Style "gv" Icon small/Postscript.xpm
+Style "xv" Icon Viewer.xpm, MiniIcon icons/mini/viewer.png
+Style "org.gnome.Nautilus" EWMHMiniIconOverride, MiniIcon icons/mini/folder.png
+Style "Synaptic" Icon Packer.xpm
+Style "soffice" Icon dtp.xpm
+Style "libreoffice-*" Icon dtp.xpm
+Style "YaST2" Icon PrefsDock.xpm
 
 MenuStyle * MWM
 MenuStyle * Hilight3DThickness -1, PopupOffset 0 96, PopupDelay 300

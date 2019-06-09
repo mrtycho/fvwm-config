@@ -3,6 +3,7 @@ EwmhBaseStruts 0 0 34 44
 Colorset 12 fg white, bg #909090, RootTransparent buffer, Tint #909090 40, hi white, sh #202020, fgsh #303030
 Colorset 13 bg #bebebe, hi white, Pixmap buttons_bg.xpm, sh #202020
 Colorset 14 fg black, bg #afafaf, hi white, sh #808080
+Colorset 15 fg #efefef, bg #404040, TiledPixmap Tile4.png, hi white, sh #404040
 
 DestroyModuleConfig BarButtons: *
 *BarButtons: Colorset 9
@@ -10,7 +11,7 @@ DestroyModuleConfig BarButtons: *
 *BarButtons: Rows 1
 *BarButtons: Padding 2 2
 *BarButtons: Frame 1
-PipeRead "echo *BarButtons: Geometry 780x38+$$((($[wa.width]-780)/2))-0"
+PipeRead "echo *BarButtons: Geometry 780x40+$$((($[infostore.screenWidth]-780)/2))-0@p"
 
 *BarButtons: (Title (Side,Center) Home, Icon icons/FileManager.xpm, PressColorset 6, Action "Exec exec $[infostore.filemanager]", \
     Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
@@ -25,7 +26,7 @@ PipeRead "echo *BarButtons: Geometry 780x38+$$((($[wa.width]-780)/2))-0"
 *BarButtons: (Title (Side,Center) Browser, Icon icons/Web.xpm, PressColorset 6, Action "Exec exec $[infostore.browser]")
 *BarButtons: (Title (Side,Center) Mail, Icon icons/Mail.xpm, PressColorset 6, Action "Exec exec $[infostore.mail]")
 *BarButtons: (1x1, Frame 1, Padding 1, Container(Rows 1, Frame 0 ))
-*BarButtons: (Frame -1, Colorset 3, Swallow(UseOld,NoKill,NoHints,NoRespawn) "xload" 'Exec xload -nolabel')
+*BarButtons: (Frame -1, Colorset 15, Swallow(UseOld,NoKill,NoHints,NoRespawn) "xload" 'Exec xload -nolabel')
 
 DestroyModuleConfig FvwmDesker: *
 *FvwmDesker: UseSkipList
@@ -97,7 +98,7 @@ DestroyModuleConfig FvwmBar: *
 *FvwmBar: Frame 0
 *FvwmBar: Padding 0 0
 *FvwmBar: Columns 23
-PipeRead "echo *FvwmBar: Geometry $$(($[wa.width]-4))x30+0+0"
+PipeRead "echo *FvwmBar: Geometry $$(($[infostore.screenWidth]-4))x30+0+0@p"
 
 *FvwmBar: (18x1, Padding 1, Colorset 9, Swallow "FvwmIconMan" `FvwmIconMan`)
 *FvwmBar: (2x1, Frame 0, Padding 10, Right, Swallow (NoClose,NoTitle,UseOld) 'stalonetray' \
