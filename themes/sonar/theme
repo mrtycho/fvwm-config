@@ -6,9 +6,9 @@ Colorset 3 fg #efefef, bg #404040, TiledPixmap Tile.png, hi white, sh #404040
 Colorset 4 fg black, bg #afafaf, Pixmap Tile2.png, hi white, fgsh #f0f0f0
 Colorset 5 fg black, bg #afafaf, hi #e5eae4, sh #7D847D
 Colorset 6 fg white, bg black, fgsh grey10
-Colorset 7 fg white, bg #263E43, fgsh grey10, hi #ffffff, sh #2b3743
-Colorset 8 fg #404040, bg #afafaf, TiledPixmap Tile2.png, hi #e0e0e0, fgsh #f0f0f0
-Colorset 9 fg black, bg #afafaf, TiledPixmap Tile2.png, hi white, sh #505050,fgsh #fce9dc
+Colorset 7 fg white, bg #263e43, fgsh grey10, hi #ffffff, sh #2b3743
+Colorset 8 fg #404040, bg #afafaf, hi #e0e0e0, fgsh #f0f0f0
+Colorset 9 fg black, bg #afafaf, hi white, sh #505050,fgsh #fce9dc
 Colorset 10 fg white, bg black, hi #202020, sh #202020
 Colorset 11 fg black, bg #afafaf, hi #eaeaea, sh #4a4a4a
 
@@ -62,14 +62,6 @@ Style "$[infostore.videoplayer]" EWMHMiniIconOverride, MiniIcon icons/mini/video
 Style "$[infostore.browser]" EWMHMiniIconOverride, MiniIcon icons/mini/browser.png
 Style "$[infostore.mail]" EWMHMiniIconOverride, MiniIcon icons/mini/mail.png
 
-Style "Xman" MiniIcon icons/mini/Help.xpm
-Style "Firefox" EWMHMiniIconOverride, MiniIcon icons/mini/browser.png
-Style "Firefox-esr" EWMHMiniIconOverride, MiniIcon icons/mini/browser.png
-Style "Thunderbird" EWMHMiniIconOverride, MiniIcon icons/mini/mail.png
-Style "xterm" MiniIcon icons/mini/terminal.png
-Style "xfce4-terminal" EWMHMiniIconOverride, MiniIcon icons/mini/terminal.png
-Style "xv" MiniIcon icons/mini/viewer.png
-Style "org.gnome.Nautilus" EWMHMiniIconOverride, MiniIcon icons/mini/folder.png
 Style "$[infostore.terminal]" EWMHMiniIconOverride, Icon cli.xpm, MiniIcon icons/mini/terminal.png
 Style "$[infostore.filemanager]" EWMHMiniIconOverride,Icon FileManager.xpm, MiniIcon icons/mini/folder.png
 Style "$[infostore.editor]" EWMHMiniIconOverride,Icon TextEditor.xpm, MiniIcon icons/mini/editor.png
@@ -79,8 +71,10 @@ Style "$[infostore.videoplayer]" EWMHMiniIconOverride, Icon Moviemaker.xpm, Mini
 Style "$[infostore.browser]" EWMHMiniIconOverride,Icon web.xpm, MiniIcon icons/mini/browser.png
 Style "$[infostore.mail]" EWMHMiniIconOverride, Icon Mail.xpm, MiniIcon icons/mini/mail.png
 
+Style "org.gnome.Nautilus" EWMHMiniIconOverride, Icon FileManager.xpm, MiniIcon icons/mini/folder.png
 Style "Xman" Icon Help.xpm, MiniIcon icons/mini/Help.xpm
 Style "Firefox" EWMHMiniIconOverride, Icon web.xpm, MiniIcon icons/mini/browser.png
+Style "Firefox-esr" EWMHMiniIconOverride, Icon web.xpm, MiniIcon icons/mini/browser.png
 Style "Thunderbird" EWMHMiniIconOverride, Icon Mail.xpm, MiniIcon icons/mini/mail.png
 Style "xterm" Icon cli.xpm, MiniIcon icons/mini/terminal.png
 Style "xfce4-terminal" EWMHMiniIconOverride, Icon cli.xpm, MiniIcon icons/mini/terminal.png
@@ -119,8 +113,8 @@ Mouse 1  1  A  Function "CloseWindow"
 Mouse 2  1  A  Destroy
 Mouse 3  1  A	WindowList (CurrentPage) NoGeometry, NoCurrentDeskTitle, IconifiedAtEnd
 Mouse 1  2  A  Function "MaximizeWindow"
-Mouse 2  2  A  MaximizeToSide -0
-Mouse 3  2  A  MaximizeToSide +0
+Mouse 2  2  A  MaximizeToSide +0
+Mouse 3  2  A  MaximizeToSide -0
 Mouse 1  4  A  Function "IconifyWindow"
 Mouse 3  4  A  All ($c) Iconify On
 
