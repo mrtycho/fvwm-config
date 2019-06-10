@@ -18,6 +18,18 @@ InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:Noto Sans:size=8::minspace=False:anti
 InfoStoreAdd normalfont "xft:Noto Sans:size=9:minspace=False:antialias=True"
 InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:Noto Sans:size=9:minspace=False:antialias=True"
 
+#------------------------------------------------------------------------------
+# Screen Settings
+#------------------------------------------------------------------------------
+
+InfoStoreAdd screenWidth "1920"
+
+Xinerama On
+XineramaSls Off
+XineramaSlsSize 2x1
+XineramaPrimaryScreen 1
+XineramaSlsScreens 2 1920x1080+0+0 1920x1080+1920+0
+
 BugOpts FlickeringMoveWorkaround True
 
 #------------------------------------------------------------------------------
@@ -27,14 +39,14 @@ BugOpts FlickeringMoveWorkaround True
 DestroyFunc StartFunction
 AddToFunc StartFunction
 #+ I Test (Init) Exec exec xrandr --output HDMI-1 --mode 1920x1080 --rate 60.00 --output eDP-1 --mode 1920x1080 --rate 60.00 --right-of HDMI-1
-#+ I Test (Init) Exec exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
+#+ I Test (Init) Exec exec /usr/lib/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 + I Test (Init) Exec exec /usr/bin/lxpolkit & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 #+ I Test (Init,x xsettingsd) Exec exec xsettingsd -c  $[FVWM_USERDIR]/xsettingsd
 + I Test (Init,x nm-applet) Exec exec nm-applet
 + I TestRc (!Match) Test (Init,x wicd-gtk) exec exec wicd-gtk -t
 + I Test (Init) Exec exec pnmixer
 #+ I Test (Init) Exec exec compton
-+ I Test (Init) Exec exec update-notifier
+#+ I Test (Init) Exec exec update-notifier
 + I Test (Init) Exec exec xscreensaver -no-splash
 + I Test (Init,x redshift) Exec exec redshift
 + I Test (Init) Exec exec xfce4-power-manager
@@ -78,7 +90,7 @@ AddToFunc MoveOrIconifyOrRaise I Focus
 
 DestroyFunc IconifyOrFocusAndRaise
 AddToFunc IconifyOrFocusAndRaise
-+ I ThisWindow (CurrentPage,!Iconic,Focused) Iconify
++ I ThisWindow (CurrentGlobalPage,!Iconic,Focused) Iconify
 + I TestRc (Match) Break 
 + I Iconify -1
 + I Raise
@@ -124,7 +136,8 @@ AddToFunc WindowListFunc
 
 DestroyFunc FuncFvwmNextWindow
 AddToFunc FuncFvwmNextWindow
-+ I Next (CurrentPage, !Iconic, AcceptsFocus) FlipFocus NoWarp
++ I Next (CurrentGlobalPage, AcceptsFocus) FlipFocus NoWarp
+#+ I Current (Iconic) Iconify off
 + I Current Raise
 
 DestroyFunc FuncFvwmNextAppWindow
@@ -138,8 +151,8 @@ DestroyModuleConfig FE-Focus: *
 
 DestroyFunc TransferFocus
 AddToFunc TransferFocus
- + I Prev (!Iconic, CurrentPage, !Overlapped, AcceptsFocus) Focus
- + I TestRc (NoMatch) ThisWindow (CurrentPage,!Overlapped,AcceptsFocus,!Iconic) Focus
+ + I Prev (!Iconic, CurrentGlobalPage, !Overlapped, AcceptsFocus) Focus
+ + I TestRc (NoMatch) ThisWindow (CurrentGlobalPage,!Overlapped,AcceptsFocus,!Iconic) Focus
 
 DestroyModuleConfig FE-Page: *
 *FE-Page: new_page FocusPage
@@ -157,9 +170,9 @@ AddToFunc   SetNitrogenBackground
 
 DestroyFunc MaximizeToSide
 AddToFunc   MaximizeToSide
-+ I ThisWindow (!CurrentPage) Break
-+ I Maximize 50 100
-+ I ThisWindow (Maximized) Move $0 +0
++ I ThisWindow (!CurrentGlobalPage) Break
++ I ThisWindow (!Maximized) ResizeMoveMaximize frame 960p -82p screen c $0 +0)
++ I TestRc (!Match) Maximize
 
 // Module function
 
@@ -188,11 +201,6 @@ Read applications
 #------------------------------------------------------------------------------
 # WM Settings
 #------------------------------------------------------------------------------
-
-Xinerama on
-#XineramaSls on
-#XineramaSlsSize 2x1
-XineramaPrimaryScreen 1
 
 DesktopSize 4x1
 
@@ -253,12 +261,6 @@ Style desktop_icon   CirculateSkip, WindowListSkip,  NoTitle
 Style *lock          !Title, !Handles, Sticky, WindowListSkip
 Style stalonetray    !Title, !Handles, WindowListSkip, CirculateSkip, StaysOnBottom,NeverFocus, EWMHUseStackingOrderHints
 Style fvwm_menu      NoButton 2, NoButton 4, WindowListSkip
-
-#------------------------------------------------------------------------------
-# Theme
-#------------------------------------------------------------------------------
-
-Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
 
 #------------------------------------------------------------------------------
 # Forms
@@ -331,9 +333,6 @@ Key Right                  A  C4 MaximizeToSide -0
 Key Up                     A  C4 MaximizeOrUnmaximize
 Key Down                   A  C4 IconifyOrUnmaximize
 
-Key 1                      A  4  MaximizeToSide +0	
-Key 2                      A  4  MaximizeToSide -0
-
 Silent Key Tab             A  M  FuncFvwmNextWindow
 Silent Key Tab             A  4  FuncFvwmNextAppWindow
 
@@ -358,6 +357,12 @@ Key XF86AudioPrev          A  N  Exec exec audtool playlist-reverse
 Key XF86AudioMute          A  N  Exec exec amixer -D pulse sset Master toggle
 Key XF86AudioRaiseVolume   A  N  Exec exec amixer -D pulse sset Master 5%+
 Key XF86AudioLowerVolume   A  N  Exec exec amixer -D pulse sset Master 5%-
+
+#------------------------------------------------------------------------------
+# Theme
+#------------------------------------------------------------------------------
+
+Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
 
 #------------------------------------------------------------------------------
 # Modules
