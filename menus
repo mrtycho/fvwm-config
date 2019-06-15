@@ -1,4 +1,6 @@
 PipeRead "python3 $FVWM_USERDIR/scripts/fvwm-menu-desktop --desktop lxde -t Programs --term-cmd '$[infostore.terminal] -e '"
+# SUSE
+# PipeRead "xdg_menu --charset UTF-8 --format fvwm2"
 
 DestroyMenu Utilities
 AddToMenu   Utilities "$[gt.Root Menu]" Title 
@@ -9,6 +11,7 @@ AddToMenu   Utilities "$[gt.Root Menu]" Title
 + "" Nop
 + "&$[gt.Favorites]"                               Popup Favorites
 + "&$[gt.Programs]"                                Popup Programs
+#+ "&$[gt.Programs]"                                Popup xdg_menu
 + "Fvwm $[gt.Modules]"                             Popup Module-Popup
 + "$[gt.Settings]"                                 Popup Settings
 + "$[gt.Help]"                                     Popup Documents

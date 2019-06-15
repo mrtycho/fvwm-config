@@ -3,14 +3,14 @@ Colorset 0 fg white, bg #182325, fgsh black, hi #b0b8a6, sh #2A3C40
 Colorset 1 fg #7a7d7a, bg #303030, fgsh #232323, hi #b0b0b0, sh #4a4a4a
 Colorset 2 fg white, bg #000000, sh #000000
 Colorset 3 fg #efefef, bg #404040, TiledPixmap Tile.png, hi white, sh #404040
-Colorset 4 fg black, bg #afafaf, Pixmap Tile2.png, hi white, fgsh #f0f0f0
-Colorset 5 fg black, bg #afafaf, hi #e5eae4, sh #7D847D
+Colorset 4 fg black, bg #aaafac, Pixmap Tile2.png, hi white, fgsh #f0f0f0
+Colorset 5 fg black, bg #aaafac, hi #e5eae4, sh #7D847D
 Colorset 6 fg white, bg black, fgsh grey10
 Colorset 7 fg white, bg #263e43, fgsh grey10, hi #ffffff, sh #2b3743
-Colorset 8 fg #404040, bg #afafaf, hi #e0e0e0, fgsh #f0f0f0
-Colorset 9 fg black, bg #afafaf, hi white, sh #505050,fgsh #fce9dc
+Colorset 8 fg #404040, bg #aaafac, hi #e0e0e0, fgsh #f0f0f0
+Colorset 9 fg black, bg #aaafac, hi white, sh #606060, fgsh #fce9dc
 Colorset 10 fg white, bg black, hi #202020, sh #202020
-Colorset 11 fg black, bg #afafaf, hi #eaeaea, sh #4a4a4a
+Colorset 11 fg black, bg #aaafac, hi #eaeaea, sh #4a4a4a
 
 Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
 Style * BorderWidth 4, HandleWidth 4
