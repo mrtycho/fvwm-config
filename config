@@ -18,7 +18,17 @@ InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:Noto Sans:size=8::minspace=False:anti
 InfoStoreAdd normalfont "xft:Noto Sans:size=9:minspace=False:antialias=True"
 InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:Noto Sans:size=9:minspace=False:antialias=True"
 
+#------------------------------------------------------------------------------
+# Screen Settings
+#------------------------------------------------------------------------------
+
 InfoStoreAdd screenWidth "1920"
+
+Xinerama On
+XineramaSls Off
+XineramaSlsSize 2x1
+XineramaPrimaryScreen 1
+XineramaSlsScreens 2 1920x1080+0+0 1920x1080+1920+0
 
 BugOpts FlickeringMoveWorkaround True
 
@@ -136,10 +146,12 @@ AddToFunc FuncFvwmNextAppWindow
 
 DestroyModuleConfig FE-Focus: *
 *FE-Focus: iconify TransferFocus
+*FE-Focus: deiconify Layer default
 *FE-Focus: destroy_window TransferFocus
 
 DestroyFunc TransferFocus
 AddToFunc TransferFocus
+ + I ThisWindow (Iconic) Layer 0 0
  + I Prev (!Iconic, CurrentGlobalPage, !Overlapped, AcceptsFocus) Focus
  + I TestRc (NoMatch) ThisWindow (CurrentGlobalPage,!Overlapped,AcceptsFocus,!Iconic) Focus
 
@@ -160,7 +172,7 @@ AddToFunc   SetNitrogenBackground
 DestroyFunc MaximizeToSide
 AddToFunc   MaximizeToSide
 + I ThisWindow (!CurrentGlobalPage) Break
-+ I ThisWindow (!Maximized) ResizeMoveMaximize frame 25 -82p screen c $0 +0
++ I ThisWindow (!Maximized) ResizeMoveMaximize frame 960p -82p screen c $0 +0)
 + I TestRc (!Match) Maximize
 
 
@@ -191,12 +203,6 @@ Read applications
 #------------------------------------------------------------------------------
 # WM Settings
 #------------------------------------------------------------------------------
-
-Xinerama On
-XineramaSls Off
-XineramaSlsSize 2x1
-XineramaPrimaryScreen 1
-XineramaSlsScreens 2 1920x1080+0+0 1920x1080+1920+0
 
 DesktopSize 4x1
 
@@ -257,12 +263,6 @@ Style desktop_icon   CirculateSkip, WindowListSkip,  NoTitle
 Style *lock          !Title, !Handles, Sticky, WindowListSkip
 Style stalonetray    !Title, !Handles, WindowListSkip, CirculateSkip, StaysOnBottom,NeverFocus, EWMHUseStackingOrderHints
 Style fvwm_menu      NoButton 2, NoButton 4, WindowListSkip
-
-#------------------------------------------------------------------------------
-# Theme
-#------------------------------------------------------------------------------
-
-Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
 
 #------------------------------------------------------------------------------
 # Forms
@@ -335,9 +335,6 @@ Key Right                  A  C4 MaximizeToSide -0
 Key Up                     A  C4 MaximizeOrUnmaximize
 Key Down                   A  C4 IconifyOrUnmaximize
 
-Key 1                      A  4  MaximizeToSide +0	
-Key 2                      A  4  MaximizeToSide -0
-
 Silent Key Tab             A  M  FuncFvwmNextWindow
 Silent Key Tab             A  4  FuncFvwmNextAppWindow
 
@@ -362,6 +359,12 @@ Key XF86AudioPrev          A  N  Exec exec audtool playlist-reverse
 Key XF86AudioMute          A  N  Exec exec amixer -D pulse sset Master toggle
 Key XF86AudioRaiseVolume   A  N  Exec exec amixer -D pulse sset Master 5%+
 Key XF86AudioLowerVolume   A  N  Exec exec amixer -D pulse sset Master 5%-
+
+#------------------------------------------------------------------------------
+# Theme
+#------------------------------------------------------------------------------
+
+Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
 
 #------------------------------------------------------------------------------
 # Modules

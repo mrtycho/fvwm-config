@@ -2,7 +2,7 @@ CleanupColorSets
 Colorset 0 fg white, bg #182325, fgsh black, hi #b0b8a6, sh #2A3C40 
 Colorset 1 fg #7a7d7a, bg #303030, fgsh #232323, hi #b0b0b0, sh #4a4a4a
 Colorset 2 fg white, bg #000000, sh #000000
-Colorset 3 fg #efefef, bg #404040, TiledPixmap Tile.png, hi white, sh #404040
+Colorset 3 fg #efefef, bg #404040, TiledPixmap icons/icon_tile.png, hi white, sh #404040
 Colorset 4 fg black, bg #aaafac, Pixmap Tile2.png, hi white, fgsh #f0f0f0
 Colorset 5 fg black, bg #aaafac, hi #e5eae4, sh #7D847D
 Colorset 6 fg white, bg black, fgsh grey10
@@ -36,10 +36,11 @@ Style * UseDecor MagicDecor, FvwmButtons, FvwmBorder
 Style * Font "$[infostore.titlefont]"
 Style * IconFont "$[infostore.smallfont]"
 # Style * NoIcon
+Style * !UseIconPosition, !StickyStippledIconTitle
 
-Style * IconBackgroundRelief 1, IconTitleRelief 0	
+Style * IconBackgroundRelief 0, IconTitleRelief 0	
 Style * IconBackgroundColorset 3, IconTitleColorset 6, HilightIconTitleColorset 2
-Style * IconSize 62 52, IconTitle
+Style * IconSize 56 46, IconTitle, IconBackgroundPadding 4
 Style * IconBox 10 45 -10 -5, IconGrid 20 20, IconFill top left
 Style * IconOverride
 
