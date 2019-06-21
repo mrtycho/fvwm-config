@@ -1,6 +1,6 @@
 #!/bin/sh
 [ -d $1/.thumbs ] || mkdir $1/.thumbs
-for pic in $1/*.*
+for pic in sort $1/*.*
 do
     bname=` basename "$pic" `
     base=`echo $bname | sed s/\.[^\.]*$//`

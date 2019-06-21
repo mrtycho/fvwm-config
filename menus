@@ -131,23 +131,25 @@ DestroyMenu Background-Settings
 AddToMenu   Background-Settings
 + "Nitrogen"                                       Function SetNitrogenBackground
 + "" Nop
-+ "$[gt.Browse Wallpapers]"                        Popup Back-Image
-+ "$[gt.Browse Patterns]"                          Popup Back-Pattern
++ "$[gt.Browse Wallpapers]"                        Popup Wallpapers
++ "$[gt.Browse Patterns]"                          Popup Pattern
+#PipeRead "python3 $FVWM_USERDIR/scripts/wallpaper.py $[FVWM_USERDIR]/Wallpapers -m Wallpapers"
+#PipeRead "python3 $FVWM_USERDIR/scripts/wallpaper.py $[FVWM_USERDIR]/Pattern -m Patterns"
 + "$[gt.Browse Colors]"                            Popup Back-Solid
 
 DestroyMenu Back-Solid
 AddToMenu   Back-Solid
-PipeRead 'sh $FVWM_USERDIR/scripts/colorthumb.sh'
+PipeRead "python3 $FVWM_USERDIR/scripts/colorthumbs.py"
 
-DestroyMenu Back-Image
-AddToMenu   Back-Image
+DestroyMenu Wallpapers
+AddToMenu   Wallpapers
 PipeRead 'sh $FVWM_USERDIR/scripts/wallpaper.sh $[FVWM_USERDIR]/Wallpapers'
 
-DestroyMenu Back-Pattern
-AddToMenu   Back-Pattern
+DestroyMenu Pattern
+AddToMenu   Pattern
 PipeRead 'sh $FVWM_USERDIR/scripts/wallpaper.sh $FVWM_USERDIR/Pattern'
 
-ChangeMenuStyle bgMenu Back-Solid Back-Image Back-Pattern
+ChangeMenuStyle bgMenu Back-Solid Wallpapers Pattern
 
 #------------------------------------------------------------------------------
 # Banner settings

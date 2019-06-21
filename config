@@ -39,8 +39,8 @@ BugOpts FlickeringMoveWorkaround True
 DestroyFunc StartFunction
 AddToFunc StartFunction
 #+ I Test (Init) Exec exec xrandr --output HDMI-1 --mode 1920x1080 --rate 60.00 --output eDP-1 --mode 1920x1080 --rate 60.00 --right-of HDMI-1
-+ I Test (Init) Exec exec /usr/lib/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
-#+ I Test (Init) Exec exec /usr/bin/lxpolkit & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
+#+ I Test (Init) Exec exec /usr/lib/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
++ I Test (Init) Exec exec /usr/bin/lxpolkit & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 #+ I Test (Init,x xsettingsd) Exec exec xsettingsd -c  $[FVWM_USERDIR]/xsettingsd
 + I Test (Init,x nm-applet) Exec exec nm-applet
 + I TestRc (!Match) Test (Init,x wicd-gtk) exec exec wicd-gtk -t
@@ -161,6 +161,7 @@ DestroyModuleConfig FE-Page: *
 
 DestroyFunc FocusPage
 AddToFunc FocusPage
++ I Any (CurrentPage, Focused) Break
 + I Next (CurrentPage, !Iconic, !Overlapped, AcceptsFocus) Focus
 
 DestroyFunc SetNitrogenBackground
@@ -233,7 +234,8 @@ Style * WindowShadeSteps 20
 Style * SnapAttraction 5 All ScreenAll
 Style * SnapGrid 5 5
 Style * EdgeMoveResistance 5
-Style * !UsePPosition
+Style * !UsePPosition,!UseIconPosition
+Style * EWMHDonateIcon
 Style * GrabFocus, GrabFocusTransient
 Style * !FPReleaseFocus
 Style * FPLenient
@@ -263,6 +265,8 @@ Style desktop_icon   CirculateSkip, WindowListSkip,  NoTitle
 Style *lock          !Title, !Handles, Sticky, WindowListSkip
 Style stalonetray    !Title, !Handles, WindowListSkip, CirculateSkip, StaysOnBottom,NeverFocus, EWMHUseStackingOrderHints
 Style fvwm_menu      NoButton 2, NoButton 4, WindowListSkip
+Style lxpolkit       NoButton 2, NoButton 4, UsePPosition
+Style wicd-client.py UsePPosition, EWMHUseStateHints
 
 #------------------------------------------------------------------------------
 # Forms
@@ -285,12 +289,6 @@ DestroyModuleConfig  FvwmForm-VerifyQuit: *
 *FvwmForm-VerifyQuit: Command     Nop
 
 Style FvwmForm-VerifyQuit !Button 1, !Button 2, !Button 4, StaysOnTop, NoHandles, WindowListSkip
-
-#------------------------------------------------------------------------------
-# Menus
-#------------------------------------------------------------------------------
-
-Read menus
 
 #------------------------------------------------------------------------------
 # Mouse Bindings
@@ -365,6 +363,12 @@ Key XF86AudioLowerVolume   A  N  Exec exec amixer -D pulse sset Master 5%-
 #------------------------------------------------------------------------------
 
 Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
+
+#------------------------------------------------------------------------------
+# Menus
+#------------------------------------------------------------------------------
+
+Read menus
 
 #------------------------------------------------------------------------------
 # Modules
