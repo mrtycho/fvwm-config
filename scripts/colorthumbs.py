@@ -25,23 +25,23 @@ def create_color(col):
    path = os.path.join(thumb_dir,col+'.png')
    if not os.path.exists(path):           
       try:
-         img = Image.new('RGB', (32,32), color = col)
-         img.save(path,'PNG')
+         Image.new('RGB', (32,32), color = col).save(path,'PNG')
       except Exception:
          eprint('Unable to create color {0}'.format(col))
          return ""
    return path
 
-thumb_dir = os.path.expandvars("$FVWM_USERDIR/.thumbs")
+fvwm_dir = os.path.expandvars('$FVWM_USERDIR')
+thumb_dir = os.path.join(fvwm_dir,'.thumbs')
 if not os.path.exists(thumb_dir):
    os.mkdir(thumb_dir)
 
-acolors = ['Tan', 'Peru', 'Sienna', 'IndianRed', 'SteelBlue', 'slategrey', 'Gray', 'DarkGray', 'LightGray', 'CadetBlue', 'Teal', 'DarkSlateGray', 'black']
-   
+acolors = ['Tan', 'Peru', 'Sienna', 'IndianRed', 'SteelBlue', 'Slategrey', 'Gray', 'DarkGray', 'LightGray', 'CadetBlue', 'Teal', 'DarkSlateGray', 'Black']
+
 for col in acolors:
    col_file = create_color(col)
    if col_file:
-      exec_s = 'fvwm-root --retain-pixmap {0}'.format(col_file)
-      conf_s = os.path.expandvars('echo "{0}" > $FVWM_USERDIR/background.cfg'.format(exec_s))      
+      exec_s = 'fvwm-root --retain-pixmap ' + col_file
+      conf_s = 'echo "{0}" > $FVWM_USERDIR/background.cfg'.format(exec_s,os.path.join(fvwm_dir,'background.cfg'))      
       print('+ %{0}%"{1}" Exec exec "`{2} && {3}`"'.format(col_file,col,conf_s,exec_s))
 

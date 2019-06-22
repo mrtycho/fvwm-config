@@ -32,8 +32,7 @@ def thumbnail_entry(image_path,folder):
             pic = Image.open(image_path)
             thumbname = os.path.join(folder,basename)
             if not os.path.exists(thumbname):
-                pic.thumbnail((48,48), Image.ANTIALIAS)
-                pic.save(thumbname, "PNG")
+                pic.thumbnail((48,48), Image.ANTIALIAS).save(thumbname, "PNG")
             exec_s = 'fvwm-root --dither --retain-pixmap ' + image_path
             conf_s = 'echo "{0}" > {1}'.format(exec_s,os.path.join(fvwm_dir,'background.cfg'))
             print(('+ %{0}%"{1}" Exec exec "`{2} && {3}`"').format(thumbname,basename[:-4],conf_s,exec_s));
