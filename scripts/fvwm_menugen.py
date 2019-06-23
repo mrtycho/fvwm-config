@@ -50,7 +50,7 @@ def get_app_entry(entry):
 	if requires_terminal(entry):	
 		execStr += terminal + ' '
 	execStr += me.sub('',app_info.get_string('Exec')) 
-	return ' + "{0}"  Exec exec {1}'.format(cgi.escape(app_info.get_display_name()),execStr)
+	return ' + "{0}"  Exec exec {1}'.format(app_info.get_display_name().replace('&','&&'),execStr)
 	
 def requires_terminal(entry):
 	term = entry.get_app_info().get_string('Terminal')
@@ -97,4 +97,5 @@ tree = GMenu.Tree.new(basename, GMenu.TreeFlags.SORT_DISPLAY_NAME)
 if not tree.load_sync():
 	raise ValueError("can not load menu tree {}".format(basename))
 parse_folder(tree.get_root_directory(), title)
-
+print('+ "" Nop')
+print('+ "$[gt.Refresh]" CreateAppMenu')

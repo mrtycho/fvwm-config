@@ -1,4 +1,10 @@
-PipeRead "python3 $FVWM_USERDIR/scripts/fvwm_menugen.py -d lxde -n Programs -t '$[infostore.terminal] -e'"
+DestroyFunc CreateAppMenu
+AddToFunc CreateAppMenu
++ I PipeRead "python3 $FVWM_USERDIR/scripts/fvwm_menugen.py -d lxde -n Programs -t '$[infostore.terminal] -e'"
+
+AddToFunc StartFunction
++ I Function CreateAppMenu
+
 # Fvwm2
 #PipeRead "python3 $FVWM_USERDIR/scripts/fvwm-menu-desktop --desktop lxde -t Programs --term-cmd '$[infostore.terminal] -e '"
 # SUSE
@@ -19,7 +25,7 @@ AddToMenu   Utilities "$[gt.Root Menu]" Title
 + "$[gt.Help]"                                     Popup Documents
 + "" Nop
 + "$[gt.Restart Fvwm]"                             Restart
-+ "" Nop
+-+ "" Nop
 + "$[gt.Exit Fvwm]"                                FvwmForm FvwmForm-VerifyQuit
 
 DestroyMenu Favorites
@@ -124,6 +130,7 @@ AddToMenu   Edit-Config
 + %icons/mini/config.png%"$[gt.Edit Modules]"      Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/modules
 + "" Nop
 + %icons/mini/reload.png%"$[gt.Reload Config]"     Restart
++ %icons/mini/reload.png%"$[gt.Reload Menus]"      Read menus
 
 #------------------------------------------------------------------------------
 # Background  settings
