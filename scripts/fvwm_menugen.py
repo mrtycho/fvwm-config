@@ -20,28 +20,55 @@ import cgi
 import gi
 import re
 gi.require_version('GMenu', '3.0')
-from gi.repository import GMenu, GLib
+from gi.repository import Gtk, GMenu, GLib, GdkPixbuf
 from io import StringIO
 import argparse
 
 terminal = 'xterm -e'
+use_icons = False
 
 def get_default_menu():
 	prefix = os.environ.get('XDG_MENU_PREFIX', '')
 	return prefix + 'applications.menu'
 
-def getSystemMenuPath(file_id):
+def get_system_menupath(file_id):
 	for path in GLib.get_system_config_dirs():
 		file_path = os.path.join(path, 'menus', file_id)
 		if os.path.isfile(file_path):
 			return file_path
 	return None
-	
+
+def get_icon(gicon):
+	if not use_icons:
+		return None
+	if not gicon:
+		return None
+	theme = Gtk.IconTheme.get_default()
+	icon_info = theme.lookup_by_gicon(gicon, 16, 0)
+	if icon_info is None:
+		return None
+	filename,suffix = os.path.splitext(icon_info.get_filename())
+	if suffix=='.svg':
+		return icon_info.get_filename()+':16x16'
+	if filename.find('16x16') == -1:
+		return None
+
+	return filename + suffix
+
+def get_menu_icon(directory):
+	return get_icon(directory.get_icon())
+        
+def get_app_icon(entry):
+	return get_icon(entry.get_app_info().get_icon())
+
 def get_menu(name,title):
 	return '\nDestroyMenu Popup_{0} \nAddToMenu Popup_{0} "{1}" Title'.format(name,title)
 	
-def get_menu_entry(name):
-	return ' + "{0}"  Popup Popup_{0}'.format(name)
+def get_menu_entry(name, directory):
+	icon = get_menu_icon(directory)
+	if not icon: 
+		return ' + "{0}"  Popup Popup_{0}'.format(name)
+	return ' + %{0}%"{1}"  Popup Popup_{1}'.format(icon,name)
 	
 def get_app_entry(entry):
 	me = re.compile('%[A-Z]?', re.I)
@@ -49,8 +76,12 @@ def get_app_entry(entry):
 	execStr = ''
 	if requires_terminal(entry):	
 		execStr += terminal + ' '
-	execStr += me.sub('',app_info.get_string('Exec')) 
-	return ' + "{0}"  Exec exec {1}'.format(app_info.get_display_name().replace('&','&&'),execStr)
+	execStr += me.sub('',app_info.get_string('Exec'))
+	icon = get_app_icon(entry)
+	app_name = app_info.get_display_name().replace('&','&&')
+	if not icon: 
+		return ' + "{0}"  Exec exec {1}'.format(app_name,execStr)
+	return ' + %{0}%"{1}"  Exec exec {2}'.format(icon,app_name,execStr)
 	
 def requires_terminal(entry):
 	term = entry.get_app_info().get_string('Terminal')
@@ -66,7 +97,7 @@ def parse_folder(directory,mname):
 			entry = m_iter.get_directory()
 			if not entry.get_is_nodisplay():
 				name = cgi.escape(entry.get_name())
-				menu_str.write(get_menu_entry(name))
+				menu_str.write(get_menu_entry(name,entry))
 				menu_str.write('\n')
 				parse_folder(entry,name)
 		elif item_type == GMenu.TreeItemType.ENTRY:
@@ -85,6 +116,8 @@ parser.add_argument('-t', '--term', metavar='terminal',
                    help='terminal + execute flag (e.g. xterm -e)')
 parser.add_argument('-n', '--name', metavar='Programs',
                    help='root menu name')
+parser.add_argument('-i', '--icons', action='store_true',
+                   help='show icons')
 
 args = parser.parse_args()
 
@@ -92,6 +125,8 @@ basename = get_default_menu() if args.desktop is None else args.desktop + '-appl
 if args.term:
 	terminal = args.term
 title = 'Programs' if not args.name else args.name
+
+use_icons = args.icons
 
 tree = GMenu.Tree.new(basename, GMenu.TreeFlags.SORT_DISPLAY_NAME)
 if not tree.load_sync():
