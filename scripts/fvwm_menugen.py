@@ -48,9 +48,9 @@ def get_icon(gicon):
 	if icon_info is None:
 		return None
 	filename,suffix = os.path.splitext(icon_info.get_filename())
-	if suffix=='.svg':
+	if suffix=='.svg' or suffix=='.svgz':
 		return icon_info.get_filename()+':16x16'
-	if filename.find('16x16') == -1:
+	if filename.find('16') == -1:
 		return None
 
 	return filename + suffix
@@ -100,6 +100,8 @@ def parse_folder(directory,mname):
 				menu_str.write(get_menu_entry(name,entry))
 				menu_str.write('\n')
 				parse_folder(entry,name)
+		elif item_type == GMenu.TreeItemType.SEPARATOR:
+			menu_str.write(' + ""  Nop\n')
 		elif item_type == GMenu.TreeItemType.ENTRY:
 			entry = m_iter.get_entry()
 			if not (entry.get_is_excluded() or entry.get_app_info().get_nodisplay()):
