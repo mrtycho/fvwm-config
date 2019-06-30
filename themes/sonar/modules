@@ -131,6 +131,12 @@ DestroyModuleConfig FvwmFormDefault: *
 *FvwmFormDefault: ItemFore black
 *FvwmFormDefault: ItemBack #d9d8d8
 
+DestroyModuleConfig FvwmAnimate: *
+*FvwmAnimate: Iterations 25
+*FvwmAnimate: Effect Zoom3D
+*FvwmAnimate: Delay 5
+*FvwmAnimate: Width 3
+
 DestroyFunc StartModules
 AddToFunc   StartModules
 + I Module FvwmButtons BarButtons

@@ -20,12 +20,14 @@ import cgi
 import gi
 import re
 gi.require_version('GMenu', '3.0')
-from gi.repository import Gtk, GMenu, GLib, GdkPixbuf
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk, GMenu, GLib
 from io import StringIO
 import argparse
 
 terminal = 'xterm -e'
 use_icons = False
+icon_size = 16
 
 def get_default_menu():
 	prefix = os.environ.get('XDG_MENU_PREFIX', '')
@@ -44,13 +46,13 @@ def get_icon(gicon):
 	if not gicon:
 		return None
 	theme = Gtk.IconTheme.get_default()
-	icon_info = theme.lookup_by_gicon(gicon, 16, 0)
+	icon_info = theme.lookup_by_gicon(gicon, icon_size, 0)
 	if icon_info is None:
 		return None
 	filename,suffix = os.path.splitext(icon_info.get_filename())
 	if suffix=='.svg' or suffix=='.svgz':
-		return icon_info.get_filename()+':16x16'
-	if filename.find('16') == -1:
+		return icon_info.get_filename()+':{0}x{0}'.format(str(icon_size))
+	if filename.find(str(icon_size)) == -1:
 		return None
 
 	return filename + suffix
@@ -120,6 +122,8 @@ parser.add_argument('-n', '--name', metavar='Programs',
                    help='root menu name')
 parser.add_argument('-i', '--icons', action='store_true',
                    help='show icons')
+parser.add_argument('-s', '--size', metavar='pixel', type=int,
+                   help='icon size (e.g. 16)')
 
 args = parser.parse_args()
 
@@ -130,7 +134,11 @@ title = 'Programs' if not args.name else args.name
 
 use_icons = args.icons
 
+if args.size:
+	icon_size = args.size
+
 tree = GMenu.Tree.new(basename, GMenu.TreeFlags.SORT_DISPLAY_NAME)
+
 if not tree.load_sync():
 	raise ValueError("can not load menu tree {}".format(basename))
 parse_folder(tree.get_root_directory(), title)

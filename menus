@@ -1,6 +1,6 @@
 DestroyFunc CreateAppMenu
 AddToFunc CreateAppMenu
-+ I PipeRead "python3 $FVWM_USERDIR/scripts/fvwm_menugen.py -d lxde -n Programs --icons -t '$[infostore.terminal] -e'"
++ I PipeRead "python3 $FVWM_USERDIR/scripts/fvwm_menugen.py -d gnome -n Programs --icons -t '$[infostore.terminal] -e'"
 
 AddToFunc StartFunction
 + I Function CreateAppMenu
