@@ -121,6 +121,6 @@ Mouse 3  2  A  MaximizeToSide -0
 Mouse 1  4  A  Function "IconifyWindow"
 Mouse 3  4  A  All ($c) Iconify On
 
-Mouse 1  T  A  Function "MoveOrRaiseOrShade"
+Mouse 1  T  A  Function "MoveOrRaiseOrMaximize"
 Mouse 2  T  A  Function "RaiseLowerWindow"
 Mouse 3  T  A  Menu Window-Ops3
