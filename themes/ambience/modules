@@ -4,30 +4,37 @@ Style BarButtons UseStyle PanelStyle
 Colorset 11 fg #202020, bg #dbdbdb, hi white, sh #bababa, fgsh #f0f0f0
 Colorset 12 fg white,   bg #909090, RootTransparent buffer, Tint #909090 40, hi white, sh #202020, fgsh #303030
 Colorset 13 fg black,   bg #bebebe, hi white, fgsh #e0e0e0
-Colorset 14 fg #101010, bg #e1e1e1, fgsh #d0cfcf, hi #f2f2f2, sh #babcbe, Pixmap taskbar2.xpm
+Colorset 14 fg #202020, bg #e1e1e1, RootTransparent buffer, Tint #e1e1e1 80, bgTint white 80, hi #e1e1e1, sh #afafaf, fgsh #f0f0f0
 
 DestroyModuleConfig BarButtons: *
 *BarButtons: Colorset 14
 *BarButtons: Font "$[infostore.smallfont]"
 *BarButtons: Rows 1
-*BarButtons: Padding 4 4
+*BarButtons: Padding 2 2
 *BarButtons: Frame 1
-PipeRead "echo *BarButtons: Geometry 760x35+$$((($[wa.width]-760)/2))-0"
+PipeRead "echo *BarButtons: Geometry 760x37+$$((($[wa.width]-760)/2))-0"
 
-*BarButtons: (Title (Side,Center) Home, Icon icons/folder.png, PressColorset 6, Action "Exec exec $[infostore.filemanager]", \
-    Action(Mouse 3) 'Exec exec $[infostore.terminal] -e mc')
-*BarButtons: (Title (Side,Center) Terminal, Icon icons/terminal.png, PressColorset 6, Action "Exec exec $[infostore.terminal]")
-*BarButtons: (Title (Side,Center) Editor, Icon icons/editor.png, PressColorset 6, Action "Exec exec $[infostore.editor]", \
-	Action(Mouse 3) 'Exec exec geany')
-*BarButtons: (Title (Side,Center) Viewer, Icon icons/viewer.png, PressColorset 6, Action "Exec exec $[infostore.viewer]", \
+*BarButtons: (8x1, Frame 1, Padding 1, Container(Rows 1, Frame 0 ))
+*BarButtons: (Title (Side,Center) Home, Icon icons/folder.png, PressIcon icons/folder_pressed.png \
+    PressColorset 6, Action "Exec exec $[infostore.filemanager]", \
+    Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
+*BarButtons: (Title (Side,Center) Terminal, Icon icons/terminal.png, PressIcon icons/terminal_pressed.png \
+    PressColorset 6, Action "Exec exec $[infostore.terminal]")
+*BarButtons: (Title (Side,Center) Editor, Icon icons/editor.png, PressIcon icons/editor_pressed.png \
+    PressColorset 6, Action "Exec exec $[infostore.editor]", \
+	 Action(Mouse 3) 'Exec exec geany')
+*BarButtons: (Title (Side,Center) Viewer, Icon icons/viewer.png, PressIcon icons/viewer_pressed.png \
+    PressColorset 6, Action "Exec exec $[infostore.viewer]", \
     Action(Mouse 2) 'Exec exec evince', \
     Action(Mouse 3) 'Exec exec gimp')
-*BarButtons: (Title (Side,Center) Media, Icon icons/media.png, PressColorset 6, Action "Exec exec $[infostore.audioplayer]", \
-    Action(Mouse 3) 'Exec exec $[infostore.videoplayer]')
-*BarButtons: (Title (Side,Center) Browser, Icon icons/browser.png, PressColorset 6, Action "Exec exec $[infostore.browser]")
-*BarButtons: (Title (Side,Center) E-Mail, Icon icons/mail.png, PressColorset 6, Action "Exec exec $[infostore.mail]")
-*BarButtons: (1x1, Frame 0, Padding 1, Container(Rows 1, Frame 0 ))
-*BarButtons: (Frame -1, Colorset 13, Swallow(UseOld,NoHints,NoRespawn) "xload" 'Exec xload -nolabel')
+*BarButtons: (Title (Side,Center) Media, Icon icons/media.png, PressColorset 6, PressIcon icons/media_pressed.png \
+    Action "Exec exec $[infostore.audioplayer]", \
+    Action(Mouse 3) "Exec exec $[infostore.videoplayer]")
+*BarButtons: (Title (Side,Center) Browser,Icon icons/browser.png, PressColorset 6, PressIcon icons/browser_pressed.png \
+    Action "Exec exec $[infostore.browser]")
+*BarButtons: (Title (Side,Center) Mail, Icon icons/mail.png, PressIcon icons/mail_pressed.png \
+    PressColorset 6, Action "Exec exec $[infostore.mail]")
+*BarButtons: (Frame -1, Colorset 13, Swallow(UseOld,NoHints,NoRespawn) "xload" 'Exec xload -nolabel -fg white -hl white -jumpscroll 1')
 *BarButtons: (End)
 
 Style "FvwmDesker" NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
@@ -136,6 +143,13 @@ Style "FvwmIdent" NoButton 2, NoButton 4, NoButton 6
 DestroyModuleConfig FvwmIdent: *
 *FvwmIdent: Colorset 5 *
 *FvwmIdent: Font "$[infostore.normalfont]"
+
+DestroyModuleConfig FvwmAnimate: *
+*FvwmAnimate: Color #a0a0a0
+*FvwmAnimate: Iterations 25
+*FvwmAnimate: Effect Frame
+*FvwmAnimate: Delay 5
+*FvwmAnimate: Width 3
 
 DestroyModuleConfig FvwmFormDefault: *
 *FvwmFormDefault: Font "$[infostore.normalfont]"
