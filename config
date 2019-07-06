@@ -7,6 +7,7 @@ ExecUseShell /bin/bash
 ModulePath $[FVWM_USERDIR]:+
 
 SetEnv fvwm_theme "magic"
+SetEnv FVWM_MAGICDIR "/usr/share/fvwm-magic"
 
 LocalePath $[FVWM_USERDIR]/locale;config:+
 
@@ -31,37 +32,6 @@ XineramaPrimaryScreen 1
 XineramaSlsScreens 2 1920x1080+0+0 1920x1080+1920+0
 
 BugOpts FlickeringMoveWorkaround True
-
-#------------------------------------------------------------------------------
-# Start
-#------------------------------------------------------------------------------
-
-DestroyFunc StartFunction
-AddToFunc StartFunction
-#+ I Test (Init) Exec exec xrandr --output HDMI-1 --mode 1920x1080 --rate 60.00 --output eDP-1 --mode 1920x1080 --rate 60.00 --right-of HDMI-1
-#+ I Test (Init) Exec exec /usr/lib/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
-+ I Test (Init) Exec exec /usr/bin/lxpolkit & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
-#+ I Test (Init,x xsettingsd) Exec exec xsettingsd -c  $[FVWM_USERDIR]/xsettingsd
-+ I Test (Init,x nm-applet) Exec exec nm-applet
-+ I TestRc (!Match) Test (Init,x wicd-gtk) exec exec wicd-gtk -t
-+ I Test (Init) Exec exec pnmixer
-#+ I Test (Init) Exec exec compton
-#+ I Test (Init) Exec exec update-notifier
-+ I Test (Init) Exec exec xscreensaver -no-splash
-+ I Test (Init,x redshift) Exec exec redshift
-+ I Test (Init) Exec exec xfce4-power-manager
-#+ I Test (Init,x clipit) Exec exec clipit
-+ I Exec exec $(source $[FVWM_USERDIR]/background.cfg)
-+ I FvwmEvent FE-Focus
-+ I FvwmEvent FE-Page
-+ I Module FvwmCommandS
-+ I Module FvwmAuto 300
-+ I Schedule 100 Function StartModules
-
-# This file decides if we start FvwmAnimate or not
-Read .start-FvwmAnimate
-# This one decides if we start FvwmAuto
-Read .start-FvwmAuto
 
 #------------------------------------------------------------------------------
 # Functions
@@ -181,6 +151,16 @@ AddToFunc   MaximizeToSide
 + I ThisWindow (!Maximized) ResizeMoveMaximize frame 960p -82p screen c $0 +0)
 + I TestRc (!Match) Maximize
 
+// Config functions
+
+DestroyFunc LoadConfig
+AddToFunc LoadConfig
++ I Test (F $[FVWM_USERDIR]/$0) Read $0
++ I TestRc (NoMatch) Read $[FVWM_MAGICDIR]/config/$0
+
+DestroyFunc LoadLocalConfig
+AddToFunc LoadLocalConfig
++ I Test (F $[FVWM_USERDIR]/$0) Read $0
 
 // Module function
 
@@ -198,7 +178,7 @@ DestroyFunc ModuleOn
 AddToFunc   ModuleOn
 + I KillModule $0
 + I Module $0 $1 $2
-+ I Exec echo "AddToFunc StartFunction I $0 $1 $2" > $FVWM_USERDIR/.start-$0
++ I Exec echo "AddToFunc StartModules I $0 $1 $2" > $FVWM_USERDIR/.start-$0
 
 DestroyFunc ModuleOff
 AddToFunc   ModuleOff
@@ -212,10 +192,41 @@ AddToFunc   ViewManPage
 + I Exec exec yelp man:$0 #$[infostore.terminal] -g 80x40 -e man $0
 
 #------------------------------------------------------------------------------
+# Start Function
+#------------------------------------------------------------------------------
+
+DestroyFunc StartFunction
+AddToFunc StartFunction
+#+ I Test (Init) Exec exec xrandr --output HDMI-1 --mode 1920x1080 --rate 60.00 --output eDP-1 --mode 1920x1080 --rate 60.00 --right-of HDMI-1
+#+ I Test (Init) Exec exec /usr/lib/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
++ I Test (Init) Exec exec /usr/bin/lxpolkit & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
+#+ I Test (Init,x xsettingsd) Exec exec xsettingsd -c  $[FVWM_USERDIR]/xsettingsd
++ I Test (Init,x nm-applet) Exec exec nm-applet
++ I TestRc (!Match) Test (Init,x wicd-gtk) exec exec wicd-gtk -t
++ I Test (Init) Exec exec pnmixer
+#+ I Test (Init) Exec exec compton
+#+ I Test (Init) Exec exec update-notifier
++ I Test (Init) Exec exec xscreensaver -no-splash
++ I Test (Init,x redshift) Exec exec redshift
+#+ I Test (Init) Exec exec xfce4-power-manager
+#+ I Test (Init,x clipit) Exec exec clipit
++ I Exec exec $(source $[FVWM_USERDIR]/background.cfg)
++ I FvwmEvent FE-Focus
++ I FvwmEvent FE-Page
++ I Module FvwmCommandS
++ I Module FvwmAuto 300
++ I Schedule 100 Function StartModules
+
+# This file decides if we start FvwmAnimate or not
+LoadLocalConfig .start-FvwmAnimate
+# This one decides if we start FvwmAuto
+LoadLocalConfig .start-FvwmAuto
+
+#------------------------------------------------------------------------------
 # Applications
 #------------------------------------------------------------------------------
 
-Read applications
+LoadConfig applications
 
 #------------------------------------------------------------------------------
 # WM Settings
@@ -378,17 +389,17 @@ Key XF86AudioLowerVolume   A  N  Exec exec amixer -D pulse sset Master 5%-
 # Theme
 #------------------------------------------------------------------------------
 
-Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
+LoadConfig themes/$[fvwm_theme]/theme
 
 #------------------------------------------------------------------------------
 # Menus
 #------------------------------------------------------------------------------
 
-Read menus
+LoadConfig menus
 
 #------------------------------------------------------------------------------
 # Modules
 #------------------------------------------------------------------------------
 
-Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/modules
+LoadConfig themes/$[fvwm_theme]/modules
 

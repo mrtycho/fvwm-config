@@ -2,13 +2,13 @@ CleanupColorSets
 Colorset 0 fg white, bg #507bad, fgsh black, hi #a5b0ba 
 Colorset 1 fg black, bg #9a9a9a, fgsh white, hi #e5e2e0, sh #656565
 Colorset 2 fg white, bg #000000, sh #000000
-Colorset 3 fg #efefef, bg #404040, TiledPixmap Tile.png, hi white, sh #404040
+Colorset 3 fg #efefef, bg #404040, TiledPixmap Tile.png, hi #e0e0e0, sh #404040
 Colorset 4 fg black, bg #afafaf, Pixmap Tile2.png, hi white, fgsh #f0f0f0
 Colorset 5 fg black, bg #afafaf, hi white, sh black
 Colorset 6 fg white, bg black, fgsh grey10
 Colorset 7 fg white, bg #507bad, fgsh grey10, hi #ffffff, sh #2b3743
-Colorset 8 fg #404040, bg #afafaf, TiledPixmap Tile2.png, hi #e0e0e0, fgsh #f0f0f0
-Colorset 9 fg black, bg #afafaf, TiledPixmap Tile2.png, hi white, sh #505050,fgsh #fce9dc
+Colorset 8 fg #404040, bg #afafaf, TiledPixmap Tile_bg.png, hi #e0e0e0, fgsh #f0f0f0
+Colorset 9 fg black, bg #afafaf, TiledPixmap Tile_bg.png, hi white, sh #505050,fgsh #fce9dc
 Colorset 10 fg white, bg black, hi #202020, sh #202020
 Colorset 11 fg black, bg #afafaf, hi #eaeaea, sh #4a4a4a
 
@@ -39,9 +39,10 @@ Style * IconFont "$[infostore.smallfont]"
 
 Style * IconBackgroundRelief 1, IconTitleRelief 0	
 Style * IconBackgroundColorset 3, IconTitleColorset 6, HilightIconTitleColorset 2
-Style * IconSize 62 52, IconTitle
+Style * IconSize 60 50, IconTitle, IconBackgroundPadding 2
 Style * IconBox 10 45 -10 -5, IconGrid 20 20, IconFill top left
 Style * IconOverride
+Style * Icon Template.xpm
 
 DestroyDecor MagicPanelDecor
 AddToDecor MagicPanelDecor
