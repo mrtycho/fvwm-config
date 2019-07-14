@@ -57,7 +57,7 @@ Style "xv" Icon Viewer.xpm, MiniIcon icons/mini/viewer.png
 Style "Synaptic" Icon Packer.xpm
 
 MenuStyle * MWM
-MenuStyle * Hilight3DThickness 0, PopupOffset 0 100, PopupDelay 300
+MenuStyle * Hilight3DThickness 1, PopupOffset 0 100, PopupDelay 300
 MenuStyle * Font "$[infostore.normalfont]"
 MenuStyle * TitleFont "$[infostore.titlefont]"
 MenuStyle * MenuColorset 5, ActiveColorset 0, HilightBack, TitleColorset 0, HilightTitleBack

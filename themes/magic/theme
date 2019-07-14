@@ -2,9 +2,9 @@ CleanupColorSets
 Colorset 0 fg white, bg #507bad, fgsh black, hi #a5b0ba 
 Colorset 1 fg black, bg #9a9a9a, fgsh white, hi #e5e2e0, sh #656565
 Colorset 2 fg white, bg #000000, sh #000000
-Colorset 3 fg #efefef, bg #404040, TiledPixmap Tile.png, hi #e0e0e0, sh #404040
-Colorset 4 fg black, bg #afafaf, Pixmap Tile2.png, hi white, fgsh #f0f0f0
-Colorset 5 fg black, bg #afafaf, hi white, sh black
+Colorset 3 fg #efefef, bg #404040, Pixmap Tile6.png, hi #e0e0e0, sh #202020
+Colorset 4 fg black, bg #afafaf, Pixmap Tile5.png, hi white, fgsh #f0f0f0, sh #303030
+Colorset 5 fg black, bg #afafaf, hi white, sh #303030
 Colorset 6 fg white, bg black, fgsh grey10
 Colorset 7 fg white, bg #507bad, fgsh grey10, hi #ffffff, sh #2b3743
 Colorset 8 fg #404040, bg #afafaf, TiledPixmap Tile_bg.png, hi #e0e0e0, fgsh #f0f0f0
@@ -21,13 +21,13 @@ AddToDecor MagicDecor
 + TitleStyle   AllActive       (TiledPixmap title-active.xpm) -- Flat
 + TitleStyle   Inactive        (TiledPixmap title-inactive.xpm) -- Flat
 + ButtonStyle  1  Active	    (Pixmap close-activeup.xpm)  -- Flat
-+ ButtonStyle  1	ActiveDown   (Pixmap close-activedown.xpm)
++ ButtonStyle  1	ActiveDown   (Pixmap close-activedown.xpm) -- Flat
 + ButtonStyle  1	Inactive     (Pixmap close-inactive.xpm) -- Flat
 + ButtonStyle  2	Active	    (Pixmap maximize-activeup.xpm)  -- Flat
-+ ButtonStyle  2	ActiveDown   (Pixmap maximize-activedown.xpm) 
++ ButtonStyle  2	ActiveDown   (Pixmap maximize-activedown.xpm) -- Flat
 + ButtonStyle  2	Inactive     (Pixmap maximize-inactive.xpm) -- Flat
 + ButtonStyle  4	Active	    (Pixmap iconify-activeup.xpm)  -- Flat
-+ ButtonStyle  4	ActiveDown   (Pixmap iconify-activedown.xpm) 
++ ButtonStyle  4	ActiveDown   (Pixmap iconify-activedown.xpm) -- Flat
 + ButtonStyle  4	Inactive     (Pixmap iconify-inactive.xpm ) -- Flat
 + BorderStyle	Active   -- HiddenHandles 
 + BorderStyle	Inactive -- HiddenHandles 
@@ -37,8 +37,8 @@ Style * Font "$[infostore.titlefont]"
 Style * IconFont "$[infostore.smallfont]"
 # Style * NoIcon
 
-Style * IconBackgroundRelief 1, IconTitleRelief 0	
-Style * IconBackgroundColorset 3, IconTitleColorset 6, HilightIconTitleColorset 2
+Style * IconBackgroundRelief 1, IconTitleRelief 1
+Style * IconBackgroundColorset 3, IconTitleColorset 4, HilightIconTitleColorset 7
 Style * IconSize 60 50, IconTitle, IconBackgroundPadding 2
 Style * IconBox 10 45 -10 -5, IconGrid 20 20, IconFill top left
 Style * IconOverride
@@ -110,6 +110,6 @@ Mouse 3  2  A  MaximizeToSide +0
 Mouse 1  4  A  Function "IconifyWindow"
 Mouse 3  4  A  All ($c) Iconify On
 
-Mouse 1  T  A  Function "MoveOrRaiseOrShade"
+Mouse 1  T  A  Function "MoveOrRaiseOrMaximize"
 Mouse 2  T  A  Function "RaiseLowerWindow"
 Mouse 3  T  A  Menu Window-Ops3
