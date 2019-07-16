@@ -178,7 +178,7 @@ DestroyFunc ModuleOn
 AddToFunc   ModuleOn
 + I KillModule $0
 + I Module $0 $1 $2
-+ I Exec echo "AddToFunc StartModules I $0 $1 $2" > $FVWM_USERDIR/.start-$0
++ I Exec echo "AddToFunc StartFunction I $0 $1 $2" > $FVWM_USERDIR/.start-$0
 
 DestroyFunc ModuleOff
 AddToFunc   ModuleOff
