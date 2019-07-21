@@ -9,7 +9,7 @@ Net/EnableInputFeedbackSounds 0
 Net/EnableEventSounds 0
 Net/CursorBlink 1
 Net/DoubleClickDistance 5
-Net/IconThemeName "elementary-xfce-dark2"
+Net/IconThemeName "elementary-xfce2"
 Gtk/CanChangeAccels 0
 Gtk/ColorPalette "black:white:gray50:red:purple:blue:light blue:green:yellow:orange:lavender:brown:goldenrod4:dodger blue:pink:light green:gray10:gray30:gray75:gray90"
 Xft/Antialias -1
@@ -20,7 +20,7 @@ Xft/RGBA "none"
 Net/DndDragThreshold 8
 Net/SoundThemeName "default"
 Gtk/CursorThemeName ""
-Net/ThemeName "MyBird2"
+Net/ThemeName "Magicbird"
 Net/CursorBlinkTime 1200
 Gtk/IconSizes ""
 Gtk/MenuBarAccel "F10"

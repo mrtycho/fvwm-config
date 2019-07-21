@@ -19,14 +19,14 @@ AddToMenu   Utilities "$[gt.Root Menu]" Title
 + "" Nop
 + "&$[gt.Favorites]"                               Popup Favorites
 + "&$[gt.Programs]"                                Popup Popup_Programs
-#+ "&$[gt.Programs]"                                Popup xdg_menu
+#+ "&$[gt.Programs]"                               Popup xdg_menu
 + "Fvwm $[gt.Modules]"                             Popup Module-Popup
 + "$[gt.Settings]"                                 Popup Settings
 + "$[gt.Help]"                                     Popup Documents
 + "" Nop
-+ "$[gt.Restart Fvwm]"                             Restart
++ "$[gt.Session]"                                  Popup Session
 -+ "" Nop
-+ "$[gt.Exit Fvwm]"                                FvwmForm FvwmForm-VerifyQuit
++ "$[gt.Logout]"                                   FvwmScript FvwmScript-Quit
 
 DestroyMenu Favorites
 AddToMenu   Favorites
@@ -322,15 +322,20 @@ AddToMenu   Screen
 + "Preferences"                                    Exec exec xscreensaver-demo
 
 #------------------------------------------------------------------------------
-# Restart
+# Session
 #------------------------------------------------------------------------------
 
-DestroyMenu Restart
-AddToMenu   Restart
-+ "$[gt.Restart Self]"                             Restart
-+ "&Openbox"                                       Restart openbox
-+ "i3"                                             Restart i3
-+ "Terminal"                                       Restart xterm
+DestroyMenu Session
+AddToMenu   Session
++ "$[gt.Restart Fvwm]"                             Restart
++ "" Nop
++ "$[gt.Switch User]"                              Exec exec dm-tool switch-to-greeter
++ "$[gt.Lock Screen]"                              Exec exec xscreensaver-command -l
+#+ " $[gt.System] "	                              Title
+#+ "$[gt.Restart]"                                  FvwmForm FvwmForm-VerifyQuit
+#+ "$[gt.Shutdown]"                                 FvwmForm FvwmForm-VerifyQuit
+#+ "$[gt.Logout]"                                  FvwmForm FvwmForm-VerifyQuit
+
 
 #------------------------------------------------------------------------------
 # Windows Operations

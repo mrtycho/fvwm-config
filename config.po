@@ -164,6 +164,12 @@ msgstr "Module bearbeiten"
 msgid "Reload Config"
 msgstr "Konfiguration neu laden"
 
+msgid "Reload Menus"
+msgstr "Menüs neu laden"
+
+msgid "Refresh"
+msgstr "Aktualisieren"
+
 # Wallpaper
 
 msgid "Browse Wallpapers"
@@ -174,6 +180,29 @@ msgstr "Kachel wählen"
 
 msgid "Browse Colors"
 msgstr "Farbe wählen"
+
+# Session
+
+msgid "Session"
+msgstr "Sitzung"
+
+msgid "Switch User"
+msgstr "Benutzer wechseln"
+
+msgid "Lock Screen"
+msgstr "Bildschirm sperren"
+
+msgid "Shutdown"
+msgstr "Herunterfahren"
+
+msgid "Shut down the System"
+msgstr "System herunterfahren"
+
+msgid "Restart the System"
+msgstr "System neu starten"
+
+msgid "Restart with:"
+msgstr "Neu starten mit:"
 
 # Forms
 
