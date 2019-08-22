@@ -16,13 +16,14 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-import cgi
+import html
 import gi
 import re
+import sys
 gi.require_version('GMenu', '3.0')
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, GMenu, GLib
-from io import StringIO
+from io import BytesIO, TextIOWrapper
 import argparse
 
 terminal = 'xterm -e'
@@ -90,7 +91,9 @@ def requires_terminal(entry):
 	return ( term is not None and term == 'true') 
 	
 def parse_folder(directory,mname):
-	menu_str = StringIO()
+	menu_str = BytesIO()
+	encoding = sys.stdin.encoding
+	wrapper = TextIOWrapper(menu_str, write_through=True)
 	m_iter = directory.iter()
 	item_type = m_iter.next()
 	
@@ -98,20 +101,21 @@ def parse_folder(directory,mname):
 		if item_type == GMenu.TreeItemType.DIRECTORY:
 			entry = m_iter.get_directory()
 			if not entry.get_is_nodisplay():
-				name = cgi.escape(entry.get_name())
-				menu_str.write(get_menu_entry(name,entry))
-				menu_str.write('\n')
+				name = html.escape(entry.get_name())
+				wrapper.write(get_menu_entry(name,entry).encode(encoding,'ignore').decode(encoding))
+				wrapper.write('\n')
 				parse_folder(entry,name)
 		elif item_type == GMenu.TreeItemType.SEPARATOR:
-			menu_str.write(' + ""  Nop\n')
+			wrapper.write(' + ""  Nop\n')
 		elif item_type == GMenu.TreeItemType.ENTRY:
 			entry = m_iter.get_entry()
 			if not (entry.get_is_excluded() or entry.get_app_info().get_nodisplay()):
-				menu_str.write(get_app_entry(entry))
-				menu_str.write('\n')
+				wrapper.write(get_app_entry(entry).encode(encoding,'ignore').decode(encoding))
+				wrapper.write('\n')
 		item_type = m_iter.next()
-	print(get_menu(mname,cgi.escape(directory.get_name())))
-	print(menu_str.getvalue())
+	print(get_menu(mname,html.escape(directory.get_name())))
+	print(menu_str.getvalue().decode(encoding))
+	menu_str.close()
 
 parser = argparse.ArgumentParser(description='Generate application menu for FVWM2')
 parser.add_argument('-d', '--desktop', metavar='desktop',
