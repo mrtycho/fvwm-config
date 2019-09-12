@@ -1,7 +1,7 @@
 #!/bin/bash
 
-ThumbDir=$FVWM_USERDIR/.thumbs
-[ -d $ThumbDir ] || mkdir $ThumbDir
+ThumbDir=$FVWM_USERDIR/.thumbs/colors
+[ -d $ThumbDir ] || mkdir -p $ThumbDir
 
 Colors="tan peru sienna indianred olivedrab midnightblue steelblue slategrey grey30 cadetblue teal darkslategrey black"
 

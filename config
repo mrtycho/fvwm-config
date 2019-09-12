@@ -7,23 +7,25 @@ ExecUseShell /bin/bash
 ModulePath $[FVWM_USERDIR]:+
 
 SetEnv fvwm_theme "magic"
-SetEnv FVWM_MAGICDIR "/usr/share/fvwm-magic"
 
 LocalePath $[FVWM_USERDIR]/locale;config:+
+ImagePath  $[FVWM_USERDIR]/themes/$[fvwm_theme]:$[FVWM_USERDIR]/3dpixmaps:+
 
-ImagePath $[FVWM_USERDIR]/themes/$[fvwm_theme]:$[FVWM_USERDIR]/3dpixmaps:+
+#------------------------------------------------------------------------------
+# Functions
+#------------------------------------------------------------------------------
 
-*FvwmScript: Path $[FVWM_USERDIR]/scripts
+Read $[FVWM_USERDIR]/functions
 
-InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:Noto Sans:size=9::minspace=False:antialias=True"
-InfoStoreAdd normalfont "xft:Noto Sans:size=10:minspace=False:antialias=True"
-InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:Noto Sans:size=10:minspace=False:antialias=True"
+#------------------------------------------------------------------------------
+# Settings
+#------------------------------------------------------------------------------
+
+Read $[FVWM_USERDIR]/settings
 
 #------------------------------------------------------------------------------
 # Screen Settings
 #------------------------------------------------------------------------------
-
-InfoStoreAdd screenWidth "1920"
 
 Xinerama On
 XineramaSls Off
@@ -34,199 +36,30 @@ XineramaSlsScreens 2 1920x1080+0+0 1920x1080+1920+0
 BugOpts FlickeringMoveWorkaround True
 
 #------------------------------------------------------------------------------
-# Functions
-#------------------------------------------------------------------------------
-
-DestroyFunc MoveAndRaise
-AddToFunc MoveAndRaise I Focus
-+ I Raise
-+ M Move
-+ C Raise
-
-DestroyFunc MoveOrRaiseOrShade
-AddToFunc MoveOrRaiseOrShade I Focus
-+ I Raise
-+ M Move
-+ C Raise
-+ D WindowShade
-
-DestroyFunc MoveOrRaiseOrMaximize
-AddToFunc MoveOrRaiseOrMaximize I Focus
-+ I Raise
-+ M Move
-+ C Raise
-+ D Maximize
-
-DestroyFunc MoveOrIconifyOrRaise
-AddToFunc MoveOrIconifyOrRaise I Focus
-+ M Move
-+ D Iconify
-+ C Raise
-
-DestroyFunc IconifyOrFocusAndRaise
-AddToFunc IconifyOrFocusAndRaise
-+ I ThisWindow (CurrentGlobalPage,!Iconic,Focused) Iconify
-+ I TestRc (Match) Break 
-+ I Iconify -1
-+ I Raise
-+ I ThisWindow (AcceptsFocus) Focus
-
-DestroyFunc IconifyOrUnmaximize
-AddToFunc IconifyOrUnmaximize
-+ I ThisWindow (CurrentGlobalPage,!Maximized,Focused) Iconify
-+ I TestRc (Match) Break 
-+ I ThisWindow (CurrentGlobalPage,Maximized,Focused) Maximize -1
-
-DestroyFunc MaximizeOrUnmaximize
-AddToFunc MaximizeOrUnmaximize
-+ I ThisWindow (CurrentGlobalPage,Focused) Maximize
-
-DestroyFunc MaximizeWindow
-AddToFunc MaximizeWindow
-+ C Maximize
-
-DestroyFunc IconifyWindow
-AddToFunc IconifyWindow
-+ C Iconify
-
-DestroyFunc CloseWindow
-AddToFunc CloseWindow
-+ C Close
-
-DestroyFunc RaiseLowerKey
-AddToFunc RaiseLowerKey
-+ I ThisWindow (!Overlapped) Lower
-+ I TestRc (Match) TransferFocus
-
-DestroyFunc RaiseLowerWindow
-AddToFunc RaiseLowerWindow
-+ C ThisWindow (!Overlapped) Lower
-+ C TestRc (Match) TransferFocus
-
-DestroyFunc WindowListFunc
-AddToFunc WindowListFunc
-+ I ThisWindow Iconify off
-+ I ThisWindow Raise
-+ I ThisWindow Focus
-
-DestroyFunc FuncFvwmNextWindow
-AddToFunc FuncFvwmNextWindow
-+ I Next (CurrentGlobalPage, !Iconic, AcceptsFocus) FlipFocus NoWarp
-+ I Current Raise
-
-DestroyFunc FuncFvwmNextAppWindow
-AddToFunc FuncFvwmNextAppWindow
-+ I Next ($[w.resource], !Iconic, AcceptsFocus) FlipFocus
-+ I Current Raise
-
-DestroyModuleConfig FE-Focus: *
-*FE-Focus: iconify TransferFocus
-*FE-Focus: deiconify Layer default
-*FE-Focus: destroy_window TransferFocus
-
-DestroyFunc TransferFocus
-AddToFunc TransferFocus
- + I ThisWindow (Iconic) Layer 0 0
- + I Prev (!Iconic, CurrentGlobalPage, !Overlapped, AcceptsFocus) Focus
- + I TestRc (NoMatch) ThisWindow (CurrentGlobalPage,!Overlapped,AcceptsFocus,!Iconic) Focus
-
-DestroyModuleConfig FE-Page: *
-*FE-Page: new_page FocusPage
-*FE-Page: new_desk FocusPage
-
-DestroyFunc FocusPage
-AddToFunc FocusPage
-+ I Any (CurrentPage, Focused) Break
-+ I Next (CurrentPage, !Iconic, !Overlapped, AcceptsFocus) Focus
-
-DestroyFunc SetNitrogenBackground
-AddToFunc   SetNitrogenBackground
-+ I Exec exec nitrogen --restore
-+ I Exec nitrogen
-+ I TestRc (Match) Exec echo "nitrogen --restore" > $[FVWM_USERDIR]/background.cfg
-
-DestroyFunc MaximizeToSide
-AddToFunc   MaximizeToSide
-+ I ThisWindow (!CurrentGlobalPage) Break
-+ I ThisWindow (!Maximized) ResizeMoveMaximize frame 960p -82p screen c $0 +0)
-+ I TestRc (!Match) Maximize
-
-// Config functions
-
-DestroyFunc LoadConfig
-AddToFunc LoadConfig
-+ I Test (F $[FVWM_USERDIR]/$0) Read $0
-+ I TestRc (NoMatch) Read $[FVWM_MAGICDIR]/config/$0
-
-DestroyFunc LoadLocalConfig
-AddToFunc LoadLocalConfig
-+ I Test (F $[FVWM_USERDIR]/$0) Read $0
-
-// Module function
-
-DestroyFunc RestartModule
-AddToFunc RestartModule
-+ I KillModule $0
-+ I Module $0
-
-DestroyFunc RestartModuleByAlias
-AddToFunc RestartModuleByAlias
-+ I All ($2) Close
-+ I Module $0 $1
-
-DestroyFunc ModuleOn
-AddToFunc   ModuleOn
-+ I KillModule $0
-+ I Module $0 $1 $2
-+ I Exec echo "AddToFunc StartFunction I $0 $1 $2" > $FVWM_USERDIR/.start-$0
-
-DestroyFunc ModuleOff
-AddToFunc   ModuleOff
-+ I KillModule $0
-+ I Exec echo "# Do not start $0" > $FVWM_USERDIR/.start-$0
-
-# FvwmManPage
-
-DestroyFunc ViewManPage
-AddToFunc   ViewManPage
-+ I Exec exec yelp man:$0 #$[infostore.terminal] -g 80x40 -e man $0
-
-#------------------------------------------------------------------------------
 # Start Function
 #------------------------------------------------------------------------------
 
 DestroyFunc StartFunction
 AddToFunc StartFunction
-#+ I Test (Init) Exec exec xrandr --output HDMI-1 --mode 1920x1080 --rate 60.00 --output eDP-1 --mode 1920x1080 --rate 60.00 --right-of HDMI-1
-#+ I Test (Init) Exec exec /usr/lib/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 + I Test (Init) Exec exec /usr/bin/lxpolkit & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
-#+ I Test (Init,x xsettingsd) Exec exec xsettingsd -c  $[FVWM_USERDIR]/xsettingsd
 + I Test (Init,x nm-applet) Exec exec nm-applet
 + I TestRc (!Match) Test (Init,x wicd-gtk) exec exec wicd-gtk -t
 + I Test (Init) Exec exec pnmixer
-#+ I Test (Init) Exec exec compton
-#+ I Test (Init) Exec exec update-notifier
 + I Test (Init) Exec exec xscreensaver -no-splash
 + I Test (Init,x redshift) Exec exec redshift
-#+ I Test (Init) Exec exec xfce4-power-manager
-#+ I Test (Init,x clipit) Exec exec clipit
++ I Test (Init,x xfce4-power-manager) Exec exec xfce4-power-manager
 + I Exec exec $(source $[FVWM_USERDIR]/background.cfg)
 + I FvwmEvent FE-Focus
 + I FvwmEvent FE-Page
 + I Module FvwmCommandS
 + I Module FvwmAuto 300
++ I Function LocalStartFunction
 + I Schedule 100 Function StartModules
 
 # This file decides if we start FvwmAnimate or not
 LoadLocalConfig .start-FvwmAnimate
 # This one decides if we start FvwmAuto
 LoadLocalConfig .start-FvwmAuto
-
-#------------------------------------------------------------------------------
-# Applications
-#------------------------------------------------------------------------------
-
-LoadConfig applications
 
 #------------------------------------------------------------------------------
 # WM Settings
@@ -255,7 +88,7 @@ CursorStyle MENU         left_ptr
 
 Style * ClickToFocus
 Style * MouseFocusClickRaises
-Style * PositionPlacement Center #TileCascadePlacement
+Style * PositionPlacement Center
 Style * ResizeOpaque
 Style * WindowShadeSteps 20
 Style * SnapAttraction 5 All ScreenAll
@@ -276,6 +109,8 @@ Style * EWMHPlacementIgnoreWorkingArea
 #Style * ParentalRelativity
 Style * EWMHIgnoreStateHints
 
+Style "Fvwm*"        UsePPosition, TileCascadePlacement
+Style fvwm_menu      UsePPosition, EWMHUseStateHints
 Style gnomesu        UsePPosition, EWMHUseStateHints
 Style gpodder        !UsePPosition, EWMHIgnoreStateHints
 Style gcolor3        NoButton 2, NoButton 4, WindowListSkip
@@ -290,7 +125,7 @@ Style "nautilus"     EWMHIgnoreWindowType, !MWMDecor
 Style "tint2"        !Title, !Handles, !Borders, StaysOnTop, EWMHIgnoreStrutHints, Sticky, EWMHPlacementIgnoreWorkingArea, NeverFocus, WindowListSkip
 Style desktop_icon   CirculateSkip, WindowListSkip,  NoTitle
 Style *lock          !Title, !Handles, Sticky, WindowListSkip
-Style stalonetray    !Title, !Handles, WindowListSkip, CirculateSkip, StaysOnBottom,NeverFocus, EWMHUseStackingOrderHints
+Style stalonetray    !Title, !Handles, WindowListSkip, CirculateSkip, StaysOnBottom,NeverFocus, EWMHUseStackingOrderHints, TileCascadePlacement
 Style fvwm_menu      NoButton 2, NoButton 4, WindowListSkip
 Style lxpolkit       NoButton 2, NoButton 4, UsePPosition
 Style wicd-client.py UsePPosition, EWMHUseStateHints
@@ -317,7 +152,7 @@ DestroyModuleConfig  FvwmForm-VerifyQuit: *
 
 Style FvwmForm-VerifyQuit !Button 1, !Button 2, !Button 4, StaysOnTop, NoHandles, WindowListSkip
 
-Style FvwmScript-Quit !Button 1, !Button 2, !Button 4, StaysOnTop, NoHandles, WindowListSkip, PositionPlacement Center
+Style "FvwmScript-Quit" UsePPosition, !Button 1, !Button 2, !Button 4, StaysOnTop, NoHandles, WindowListSkip, PositionPlacement Center
 
 #------------------------------------------------------------------------------
 # Mouse Bindings
@@ -391,17 +226,17 @@ Key XF86AudioLowerVolume   A  N  Exec exec amixer -D pulse sset Master 5%-
 # Theme
 #------------------------------------------------------------------------------
 
-LoadConfig themes/$[fvwm_theme]/theme
+Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
 
 #------------------------------------------------------------------------------
 # Menus
 #------------------------------------------------------------------------------
 
-LoadConfig menus
+Read $[FVWM_USERDIR]/menus
 
 #------------------------------------------------------------------------------
 # Modules
 #------------------------------------------------------------------------------
 
-LoadConfig themes/$[fvwm_theme]/modules
+Read $[FVWM_USERDIR]/themes/$[fvwm_theme]/modules
 

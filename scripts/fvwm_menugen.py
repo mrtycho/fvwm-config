@@ -23,7 +23,7 @@ import sys
 gi.require_version('GMenu', '3.0')
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, GMenu, GLib
-from io import BytesIO, TextIOWrapper
+from io import BytesIO
 import argparse
 
 terminal = 'xterm -e'
@@ -64,14 +64,14 @@ def get_menu_icon(directory):
 def get_app_icon(entry):
 	return get_icon(entry.get_app_info().get_icon())
 
-def get_menu(name,title):
-	return '\nDestroyMenu Popup_{0} \nAddToMenu Popup_{0} "{1}" Title'.format(name,title)
+def get_menu(menu_id,title):
+	return '\nDestroyMenu Popup_{0} \nAddToMenu Popup_{0} "{1}" Title'.format(menu_id,title)
 	
-def get_menu_entry(name, directory):
+def get_menu_entry(menu_id, name, directory):
 	icon = get_menu_icon(directory)
 	if not icon: 
-		return ' + "{0}"  Popup Popup_{0}'.format(name)
-	return ' + %{0}%"{1}"  Popup Popup_{1}'.format(icon,name)
+		return ' + "{0}"  Popup Popup_{1}'.format(name,menu_id)
+	return ' + %{0}%"{1}"  Popup Popup_{2}'.format(icon,name,menu_id)
 	
 def get_app_entry(entry):
 	me = re.compile('%[A-Z]?', re.I)
@@ -93,7 +93,6 @@ def requires_terminal(entry):
 def parse_folder(directory,mname):
 	menu_str = BytesIO()
 	encoding = sys.stdin.encoding
-	wrapper = TextIOWrapper(menu_str, write_through=True)
 	m_iter = directory.iter()
 	item_type = m_iter.next()
 	
@@ -101,17 +100,18 @@ def parse_folder(directory,mname):
 		if item_type == GMenu.TreeItemType.DIRECTORY:
 			entry = m_iter.get_directory()
 			if not entry.get_is_nodisplay():
+				m_id = entry.get_menu_id()
 				name = html.escape(entry.get_name())
-				wrapper.write(get_menu_entry(name,entry).encode(encoding,'ignore').decode(encoding))
-				wrapper.write('\n')
-				parse_folder(entry,name)
+				menu_str.write(get_menu_entry(m_id,name,entry).encode(encoding,'ignore'))
+				menu_str.write(b'\n')
+				parse_folder(entry,m_id)
 		elif item_type == GMenu.TreeItemType.SEPARATOR:
-			wrapper.write(' + ""  Nop\n')
+			menu_str.write(b' + ""  Nop\n')
 		elif item_type == GMenu.TreeItemType.ENTRY:
 			entry = m_iter.get_entry()
 			if not (entry.get_is_excluded() or entry.get_app_info().get_nodisplay()):
-				wrapper.write(get_app_entry(entry).encode(encoding,'ignore').decode(encoding))
-				wrapper.write('\n')
+				menu_str.write(get_app_entry(entry).encode(encoding,'ignore'))
+				menu_str.write(b'\n')
 		item_type = m_iter.next()
 	print(get_menu(mname,html.escape(directory.get_name())))
 	print(menu_str.getvalue().decode(encoding))

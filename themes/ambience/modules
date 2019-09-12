@@ -131,13 +131,13 @@ DestroyModuleConfig FvwmBar: *
 *FvwmBar: Frame 0
 *FvwmBar: Padding 0 0
 *FvwmBar: Columns 23
-PipeRead "echo *FvwmBar: Geometry $$(($[wa.width]-2))x28+0+0"
+PipeRead "echo *FvwmBar: Geometry $$(($[infostore.screenWidth]-2))x28+0+0"
 
 *FvwmBar: (18x1, Frame 0, Padding 2, Swallow "FvwmIconMan" `FvwmIconMan`)
-*FvwmBar: (2x1, Padding 10, Right, Swallow (NoClose, UseOld) 'stalonetray' \
-	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NE -p --max-geometry 8x1 --kludges force_icons_size,fix_window_pos,use_icons_hints`)
+*FvwmBar: (2x1, Colorset 11, Padding 10, Right, Swallow (NoClose, UseOld) 'stalonetray' \
+	`Exec exec stalonetray -c $[FVWM_USERDIR]/config/stalonetrayrc --icon-gravity NE -p --max-geometry 8x1 --kludges force_icons_size,fix_window_pos,use_icons_hints`)
 *FvwmBar: (2x1, Frame 0, Padding 2, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
-*FvwmBar: (1x1, Frame 0, Padding 2, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 11")
+*FvwmBar: (1x1, Frame 0, Padding 2, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 9")
 
 Style "FvwmIdent" NoButton 2, NoButton 4, NoButton 6
 DestroyModuleConfig FvwmIdent: *

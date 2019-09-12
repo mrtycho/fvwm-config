@@ -1,7 +1,6 @@
-EwmhBaseStruts 0 0 30 40
+EwmhBaseStruts 0 0 0 40
 
-Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, BorderWidth 3, BorderColorset 1
-Colorset 11 fg white, bg #303030, RootTransparent buffer, Tint #505050 65
+Style BarButtons   NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedSize, FixedPosition, BorderWidth 1, BorderColorset 2
 Colorset 12 fg white, bg #909090, RootTransparent buffer, Tint #909090 40, hi white, sh #202020, fgsh #303030
 Colorset 13 bg #bebebe, hi white, Pixmap buttons_bg.xpm, sh #202020
 Colorset 14 fg black, bg #afafaf, hi white, sh #808080
@@ -12,37 +11,43 @@ DestroyModuleConfig BarButtons: *
 
 # Layout: specify rows or columns, not both
 *BarButtons: Rows 1
-*BarButtons: Padding 2 0
+*BarButtons: Padding 2 2
 *BarButtons: Frame 1
-PipeRead "echo *BarButtons: Geometry 780x38+$$((($[wa.width]-780)/2))-0"
+PipeRead "echo *BarButtons: Geometry 790x42+$$((($[wa.width]-780)/2))-0"
 
-*BarButtons: (Title (Side,Center) Home, Icon icons/FileManager.xpm, PressColorset 6, Action "Exec exec $[infostore.filemanager]", \
+*BarButtons: (Title (Side,Center) Home, Icon icons/FileManager.xpm, PressIcon icons/FileManager_pressed.xpm \
+    PressColorset 6, Action "Exec exec $[infostore.filemanager]", \
     Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
-*BarButtons: (Title (Side,Center) Terminal, Icon icons/cli.xpm, PressColorset 6, Action "Exec exec $[infostore.terminal]")
-*BarButtons: (Title (Side,Center) Editor, Icon icons/TextEditor.xpm, PressColorset 6, Action "Exec exec $[infostore.editor]", \
-	Action(Mouse 3) 'Exec exec geany')
-*BarButtons: (Title (Side,Center) Viewer, Icon icons/Viewer.xpm, PressColorset 6, Action "Exec exec $[infostore.viewer]", \
+*BarButtons: (Title (Side,Center) Terminal, Icon icons/cli.xpm, PressIcon icons/cli_pressed.xpm \
+    PressColorset 6, Action "Exec exec $[infostore.terminal]")
+*BarButtons: (Title (Side,Center) Editor, Icon icons/TextEditor.xpm, PressIcon icons/TextEditor_pressed.xpm \
+    PressColorset 6, Action "Exec exec $[infostore.editor]", \
+    Action(Mouse 3) `Menu Popup_Development rectangle +$left+$top 1 -100m`)
+*BarButtons: (Title (Side,Center) Viewer, Icon icons/Viewer.xpm, PressIcon icons/Viewer_pressed.xpm \
+    PressColorset 6, Action "Exec exec $[infostore.viewer]", \
     Action(Mouse 2) 'Exec exec evince', \
-    Action(Mouse 3) 'Exec exec gimp')
-*BarButtons: (Title (Side,Center) Media, Icon icons/Media.xpm, PressColorset 6, Action "Exec exec $[infostore.audioplayer]", \
-    Action(Mouse 3) "Exec exec $[infostore.videoplayer]")
-*BarButtons: (Title (Side,Center) Browser, Icon icons/web.xpm, PressColorset 6, Action "Exec exec $[infostore.browser]")
-*BarButtons: (Title (Side,Center) Mail, Icon icons/Mail.xpm, PressColorset 6, Action "Exec exec $[infostore.mail]")
-*BarButtons: (1x1, Frame 1, Padding 1, Container(Rows 1, Frame 0 ))
-*BarButtons: (Frame -1, Colorset 4, Swallow(UseOld,NoHints,NoRespawn) "xload" 'Exec xload -nolabel')
-*BarButtons: (End)
+    Action(Mouse 3) `Menu Popup_Graphics rectangle +$left+$top 1 -100m`)
+*BarButtons: (Title (Side,Center) Media, Icon icons/Media.xpm, PressColorset 6, PressIcon icons/Media_pressed.xpm \
+    Action "Exec exec $[infostore.audioplayer]", \
+    Action(Mouse 3) `Menu Popup_Multimedia rectangle +$left+$top 1 -100m`)
+*BarButtons: (Title (Side,Center) Browser, Icon icons/Web.xpm, PressColorset 6, PressIcon icons/Web_pressed.xpm \
+    Action "Exec exec $[infostore.browser]"), \
+    Action(Mouse 3) `Menu Popup_Internet rectangle +$left+$top 1 -100m`)
+*BarButtons: (Title (Side,Center) Mail, Icon icons/Mail.xpm, PressIcon icons/Mail_pressed.xpm \
+    PressColorset 6, Action "Exec exec $[infostore.mail]")
+*BarButtons: (Frame 1, Padding 1, Colorset 5, Swallow(UseOld,NoHints,NoRespawn) "xload" 'Exec xload -nolabel -fg black -hl black -jumpscroll 1')
 
 Style "FvwmDesker" NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
 
 DestroyModuleConfig FvwmDesker: *
 *FvwmDesker: UseSkipList
-*FvwmDesker: Colorset * 12
+*FvwmDesker: Colorset * 11
 *FvwmDesker: Fore #b3b3b3
 *FvwmDesker: Hilight black
-*FvwmDesker: WindowColorsets 5 0
+*FvwmDesker: WindowColorsets 1 0
 *FvwmDesker: Font none
 *FvwmDesker: SmallFont none
-*FvwmDesker: MiniIcons
+#*FvwmDesker: MiniIcons
 *FvwmDesker: Balloons
 *FvwmDesker: BalloonFore black
 *FvwmDesker: BalloonBack bisque
@@ -57,28 +62,28 @@ DestroyModuleConfig DeskerPanelButtons: *
 *DeskerPanelButtons: Font "$[infostore.smallfont]"
 *DeskerPanelButtons: Fore Black
 *DeskerPanelButtons: Colorset 5
-*DeskerPanelButtons: Geometry 235x75+0+0
+*DeskerPanelButtons: Geometry 275x78-0+0
 *DeskerPanelButtons: Rows 1
-*DeskerPanelButtons: Frame 1
+*DeskerPanelButtons: Frame 0
 *DeskerPanelButtons: Padding 1 1
-*DeskerPanelButtons: (1x1, Frame 1, Container(Rows 6, Frame 1))
-*DeskerPanelButtons: (5x4, Frame -1, Colorset 9, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
-*DeskerPanelButtons: (3x2, Frame 0, Left, Swallow (NoClose, UseOld) 'stalonetray' \
-	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NW -p --kludges force_icons_size,fix_window_pos,use_icons_hints`)
+*DeskerPanelButtons: (1x1, Frame 1, Container(Rows 6, Frame 0))
+*DeskerPanelButtons: (3x2, Colorset 5, Frame 0, Right, Swallow (NoClose,NoTitle,UseOld) 'stalonetray' \
+	`Exec exec stalonetray -c $[FVWM_USERDIR]/config/stalonetrayrc --icon-gravity NW -p --kludges force_icons_size,use_icons_hints --max-geometry 8x1`)
 *DeskerPanelButtons: (2x2, Frame 0, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 5")
+*DeskerPanelButtons: (5x4, Frame -1, Padding 1, Colorset 2, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
 
 *DeskerPanelButtons: (End)
 
-Style DeskerPanelButtons NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, FixedSize, NoHandles, BorderColorset 2, BorderWidth 1
+Style DeskerPanelButtons NoTitle, WindowListSkip, CirculateSkip, Sticky, NeverFocus, StaysOnBottom, FixedSize, FixedPosition, NoHandles, BorderColorset 1, BorderWidth 4
 Style FvwmPager	       NoTitle, Sticky, WindowListSkip, StaysOnBottom, NeverFocus, FixedSize, NoHandles
 Style "FvwmIconMan"      NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
 
 DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Background #afafaf
 *FvwmIconMan: Foreground #202020
-*FvwmIconMan: ManagerGeometry 1x1
-*FvwmIconMan: ButtonGeometry 28x28
-*FvwmIconMan: MaxButtonWidthByColumns 2
+*FvwmIconMan: ManagerGeometry 1x0-0-0
+*FvwmIconMan: ButtonGeometry 150x28
+*FvwmIconMan: MaxButtonWidthByColumns 1
 
 *FvwmIconMan: Font "$[infostore.smallfont]"
 *FvwmIconMan: Sort none
@@ -90,9 +95,9 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: PlainColorset 9
 *FvwmIconMan: SelectColorset 9
 *FvwmIconMan: SelectButton up
-*FvwmIconMan: FocusColorset 7
-*FvwmIconMan: FocusButton down
-*FvwmIconMan: FocusAndSelectColorset 7
+*FvwmIconMan: FocusColorset 0
+*FvwmIconMan: FocusButton flat
+*FvwmIconMan: FocusAndSelectColorset 0 
 *FvwmIconMan: FocusAndSelectButton down
 *FvwmIconMan: TitleButton flat
 *FvwmIconMan: TitleColorset 9
@@ -114,6 +119,8 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: action    Key Up     N gotobutton Up, select
 *FvwmIconMan: action    Key Down   N gotobutton Down, select
 
+Style FvwmIconMan Sticky, NeverFocus, WindowListSkip, !Handles, StaysOnBottom, BorderWidth 1, BorderColorset 2
+
 # animation
 *FvwmIconMan: NoIconAction "SendToModule FvwmAnimate animate"
 
@@ -124,14 +131,14 @@ DestroyModuleConfig FvwmBar: *
 *FvwmBar: Frame 0
 *FvwmBar: Padding 0 0
 *FvwmBar: Rows 1
-PipeRead "echo *FvwmBar: Geometry $$(($[wa.width]))x32+0+0"
+PipeRead "echo *FvwmBar: Geometry $$(($[wa.width]-2))x28+0+0"
 
-*FvwmBar: (1x1, Frame 1, Padding 0, Container(Columns 23, Frame 0 ))
-#*FvwmBar: (1x1, Frame 1, Colorset 7, Icon icons/mini/execute.png, Action "Exec exec $[infostore.launcher]")
-*FvwmBar: (18x1, Padding 2, Colorset 9, Swallow "FvwmIconMan" `FvwmIconMan`)
+*FvwmBar: (1x1, Frame 0, Padding 0, Container(Columns 23, Frame 0 ))
+#*FvwmBar: (1x1, Frame 0, Colorset 7, Icon icons/mini/execute.png, Action "Exec exec $[infostore.launcher]")
+*FvwmBar: (18x1, Padding 0, Colorset 9, Swallow "FvwmIconMan" `FvwmIconMan`)
 *FvwmBar: (2x1, Frame 0, Padding 10, Colorset 9, Right, Swallow (NoClose, UseOld) 'stalonetray' \
 	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NE -p --max-geometry 8x1 --kludges force_icons_size,fix_window_pos,use_icons_hints`)
-*FvwmBar: (1x1, Colorset 9, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 9")
+*FvwmBar: (1x1, Colorset 9, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_MAGICDIR]/scripts/FvwmApplet-DigitalClock 9")
 *FvwmBar: (2x1, Frame -1, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
 *FvwmBar: (End)
 
@@ -151,6 +158,10 @@ DestroyModuleConfig FvwmFormDefault: *
 *FvwmFormDefault: ItemFore black
 *FvwmFormDefault: ItemBack #d9d8d8
 
+DestroyModuleConfig FvwmScript: *
+*FvwmScript: DefaultFont $[infostore.normalfont]
+*FvwmScript: DefaultColorset 5
+
 DestroyModuleConfig FvwmAnimate: *
 *FvwmAnimate: Color #a0a0a0
 *FvwmAnimate: Iterations 25
@@ -161,5 +172,6 @@ DestroyModuleConfig FvwmAnimate: *
 DestroyFunc StartModules
 AddToFunc   StartModules
 + I Module FvwmButtons BarButtons
-+ I Module FvwmButtons FvwmBar
++ I Module FvwmButtons DeskerPanelButtons
+#FvwmBar
 

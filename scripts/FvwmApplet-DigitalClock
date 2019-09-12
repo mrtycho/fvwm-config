@@ -2,7 +2,7 @@
 # Size changed to 100x14
 # Erin Sheldon, BNL
 WindowTitle {FvwmApplet-DigitalClock}
-WindowSize 80 14		# Taille
+WindowSize 80 18		# Taille
 #WindowSize 100 14		# Taille
 Font		"Shadow=1 0 SE:xft:Sans:size=8:minspace=False:antialias=True"
 # Use the FvwmScript default colors.
@@ -35,7 +35,7 @@ End
 Widget 1
 Property
  Position 0 0
- Size 80 14
+ Size 80 18
  Type ItemDraw
  Flags NoReliefString
  Title {}

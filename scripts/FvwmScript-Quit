@@ -2,16 +2,9 @@ UseGettext          	{$FVWM_USERDIR/locale;config:+}
 
 WindowLocaleTitle	{Quit}
 WindowSize 400 265		# Taille
-WindowPosition 191 143		# Position
-#ForeColor	{black}
-BackColor	{#afafaf}
-ShadowColor	{#505050}
-#HilightColor	{grey100}
-#Font		-adobe-helvetica-bold-r-*-*-12-*
 
 Init
  Begin
-  WarpPointer 1
   Set $ToDo = Logout
   ChangeValue 6 1
   ChangeValue 7 0
@@ -51,7 +44,6 @@ Property
  Flags NoReliefString NoFocus
  Type ItemDraw
  Value 0
- Font -adobe-helvetica-bold-r-*-*-12-*
 Main
  Case message of
   SingleClic :

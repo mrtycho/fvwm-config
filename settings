@@ -1,0 +1,38 @@
+#--------------------------------------------------------------------------
+# Appearance
+#--------------------------------------------------------------------------
+
+InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:Noto Sans:size=9::minspace=False:antialias=True"
+InfoStoreAdd normalfont "xft:Noto Sans:size=10:minspace=False:antialias=True"
+InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:Noto Sans:size=10:minspace=False:antialias=True"
+
+InfoStoreAdd screenWidth $[wa.width]
+
+#--------------------------------------------------------------------------
+# Default Applications
+#--------------------------------------------------------------------------
+
+InfoStoreAdd filemanager pcmanfm
+InfoStoreAdd editor      'emacsclient -c -a emacs'
+InfoStoreAdd terminal    xterm
+InfoStoreAdd browser     firefox
+InfoStoreAdd mail        thunderbird
+InfoStoreAdd viewer      phototonic
+InfoStoreAdd videoplayer vlc
+InfoStoreAdd audioplayer audacious
+InfoStoreAdd help        xman
+InfoStoreAdd launcher    xfce4-appfinder
+InfoStoreAdd search      mate-search-tool
+
+#--------------------------------------------------------------------------
+# Startup
+#--------------------------------------------------------------------------
+
+DestroyFunc LocalStartFunction
+AddToFunc LocalStartFunction
++ I Test (Init, x xsettingsd) Exec exec xsettingsd -c  $[FVWM_USERDIR]/theme/xsettingsd
+#+ I Test (!F $[FVWM_USERDIR]/xsettingsd) Exec exec ln -sfn  $[FVWM_USERDIR]/theme/xsettingsd $[FVWM_USERDIR]/xsettingsd
++ I Test (Restart, x xsettingsd) Exec exec killall -HUP xsettingsd
+#+ I Test (Init) Exec exec xrandr --output HDMI-1 --mode 1920x1080 --rate 60.00 --output eDP-1 --mode 1920x1080 --rate 60.00 --right-of HDMI-1
+#+ I Test (Init) Exec exec compton
+

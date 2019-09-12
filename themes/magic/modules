@@ -21,16 +21,20 @@ PipeRead "echo *BarButtons: Geometry 800x42+$$((($[infostore.screenWidth]-800)/2
     PressColorset 6, Action "Exec exec $[infostore.terminal]")
 *BarButtons: (Title (Side,Center) Editor, Icon icons/TextEditor.xpm, PressIcon icons/TextEditor_pressed.xpm \
     PressColorset 6, Action "Exec exec $[infostore.editor]", \
-	 Action(Mouse 3) 'Exec exec geany')
+    Action(Mouse 3) `Menu Popup_Development rectangle +$left+$top 1 -101m`)
+	 #Action(Mouse 3) 'Exec exec geany')
 *BarButtons: (Title (Side,Center) Viewer, Icon icons/Viewer.xpm, PressIcon icons/Viewer_pressed.xpm \
     PressColorset 6, Action "Exec exec $[infostore.viewer]", \
     Action(Mouse 2) 'Exec exec evince', \
-    Action(Mouse 3) 'Exec exec gimp')
+    Action(Mouse 3) `Menu Popup_Graphics rectangle +$left+$top 1 -101m`)
+    #Action(Mouse 3) 'Exec exec gimp')
 *BarButtons: (Title (Side,Center) Media, Icon icons/Media.xpm, PressColorset 6, PressIcon icons/Media_pressed.xpm \
     Action "Exec exec $[infostore.audioplayer]", \
-    Action(Mouse 3) "Exec exec $[infostore.videoplayer]")
+    Action(Mouse 3) `Menu Popup_Multimedia rectangle +$left+$top 1 -101m`)
+    #Action(Mouse 3) "Exec exec $[infostore.videoplayer]")
 *BarButtons: (Title (Side,Center) Browser, Icon icons/Web.xpm, PressColorset 6, PressIcon icons/Web_pressed.xpm \
-    Action "Exec exec $[infostore.browser]")
+    Action "Exec exec $[infostore.browser]"), \
+    Action(Mouse 3) `Menu Popup_Internet rectangle +$left+$top 1 -101m`)
 *BarButtons: (Title (Side,Center) Mail, Icon icons/Mail.xpm, PressIcon icons/Mail_pressed.xpm \
     PressColorset 6, Action "Exec exec $[infostore.mail]")
 *BarButtons: (Frame -1, Colorset 10, Swallow(UseOld,NoHints,NoRespawn) "xload" 'Exec xload -nolabel -fg white -hl white -jumpscroll 1')
@@ -110,7 +114,7 @@ PipeRead "echo *FvwmBar: Geometry $$(($[infostore.screenWidth]-2))x32+0+0@p"
 
 *FvwmBar: (8x1, Frame 1, Padding 1, Container(Columns 23, Frame 0 ))
 *FvwmBar: (18x1, Padding 0, Colorset 9, Swallow "FvwmIconMan" `FvwmIconMan`)
-*FvwmBar: (2x1, Frame 0, Padding 10, Right, Swallow (NoClose,NoTitle,UseOld) 'stalonetray' \
+*FvwmBar: (2x1, Colorset 9, Frame 0, Padding 10, Right, Swallow (NoClose,NoTitle,UseOld) 'stalonetray' \
 	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NE -p --max-geometry 8x1 --kludges force_icons_size,fix_window_pos,use_icons_hints`)
 *FvwmBar: (1x1, Right, Swallow (Kill,NoTitle) "FvwmApplet-DigitalClock" "Module FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 9")
 *FvwmBar: (2x1, Frame -1, Padding 0, Swallow(NoTitle) "FvwmDesker" 'Module FvwmPager FvwmDesker')
@@ -130,6 +134,10 @@ DestroyModuleConfig FvwmFormDefault: *
 *FvwmFormDefault: Colorset 5
 *FvwmFormDefault: ItemFore black
 *FvwmFormDefault: ItemBack #d9d8d8
+
+DestroyModuleConfig FvwmScript: *
+*FvwmScript: DefaultFont $[infostore.normalfont]
+*FvwmScript: DefaultColorset 5
 
 DestroyModuleConfig FvwmAnimate: *
 *FvwmAnimate: Color #a0a0a0

@@ -21,16 +21,17 @@ PipeRead "echo *BarButtons: Geometry 800x42+$$((($[infostore.screenWidth]-800)/2
     PressColorset 6, Action "Exec exec $[infostore.terminal]")
 *BarButtons: (Title (Side,Center) Editor, Icon icons/TextEditor.xpm, PressIcon icons/TextEditor_pressed.xpm \
     PressColorset 6, Action "Exec exec $[infostore.editor]", \
-	 Action(Mouse 3) 'Exec exec geany')
+	 Action(Mouse 3) `Menu Popup_Development rectangle +$left+$top 1 -101m`)
 *BarButtons: (Title (Side,Center) Viewer, Icon icons/Viewer.xpm, PressIcon icons/Viewer_pressed.xpm \
     PressColorset 6, Action "Exec exec $[infostore.viewer]", \
     Action(Mouse 2) 'Exec exec evince', \
-    Action(Mouse 3) 'Exec exec gimp')
+    Action(Mouse 3) `Menu Popup_Graphics rectangle +$left+$top 1 -101m`)
 *BarButtons: (Title (Side,Center) Media, Icon icons/Media.xpm, PressColorset 6, PressIcon icons/Media_pressed.xpm \
     Action "Exec exec $[infostore.audioplayer]", \
-    Action(Mouse 3) "Exec exec $[infostore.videoplayer]")
+    Action(Mouse 3) `Menu Popup_Multimedia rectangle +$left+$top 1 -101m`)
 *BarButtons: (Title (Side,Center) Browser, Icon icons/Web.xpm, PressColorset 6, PressIcon icons/Web_pressed.xpm \
-    Action "Exec exec $[infostore.browser]")
+    Action "Exec exec $[infostore.browser]"), \
+    Action(Mouse 3) `Menu Popup_Internet rectangle +$left+$top 1 -101m`)
 *BarButtons: (Title (Side,Center) Mail, Icon icons/Mail.xpm, PressIcon icons/Mail_pressed.xpm \
     PressColorset 6, Action "Exec exec $[infostore.mail]")
 *BarButtons: (Frame -1, Colorset 0, Swallow(UseOld,NoHints,NoRespawn) "xload" 'Exec xload -nolabel -fg white -hl white -jumpscroll 1')
@@ -131,6 +132,10 @@ DestroyModuleConfig FvwmFormDefault: *
 *FvwmFormDefault: ItemFore black
 *FvwmFormDefault: ItemBack #d9d8d8
 
+DestroyModuleConfig FvwmScript: *
+*FvwmScript: DefaultFont $[infostore.normalfont]
+*FvwmScript: DefaultColorset 5
+
 DestroyModuleConfig FvwmAnimate: *
 *FvwmAnimate: Color #a0a0a0
 *FvwmAnimate: Iterations 25
@@ -142,7 +147,6 @@ DestroyFunc StartModules
 AddToFunc   StartModules
 + I Module FvwmButtons BarButtons
 + I Module FvwmButtons FvwmBar
-
 
 Style FvwmBar 	        NoTitle, FixedSize, WindowListSkip, CirculateSkip, \
   FixedPosition, Sticky, NeverFocus, StaysOnBottom, NoHandles, BorderWidth 1, BorderColorset 2 

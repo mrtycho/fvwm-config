@@ -26,7 +26,7 @@ AddToMenu   Utilities "$[gt.Root Menu]" Title
 + "" Nop
 + "$[gt.Session]"                                  Popup Session
 -+ "" Nop
-+ "$[gt.Logout]"                                   FvwmScript FvwmScript-Quit
++ "$[gt.Logout]"                                   FvwmScript $[FVWM_USERDIR]/scripts/FvwmScript-Quit
 
 DestroyMenu Favorites
 AddToMenu   Favorites
@@ -125,7 +125,7 @@ DestroyMenu Edit-Config
 AddToMenu   Edit-Config
 + %icons/mini/config.png%"$[gt.Edit Config]"       Exec exec $[infostore.editor] $[FVWM_USERDIR]/config
 + %icons/mini/config.png%"$[gt.Edit Menus]"        Exec exec $[infostore.editor] $[FVWM_USERDIR]/menus
-+ %icons/mini/config.png%"$[gt.Edit Applications]" Exec exec $[infostore.editor] $[FVWM_USERDIR]/applications
++ %icons/mini/config.png%"$[gt.Edit Settings]"     Exec exec $[infostore.editor] $[FVWM_USERDIR]/settings
 + %icons/mini/config.png%"$[gt.Edit Theme]"        Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/theme
 + %icons/mini/config.png%"$[gt.Edit Modules]"      Exec exec $[infostore.editor] $[FVWM_USERDIR]/themes/$[fvwm_theme]/modules
 + "" Nop
@@ -332,8 +332,8 @@ AddToMenu   Session
 + "$[gt.Switch User]"                              Exec exec dm-tool switch-to-greeter
 + "$[gt.Lock Screen]"                              Exec exec xscreensaver-command -l
 #+ " $[gt.System] "	                              Title
-#+ "$[gt.Restart]"                                  FvwmForm FvwmForm-VerifyQuit
-#+ "$[gt.Shutdown]"                                 FvwmForm FvwmForm-VerifyQuit
+#+ "$[gt.Restart]"                                 FvwmForm FvwmForm-VerifyQuit
+#+ "$[gt.Shutdown]"                                FvwmForm FvwmForm-VerifyQuit
 #+ "$[gt.Logout]"                                  FvwmForm FvwmForm-VerifyQuit
 
 

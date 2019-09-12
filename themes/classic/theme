@@ -1,22 +1,26 @@
 CleanupColorSets
-Colorset 0 fg white, bg #507bad, fgsh black, hi #a5b0ba, sh #2b3743
-Colorset 1 fg black, bg #afafaf, fgsh white, hi #e5e2e0, sh #656260
+Colorset 0 fg white, bg #C06077, fgsh black
+#, hi #a5b0ba, sh #2b3743
+Colorset 1 fg black, bg #60A0C0, fgsh #60A0C0
+# fgsh white, hi #e5e20, sh #656260
 Colorset 2 fg white, bg #101010
-Colorset 3 fg black, bg #afafaf, hi white, sh black
+Colorset 3 fg black, bg #6A5ACD, hi white, sh black
 Colorset 4 fg black, bg #898989, hi white, fgsh #f0f0f0
-Colorset 5 fg black, bg #afafaf, hi white, sh #202020
+Colorset 5 fg black, bg #afafaf, hi white, sh #202020, fgsh #afafaf
 Colorset 6 fg white, bg black, fgsh grey10
-Colorset 7 fg white, bg #507bad, fgsh grey10, hi #ffffff, sh #2b3743
+Colorset 7 fg white, bg #6A5ABD, fgsh grey10, hi #ffffff, sh #2b3743
 Colorset 8 fg #505050, bg #9f9f9f, hi #d0d0d0, fgsh #d0d0d0
-Colorset 9 fg black, bg #afafaf, hi white, sh #606060, fgsh #e0e0e0
+Colorset 9 fg black, bg #afafaf, hi white, sh #303030, fgsh #e0e0e0
 Colorset 10 fg white, bg black, hi #202020, sh #202020
+Colorset 11 fg white, #5A4ABD, RootTransparent buffer, Tint #5A4AAD 65
 
 Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
-Style * BorderWidth 4, HandleWidth 4
+Style * BorderWidth 5, HandleWidth 5
 
 DestroyDecor MagicDecor
 AddToDecor MagicDecor
-+ TitleStyle	Centered MinHeight 24
++ TitleStyle	Centered 
+#MinHeight 24
 + ButtonStyle  1  Active       Vector 5 25x40@0 75x40@0 75x60@1 25x60@1 25x40@0 25+1px40+1p@4 75-1px40+1p@1 75-1px60-1p@0 25+1px60-1p@0 25+1px40+1p@1
 + ButtonStyle  1	ActiveDown   Vector 5 25x40@0 75x40@0 75x60@1 25x60@1 25x40@0
 + ButtonStyle  1	Inactive     Vector 5 25x40@0 75x40@0 75x60@1 25x60@1 25x40@0 25+1px40+1p@4 75-1px40+1p@1 75-1px60-1p@0 25+1px60-1p@0 25+1px40+1p@1
@@ -28,39 +32,38 @@ AddToDecor MagicDecor
 + ButtonStyle  4	Inactive     Vector 5 40x40@0 60x40@0 60x60@1 40x60@1 40x40@0 40+1px40+1p@4 60-1px40+1p@1 60-1px60-1p@0 40+1px60-1p@0 40+1px40+1p@1
 + ButtonStyle	all	-- UseTitleStyle
 
-Style * UseDecor MagicDecor, MWMBorder 
+Style * UseDecor MagicDecor, MWMBorder, FVWMButtons 
 Style * Font "$[infostore.titlefont]"
 Style * IconFont "$[infostore.smallfont]"
 
-Style * IconBackgroundRelief 1, IconTitleRelief 0	
-Style * IconBackgroundColorset 3, IconTitleColorset 6, HilightIconTitleColorset 2
-Style * IconSize 60 50, IconTitle
-Style * IconBox 10 45 -10 -5, IconGrid 20 20, IconFill top left
+Style * IconBackgroundRelief 0, IconTitleRelief 1
+Style * IconBackgroundColorset 11, IconTitleColorset 5, HilightIconTitleColorset 0
+Style * IconSize 58 58, IconTitle, IconBackgroundPadding 2
+Style * IconBox 10 10 -10 -5, IconGrid 21 18, IconFill top left
 Style * IconOverride
+Style * Icon executable.png
 
-Style "$[infostore.terminal]" EWMHMiniIconOverride, Icon cli.xpm, MiniIcon icons/mini/terminal.png
-Style "$[infostore.filemanager]" EWMHMiniIconOverride,Icon FileManager.xpm, MiniIcon icons/mini/folder.png
-Style "$[infostore.editor]" EWMHMiniIconOverride,Icon TextEditor.xpm, MiniIcon icons/mini/editor.png
-Style "$[infostore.viewer]" EWMHMiniIconOverride,Icon Viewer.xpm, MiniIcon icons/mini/viewer.png
-Style "$[infostore.audioplayer]" EWMHMiniIconOverride,Icon SoundEditor.xpm, MiniIcon icons/mini/audio.png
-Style "$[infostore.videoplayer]" EWMHMiniIconOverride, Icon Moviemaker.xpm, MiniIcon icons/mini/video.png
-Style "$[infostore.browser]" EWMHMiniIconOverride,Icon web.xpm, MiniIcon icons/mini/browser.png
-Style "$[infostore.mail]" EWMHMiniIconOverride, Icon Mail.xpm, MiniIcon icons/mini/mail.png
+Style "$[infostore.terminal]" EWMHMiniIconOverride, Icon icons/xterm.png, MiniIcon icons/mini/terminal.png
+Style "$[infostore.filemanager]" EWMHMiniIconOverride,Icon icons/file-manager.png, MiniIcon icons/mini/folder.png
+Style "$[infostore.editor]" EWMHMiniIconOverride,Icon icons/text-editor.png, MiniIcon icons/mini/editor.png
+# Style "$[infostore.viewer]" EWMHMiniIconOverride,Icon Viewer.xpm, MiniIcon icons/mini/viewer.png
+Style "$[infostore.audioplayer]" EWMHMiniIconOverride,Icon icons/audio.png, MiniIcon icons/mini/audio.png
+Style "$[infostore.videoplayer]" EWMHMiniIconOverride, Icon multimedia.png, MiniIcon icons/mini/video.png
+Style "$[infostore.browser]" EWMHMiniIconOverride, Icon icons/browser.png, MiniIcon icons/mini/browser.png
+Style "$[infostore.mail]" EWMHMiniIconOverride, Icon icons/email.png, MiniIcon icons/mini/mail.png
 
-Style "Xman" Icon Help.xpm, MiniIcon icons/mini/Help.xpm
-Style "Firefox" EWMHMiniIconOverride, Icon web.xpm, MiniIcon icons/mini/browser.png
-Style "Thunderbird" EWMHMiniIconOverride, Icon Mail.xpm, MiniIcon icons/mini/mail.png
-Style "xterm" Icon cli.xpm, MiniIcon icons/mini/terminal.png
-Style "xfce4-terminal" EWMHMiniIconOverride, Icon cli.xpm, MiniIcon icons/mini/terminal.png
-Style "gv" Icon small/Postscript.xpm
-Style "xv" Icon Viewer.xpm, MiniIcon icons/mini/viewer.png
-Style "Synaptic" Icon Packer.xpm
+Style "xterm" Icon icons/xterm.png, MiniIcon icons/mini/terminal.png
+Style "keepassxc" Icon icons/keyring.png
+Style "Firefox*" Icon icons/browser.png
+Style "Thunderbird" Icon icons/email.png
+Style "Rox-filer" EWMHMiniIconOverride,Icon icons/file-manager.png
+Style "synaptic" Icon icons/setup.png
 
-MenuStyle * MWM
-MenuStyle * Hilight3DThickness 1, PopupOffset 0 100, PopupDelay 300
+MenuStyle * Fvwm
+MenuStyle * Hilight3DThickness -1, PopupOffset 0 100, PopupDelay 300
 MenuStyle * Font "$[infostore.normalfont]"
 MenuStyle * TitleFont "$[infostore.titlefont]"
-MenuStyle * MenuColorset 5, ActiveColorset 0, HilightBack, TitleColorset 0, HilightTitleBack
+MenuStyle * MenuColorset 5, ActiveColorset 7, HilightBack, TitleColorset 5, HilightTitleBack
 MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
 MenuStyle * TrianglesUseFore, TrianglesSolid
 MenuStyle * ItemFormat "%s%|%3p%i %l  %r  %i%>%3p%|"

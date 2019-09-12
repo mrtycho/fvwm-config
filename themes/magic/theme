@@ -1,4 +1,5 @@
 CleanupColorSets
+
 Colorset 0 fg white, bg #507bad, fgsh black, hi #a5b0ba 
 Colorset 1 fg black, bg #9a9a9a, fgsh white, hi #e5e2e0, sh #656565
 Colorset 2 fg white, bg #000000, sh #000000
@@ -40,7 +41,7 @@ Style * IconFont "$[infostore.smallfont]"
 Style * IconBackgroundRelief 1, IconTitleRelief 1
 Style * IconBackgroundColorset 3, IconTitleColorset 4, HilightIconTitleColorset 7
 Style * IconSize 60 50, IconTitle, IconBackgroundPadding 2
-Style * IconBox 10 45 -10 -5, IconGrid 20 20, IconFill top left
+Style * IconBox 10 45 -10 -5, IconGrid 21 21, IconFill top left
 Style * IconOverride
 Style * Icon Template.xpm
 
@@ -76,6 +77,7 @@ Style "Synaptic" Icon Packer.xpm
 Style "soffice" Icon dtp.xpm
 Style "libreoffice-*" Icon dtp.xpm
 Style "YaST2" Icon PrefsDock.xpm
+Style "keepassxc" Icon Password.xpm
 
 MenuStyle * MWM
 MenuStyle * Hilight3DThickness -1, PopupOffset 0 96, PopupDelay 300
