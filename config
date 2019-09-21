@@ -6,11 +6,6 @@ ExecUseShell /bin/bash
 
 ModulePath $[FVWM_USERDIR]:+
 
-SetEnv fvwm_theme "magic"
-
-LocalePath $[FVWM_USERDIR]/locale;config:+
-ImagePath  $[FVWM_USERDIR]/themes/$[fvwm_theme]:$[FVWM_USERDIR]/3dpixmaps:+
-
 #------------------------------------------------------------------------------
 # Functions
 #------------------------------------------------------------------------------
@@ -22,6 +17,11 @@ Read $[FVWM_USERDIR]/functions
 #------------------------------------------------------------------------------
 
 Read $[FVWM_USERDIR]/settings
+
+SetEnv fvwm_theme $[infostore.theme]
+
+LocalePath $[FVWM_USERDIR]/locale;config:+
+ImagePath  $[FVWM_USERDIR]/themes/$[fvwm_theme]:$[FVWM_USERDIR]/3dpixmaps:+
 
 #------------------------------------------------------------------------------
 # Screen Settings
@@ -125,6 +125,7 @@ Style "nautilus"     EWMHIgnoreWindowType, !MWMDecor
 Style "tint2"        !Title, !Handles, !Borders, StaysOnTop, EWMHIgnoreStrutHints, Sticky, EWMHPlacementIgnoreWorkingArea, NeverFocus, WindowListSkip
 Style desktop_icon   CirculateSkip, WindowListSkip,  NoTitle
 Style *lock          !Title, !Handles, Sticky, WindowListSkip
+Style xclock         !Title, !Handles, Sticky, PositionPlacement -10p 10p
 Style stalonetray    !Title, !Handles, WindowListSkip, CirculateSkip, StaysOnBottom,NeverFocus, EWMHUseStackingOrderHints, TileCascadePlacement
 Style fvwm_menu      NoButton 2, NoButton 4, WindowListSkip
 Style lxpolkit       NoButton 2, NoButton 4, UsePPosition

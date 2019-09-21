@@ -8,12 +8,14 @@ InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:Noto Sans:size=10:minspace=False:anti
 
 InfoStoreAdd screenWidth $[wa.width]
 
+InfoStoreAdd theme magic
+
 #--------------------------------------------------------------------------
 # Default Applications
 #--------------------------------------------------------------------------
 
 InfoStoreAdd filemanager pcmanfm
-InfoStoreAdd editor      'emacsclient -c -a emacs'
+InfoStoreAdd editor      mousepad
 InfoStoreAdd terminal    xterm
 InfoStoreAdd browser     firefox
 InfoStoreAdd mail        thunderbird
@@ -30,8 +32,7 @@ InfoStoreAdd search      mate-search-tool
 
 DestroyFunc LocalStartFunction
 AddToFunc LocalStartFunction
-+ I Test (Init, x xsettingsd) Exec exec xsettingsd -c  $[FVWM_USERDIR]/theme/xsettingsd
-#+ I Test (!F $[FVWM_USERDIR]/xsettingsd) Exec exec ln -sfn  $[FVWM_USERDIR]/theme/xsettingsd $[FVWM_USERDIR]/xsettingsd
++ I Test (Init, x xsettingsd) Exec exec xsettingsd -c  "$[FVWM_USERDIR]/themes/$[infostore.theme]/xsettingsd"
 + I Test (Restart, x xsettingsd) Exec exec killall -HUP xsettingsd
 #+ I Test (Init) Exec exec xrandr --output HDMI-1 --mode 1920x1080 --rate 60.00 --output eDP-1 --mode 1920x1080 --rate 60.00 --right-of HDMI-1
 #+ I Test (Init) Exec exec compton

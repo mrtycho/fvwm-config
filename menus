@@ -88,6 +88,7 @@ AddToMenu   Settings
 + "Auto&Raise"                                     Popup AutoRaise-Settings
 + "" Nop
 + "$[gt.Background]"                               Popup Background-Settings
++ "$[gt.Theme]"                                    Popup Theme-Settings
 + "$[gt.Appearance]"                               Exec exec lxappearance
 #+ "$[gt.Appearance] (Qt5)"                        Exec exec qt5ct
 + "$[gt.Power Management]"                         Exec exec xfce4-power-manager-settings
@@ -159,6 +160,17 @@ AddToMenu   Patterns
 PipeRead 'sh $FVWM_USERDIR/scripts/wallpaper.sh $FVWM_USERDIR/Pattern'
 
 ChangeMenuStyle bgMenu Back-Solid Wallpapers Patterns
+
+#------------------------------------------------------------------------------
+# Theme settings
+#------------------------------------------------------------------------------
+
+DestroyMenu Theme-Settings
+AddToMenu   Theme-Settings
++ "Ambience Theme"                         Function SetFVWMTheme ambience
++ "Classic Theme"			                   Function SetFVWMTheme classic
++ "Magic Theme"                            Function SetFVWMTheme magic
++ "Sonar Theme"				                Function SetFVWMTheme sonar
 
 #------------------------------------------------------------------------------
 # Banner settings
