@@ -167,10 +167,7 @@ ChangeMenuStyle bgMenu Back-Solid Wallpapers Patterns
 
 DestroyMenu Theme-Settings
 AddToMenu   Theme-Settings
-+ "Ambience Theme"                         Function SetFVWMTheme ambience
-+ "Classic Theme"			                   Function SetFVWMTheme classic
-+ "Magic Theme"                            Function SetFVWMTheme magic
-+ "Sonar Theme"				                Function SetFVWMTheme sonar
+PipeRead 'bash $FVWM_USERDIR/scripts/themes.sh $FVWM_USERDIR/themes'
 
 #------------------------------------------------------------------------------
 # Banner settings
@@ -373,6 +370,7 @@ AddToMenu "Window" "$[gt.Window Ops]"              Title
 + "$[gt.Move to Page]"                             Popup Move-window
 + "$[gt.&Group Ops]"                               Popup WindowGroupOps
 + "$[gt.All to Current Page]"                      All MoveToPage $($[page.nx]) $($[page.ny])
++ "$[gt.Rearrange Icons]"			                  RearrangeIcons
 + ""					Nop
 + "$[gt.Identify]	Alt-F11"                         Module FvwmIdent
 + "$[gt.Switch to...]"                             WindowList
