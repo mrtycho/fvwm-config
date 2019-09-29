@@ -27,8 +27,8 @@ AddToDecor MorphDecor
 + BorderStyle	Active -- HiddenHandles NoInset Flat
 
 Style	"*"	UseDecor MorphDecor
-Style   "*"	Font "$[infostore.titlefont]"
-Style 	"*" 	IconFont "$[infostore.normalfont]"
+Style "*"	Font "$[infostore.titlefont]"
+Style "*" 	IconFont "$[infostore.smallfont]"
 
 Style * IconBackgroundRelief 0, IconTitleRelief 0	
 Style * IconBackgroundColorset 3, IconTitleColorset 6, HilightIconTitleColorset 2
@@ -44,7 +44,6 @@ Style "$[infostore.audioplayer]" EWMHMiniIconOverride,Icon SoundEditor.xpm, Mini
 Style "$[infostore.videoplayer]" EWMHMiniIconOverride, Icon icons/media.png, MiniIcon icons/mini/video.png
 Style "$[infostore.browser]" EWMHMiniIconOverride, Icon icons/browser.png, MiniIcon icons/mini/browser.png
 Style "$[infostore.mail]" EWMHMiniIconOverride, Icon icons/mail.png, MiniIcon icons/mini/mail.png
-
 
 Style "Xman" MiniIcon mini/Help.xpm
 Style "Firefox" MiniIcon mini/Browser.xpm

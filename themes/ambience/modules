@@ -2,9 +2,9 @@ EwmhBaseStruts 0 0 30 32
 
 Style BarButtons UseStyle PanelStyle
 Colorset 11 fg #202020, bg #dbdbdb, hi white, sh #bababa, fgsh #f0f0f0
-Colorset 12 fg white,   bg #909090, RootTransparent buffer, Tint #909090 40, hi white, sh #202020, fgsh #303030
+Colorset 12 fg white,   bg #909090, RootTransparent buffer, Tint #606060 30, hi white, sh #202020, fgsh #303030
 Colorset 13 fg black,   bg #bebebe, hi white, fgsh #e0e0e0
-Colorset 14 fg #363f4f, bg #e1e1e1, RootTransparent buffer, Tint #e7e8eb 90, bgTint white 70, hi #ffffff, sh #afafaf, fgsh #f0f0f0
+Colorset 14 fg #3f3f3f, bg #EbE8E7, RootTransparent buffer, Tint #EbE8E7 80, hi #ffffff, sh #afafaf, fgsh #f0f0f0
 
 DestroyModuleConfig BarButtons: *
 *BarButtons: Colorset 14
@@ -12,7 +12,7 @@ DestroyModuleConfig BarButtons: *
 *BarButtons: Rows 1
 *BarButtons: Padding 2 2
 *BarButtons: Frame 1
-PipeRead "echo *BarButtons: Geometry 760x40+$$((($[wa.width]-760)/2))-0"
+PipeRead "echo *BarButtons: Geometry 760x40+$$((($[infostore.screenWidth]-760)/2))-0"
 
 *BarButtons: (8x1, Frame 1, Padding 1, Container(Rows 1, Frame 0 ))
 *BarButtons: (Title (Side,Center) Home, Icon icons/home.png, \
@@ -34,7 +34,7 @@ PipeRead "echo *BarButtons: Geometry 760x40+$$((($[wa.width]-760)/2))-0"
     Action(Mouse 3) `Menu Popup_Internet rectangle +$left+$top 1 -100m`)
 *BarButtons: (Title (Side,Center) Mail, Icon icons/mail.png,1 \
     PressColorset 6, Action "Exec exec $[infostore.mail]")
-*BarButtons: (Frame -1, Colorset 13, Swallow(UseOld,NoHints,NoRespawn) "xload" 'Exec xload -nolabel -fg white -hl white -jumpscroll 1')
+*BarButtons: (Frame -1, Colorset 13, Swallow(UseOld,NoHints,NoRespawn) "xload" 'Exec xload -nolabel -fg grey30 -hl white -jumpscroll 1')
 *BarButtons: (End)
 
 Style "FvwmDesker" NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
@@ -144,23 +144,27 @@ DestroyModuleConfig FvwmIdent: *
 *FvwmIdent: Colorset 5 *
 *FvwmIdent: Font "$[infostore.normalfont]"
 
-DestroyModuleConfig FvwmAnimate: *
-*FvwmAnimate: Color #a0a0a0
-*FvwmAnimate: Iterations 25
-*FvwmAnimate: Effect Frame
-*FvwmAnimate: Delay 5
-*FvwmAnimate: Width 3
-
 DestroyModuleConfig FvwmFormDefault: *
 *FvwmFormDefault: Font "$[infostore.normalfont]"
 *FvwmFormDefault: InputFont "$[infostore.normalfont]"
 *FvwmFormDefault: ButtonFont "$[infostore.normalfont]"
 *FvwmFormDefault: TimeoutFont "$[infostore.smallfont]"
-*FvwmFormDefault: Fore #202020
-*FvwmFormDefault: Back #fafafa
+*FvwmFormDefault: Fore #3f3f3f
+*FvwmFormDefault: Back #EbE8E7
 *FvwmFormDefault: Colorset 5
 *FvwmFormDefault: ItemFore black
 *FvwmFormDefault: ItemColorset 5
+
+DestroyModuleConfig FvwmScript: *
+*FvwmScript: DefaultFont $[infostore.normalfont]
+*FvwmScript: DefaultColorset 5
+
+DestroyModuleConfig FvwmAnimate: *
+*FvwmAnimate: Color #a0a0a0
+*FvwmAnimate: Iterations 25
+*FvwmAnimate: Effect Zoom3D
+*FvwmAnimate: Delay 5
+*FvwmAnimate: Width 3
 
 DestroyFunc StartModules
 AddToFunc   StartModules
