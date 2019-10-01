@@ -42,9 +42,9 @@ Style * Font "$[infostore.titlefont]"
 
 Style * IconFont "$[infostore.smallfont]"
 Style * IconBackgroundRelief 0, IconTitleRelief 0	
-Style * IconBackgroundColorset 12, IconTitleColorset 2, HilightIconTitleColorset 6
-Style * IconSize 62 52, IconTitle
-Style * IconBox 10 45 -10 -5, IconGrid 20 20, IconFill top left
+Style * IconBackgroundColorset 12, IconTitleColorset 3, HilightIconTitleColorset 6
+Style * IconSize 62 62, IconTitle
+Style * IconBox 10 45 -10 -5, IconGrid 10 20, IconFill top left
 Style * IconOverride
 
 DestroyDecor PanelDecor

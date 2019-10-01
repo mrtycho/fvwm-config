@@ -14,7 +14,7 @@ DestroyModuleConfig BarButtons: *
 PipeRead "echo *BarButtons: Geometry 800x42+$$((($[infostore.screenWidth]-800)/2))-0@p"
 
 *BarButtons: (8x1, Frame 1, Padding 1, Container(Rows 1, Frame 0 ))
-*BarButtons: (Title (Side,Center) Home, Icon icons/FileManager.xpm, PressIcon icons/FileManager_pressed.xpm \
+*BarButtons: (Title (Side,Center) $[gt.Files], Icon icons/FileManager.xpm, PressIcon icons/FileManager_pressed.xpm \
     PressColorset 6, Action "Exec exec $[infostore.filemanager]", \
     Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
 *BarButtons: (Title (Side,Center) Terminal, Icon icons/cli.xpm, PressIcon icons/cli_pressed.xpm \
@@ -22,20 +22,17 @@ PipeRead "echo *BarButtons: Geometry 800x42+$$((($[infostore.screenWidth]-800)/2
 *BarButtons: (Title (Side,Center) Editor, Icon icons/TextEditor.xpm, PressIcon icons/TextEditor_pressed.xpm \
     PressColorset 6, Action "Exec exec $[infostore.editor]", \
     Action(Mouse 3) `Menu Popup_Development rectangle +$left+$top 1 -101m`)
-	 #Action(Mouse 3) 'Exec exec geany')
-*BarButtons: (Title (Side,Center) Viewer, Icon icons/Viewer.xpm, PressIcon icons/Viewer_pressed.xpm \
+*BarButtons: (Title (Side,Center) $[gt.Images], Icon icons/Viewer.xpm, PressIcon icons/Viewer_pressed.xpm \
     PressColorset 6, Action "Exec exec $[infostore.viewer]", \
     Action(Mouse 2) 'Exec exec evince', \
     Action(Mouse 3) `Menu Popup_Graphics rectangle +$left+$top 1 -101m`)
-    #Action(Mouse 3) 'Exec exec gimp')
-*BarButtons: (Title (Side,Center) Media, Icon icons/Media.xpm, PressColorset 6, PressIcon icons/Media_pressed.xpm \
+*BarButtons: (Title (Side,Center) $[gt.Media], Icon icons/Media.xpm, PressColorset 6, PressIcon icons/Media_pressed.xpm \
     Action "Exec exec $[infostore.audioplayer]", \
     Action(Mouse 3) `Menu Popup_Multimedia rectangle +$left+$top 1 -101m`)
-    #Action(Mouse 3) "Exec exec $[infostore.videoplayer]")
-*BarButtons: (Title (Side,Center) Browser, Icon icons/Web.xpm, PressColorset 6, PressIcon icons/Web_pressed.xpm \
+*BarButtons: (Title (Side,Center) $[gt.Browser], Icon icons/Web.xpm, PressColorset 6, PressIcon icons/Web_pressed.xpm \
     Action "Exec exec $[infostore.browser]"), \
     Action(Mouse 3) `Menu Popup_Internet rectangle +$left+$top 1 -101m`)
-*BarButtons: (Title (Side,Center) Mail, Icon icons/Mail.xpm, PressIcon icons/Mail_pressed.xpm \
+*BarButtons: (Title (Side,Center) $[gt.Mail], Icon icons/Mail.xpm, PressIcon icons/Mail_pressed.xpm \
     PressColorset 6, Action "Exec exec $[infostore.mail]")
 *BarButtons: (Frame -1, Colorset 10, Swallow(UseOld,NoHints,NoRespawn) "xload" 'Exec xload -nolabel -fg white -hl white -jumpscroll 1')
 *BarButtons: (End)
