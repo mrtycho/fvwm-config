@@ -44,7 +44,8 @@ AddToFunc IconifyOrUnmaximize
 
 DestroyFunc MaximizeOrUnmaximize
 AddToFunc MaximizeOrUnmaximize
-+ I ThisWindow (CurrentGlobalPage,Focused) Maximize
++ I ThisWindow (CurrentGlobalPage,Focused, !Iconic) Maximize
++ I ThisWindow (CurrentGlobalPage,Focused, Iconic) Iconify off
 
 DestroyFunc MaximizeWindow
 AddToFunc MaximizeWindow
@@ -86,6 +87,13 @@ AddToFunc FuncFvwmNextWindow
 DestroyFunc FuncFvwmNextAppWindow
 AddToFunc FuncFvwmNextAppWindow
 + I Next ($[w.resource], !Iconic, AcceptsFocus) FlipFocus
++ I Current Raise
+
+DestroyFunc FuncFvwmNextMaximized
+AddToFunc FuncFvwmNextMaximized
++ I Current (Maximized) Nop
++ I TestRc (Match) Next (Maximized, AcceptsFocus, !Focused) FlipFocus NoWarp
++ I TestRc (!Match) Next (CurrentGlobalPage, AcceptsFocus) FlipFocus NoWarp
 + I Current Raise
 
 DestroyModuleConfig FE-Focus: *

@@ -199,7 +199,8 @@ Key Up                     A  C4 MaximizeOrUnmaximize
 Key Down                   A  C4 IconifyOrUnmaximize
 
 Silent Key Tab             A  M  FuncFvwmNextWindow
-Silent Key Tab             A  4  FuncFvwmNextAppWindow
+Silent Key Tab             A  4  FuncFvwmNextMaximized
+# FuncFvwmNextAppWindow
 
 # Rofi
 Key Space                  A  4  Exec exec rofi -show run
