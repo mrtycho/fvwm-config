@@ -9,7 +9,7 @@ Net/EnableInputFeedbackSounds 0
 Net/EnableEventSounds 0
 Net/CursorBlink 1
 Net/DoubleClickDistance 5
-Net/IconThemeName "Mayer-Y"
+Net/IconThemeName "elementary-xfce"
 Gtk/CanChangeAccels 0
 Gtk/ColorPalette "black:white:gray50:red:purple:blue:light blue:green:yellow:orange:lavender:brown:goldenrod4:dodger blue:pink:light green:gray10:gray30:gray75:gray90"
 Xft/Hinting 1
@@ -19,7 +19,7 @@ Xft/RGBA "none"
 Net/DndDragThreshold 8
 Net/SoundThemeName "default"
 Gtk/CursorThemeName ""
-Net/ThemeName "AmbienceBird"
+Net/ThemeName "Adwaita"
 Net/CursorBlinkTime 1200
 Gtk/IconSizes ""
 Gtk/MenuBarAccel "F10"
