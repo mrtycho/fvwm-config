@@ -125,8 +125,7 @@ AddToFunc   SetNitrogenBackground
 DestroyFunc SetFVWMTheme
 AddToFunc   SetFVWMTheme
 + I Exec sed -i "s/InfoStoreAdd theme .*/InfoStoreAdd theme $0/g" $FVWM_USERDIR/settings
-#+ I Exec ln -sfn $0 "$FVWM_USERDIR/theme"
-+ I ImagePath $[FVWM_USERDIR]/theme:$[FVWM_USERDIR]/3dpixmaps:+
++ I Test (f $[FVWM_USERDIR]/themes/$0/theme.cfg) Exec cat "$FVWM_USERDIR/themes/$0/theme.cfg" "$FVWM_USERDIR/.xsettings" | cpp -P > "$FVWM_USERDIR/xsettingsd" 
 + I Restart
 
 DestroyFunc MaximizeToSide
