@@ -2,14 +2,15 @@ CleanupColorsets
 
 Colorset 0 fg #13315d, bg #7ab5f8, fgsh #abd2ff, hi #abd2ff, sh #43618d
 Colorset 1 fg #6a6c6e, bg #e1e1e1, fgsh #d0cfcf, hi #f2f2f2, sh #9a9c9e
-Colorset 2 fg white,   bg #606060
-Colorset 3 fg black,   bg #EbE8E7, Pixmap taskbar2.xpm, hi white, sh black, fgsh #f0f0f0
+Colorset 2 fg white,   bg #606060 
+Colorset 3 fg #202020, bg #FBF8F7, hi #fbf8f7, sh #fbf8f7, fgsh #ffffff 
+#Colorset 3 fg black,   bg #EbE8E7, Pixmap taskbar2.xpm, hi white, sh black, fgsh #f0f0f0
 Colorset 4 fg black,   bg #EbE8E7, hi white, fgsh #f0f0f0
 Colorset 5 fg #2f2f2f, bg #EbE8E7, hi #ffffff, sh #c7c8cd, fgsh #ced1d4
 Colorset 6 fg white,   bg #3983d5
-Colorset 7 fg black,   bg #507bad, TiledPixmap taskbar_down.xpm, fgsh #f0f0f0, hi #efefef, sh #8e919b
-Colorset 8 fg #6a6c6e, bg #afafaf, TiledPixmap taskbar.xpm, hi #efefef, sh #bababa, fgsh #ffffff
-Colorset 9 fg #202020, bg #afafaf, TiledPixmap taskbar.xpm, hi white, sh #bababa, fgsh #f0f0f0
+Colorset 7 fg black,   bg #CFCAC4, fgsh #f0f0f0, hi #BAB3AB, sh #BAB3AB
+Colorset 8 fg #6a6c6e, bg #EbE8E7, hi #EbE8E7, sh #EbE8E7, fgsh #ffffff
+Colorset 9 fg #202020, bg #EbE8E7, hi #EbE8E7, sh #EbE8E7, fgsh #f0f0f0
 Colorset 10 fg white, bg black, hi #202020, sh #202020
 
 Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
@@ -57,18 +58,9 @@ Style PanelStyle \
   UseDecor PanelDecor, FvwmBorder, FvwmButtons, NoTitle, FixedSize, WindowListSkip, CirculateSkip, \
   Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedPosition, BorderWidth 1, BorderColorset 2
 
-Style "$[infostore.terminal]" EWMHMiniIconOverride, Icon icons/terminal.png, MiniIcon icons/mini/terminal.png
-Style "$[infostore.filemanager]" EWMHMiniIconOverride,Icon icons/folder.png, MiniIcon icons/mini/folder.png
-Style "$[infostore.editor]" EWMHMiniIconOverride,Icon icons/editor.png, MiniIcon icons/mini/editor.png
-Style "$[infostore.viewer]" EWMHMiniIconOverride,Icon icons/viewer.png, MiniIcon icons/mini/viewer.png
-Style "$[infostore.audioplayer]" EWMHMiniIconOverride,Icon icons/audio.png, MiniIcon icons/mini/audio.png
-Style "$[infostore.videoplayer]" EWMHMiniIconOverride, Icon icons/media.png, MiniIcon icons/mini/video.png
-Style "$[infostore.browser]" EWMHMiniIconOverride, Icon icons/browser.png, MiniIcon icons/mini/browser.png
-Style "$[infostore.mail]" EWMHMiniIconOverride, Icon icons/mail.png, MiniIcon icons/mini/mail.png
-
 Style "Xman" MiniIcon mini/Help.xpm
-Style "Firefox*" EWMHMiniIconOverride, Icon icons/browser.png, MiniIcon icons/mini/browser.png
-Style "Thunderbird" EWMHMiniIconOverride, Icon icons/mail.png, MiniIcon icons/mini/mail.png
+#Style "Firefox*" EWMHMiniIconOverride, Icon icons/browser.png, MiniIcon icons/mini/browser.png
+#Style "Thunderbird" EWMHMiniIconOverride, Icon icons/mail.png, MiniIcon icons/mini/mail.png
 Style "xterm" MiniIcon icons/mini/terminal.png
 Style "xfce4-terminal" MiniIcon icons/mini/terminal.png
 Style "gpodder" MiniIcon icons/mini/audio.png

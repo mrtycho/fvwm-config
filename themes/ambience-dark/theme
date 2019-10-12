@@ -3,11 +3,11 @@ CleanupColorsets
 Colorset 0 fg #13315d, bg #7ab5f8, fgsh #abd2ff, hi #abd2ff, sh #4d74a1
 Colorset 1 fg #868b9c, bg #383c4a, fgsh #383c4a, hi #616167, sh #181c2a
 Colorset 2 fg white,   bg #181c2a
-Colorset 3 fg black,   bg #EbE8E7, Pixmap taskbar2.xpm, hi white, sh black, fgsh #f0f0f0
+Colorset 3 fg #efefef, bg #3f444f, fgsh #181c2a, hi #7e8395, sh #7e8395
 Colorset 4 fg black,   bg #EbE8E7, hi white, fgsh #f0f0f0
 Colorset 5 fg #d3dae3, bg #383c4a, hi #515867, sh #2f343f, fgsh #1f242f
 Colorset 6 fg white,   bg #5294e2
-Colorset 7 fg #efefef, bg #4F545F, fgsh #181c2a, hi #5294e2, sh #5294e2
+Colorset 7 fg #efefef, bg #454a5a, fgsh #181c2a, hi #7e8395, sh #7e8395
 Colorset 8 fg #939aa3, bg #2F343F, hi #2F343F, sh #2F343F, fgsh #1f242f
 Colorset 9 fg #d3dae3, bg #2F343F, hi #2F343F, sh #2F343F, fgsh #1f242f
 Colorset 10 fg white, bg black, hi #202020, sh #202020
@@ -44,7 +44,7 @@ Style * IconFont "$[infostore.smallfont]"
 Style * IconBackgroundRelief 0, IconTitleRelief 0	
 Style * IconBackgroundColorset 12, IconTitleColorset 5, HilightIconTitleColorset 6
 Style * IconSize 62 62, IconTitle
-Style * IconBox 10 45 -10 -5, IconGrid 10 20, IconFill top left
+Style * IconBox 10 45 -10 -5, IconGrid 22 18, IconFill top left
 Style * IconOverride
 
 DestroyDecor PanelDecor
