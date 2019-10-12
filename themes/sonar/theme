@@ -15,8 +15,11 @@ Colorset 11 fg black, bg #aaafac, hi #eaeaea, sh #4a4a4a
 Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
 Style * BorderWidth 4, HandleWidth 4
 
-DestroyDecor MagicDecor
-AddToDecor MagicDecor
+DefaultColorset 5
+DefaultFont "$[infostore.normalfont]"
+
+DestroyDecor SonarDecor
+AddToDecor SonarDecor
 + TitleStyle   Centered Height 26 -- Flat
 #+ TitleStyle   AllActive       (TiledPixmap title-active.xpm) -- Flat
 #+ TitleStyle   Inactive        (TiledPixmap title-inactive.xpm) -- Flat
@@ -32,7 +35,7 @@ AddToDecor MagicDecor
 + BorderStyle	Active   -- NoInset HiddenHandles 
 + BorderStyle	Inactive -- NoInset HiddenHandles 
 
-Style * UseDecor MagicDecor, FvwmButtons, FvwmBorder 
+Style * UseDecor SonarDecor, FvwmButtons, FvwmBorder 
 Style * Font "$[infostore.titlefont]"
 Style * IconFont "$[infostore.smallfont]"
 # Style * NoIcon
@@ -45,14 +48,14 @@ Style * IconBox 10 45 -10 -5, IconGrid 20 20, IconFill top left
 Style * IconOverride
 Style * Icon Template.xpm
 
-DestroyDecor MagicPanelDecor
-AddToDecor MagicPanelDecor
+DestroyDecor SonarPanelDecor
+AddToDecor SonarPanelDecor
 + TitleStyle	-- flat
 + BorderStyle	Active -- HiddenHandles 
 + BorderStyle	Inactive -- HiddenHandles
 
 Style PanelStyle \
-  UseDecor MagicPanelDecor, FvwmBorder, FvwmButtons, NoTitle, FixedSize, WindowListSkip, CirculateSkip, \
+  UseDecor SonarPanelDecor, FvwmBorder, FvwmButtons, NoTitle, FixedSize, WindowListSkip, CirculateSkip, \
   Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedPosition, BorderWidth 2, BorderColorset 11
 	
 Style "$[infostore.terminal]" EWMHMiniIconOverride, MiniIcon icons/mini/terminal.png

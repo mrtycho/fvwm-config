@@ -16,6 +16,9 @@ Colorset 11 fg black, bg #afafaf, hi #eaeaea, sh #4a4a4a
 Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
 Style * BorderWidth 4, HandleWidth 4
 
+DefaultColorset 5
+DefaultFont "$[infostore.normalfont]"
+
 DestroyDecor MagicDecor
 AddToDecor MagicDecor
 + TitleStyle   Centered Height 26

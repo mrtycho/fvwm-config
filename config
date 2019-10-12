@@ -41,6 +41,7 @@ BugOpts FlickeringMoveWorkaround True
 
 DestroyFunc StartFunction
 AddToFunc StartFunction
++ I Function LocalStartFunction
 + I Test (Init) Exec exec /usr/bin/lxpolkit & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
 + I Test (Init,x nm-applet) Exec exec nm-applet
 + I TestRc (!Match) Test (Init,x wicd-gtk) exec exec wicd-gtk -t
@@ -53,7 +54,6 @@ AddToFunc StartFunction
 + I FvwmEvent FE-Page
 + I Module FvwmCommandS
 + I Module FvwmAuto 300
-+ I Function LocalStartFunction
 + I Schedule 100 Function StartModules
 
 # This file decides if we start FvwmAnimate or not
@@ -67,8 +67,8 @@ LoadLocalConfig .start-FvwmAuto
 
 DesktopSize 4x1
 
-Emulate Win
-HideGeometryWindow Move
+Emulate mwm
+HideGeometryWindow Move 
 IgnoreModifiers L2
 ClickTime 550
 OpaqueMoveSize 100
@@ -121,6 +121,7 @@ Style panel          Sticky, !Title, WindowListSkip, CirculateSkip, BorderWidth 
 Style "gthumb"       EWMHIgnoreWindowType, !MWMDecor
 Style "Catfish"      EWMHIgnoreWindowType, !MWMDecor
 Style Xfce4-appfinder UsePPosition, EWMHUseStateHints
+Style caja           UsePPosition, EWMHUseStateHints 
 Style "nautilus"     EWMHIgnoreWindowType, !MWMDecor
 Style "tint2"        !Title, !Handles, !Borders, StaysOnTop, EWMHIgnoreStrutHints, Sticky, EWMHPlacementIgnoreWorkingArea, NeverFocus, WindowListSkip
 Style desktop_icon   CirculateSkip, WindowListSkip,  NoTitle

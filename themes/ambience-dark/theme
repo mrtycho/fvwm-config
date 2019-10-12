@@ -15,6 +15,9 @@ Colorset 10 fg white, bg black, hi #202020, sh #202020
 Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
 Style * BorderWidth 3, HandleWidth 3
 
+DefaultColorset 5
+DefaultFont "$[infostore.normalfont]"
+
 DestroyDecor AmbienceDecor
 AddToDecor AmbienceDecor
 + TitleStyle Centered Height 28
