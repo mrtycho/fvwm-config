@@ -2,17 +2,16 @@ Gtk/CursorThemeSize 0
 Gtk/ToolbarStyle "icons"
 Gtk/DecorationLayout "menu:minimize,maximize,close"
 Gtk/KeyThemeName ""
-Gtk/FontName "Noto Sans 10"
+Gtk/FontName "NORMAL_FONT_NAME"
 Gtk/ToolbarIconSize 3
 Gtk/ButtonImages 0
 Net/EnableInputFeedbackSounds 0
 Net/EnableEventSounds 0
 Net/CursorBlink 1
 Net/DoubleClickDistance 5
-Net/IconThemeName "elementary-xfce"
+Net/IconThemeName "ICON_THEME_NAME"
 Gtk/CanChangeAccels 0
 Gtk/ColorPalette "black:white:gray50:red:purple:blue:light blue:green:yellow:orange:lavender:brown:goldenrod4:dodger blue:pink:light green:gray10:gray30:gray75:gray90"
-Xft/Antialias -1
 Xft/Hinting 1
 Gtk/MenuImages 1
 Xft/HintStyle "hintfull"
@@ -20,9 +19,9 @@ Xft/RGBA "none"
 Net/DndDragThreshold 8
 Net/SoundThemeName "default"
 Gtk/CursorThemeName ""
-Net/ThemeName "Magicbird"
+Net/ThemeName "WIDGET_THEME_NAME"
 Net/CursorBlinkTime 1200
 Gtk/IconSizes ""
 Gtk/MenuBarAccel "F10"
-Gtk/MonospaceFontName "Monospace 10"
+Gtk/MonospaceFontName "MONOSPACE_FONT_NAME"
 Net/DoubleClickTime 400

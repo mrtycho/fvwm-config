@@ -9,16 +9,16 @@ Colorset 3 fg #404040, bg white, hi #707070, sh #707070
 Colorset 4 fg black, bg #afafaf, Pixmap Tile2.png, hi white, fgsh #f0f0f0
 Colorset 5 fg #404040, bg #fafafa, hi #454545, sh #454545
 Colorset 6 fg white, bg black, fgsh grey10
-Colorset 7 fg white, bg #202020, fgsh #606060, hi #404040, sh #404040
+Colorset 7 fg white, bg #505050, fgsh #606060, hi #404040, sh #404040
 Colorset 8 fg #606060, bg #e0e0e0, hi #a0a0a0, sh #a0a0a0, fgsh #f0f0f0
 Colorset 9 fg #202020, bg #c0c0c0, hi #e0e0e0, sh #e0e0e0,fgsh #e0e0e0
 Colorset 10 fg white, bg black, hi #202020, sh #202020
 Colorset 11 fg black, bg #afafaf, hi #eaeaea, sh #4a4a4a
 
 Style * Colorset 1, HilightColorset 0
-Style * BorderWidth 4, HandleWidth 5
+Style * BorderWidth 3, HandleWidth 3
 
-DestroyDecor MagicDecor
+DestroyDecor MinimalDecor
 AddToDecor MinimalDecor
 + ButtonStyle  1  Active	    (Pixmap close-activeup.xpm)  -- Flat
 + ButtonStyle  1	ActiveDown   (Pixmap close-activedown.xpm)
@@ -29,56 +29,50 @@ AddToDecor MinimalDecor
 + ButtonStyle  4	Active	    (Pixmap iconify-activeup.xpm)  -- Flat
 + ButtonStyle  4	ActiveDown   (Pixmap iconify-activedown.xpm) 
 + ButtonStyle  4	Inactive     (Pixmap iconify-inactive.xpm ) -- Flat
-+ BorderStyle	Active   -- NoInset HiddenHandles 
-+ BorderStyle	Inactive -- NoInset HiddenHandles 
++ BorderStyle	Active   Colorset 7 -- Flat
++ BorderStyle	Inactive Colorset 7 -- Flat
 + ButtonStyle	all	-- UseTitleStyle Flat
 + TitleStyle   Centered Height 26
 + TitleStyle   AllActive       (TiledPixmap title-active.xpm -- Flat)
-+ TitleStyle   Inactive	-- Flat
++ TitleStyle   Inactive        (Solid white -- Flat)
 
 Style * UseDecor MinimalDecor, FvwmButtons, MWMBorder 
 Style * Font "$[infostore.titlefont]"
 Style * IconFont "$[infostore.smallfont]"
 # Style * NoIcon
 
-Style * IconBackgroundRelief 2, IconTitleRelief 0	
-Style * IconBackgroundColorset 3, IconTitleColorset 6, HilightIconTitleColorset 2
-Style * IconSize 62 52, IconTitle
-Style * IconBox 10 45 -10 -5, IconGrid 20 20, IconFill top left
-Style * IconOverride
-
 DestroyDecor MinimalPanelDecor
 AddToDecor MinimalPanelDecor
-+ TitleStyle	-- flat
-+ BorderStyle	Active -- NoInset HiddenHandles 
-+ BorderStyle	Inactive -- NoInset HiddenHandles
++ TitleStyle	-- Flat
++ BorderStyle	Active   Colorset 7 -- Flat
++ BorderStyle	Inactive Colorset 7 -- Flat
 
 Style PanelStyle \
   UseDecor MinimalPanelDecor, FvwmBorder, FvwmButtons, NoTitle, FixedSize, WindowListSkip, CirculateSkip, \
   Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedPosition, BorderWidth 2, BorderColorset 11
 	
+Style * IconBackgroundRelief 0, IconTitleRelief 0	
+Style * IconBackgroundColorset 3, IconTitleColorset 6, HilightIconTitleColorset 2
+Style * IconSize 62 52, IconTitle
+Style * IconBox 10 45 -10 -5, IconGrid 20 20, IconFill top left
+Style * IconOverride
+
 Style "$[infostore.terminal]" EWMHMiniIconOverride, Icon icons/terminal.png, MiniIcon icons/mini/terminal.png
 Style "$[infostore.filemanager]" EWMHMiniIconOverride,Icon icons/folder.png, MiniIcon icons/mini/folder.png
 Style "$[infostore.editor]" EWMHMiniIconOverride,Icon icons/editor.png, MiniIcon icons/mini/editor.png
 Style "$[infostore.viewer]" EWMHMiniIconOverride,Icon icons/viewer.png, MiniIcon icons/mini/viewer.png
-Style "$[infostore.audioplayer]" EWMHMiniIconOverride,Icon SoundEditor.xpm, MiniIcon icons/mini/audio.png
-Style "$[infostore.videoplayer]" EWMHMiniIconOverride, Icon icons/media.png, MiniIcon icons/mini/video.png
+Style "$[infostore.audioplayer]" EWMHMiniIconOverride,MiniIcon icons/mini/audio.png
+Style "$[infostore.videoplayer]" EWMHMiniIconOverride, MiniIcon icons/mini/video.png
 Style "$[infostore.browser]" EWMHMiniIconOverride, Icon icons/browser.png, MiniIcon icons/mini/browser.png
 Style "$[infostore.mail]" EWMHMiniIconOverride, Icon icons/mail.png, MiniIcon icons/mini/mail.png
 
 Style "Xman" Icon Help.xpm, MiniIcon icons/mini/Help.xpm
 Style "Firefox" EWMHMiniIconOverride, Icon icons/browser.png, MiniIcon icons/mini/browser.png
 Style "Firefox-esr" EWMHMiniIconOverride, Icon icons/browser.png, MiniIcon icons/mini/browser.png
-Style "Thunderbird" EWMHMiniIconOverride, Icon icons/mail.xpm, MiniIcon icons/mini/mail.png
-Style "xterm" Icon cli.xpm, MiniIcon icons/mini/terminal.png
-Style "xfce4-terminal" EWMHMiniIconOverride, Icon cli.xpm, MiniIcon icons/mini/terminal.png
-Style "gv" Icon small/Postscript.xpm
-Style "xv" Icon Viewer.xpm, MiniIcon icons/mini/viewer.png
+Style "Thunderbird" EWMHMiniIconOverride, Icon icons/mail.png, MiniIcon icons/mini/mail.png
+Style "xterm" Icon icons/terminal.png, MiniIcon icons/mini/terminal.png
+Style "xfce4-terminal" EWMHMiniIconOverride, MiniIcon icons/mini/terminal.png
 Style "org.gnome.Nautilus" EWMHMiniIconOverride, MiniIcon icons/mini/folder.png
-Style "Synaptic" Icon Packer.xpm
-Style "soffice" Icon dtp.xpm
-Style "libreoffice-*" Icon dtp.xpm
-Style "YaST2" Icon PrefsDock.xpm
 
 MenuStyle * MWM
 MenuStyle * Hilight3DThickness 0, PopupOffset 0 96, PopupDelay 300

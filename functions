@@ -125,7 +125,7 @@ AddToFunc   SetNitrogenBackground
 DestroyFunc SetFVWMTheme
 AddToFunc   SetFVWMTheme
 + I Exec sed -i "s/InfoStoreAdd theme .*/InfoStoreAdd theme $0/g" $FVWM_USERDIR/settings
-+ I Test (f $[FVWM_USERDIR]/themes/$0/theme.cfg) Exec cat "$FVWM_USERDIR/themes/$0/theme.cfg" "$FVWM_USERDIR/.xsettings" | cpp -P > "$FVWM_USERDIR/xsettingsd" 
++ I Test (f $[FVWM_USERDIR]/themes/$0/theme.m4) Exec m4 "$FVWM_USERDIR/themes/$0/theme.m4" "$FVWM_USERDIR/xsettingsd.m4" > "$FVWM_USERDIR/xsettingsd" 
 + I Restart
 
 DestroyFunc MaximizeToSide
