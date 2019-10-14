@@ -33,7 +33,6 @@ InfoStoreAdd search      mate-search-tool
 DestroyFunc LocalStartFunction
 AddToFunc LocalStartFunction
 + I Test (Init, x xsettingsd) Exec exec xsettingsd -c  "$[FVWM_USERDIR]/xsettingsd"
-+ I Test (Restart, x xsettingsd) Exec exec killall -HUP xsettingsd
 #+ I Test (Init) Exec exec xrandr --output HDMI-1 --mode 1920x1080 --rate 60.00 --output eDP-1 --mode 1920x1080 --rate 60.00 --right-of HDMI-1
 #+ I Test (Init) Exec exec compton
 
