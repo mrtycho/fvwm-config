@@ -1,5 +1,7 @@
-include(`forloop.m4')dnl
 divert(-1)
+define(`forloop', `pushdef(`$1', `$2')_forloop($@)popdef(`$1')')
+define(`_forloop',
+       `$4`'ifelse($1, `$3', `', `define(`$1', incr($1))$0($@)')')
 define(`CONCAT',`$1$2')dnl
 define(`SET_COLOR', format(%s:	COLOR_%s
 ,`$1',`$2'))dnl
