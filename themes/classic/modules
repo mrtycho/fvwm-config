@@ -61,15 +61,15 @@ DestroyModuleConfig FvwmDesker: *
 DestroyModuleConfig DeskerPanelButtons: *
 *DeskerPanelButtons: Font "$[infostore.smallfont]"
 *DeskerPanelButtons: Fore Black
-*DeskerPanelButtons: Colorset 5
+*DeskerPanelButtons: Colorset 1
 *DeskerPanelButtons: Geometry 275x78-0+0
 *DeskerPanelButtons: Rows 1
 *DeskerPanelButtons: Frame 0
 *DeskerPanelButtons: Padding 1 1
 *DeskerPanelButtons: (1x1, Frame 1, Container(Rows 6, Frame 0))
-*DeskerPanelButtons: (3x2, Colorset 5, Frame 0, Right, Swallow (NoClose,NoTitle,UseOld) 'stalonetray' \
-	`Exec exec stalonetray -c $[FVWM_USERDIR]/config/stalonetrayrc --icon-gravity NW -p --kludges force_icons_size,use_icons_hints --max-geometry 8x1`)
-*DeskerPanelButtons: (2x2, Frame 0, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 5")
+*DeskerPanelButtons: (3x2, Padding 2, Colorset 1, Frame 0, Left, Swallow (NoClose,NoTitle,UseOld) 'stalonetray' \
+	`Exec exec stalonetray --icon-gravity E --kludges force_icons_size,use_icons_hints --icon-size 16 --max-geometry 8x1`)
+*DeskerPanelButtons: (2x2, Frame 0, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 1")
 *DeskerPanelButtons: (5x4, Frame -1, Padding 1, Colorset 2, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
 
 *DeskerPanelButtons: (End)
