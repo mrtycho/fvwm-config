@@ -127,6 +127,7 @@ AddToFunc   SetFVWMTheme
 + I Test (f $[FVWM_USERDIR]/themes/$0/theme.m4) PipeRead 'm4 "$FVWM_USERDIR/themes/$0/theme.m4" "$FVWM_USERDIR/m4/xsettingsd.m4" 1> "$FVWM_USERDIR/xsettingsd"' 
 + I Test (f $[FVWM_USERDIR]/themes/$0/resources.m4) PipeRead 'm4 "$FVWM_USERDIR/themes/$0/resources.m4" "$FVWM_USERDIR/m4/Xresources.m4" 1> "$HOME/.Xresources" && xrdb -merge $HOME/.Xresources' 
 + I Test (x xsettingsd) Exec pgrep -x xsettingsd >/dev/null && killall -HUP xsettingsd || exec xsettingsd -c  "$[FVWM_USERDIR]/xsettingsd"
++ I Exec exec killall stalonetray
 + I PipeRead 'sed -i "s/InfoStoreAdd theme .*/InfoStoreAdd theme $0/g" $FVWM_USERDIR/settings 1>/dev/null'
 + I Restart
 

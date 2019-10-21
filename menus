@@ -1,6 +1,6 @@
 DestroyFunc CreateAppMenu
 AddToFunc CreateAppMenu
-+ I PipeRead "python3 $FVWM_USERDIR/scripts/fvwm_menugen.py -d gnome -n Programs --icons -t '$[infostore.terminal] -e'"
++ I PipeRead "python3 $FVWM_USERDIR/scripts/fvwm_menugen.py -d lxde -n Programs --icons -t '$[infostore.terminal] -e'"
 
 AddToFunc StartFunction
 + I Function CreateAppMenu
@@ -12,6 +12,7 @@ AddToFunc StartFunction
 
 DestroyMenu Utilities
 AddToMenu   Utilities "$[gt.Root Menu]" Title 
+#AddToMenu   Utilities MissingSubmenuFunction CreateAppMenu 
 + %icons/mini/terminal.png%"&Terminal"             Exec exec $[infostore.terminal]
 + %icons/mini/folder.png%"$[gt.Home]"              Exec exec $[infostore.filemanager]
 + %icons/mini/search2.png%"$[gt.Search] ..."		   Exec exec $[infostore.search]
@@ -81,24 +82,22 @@ AddToMenu   Kill-Module-Popup
 # Settings
 #------------------------------------------------------------------------------
 
-
 DestroyMenu Settings
-AddToMenu   Settings
-+ "$[gt.Control Animation]"                        Popup Animate-Settings
-+ "Auto&Raise"                                     Popup AutoRaise-Settings
+AddToMenu Settings
++ "$[gt.Control Animation]"    Popup Animate-Settings
++ "Auto&Raise"                 Popup AutoRaise-Settings
 + "" Nop
-+ "$[gt.Background]"                               Popup Background-Settings
-+ "$[gt.Theme]"                                    Popup Theme-Settings
-+ "$[gt.Appearance]"                               Exec exec lxappearance
-#+ "$[gt.Appearance] (Qt5)"                        Exec exec qt5ct
-+ "$[gt.Power Management]"                         Exec exec xfce4-power-manager-settings
-+ "$[gt.Screen Saver]"                             Exec exec xscreensaver-demo
++ "$[gt.Background]"           Popup Background-Settings
++ "$[gt.Theme]"                Popup Theme-Settings
++ "$[gt.Appearance]"           Exec exec lxappearance
++ "$[gt.Power Management]"     Exec exec xfce4-power-manager-settings
++ "$[gt.Screen Saver]"         Exec exec xscreensaver-demo
 + "" Nop
-+ "$[gt.Fvwm Config Ops]"                          Popup Edit-Config
-+ " $[gt.Temporary Change] "	Title
-+ "&Focus/Paging"                                  Popup Focus-Settings
-+ "&Bell"                                          Popup Bell-Settings
-+ "$[gt.&Screen]"                                  Popup X-settings
++ "$[gt.Fvwm Config Ops]"      Popup Edit-Config
++ " $[gt.Temporary Change] "	 Title
++ "&Focus/Paging"              Popup Focus-Settings
++ "&Bell"                      Popup Bell-Settings
++ "$[gt.&Screen]"              Popup X-settings
 
 #------------------------------------------------------------------------------
 # Animate  settings

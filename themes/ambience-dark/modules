@@ -1,4 +1,4 @@
-EwmhBaseStruts 0 0 30 32
+EwmhBaseStruts 0 0 30 42
 
 Style BarButtons UseStyle PanelStyle
 Colorset 11 fg #202020, bg #dbdbdb, hi white, sh #bababa, fgsh #f0f0f0
@@ -11,29 +11,32 @@ DestroyModuleConfig BarButtons: *
 *BarButtons: Font "$[infostore.smallfont]"
 *BarButtons: Rows 1
 *BarButtons: Padding 1 1
-PipeRead "echo *BarButtons: Geometry 760x40+$$((($[infostore.screenWidth]-760)/2))-0"
+PipeRead "echo *BarButtons: Geometry 510x40+$$((($[infostore.screenWidth]-510)/2))-0"
 
-*BarButtons: (8x1, Frame 1, Padding 1, Container(Rows 1, Frame 0 ))
-*BarButtons: (Title (Side,Center) $[gt.Files], Icon icons/home.png, \
+*BarButtons: (1x1,Frame 1, Colorset 14, \
+    PressColorset 6, Icon icons/menu.png, \
+    Action `Menu Utilities rectangle +$left+$top 1 -100m`)
+*BarButtons: (10x1, Frame 1, Padding 1, Container(Rows 1, Frame 0 ))
+*BarButtons: (Icon icons/folder.png, \
     PressColorset 6, Action "Exec exec $[infostore.filemanager]", \
     Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
-*BarButtons: (Title (Side,Center) Terminal, Icon icons/terminal.png, \
+*BarButtons: (Icon icons/terminal.png, \
     PressColorset 6, Action "Exec exec $[infostore.terminal]")
-*BarButtons: (Title (Side,Center) Editor, Icon icons/editor.png, \
+*BarButtons: (Icon icons/editor.png, \
     PressColorset 6, Action "Exec exec $[infostore.editor]", \
 	 Action(Mouse 3) `Menu Popup_Development rectangle +$left+$top 1 -100m`)
-*BarButtons: (Title (Side,Center) $[gt.Images], Icon icons/viewer.png, \
+*BarButtons: (Icon icons/viewer.png, \
     PressColorset 6, Action "Exec exec $[infostore.viewer]", \
     Action(Mouse 3) `Menu Popup_Graphics rectangle +$left+$top 1 -100m`)
-*BarButtons: (Title (Side,Center) $[gt.Media], Icon icons/media.png, PressColorset 6, \
+*BarButtons: (Icon icons/media.png, PressColorset 6, \
     Action "Exec exec $[infostore.audioplayer]", \
     Action(Mouse 3) `Menu Popup_Multimedia rectangle +$left+$top 1 -100m`)
-*BarButtons: (Title (Side,Center) $[gt.Browser],Icon icons/browser.png, PressColorset 6, \
+*BarButtons: (Icon icons/browser.png, PressColorset 6, \
     Action "Exec exec $[infostore.browser]"), \
     Action(Mouse 3) `Menu Popup_Internet rectangle +$left+$top 1 -100m`)
-*BarButtons: (Title (Side,Center) $[gt.Mail], Icon icons/mail.png,1 \
+*BarButtons: (Icon icons/mail.png,1 \
     PressColorset 6, Action "Exec exec $[infostore.mail]")
-*BarButtons: (Frame -1, Colorset 2, Swallow(UseOld,NoHints,NoRespawn) "xload" 'Exec xload -nolabel -fg grey80 -hl white -jumpscroll 1')
+*BarButtons: (2x1,Frame -1, Colorset 13, Swallow(UseOld,NoHints,NoRespawn) "xload" 'Exec xload -nolabel -fg grey60 -hl white -jumpscroll 1')
 *BarButtons: (End)
 
 Style "FvwmDesker" NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
@@ -134,7 +137,7 @@ PipeRead "echo *FvwmBar: Geometry $$(($[infostore.screenWidth]-2))x28+0+0"
 
 *FvwmBar: (18x1, Frame 0, Padding 0, Swallow "FvwmIconMan" `FvwmIconMan`)
 *FvwmBar: (2x1, Colorset 9, Padding 2, Right, Swallow (NoClose,NoTitle,UseOld) 'stalonetray' \
-	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NE --max-geometry 8x1 --kludges force_icons_size,fix_window_pos,use_icons_hints`)
+	`Exec exec stalonetray -c "$[FVWM_USERDIR]/stalonetrayrc" --icon-gravity NE --max-geometry 8x1 --kludges force_icons_size,fix_window_pos,use_icons_hints` "")
 *FvwmBar: (2x1, Frame 0, Padding 2, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
 *FvwmBar: (1x1, Frame 0, Padding 2, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 9")
 
