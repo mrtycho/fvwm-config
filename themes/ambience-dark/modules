@@ -1,6 +1,6 @@
 EwmhBaseStruts 0 0 30 42
 
-Style BarButtons UseStyle PanelStyle
+Style BarButtons UseStyle PanelStyle, BorderColorset 14
 Colorset 11 fg #202020, bg #dbdbdb, hi white, sh #bababa, fgsh #f0f0f0
 Colorset 12 fg white,   bg #afafaf, RootTransparent buffer, Tint #858090 60, sh #808080, hi #c0c0c0, fgsh #303030
 Colorset 13 fg black,   bg #585c6a, hi white, fgsh #e0e0e0
@@ -10,13 +10,13 @@ DestroyModuleConfig BarButtons: *
 *BarButtons: Colorset 14
 *BarButtons: Font "$[infostore.smallfont]"
 *BarButtons: Rows 1
-*BarButtons: Padding 1 1
+*BarButtons: Padding 2 2
 PipeRead "echo *BarButtons: Geometry 510x40+$$((($[infostore.screenWidth]-510)/2))-0"
 
-*BarButtons: (1x1,Frame 1, Colorset 14, \
-    PressColorset 6, Icon icons/menu.png, \
-    Action `Menu Utilities rectangle +$left+$top 1 -100m`)
-*BarButtons: (10x1, Frame 1, Padding 1, Container(Rows 1, Frame 0 ))
+*BarButtons: (1x1,Frame 1, Colorset 7, \
+    PressColorset 6, Icon icons/menu.png, Action "Exec exec $[infostore.launcher]", \
+    Action(Mouse 3) `Menu Utilities rectangle +$left+$top 1 -100m`)
+*BarButtons: (10x1, Frame 0, Padding 1, Container(Rows 1, Frame 0 ))
 *BarButtons: (Icon icons/folder.png, \
     PressColorset 6, Action "Exec exec $[infostore.filemanager]", \
     Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")

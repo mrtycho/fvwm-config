@@ -1,12 +1,12 @@
 CleanupColorsets
 
-Colorset 0 fg white, bg #1F685D, fgsh #283A3C, hi #189173, sh #283A3C
-Colorset 1 fg #868b9c, bg #383c4a, fgsh #383c4a, hi #616167, sh #181c2a
+Colorset 0 fg white, bg #383c4a, fgsh #383c4a, hi #616167, sh #181c2a
+Colorset 1 fg #868b9c, bg #2F343F, fgsh #2F343F, hi #616167, sh #181c2a
 Colorset 2 fg white,   bg #181c2a
 Colorset 3 fg #efefef, bg #3f444f, fgsh #181c2a, hi #7e8395, sh #7e8395
 Colorset 4 fg black,   bg #EbE8E7, hi white, fgsh #f0f0f0
 Colorset 5 fg #d3dae3, bg #383c4a, hi #515867, sh #2f343f, fgsh #1f242f
-Colorset 6 fg white,   bg #1F685D
+Colorset 6 fg white,   bg #1A8A74
 Colorset 7 fg #efefef, bg #454a5a, fgsh #181c2a, hi #7e8395, sh #7e8395
 Colorset 8 fg #939aa3, bg #2F343F, hi #2F343F, sh #2F343F, fgsh #1f242f
 Colorset 9 fg #d3dae3, bg #2F343F, hi #2F343F, sh #2F343F, fgsh #1f242f
@@ -32,8 +32,8 @@ AddToDecor AmbienceDecor
 + ButtonStyle  4  Inactive   (Pixmap iconify-inactive.xpm -- Flat)
 + ButtonStyle	all	-- UseTitleStyle Flat
 
-+ TitleStyle   AllActive     (TiledPixmap title-activeup.xpm -- Flat)
-+ TitleStyle   Inactive      (TiledPixmap title-inactive.xpm -- Flat)
++ TitleStyle   AllActive     (TiledPixmap title-inactive.xpm -- Flat)
+#+ TitleStyle   Inactive      (TiledPixmap title-inactive.xpm -- Flat)
 + TitleStyle   -- Flat
 
 + BorderStyle	Inactive -- HiddenHandles NoInset 
