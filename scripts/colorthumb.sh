@@ -3,7 +3,7 @@
 ThumbDir=$FVWM_USERDIR/.thumbs/colors
 [ -d $ThumbDir ] || mkdir -p $ThumbDir
 
-Colors="tan peru sienna indianred olivedrab midnightblue steelblue slategrey grey30 cadetblue teal darkslategrey black"
+Colors="tan peru sienna maroon indianred orchid midnightblue steelblue slategrey grey30 cadetblue teal darkslategrey black"
 
 for col in $Colors;
 do

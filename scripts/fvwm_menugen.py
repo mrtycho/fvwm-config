@@ -53,7 +53,7 @@ def get_icon(gicon):
 	filename,suffix = os.path.splitext(icon_info.get_filename())
 	if suffix=='.svg' or suffix=='.svgz':
 		return icon_info.get_filename()+':{0}x{0}'.format(str(icon_size))
-	if filename.find(str(icon_size)) == -1:
+	if filename.find(str(icon_size)+"/") == -1:
 		return None
 
 	return filename + suffix
