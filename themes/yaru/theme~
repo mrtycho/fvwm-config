@@ -1,0 +1,115 @@
+CleanupColorsets
+
+Colorset 0 fg white, bg #383c4a, fgsh #383c4a, hi #616167, sh #181c2a
+Colorset 1 fg #868b9c, bg #2F343F, fgsh #2F343F, hi #616167, sh #181c2a
+Colorset 2 fg white,   bg #181c2a
+Colorset 3 fg #efefef, bg #3f444f, fgsh #181c2a, hi #7e8395, sh #7e8395
+Colorset 4 fg black,   bg #EbE8E7, hi white, fgsh #f0f0f0
+Colorset 5 fg #d3dae3, bg #383c4a, hi #515867, sh #2f343f, fgsh #1f242f
+Colorset 6 fg white,   bg #1A8A74
+Colorset 7 fg #efefef, bg #454a5a, fgsh #181c2a, hi #7e8395, sh #7e8395
+Colorset 8 fg #939aa3, bg #2F343F, hi #2F343F, sh #2F343F, fgsh #1f242f
+Colorset 9 fg #d3dae3, bg #2F343F, hi #2F343F, sh #2F343F, fgsh #1f242f
+Colorset 10 fg white, bg black, hi #202020, sh #202020
+
+Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
+Style * BorderWidth 3, HandleWidth 3
+
+DefaultColorset 5
+DefaultFont "$[infostore.normalfont]"
+
+DestroyDecor AmbienceDecor
+AddToDecor AmbienceDecor
++ TitleStyle Centered Height 28
++ ButtonStyle  1  Active     (Pixmap close-activeup.xpm -- Flat)
++ ButtonStyle  1  ActiveDown (Pixmap close-activedown.xpm -- Flat)
++ ButtonStyle  1  Inactive   (Pixmap close-inactive.xpm -- Flat)
++ ButtonStyle  2  Active     (Pixmap maximize-activeup.xpm -- Flat) 
++ ButtonStyle  2  ActiveDown (Pixmap maximize-activedown.xpm -- Flat) 
++ ButtonStyle  2  Inactive   (Pixmap maximize-inactive.xpm -- Flat) 
++ ButtonStyle  4  Active     (Pixmap iconify-activeup.xpm -- Flat)
++ ButtonStyle  4  ActiveDown (Pixmap iconify-activedown.xpm -- Flat)
++ ButtonStyle  4  Inactive   (Pixmap iconify-inactive.xpm -- Flat)
++ ButtonStyle	all	-- UseTitleStyle Flat
+
++ TitleStyle   AllActive     (TiledPixmap title-inactive.xpm -- Flat)
+#+ TitleStyle   Inactive      (TiledPixmap title-inactive.xpm -- Flat)
++ TitleStyle   -- Flat
+
++ BorderStyle	Inactive -- HiddenHandles NoInset 
++ BorderStyle	Active   -- HiddenHandles NoInset
+
+Style	* UseDecor AmbienceDecor
+Style * Font "$[infostore.titlefont]"
+# Style * NoIcon
+
+Style * IconFont "$[infostore.smallfont]"
+Style * IconBackgroundRelief 0, IconTitleRelief 0	
+Style * IconBackgroundColorset 12, IconTitleColorset 5, HilightIconTitleColorset 6
+Style * IconSize 62 62, IconTitle
+Style * IconBox 10 45 -10 -5, IconGrid 22 18, IconFill top left
+Style * IconOverride
+
+DestroyDecor PanelDecor
+AddToDecor PanelDecor
++ TitleStyle	-- flat
++ BorderStyle	Active -- NoInset HiddenHandles 
++ BorderStyle	Inactive -- NoInset HiddenHandles
+
+Style PanelStyle \
+  UseDecor PanelDecor, FvwmBorder, FvwmButtons, NoTitle, FixedSize, WindowListSkip, CirculateSkip, \
+  Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedPosition, BorderWidth 1, BorderColorset 2
+
+#Style "$[infostore.terminal]" EWMHMiniIconOverride, Icon icons/terminal.png, MiniIcon icons/mini/terminal.png
+#Style "$[infostore.filemanager]" EWMHMiniIconOverride,Icon icons/folder.png, MiniIcon icons/mini/folder.png
+#Style "$[infostore.editor]" EWMHMiniIconOverride,Icon icons/editor.png, MiniIcon icons/mini/editor.png
+#Style "$[infostore.viewer]" EWMHMiniIconOverride,Icon icons/viewer.png, MiniIcon icons/mini/viewer.png
+#Style "$[infostore.audioplayer]" EWMHMiniIconOverride,Icon icons/audio.png, MiniIcon icons/mini/audio.png
+#Style "$[infostore.videoplayer]" EWMHMiniIconOverride, Icon icons/media.png, MiniIcon icons/mini/video.png
+#Style "$[infostore.browser]" EWMHMiniIconOverride, Icon icons/browser.png, MiniIcon icons/mini/browser.png
+#Style "$[infostore.mail]" EWMHMiniIconOverride, Icon icons/mail.png, MiniIcon icons/mini/mail.png
+
+Style "Xman" MiniIcon mini/Help.xpm
+#Style "Firefox*" EWMHMiniIconOverride, Icon icons/browser.png, MiniIcon icons/mini/browser.png
+#Style "Thunderbird" EWMHMiniIconOverride, Icon icons/mail.png, MiniIcon icons/mini/mail.png
+Style "xterm" MiniIcon icons/mini/terminal.png
+Style "xfce4-terminal" MiniIcon icons/mini/terminal.png
+Style "gpodder" MiniIcon icons/mini/audio.png
+Style "xv" MiniIcon icons/mini/viewer.png
+
+MenuStyle * Fvwm
+MenuStyle * Hilight3DThickness 0, PopupOffset 0 100, PopupDelay 300
+MenuStyle * Font "$[infostore.normalfont]"
+MenuStyle * TitleFont "$[infostore.titlefont]"
+MenuStyle * MenuColorset 5, HilightBack, ActiveColorset 6, HilightTitleBack, TitleColorset 5
+MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
+MenuStyle * TrianglesUseFore, TrianglesSolid
+MenuStyle * ItemFormat "%s%| %0.2p%i%0.2p %l  %r  %i%> %|%s"
+MenuStyle * VerticalItemSpacing 6 5, VerticalTitleSpacing 6 5
+MenuStyle * SeparatorsLong
+
+CopyMenuStyle * bgMenu
+MenuStyle bgMenu VerticalItemSpacing 2 6, VerticalTitleSpacing 4 3
+MenuStyle bgMenu Hilight3DThickness 0
+MenuStyle bgMenu ActiveColorset 6, HilightBack, MenuColorset 10
+MenuStyle bgMenu ItemFormat "%s%|%i  %l|%s"
+MenuStyle bgMenu VerticalMargins 0 0
+
+#------------------------------------------------------------------------------
+# Mouse Bindings
+#------------------------------------------------------------------------------
+
+Mouse 1  1  A  Function "CloseWindow"
+Mouse 2  1	A  All ($c) Close
+Mouse 3  1  A  Destroy
+
+Mouse 1  2  A  Function "MaximizeWindow"
+Mouse 2  2  A  MaximizeToSide -0
+Mouse 3  2  A  MaximizeToSide +0
+
+Mouse 1  4  A  IconifyWindow
+Mouse 3  4  A  Maximize
+
+Mouse 1  T  A  Function "MoveOrRaiseOrMaximize"
+Mouse 2  T  A  Function "RaiseLowerWindow"
+Mouse 3  T  A  Menu Window-Ops3
