@@ -1,0 +1,106 @@
+CleanupColorsets
+
+Colorset 0 fg #ffffff, bg #FF8AF9, fgsh #8F1A89, hi #FFC6FD, sh #F115F0
+Colorset 1 fg #EF2CE5, bg #FFC6FD, fgsh #ffffff, hi #FFF4FF, sh #FF8AF9
+Colorset 2 fg white,   bg #805075, fgsh #300025, hi #603055, sh #603055 
+Colorset 3 fg #202020, bg #FBF8F7, hi #fbf8f7, sh #fbf8f7, fgsh #ffffff 
+Colorset 4 fg black,   bg #EbE8E7, hi white, fgsh #f0f0f0
+Colorset 5 fg #d14aaf, bg #FEEAFE, hi #FFFFFF, sh #FFBAF9, fgsh #ffffff
+Colorset 6 fg white,   bg #FA95F4, hi #e15abf, sh #e15abf
+Colorset 7 fg white,   bg #FF8AF9, fgsh #8F1A89, hi #EF2CE5, sh #EF2CE5
+Colorset 8 fg #d14aaf, bg #FEEAFE, hi #FEEAFE, sh #FEEAFE, fgsh #ffffff
+Colorset 9 fg #e15abf, bg #FEEAFE, hi #FEEAFE, sh #FEEAFE, fgsh #FEEAFE
+Colorset 10 fg white, bg black, hi #302020, sh #302020
+
+Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
+Style * BorderWidth 3, HandleWidth 3
+
+DefaultColorset 5
+DefaultFont "$[infostore.normalfont]"
+
+DestroyDecor AmbienceDecor
+AddToDecor AmbienceDecor
++ TitleStyle Centered Height 28
++ ButtonStyle  1  Active     (Pixmap close-inactive.png -- Flat)
++ ButtonStyle  1  ActiveDown (Pixmap close-pressed.png -- Flat)
++ ButtonStyle  1  Inactive   (Pixmap close-active.png -- Flat)
++ ButtonStyle  2  Active     (Pixmap maximize-inactive.png -- Flat) 
++ ButtonStyle  2  ActiveDown (Pixmap maximize-pressed.png -- Flat) 
++ ButtonStyle  2  Inactive   (Pixmap maximize-active.png -- Flat) 
++ ButtonStyle  4  Active     (Pixmap hide-inactive.png -- Flat)
++ ButtonStyle  4  ActiveDown (Pixmap hide-pressed.png -- Flat)
++ ButtonStyle  4  Inactive   (Pixmap hide-active.png -- Flat)
++ ButtonStyle	all	-- UseTitleStyle Flat
+
+#+ TitleStyle   AllActive     (TiledPixmap title-activeup.xpm -- Flat)
+#+ TitleStyle   Inactive      (TiledPixmap title-inactive.xpm -- Flat)
++ TitleStyle   -- Flat
+
++ BorderStyle	Inactive -- HiddenHandles NoInset 
++ BorderStyle	Active   -- HiddenHandles NoInset
+
+Style	* UseDecor AmbienceDecor
+Style * Font "$[infostore.titlefont]"
+# Style * NoIcon
+
+Style * IconFont "$[infostore.smallfont]"
+Style * IconBackgroundRelief 0, IconTitleRelief 0	
+Style * IconBackgroundColorset 12, IconTitleColorset 2, HilightIconTitleColorset 6
+Style * IconSize 62 62, IconTitle
+Style * IconBox 10 45 -10 -5, IconGrid 22 18, IconFill top left
+Style * IconOverride
+
+DestroyDecor PanelDecor
+AddToDecor PanelDecor
++ TitleStyle	-- flat
++ BorderStyle	Active -- NoInset HiddenHandles 
++ BorderStyle	Inactive -- NoInset HiddenHandles
+
+Style PanelStyle \
+  UseDecor PanelDecor, FvwmBorder, FvwmButtons, NoTitle, FixedSize, WindowListSkip, CirculateSkip, \
+  Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedPosition, BorderWidth 1, BorderColorset 2
+
+Style "Xman" MiniIcon mini/Help.xpm
+#Style "Firefox*" EWMHMiniIconOverride, Icon icons/browser.png, MiniIcon icons/mini/browser.png
+#Style "Thunderbird" EWMHMiniIconOverride, Icon icons/mail.png, MiniIcon icons/mini/mail.png
+Style "xterm" MiniIcon icons/mini/terminal.png
+Style "xfce4-terminal" MiniIcon icons/mini/terminal.png
+Style "gpodder" MiniIcon icons/mini/audio.png
+Style "xv" MiniIcon icons/mini/viewer.png
+
+MenuStyle * Fvwm
+MenuStyle * Hilight3DThickness 0, PopupOffset 0 100, PopupDelay 300
+MenuStyle * Font "$[infostore.normalfont]"
+MenuStyle * TitleFont "$[infostore.titlefont]"
+MenuStyle * MenuColorset 5, HilightBack, ActiveColorset 6, HilightTitleBack, TitleColorset 0
+MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
+MenuStyle * TrianglesUseFore, TrianglesSolid
+MenuStyle * ItemFormat "%s%| %0.2p%i%0.2p %l  %r  %i%> %|%s"
+MenuStyle * VerticalItemSpacing 6 5, VerticalTitleSpacing 6 5
+MenuStyle * SeparatorsLong
+
+CopyMenuStyle * bgMenu
+MenuStyle bgMenu VerticalItemSpacing 2 6, VerticalTitleSpacing 4 3
+MenuStyle bgMenu Hilight3DThickness 0
+MenuStyle bgMenu ActiveColorset 6, HilightBack, MenuColorset 10
+MenuStyle bgMenu ItemFormat "%s%|%i  %l|%s"
+MenuStyle bgMenu VerticalMargins 0 0
+
+#------------------------------------------------------------------------------
+# Mouse Bindings
+#------------------------------------------------------------------------------
+
+Mouse 1  1  A  Function "CloseWindow"
+Mouse 2  1	A  All ($c) Close
+Mouse 3  1  A  Destroy
+
+Mouse 1  2  A  Function "MaximizeWindow"
+Mouse 2  2  A  MaximizeToSide -0
+Mouse 3  2  A  MaximizeToSide +0
+
+Mouse 1  4  A  IconifyWindow
+Mouse 3  4  A  Maximize
+
+Mouse 1  T  A  Function "MoveOrRaiseOrMaximize"
+Mouse 2  T  A  Function "RaiseLowerWindow"
+Mouse 3  T  A  Menu Window-Ops3
