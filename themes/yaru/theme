@@ -3,7 +3,7 @@ CleanupColorsets
 Colorset 0 fg white,   bg #2B2929, fgsh #000000, hi #616161, sh #1c1c1c
 Colorset 1 fg #909090, bg #3A3A3A, fgsh #2f2f2f, hi #616161, sh #1c1c1c
 Colorset 2 fg white,   bg #181818
-Colorset 3 fg #efefef, bg #3f444f, fgsh #181c2a, hi #7e8395, sh #7e8395
+Colorset 3 fg #efefef, bg #444444, fgsh #181c2a, hi #616161, sh #1c1c1c
 Colorset 4 fg black,   bg #EbE8E7, hi white, fgsh #f0f0f0
 Colorset 5 fg white,   bg #3A3A3A, fgsh #2f2f2f, hi #616161, sh #1c1c1c
 Colorset 6 fg white,   bg #DF4A16, hi #FF6A36, sh #FF6A36
@@ -20,7 +20,7 @@ DefaultFont "$[infostore.normalfont]"
 
 DestroyDecor AmbienceDecor
 AddToDecor AmbienceDecor
-+ TitleStyle LeftJustified Height 28
++ TitleStyle LeftJustified Height 27
 + ButtonStyle  1  Active     (Pixmap close-active.png -- Flat)
 + ButtonStyle  1  ActiveDown (Pixmap close-prelight.png -- Flat)
 + ButtonStyle  1  Inactive   (Pixmap close-inactive.png -- Flat)

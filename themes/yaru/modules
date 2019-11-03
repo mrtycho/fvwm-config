@@ -82,7 +82,7 @@ Style FvwmPager	       NoTitle, Sticky, WindowListSkip, StaysOnBottom, NeverFocu
 Style "FvwmIconMan"      NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
 
 DestroyModuleConfig FvwmIconMan: *
-*FvwmIconMan: Background #2F343F
+*FvwmIconMan: Background #3A3A3A
 *FvwmIconMan: Foreground #202020
 *FvwmIconMan: ManagerGeometry 1x1
 *FvwmIconMan: ButtonGeometry 30x30
