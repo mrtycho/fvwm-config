@@ -11,12 +11,12 @@ DestroyModuleConfig BarButtons: *
 *BarButtons: Font "$[infostore.smallfont]"
 *BarButtons: Rows 1
 *BarButtons: Padding 2 2
-PipeRead "echo *BarButtons: Geometry 510x40+$$((($[infostore.screenWidth]-510)/2))-0"
+PipeRead "echo *BarButtons: Geometry 450x40+$$((($[infostore.screenWidth]-450)/2))-0"
 
 *BarButtons: (1x1,Frame 1, Colorset 7, \
     PressColorset 6, Icon icons/menu.png, Action "Exec exec $[infostore.launcher]", \
     Action(Mouse 3) `Menu Utilities rectangle +$left+$top 1 -100m`)
-*BarButtons: (10x1, Frame 0, Padding 1, Container(Rows 1, Frame 0 ))
+*BarButtons: (10x1, Frame 0, Padding 2, Container(Rows 1, Frame 0 ))
 *BarButtons: (Icon icons/folder.png, \
     PressColorset 6, Action "Exec exec $[infostore.filemanager]", \
     Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: config\n"
-"POT-Creation-Date: 2018-10-03 08:47+0200\n"
-"PO-Revision-Date: 2018-10-03 10:14+0200\n"
+"POT-Creation-Date: 2019-08-11 08:47+0200\n"
+"PO-Revision-Date: 2019-08-11 10:14+0200\n"
 "Last-Translator: Stefan Mayer\n"
 "Language: de\n"
 "Language-Team: German\n"
@@ -67,6 +67,9 @@ msgstr "Desktop"
 
 msgid "All to Current Page"
 msgstr "Alle Fenster sammeln"
+
+msgid "Rearrange Icons"
+msgstr "Symbole neu anordnen"
 
 # Apps
 
@@ -203,6 +206,10 @@ msgstr "System neu starten"
 
 msgid "Restart with:"
 msgstr "Neu starten mit:"
+
+# Themes
+msgid "Theme"
+msgstr "Thema"
 
 # Forms
 

@@ -3,7 +3,8 @@ CleanupColorsets
 Colorset 0 fg #13315d, bg #7ab5f8, fgsh #abd2ff, hi #abd2ff, sh #43618d
 Colorset 1 fg #6a6c6e, bg #e1e1e1, fgsh #d0cfcf, hi #f2f2f2, sh #9a9c9e
 Colorset 2 fg white,   bg #606060 
-Colorset 3 fg #202020, bg #FBF8F7, hi #fbf8f7, sh #fbf8f7, fgsh #ffffff 
+Colorset 3 fg #202020, bg #FAF9F8, hi #FAF9F8, sh #FAF9F8, fgsh #ffffff 
+#Colorset 3 fg black,   bg #EbE8E7, Pixmap taskbar2.xpm, hi white, sh black, fgsh #f0f0f0
 Colorset 4 fg black,   bg #EbE8E7, hi white, fgsh #f0f0f0
 Colorset 5 fg #2f2f2f, bg #EbE8E7, hi #ffffff, sh #c7c8cd, fgsh #ced1d4
 Colorset 6 fg white,   bg #3983d5
@@ -14,9 +15,6 @@ Colorset 10 fg white, bg black, hi #202020, sh #202020
 
 Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
 Style * BorderWidth 3, HandleWidth 3
-
-DefaultColorset 5
-DefaultFont "$[infostore.normalfont]"
 
 DestroyDecor AmbienceDecor
 AddToDecor AmbienceDecor

@@ -4,14 +4,14 @@ Style BarButtons UseStyle PanelStyle
 Colorset 11 fg #202020, bg #dbdbdb, hi white, sh #bababa, fgsh #f0f0f0
 Colorset 12 fg white,   bg #afafaf, RootTransparent buffer, Tint #858090 60, sh #808080, hi #c0c0c0, fgsh #303030
 Colorset 13 fg black,   bg #585c6a, hi white, fgsh #e0e0e0
-Colorset 14 fg #d3dae3, bg #2f343f, RootTransparent buffer, Tint #2f343f 85, hi #646a78, sh #101020, fgsh #101020
+Colorset 14 fg #d3dae3, bg #2f343f, RootTransparent buffer, Tint #2f343f 85, hi #616167, sh #181c2c, fgsh #101020
 
 DestroyModuleConfig BarButtons: *
 *BarButtons: Colorset 14
 *BarButtons: Font "$[infostore.smallfont]"
 *BarButtons: Rows 1
 *BarButtons: Padding 1 1
-PipeRead "echo *BarButtons: Geometry 510x40+$$((($[infostore.screenWidth]-510)/2))-0"
+PipeRead "echo *BarButtons: Geometry 450x40+$$((($[infostore.screenWidth]-450)/2))-0"
 
 *BarButtons: (1x1,Frame 1, Colorset 14, \
     PressColorset 6, Icon icons/menu.png, \

@@ -27,11 +27,11 @@ ImagePath  $[FVWM_USERDIR]/themes/$[fvwm_theme]:$[FVWM_USERDIR]/3dpixmaps:+
 # Screen Settings
 #------------------------------------------------------------------------------
 
-Xinerama On
+Xinerama Off
 XineramaSls Off
-XineramaSlsSize 2x1
-XineramaPrimaryScreen 1
-XineramaSlsScreens 2 1920x1080+0+0 1920x1080+1920+0
+#XineramaSlsSize 2x1
+#XineramaPrimaryScreen 1
+#XineramaSlsScreens 2 1920x1080+0+0 1920x1080+1920+0
 
 BugOpts FlickeringMoveWorkaround True
 
@@ -105,9 +105,10 @@ Style * MWMDecor
 Style * HintOverride
 Style * OLDecor
 Style * EWMHUseStackingOrderHints
-Style * EWMHPlacementIgnoreWorkingArea
+#Style * EWMHPlacementIgnoreWorkingArea
+#Style * EWMHIgnoreStateHints
+Style * GNOMEIgnoreHints
 #Style * ParentalRelativity
-Style * EWMHIgnoreStateHints
 
 Style "Fvwm*"        UsePPosition, TileCascadePlacement
 Style fvwm_menu      UsePPosition, EWMHUseStateHints

@@ -137,7 +137,7 @@ AddToMenu   Edit-Config
 #------------------------------------------------------------------------------
 
 DestroyMenu Background-Settings
-AddToMenu   Background-Settings
+AddToMenu   Background-Settings "$[gt.Background]" Title 
 + "Nitrogen"                                       Function SetNitrogenBackground
 + "" Nop
 + "$[gt.Browse Wallpapers]"                        Popup Wallpapers
