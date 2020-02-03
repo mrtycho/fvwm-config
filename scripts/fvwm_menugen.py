@@ -30,6 +30,13 @@ terminal = 'xterm -e'
 use_icons = False
 icon_size = 16
 
+def unescape(s):
+    s = s.replace("&lt;", "<")
+    s = s.replace("&gt;", ">")
+    # this has to be last:
+    s = s.replace("&amp;", "&&")
+    return s
+
 def get_default_menu():
 	prefix = os.environ.get('XDG_MENU_PREFIX', '')
 	return prefix + 'applications.menu'
@@ -101,7 +108,7 @@ def parse_folder(directory,mname):
 			entry = m_iter.get_directory()
 			if not entry.get_is_nodisplay():
 				m_id = entry.get_menu_id()
-				name = html.escape(entry.get_name())
+				name = unescape(html.escape(entry.get_name()))
 				menu_str.write(get_menu_entry(m_id,name,entry).encode(encoding,'ignore'))
 				menu_str.write(b'\n')
 				parse_folder(entry,m_id)
@@ -113,7 +120,7 @@ def parse_folder(directory,mname):
 				menu_str.write(get_app_entry(entry).encode(encoding,'ignore'))
 				menu_str.write(b'\n')
 		item_type = m_iter.next()
-	print(get_menu(mname,html.escape(directory.get_name())))
+	print(get_menu(mname,unescape(html.escape(directory.get_name()))))
 	print(menu_str.getvalue().decode(encoding))
 	menu_str.close()
 

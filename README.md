@@ -1,6 +1,8 @@
 # fvwm-config
 Simple old-school style Fvwm-Configuration
 
+![Busy Screen](/screenshot_busy.png?raw=true "Busy Screen")
+
 Keyboard Shortcuts
 ------------------
 * `Alt+F4` -- Close active window
