@@ -1,14 +1,16 @@
 InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:Noto Sans:size=10:bold:minspace=False:antialias=True"
 InfoStoreAdd normalfont "xft:Noto Sans:size=10:minspace=False:antialias=True"
+InfoStoreAdd panelfont "xft:Noto Sans:size=9:bold:minspace=False:antialias=True"
 
+ButtonStyle Reset
 CleanupColorSets
-Colorset 0 fg #404040, bg white, fgsh #e0e0e0, sh #606060, hi #606060
-Colorset 1 fg #707070, bg white, fgsh #e0e0e0, hi #707070, sh #707070
+Colorset 0 fg #404040, bg white, fgsh #f5f5f5, sh #606060, hi #606060
+Colorset 1 fg #808080, bg #909090, fgsh #f5f5f5, hi #909090, sh #707070
 Colorset 2 fg white, bg #000000, sh #000000
 Colorset 3 fg #404040, bg white, hi #707070, sh #707070
 Colorset 4 fg black, bg #afafaf, Pixmap Tile2.png, hi white, fgsh #f0f0f0
-Colorset 5 fg #404040, bg #fafafa, hi #454545, sh #454545
-Colorset 6 fg white, bg black, fgsh grey10
+Colorset 5 fg #404040, bg #f0f0f0, hi #454545, sh #454545
+Colorset 6 fg white, bg #404040, fgsh grey10
 Colorset 7 fg white, bg #505050, fgsh #606060, hi #404040, sh #404040
 Colorset 8 fg #606060, bg #e0e0e0, hi #a0a0a0, sh #a0a0a0, fgsh #f0f0f0
 Colorset 9 fg #202020, bg #c0c0c0, hi #e0e0e0, sh #e0e0e0,fgsh #e0e0e0
@@ -17,23 +19,28 @@ Colorset 11 fg black, bg #afafaf, hi #eaeaea, sh #4a4a4a
 
 Style * Colorset 1, HilightColorset 0
 Style * BorderWidth 3, HandleWidth 3
+Style * MWMButtons
 
 DestroyDecor MinimalDecor
 AddToDecor MinimalDecor
+#+ ButtonStyle  1  MiniIcon -- Flat
 + ButtonStyle  1  Active	    (Pixmap close-activeup.xpm)  -- Flat
 + ButtonStyle  1	ActiveDown   (Pixmap close-activedown.xpm)
-+ ButtonStyle  1	Inactive     (Pixmap close-inactive.xpm) -- Flat
++ ButtonStyle  1	Inactive     (Pixmap close-activedown.xpm) -- Flat
 + ButtonStyle  2	Active	    (Pixmap maximize-activeup.xpm)  -- Flat
 + ButtonStyle  2	ActiveDown   (Pixmap maximize-activedown.xpm) 
-+ ButtonStyle  2	Inactive     (Pixmap maximize-inactive.xpm) -- Flat
++ ButtonStyle  2	Inactive     (Pixmap maximize-activedown.xpm) -- Flat
 + ButtonStyle  4	Active	    (Pixmap iconify-activeup.xpm)  -- Flat
 + ButtonStyle  4	ActiveDown   (Pixmap iconify-activedown.xpm) 
-+ ButtonStyle  4	Inactive     (Pixmap iconify-inactive.xpm ) -- Flat
-+ BorderStyle	Active   Colorset 7 -- Flat
-+ BorderStyle	Inactive Colorset 7 -- Flat
++ ButtonStyle  4	Inactive     (Pixmap iconify-activedown.xpm ) -- Flat
++ BorderStyle	Active   Colorset 7 -- Flat HiddenHandles
++ BorderStyle	Inactive   Colorset 1 -- Flat
+# NoInset
+#-- Flat
+# + BorderStyle	Inactive Colorset 1 -- Flat
 + ButtonStyle	all	-- UseTitleStyle Flat
 + TitleStyle   Centered Height 26
-+ TitleStyle   AllActive       (TiledPixmap title-active.xpm -- Flat)
++ TitleStyle   AllActive       (Solid white -- Flat)
 + TitleStyle   Inactive        (Solid white -- Flat)
 
 Style * UseDecor MinimalDecor, FvwmButtons, MWMBorder 
@@ -58,28 +65,28 @@ Style * IconBox 10 45 -10 -5, IconGrid 20 20, IconFill top left
 Style * IconOverride
 
 Style "$[infostore.terminal]" EWMHMiniIconOverride, Icon icons/terminal.png, MiniIcon icons/mini/terminal.png
-Style "$[infostore.filemanager]" EWMHMiniIconOverride,Icon icons/folder.png, MiniIcon icons/mini/folder.png
-Style "$[infostore.editor]" EWMHMiniIconOverride,Icon icons/editor.png, MiniIcon icons/mini/editor.png
-Style "$[infostore.viewer]" EWMHMiniIconOverride,Icon icons/viewer.png, MiniIcon icons/mini/viewer.png
-Style "$[infostore.audioplayer]" EWMHMiniIconOverride,MiniIcon icons/mini/audio.png
-Style "$[infostore.videoplayer]" EWMHMiniIconOverride, MiniIcon icons/mini/video.png
-Style "$[infostore.browser]" EWMHMiniIconOverride, Icon icons/browser.png, MiniIcon icons/mini/browser.png
-Style "$[infostore.mail]" EWMHMiniIconOverride, Icon icons/mail.png, MiniIcon icons/mini/mail.png
+#Style "$[infostore.filemanager]" EWMHMiniIconOverride,Icon icons/folder.png, MiniIcon icons/mini/folder.png
+#Style "$[infostore.editor]" EWMHMiniIconOverride,Icon icons/editor.png, MiniIcon icons/mini/editor.png
+#Style "$[infostore.viewer]" EWMHMiniIconOverride,Icon icons/viewer.png, MiniIcon icons/mini/viewer.png
+#Style "$[infostore.audioplayer]" EWMHMiniIconOverride,MiniIcon icons/mini/audio.png
+#Style "$[infostore.videoplayer]" EWMHMiniIconOverride, MiniIcon icons/mini/video.png
+#Style "$[infostore.browser]" EWMHMiniIconOverride, Icon icons/browser.png, MiniIcon icons/mini/browser.png
+#Style "$[infostore.mail]" EWMHMiniIconOverride, Icon icons/mail.png, MiniIcon icons/mini/mail.png
 
 Style "Xman" Icon Help.xpm, MiniIcon icons/mini/Help.xpm
-Style "Firefox" EWMHMiniIconOverride, Icon icons/browser.png, MiniIcon icons/mini/browser.png
-Style "Firefox-esr" EWMHMiniIconOverride, Icon icons/browser.png, MiniIcon icons/mini/browser.png
-Style "Thunderbird" EWMHMiniIconOverride, Icon icons/mail.png, MiniIcon icons/mini/mail.png
+#Style "Firefox" EWMHMiniIconOverride, Icon icons/browser.png, MiniIcon icons/mini/browser.png
+#Style "Firefox-esr" EWMHMiniIconOverride, Icon icons/browser.png, MiniIcon icons/mini/browser.png
+#Style "Thunderbird" EWMHMiniIconOverride, Icon icons/mail.png, MiniIcon icons/mini/mail.png
 Style "xterm" Icon icons/terminal.png, MiniIcon icons/mini/terminal.png
 Style "xfce4-terminal" EWMHMiniIconOverride, MiniIcon icons/mini/terminal.png
-Style "org.gnome.Nautilus" EWMHMiniIconOverride, MiniIcon icons/mini/folder.png
+#Style "org.gnome.Nautilus" EWMHMiniIconOverride, MiniIcon icons/mini/folder.png
 
 MenuStyle * MWM
 MenuStyle * Hilight3DThickness 0, PopupOffset 0 96, PopupDelay 300
 MenuStyle * Font "$[infostore.normalfont]"
 MenuStyle * TitleFont "$[infostore.titlefont]"
 MenuStyle * MenuColorset 5, ActiveColorset 7, HilightBack, TitleColorset 0, HilightTitleBack
-MenuStyle * BorderWidth 2, TitleUnderlines1, Animation
+MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
 MenuStyle * TrianglesUseFore, TrianglesSolid
 MenuStyle * ItemFormat "%.2|%.5i%.5l%.5i%2.3>%2|"
 MenuStyle * VerticalItemSpacing 4 4, VerticalTitleSpacing 5 5
@@ -100,7 +107,7 @@ MenuStyle bgMenu VerticalMargins 0 0
 
 Mouse 1  1  A  Function "CloseWindow"
 Mouse 2  1  A  Destroy
-Mouse 3  1  A	WindowList (CurrentPage) NoGeometry, NoCurrentDeskTitle, IconifiedAtEnd
+Mouse 3  1  A  WindowList (CurrentPage) NoGeometry, NoCurrentDeskTitle, IconifiedAtEnd
 Mouse 1  2  A  Function "MaximizeWindow"
 Mouse 2  2  A  MaximizeToSide -0
 Mouse 3  2  A  MaximizeToSide +0
