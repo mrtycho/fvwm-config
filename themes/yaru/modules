@@ -4,39 +4,32 @@ Style BarButtons UseStyle PanelStyle
 Colorset 11 fg #202020, bg #dbdbdb, hi white, sh #bababa, fgsh #f0f0f0
 Colorset 12 fg white,   bg #afafaf, RootTransparent buffer, Tint #858090 60, sh #808080, hi #c0c0c0, fgsh #303030
 Colorset 13 fg black,   bg #2f2f2f, hi #616161, fgsh #e0e0e0
-Colorset 14 fg #d3dae3, bg #343434, RootTransparent buffer, Tint #343434 85, hi #616161, sh #202020, fgsh #101020
+Colorset 14 fg #d3dae3, bg #343434, RootTransparent buffer, Tint #343434 85, hi #444444, sh #303030, fgsh #101020
 
 DestroyModuleConfig BarButtons: *
 *BarButtons: Colorset 14
 *BarButtons: Font "$[infostore.smallfont]"
 *BarButtons: Rows 1
-*BarButtons: Padding 1 1
-PipeRead "echo *BarButtons: Geometry 510x40+$$((($[infostore.screenWidth]-510)/2))-0"
+*BarButtons: Padding 2 2
+*BarButtons: Frame 0
+PipeRead "echo *BarButtons: Geometry 800x44+$$((($[infostore.screenWidth]-800)/2))-0@p"
 
-*BarButtons: (1x1,Frame 1, Colorset 14, \
-    PressColorset 6, Icon icons/menu.png, \
-    Action `Menu Utilities rectangle +$left+$top 1 -100m`)
-*BarButtons: (10x1, Frame 1, Padding 1, Container(Rows 1, Frame 0 ))
-*BarButtons: (Icon icons/home.png, \
-    PressColorset 6, Action "Exec exec $[infostore.filemanager]", \
+*BarButtons: (8x1, Frame 1, Padding 1, Container(Rows 1, Frame 0 ))
+*BarButtons: (Title (Side,Center) "$[gt.Files] ", Icon icons/folder.png, PressColorset 6, Action "Exec exec $[infostore.filemanager]", \
     Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
-*BarButtons: (Icon icons/terminal.png, \
-    PressColorset 6, Action "Exec exec $[infostore.terminal]")
-*BarButtons: (Icon icons/editor.png, \
-    PressColorset 6, Action "Exec exec $[infostore.editor]", \
-	 Action(Mouse 3) `Menu Popup_Development rectangle +$left+$top 1 -100m`)
-*BarButtons: (Icon icons/viewer.png, \
-    PressColorset 6, Action "Exec exec $[infostore.viewer]", \
+*BarButtons: (Title (Side,Center) "Terminal ", Icon icons/terminal.png, PressColorset 6, Action "Exec exec $[infostore.terminal]")
+*BarButtons: (Title (Side,Center) "Editor ", Icon icons/editor.png, PressColorset 6, Action "Exec exec $[infostore.editor]", \
+    Action(Mouse 3) `Menu Popup_Development rectangle +$left+$top 1 -100m`)
+*BarButtons: (Title (Side,Center) "$[gt.Images] ", Icon icons/viewer.png, PressColorset 6, Action "Exec exec $[infostore.viewer]", \
+    Action(Mouse 2) 'Exec exec evince', \
     Action(Mouse 3) `Menu Popup_Graphics rectangle +$left+$top 1 -100m`)
-*BarButtons: (Icon icons/media.png, PressColorset 6, \
-    Action "Exec exec $[infostore.audioplayer]", \
+*BarButtons: (Title (Side,Center) "$[gt.Media] ", Icon icons/media.png, PressColorset 6, Action "Exec exec $[infostore.audioplayer]", \
     Action(Mouse 3) `Menu Popup_Multimedia rectangle +$left+$top 1 -100m`)
-*BarButtons: (Icon icons/browser.png, PressColorset 6, \
-    Action "Exec exec $[infostore.browser]"), \
+*BarButtons: (Title (Side,Center) "$[gt.Browser] ", Icon icons/browser.png, PressColorset 6, Action "Exec exec $[infostore.browser]", \
     Action(Mouse 3) `Menu Popup_Internet rectangle +$left+$top 1 -100m`)
-*BarButtons: (Icon icons/mail.png,1 \
-    PressColorset 6, Action "Exec exec $[infostore.mail]")
-*BarButtons: (2x1,Frame -1, Colorset 13, Swallow(UseOld,NoHints,NoRespawn) "xload" 'Exec xload -nolabel -fg grey60 -hl white -jumpscroll 1')
+*BarButtons: (Title (Side,Center) "$[gt.Mail] ", Icon icons/mail.png, PressColorset 6, Action "Exec exec $[infostore.mail]")
+*BarButtons: (1x1, Frame 0, Padding 1, Container(Rows 1, Frame 0 ))
+*BarButtons: (Frame -1, Colorset 0, Swallow(UseOld,NoKill,NoHints,NoRespawn) "xload" 'Exec xload -nolabel')
 *BarButtons: (End)
 
 Style "FvwmDesker" NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip

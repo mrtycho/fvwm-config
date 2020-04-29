@@ -1,42 +1,43 @@
 CleanupColorsets
 
-Colorset 0 fg white,   bg #2B2929, fgsh #000000, hi #616161, sh #1c1c1c
-Colorset 1 fg #909090, bg #3A3A3A, fgsh #2f2f2f, hi #616161, sh #1c1c1c
+Colorset 0 fg white,   bg #323030, fgsh #000000, hi #515151, sh #1c1c1c
+Colorset 1 fg #909090, bg #3e3e3e, fgsh #2f2f2f, hi #515151, sh #1c1c1c
 Colorset 2 fg white,   bg #181818
 Colorset 3 fg #efefef, bg #444444, fgsh #181c2a, hi #616161, sh #1c1c1c
 Colorset 4 fg black,   bg #EbE8E7, hi white, fgsh #f0f0f0
-Colorset 5 fg white,   bg #3A3A3A, fgsh #2f2f2f, hi #616161, sh #1c1c1c
+Colorset 5 fg #101010, bg #fafafa, fgsh #2f2f2f, hi #d0d0d0, sh #d0d0d0
 Colorset 6 fg white,   bg #DF4A16, hi #FF6A36, sh #FF6A36
 Colorset 7 fg white,   bg #2B2929, fgsh #000000, hi #616161, sh #616161
 Colorset 8 fg #909090, bg #3A3A3A, fgsh #2f2f2f, hi #616161, sh #1c1c1c
 Colorset 9 fg #d0d0d0, bg #3A3A3A, fgsh #2f2f2f, hi #616161, sh #1c1c1c
 Colorset 10 fg white, bg black, hi #202020, sh #202020
+Colorset 11 fg black, bg white, hi #d0d0d0, sh #d0d0d0
 
 Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
-Style * BorderWidth 3, HandleWidth 3
+Style * BorderWidth 4, HandleWidth 4
 
 DefaultColorset 5
 DefaultFont "$[infostore.normalfont]"
 
 DestroyDecor AmbienceDecor
 AddToDecor AmbienceDecor
-+ TitleStyle LeftJustified Height 27
++ TitleStyle Centered Height 32
 + ButtonStyle  1  Active     (Pixmap close-active.png -- Flat)
-+ ButtonStyle  1  ActiveDown (Pixmap close-prelight.png -- Flat)
++ ButtonStyle  1  ActiveDown (Pixmap close-pressed.png -- Flat)
 + ButtonStyle  1  Inactive   (Pixmap close-inactive.png -- Flat)
-+ ButtonStyle  5  Active     (Pixmap maximize-prelight.png -- Flat) 
-+ ButtonStyle  5  ActiveDown (Pixmap maximize-pressed.png -- Flat) 
-+ ButtonStyle  5  Inactive   (Pixmap maximize-inactive.png -- Flat) 
-+ ButtonStyle  3  Active     (Pixmap hide-prelight.png -- Flat)
-+ ButtonStyle  3  ActiveDown (Pixmap hide-pressed.png -- Flat)
-+ ButtonStyle  3  Inactive   (Pixmap hide-inactive.png -- Flat)
++ ButtonStyle  2  Active     (Pixmap maximize-active.png -- Flat) 
++ ButtonStyle  2  ActiveDown (Pixmap maximize-pressed.png -- Flat) 
++ ButtonStyle  2  Inactive   (Pixmap maximize-inactive.png -- Flat) 
++ ButtonStyle  4  Active     (Pixmap hide-active.png -- Flat)
++ ButtonStyle  4  ActiveDown (Pixmap hide-pressed.png -- Flat)
++ ButtonStyle  4  Inactive   (Pixmap hide-inactive.png -- Flat)
 + ButtonStyle	all	-- UseTitleStyle Flat
 
 + TitleStyle   AllActive     (TiledPixmap title-activeup.xpm -- Flat)
-#+ TitleStyle   Inactive      (TiledPixmap title-inactive.xpm -- Flat)
++ TitleStyle   Inactive      (TiledPixmap title-inactive.xpm -- Flat)
 + TitleStyle   -- Flat
 
-+ BorderStyle	Inactive -- HiddenHandles NoInset 
++ BorderStyle	Inactive -- HiddenHandles NoInset
 + BorderStyle	Active   -- HiddenHandles NoInset
 
 Style	* UseDecor AmbienceDecor
@@ -45,7 +46,7 @@ Style * Font "$[infostore.titlefont]"
 
 Style * IconFont "$[infostore.smallfont]"
 Style * IconBackgroundRelief 0, IconTitleRelief 0	
-Style * IconBackgroundColorset 12, IconTitleColorset 5, HilightIconTitleColorset 6
+Style * IconBackgroundColorset 12, IconTitleColorset 0, HilightIconTitleColorset 6
 Style * IconSize 62 62, IconTitle
 Style * IconBox 10 45 -10 -5, IconGrid 22 18, IconFill top left
 Style * IconOverride
@@ -82,7 +83,7 @@ MenuStyle * Hilight3DThickness 0, PopupOffset 0 100, PopupDelay 300
 MenuStyle * Font "$[infostore.normalfont]"
 MenuStyle * TitleFont "$[infostore.titlefont]"
 MenuStyle * MenuColorset 5, HilightBack, ActiveColorset 6, HilightTitleBack, TitleColorset 0
-MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
+MenuStyle * BorderWidth 1, TitleUnderlines0, Animation
 MenuStyle * TrianglesUseFore, TrianglesSolid
 MenuStyle * ItemFormat "%s%| %0.2p%i%0.2p %l  %r  %i%> %|%s"
 MenuStyle * VerticalItemSpacing 6 5, VerticalTitleSpacing 6 5
@@ -103,12 +104,12 @@ Mouse 1  1  A  Function "CloseWindow"
 Mouse 2  1	A  All ($c) Close
 Mouse 3  1  A  Destroy
 
-Mouse 1  5  A  Function "MaximizeWindow"
-Mouse 2  5  A  MaximizeToSide -0
-Mouse 3  5  A  MaximizeToSide +0
+Mouse 1  2  A  Function "MaximizeWindow"
+Mouse 2  2  A  MaximizeToSide -0
+Mouse 3  2  A  MaximizeToSide +0
 
-Mouse 1  3  A  IconifyWindow
-Mouse 3  3  A  Maximize
+Mouse 1  4  A  IconifyWindow
+Mouse 3  4  A  Maximize
 
 Mouse 1  T  A  Function "MoveOrRaiseOrMaximize"
 Mouse 2  T  A  Function "RaiseLowerWindow"

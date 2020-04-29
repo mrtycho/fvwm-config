@@ -1,6 +1,6 @@
 InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:Noto Sans:size=10:bold:minspace=False:antialias=True"
 InfoStoreAdd normalfont "xft:Noto Sans:size=10:minspace=False:antialias=True"
-InfoStoreAdd panelfont "xft:Noto Sans:size=9:bold:minspace=False:antialias=True"
+InfoStoreAdd panelfont "Shadow=1 0 SE:xft:Noto Sans:size=9:bold:minspace=False:antialias=True"
 
 ButtonStyle Reset
 CleanupColorSets
@@ -8,9 +8,9 @@ Colorset 0 fg #404040, bg white, fgsh #f5f5f5, sh #606060, hi #606060
 Colorset 1 fg #808080, bg #909090, fgsh #f5f5f5, hi #909090, sh #707070
 Colorset 2 fg white, bg #000000, sh #000000
 Colorset 3 fg #404040, bg white, hi #707070, sh #707070
-Colorset 4 fg black, bg #afafaf, Pixmap Tile2.png, hi white, fgsh #f0f0f0
+Colorset 4 fg #202020, bg #b0b0b0, hi white, fgsh #f0f0f0
 Colorset 5 fg #404040, bg #f0f0f0, hi #454545, sh #454545
-Colorset 6 fg white, bg #404040, fgsh grey10
+Colorset 6 fg white, bg #404040, fgsh grey10, hi #505050, sh #202020
 Colorset 7 fg white, bg #505050, fgsh #606060, hi #404040, sh #404040
 Colorset 8 fg #606060, bg #e0e0e0, hi #a0a0a0, sh #a0a0a0, fgsh #f0f0f0
 Colorset 9 fg #202020, bg #c0c0c0, hi #e0e0e0, sh #e0e0e0,fgsh #e0e0e0
@@ -85,7 +85,7 @@ MenuStyle * MWM
 MenuStyle * Hilight3DThickness 0, PopupOffset 0 96, PopupDelay 300
 MenuStyle * Font "$[infostore.normalfont]"
 MenuStyle * TitleFont "$[infostore.titlefont]"
-MenuStyle * MenuColorset 5, ActiveColorset 7, HilightBack, TitleColorset 0, HilightTitleBack
+MenuStyle * MenuColorset 5, ActiveColorset 4, HilightBack, TitleColorset 0, HilightTitleBack
 MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
 MenuStyle * TrianglesUseFore, TrianglesSolid
 MenuStyle * ItemFormat "%.2|%.5i%.5l%.5i%2.3>%2|"
@@ -114,6 +114,6 @@ Mouse 3  2  A  MaximizeToSide +0
 Mouse 1  4  A  Function "IconifyWindow"
 Mouse 3  4  A  All ($c) Iconify On
 
-Mouse 1  T  A  Function "MoveOrRaiseOrShade"
+Mouse 1  T  A  Function "MoveOrRaiseOrMaximize"
 Mouse 2  T  A  Function "RaiseLowerWindow"
 Mouse 3  T  A  Menu Window-Ops3
