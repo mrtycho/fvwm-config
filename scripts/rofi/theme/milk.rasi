@@ -1,0 +1,129 @@
+* {
+    foreground:                  rgba ( 20, 20, 20, 100 % );
+    selected-normal-foreground:  rgba ( 255, 255, 255, 100 % );
+    normal-foreground:           @foreground;
+    alternate-normal-background: @background;
+    red:                         rgba ( 220, 50, 47, 100 % );
+    selected-urgent-foreground:  rgba ( 253, 246, 227, 100 % );
+    blue:                        rgba ( 38, 139, 210, 100 % );
+    urgent-foreground:           rgba ( 255, 82, 82, 100 % );
+    alternate-urgent-background: rgba ( 69, 90, 100, 100 % );
+    active-foreground:           rgba ( 0, 0, 0, 100 % );
+    lightbg:                     rgba ( 202, 202, 202, 100 % );
+    selected-active-foreground:  rgba ( 250, 250, 250, 100 % );
+    alternate-active-background: @background;
+    background:                  rgba ( 255, 255, 255, 100 % );
+    bordercolor:                 rgba ( 20, 20, 20, 100 % );
+    alternate-normal-foreground: @foreground;
+    normal-background:           @background;
+    lightfg:                     rgba ( 172, 172, 172, 100 % );
+    selected-normal-background:  rgba ( 0, 0, 0, 100 % );
+    border-color:                @foreground;
+    spacing:                     5;
+    separatorcolor:              rgba ( 0, 0, 0, 100 % );
+    urgent-background:           rgba ( 69, 90, 100, 100 % );
+    selected-urgent-background:  rgba ( 255, 82, 82, 100 % );
+    alternate-urgent-foreground: @urgent-foreground;
+    background-color:            rgba ( 0, 0, 0, 0 % );
+    alternate-active-foreground: @active-foreground;
+    active-background:           @background;
+    selected-active-background:  rgba ( 0, 0, 0, 100 % );
+    font: "Noto Sans 11";
+    line-style: "none";
+}
+#window {
+    background-color: @background;
+    border:           1;
+    padding:          5;
+}
+#mainbox {
+    border:  0;
+    padding: 0;
+    margin:  5px;
+}
+#message {
+    border:       0;
+    border-color: @separatorcolor;
+    padding:      0 ;
+}
+#textbox {
+    text-color: @foreground;
+}
+#listview {
+    fixed-height: 0;
+    border:       0;
+    border-color: @separatorcolor;
+    spacing:      0px ;
+    scrollbar:    true;
+    padding:      5px 0px 0px 0px ;
+}
+#element {
+    border:  0;
+    padding: 2px 8px 2px 8px;
+    margin:  0;
+}
+#element.normal.normal {
+    background-color: @normal-background;
+    text-color:       @normal-foreground;
+}
+#element.normal.urgent {
+    background-color: @urgent-background;
+    text-color:       @urgent-foreground;
+}
+#element.normal.active {
+    background-color: @active-background;
+    text-color:       @active-foreground;
+}
+#element.selected.normal {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+#element.selected.urgent {
+    background-color: @selected-urgent-background;
+    text-color:       @selected-urgent-foreground;
+}
+#element.selected.active {
+    background-color: @selected-active-background;
+    text-color:       @selected-active-foreground;
+}
+#element.alternate.normal {
+    background-color: @alternate-normal-background;
+    text-color:       @alternate-normal-foreground;
+}
+#element.alternate.urgent {
+    background-color: @alternate-urgent-background;
+    text-color:       @alternate-urgent-foreground;
+}
+#element.alternate.active {
+    background-color: @alternate-active-background;
+    text-color:       @alternate-active-foreground;
+}
+#scrollbar {
+    background-color: @background;
+    width:        4px ;
+    border:       1;
+    handle-width: 4px ;
+    padding:      0;
+}
+#sidebar {
+    border:       2px dash 0px 0px ;
+    border-color: @separatorcolor;
+}
+#button.selected {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+#inputbar {
+    text-color: @normal-foreground;
+}
+#case-indicator {
+    spacing:    0;
+    text-color: @normal-foreground;
+}
+#entry {
+    text-color: @normal-foreground;
+}
+#prompt {
+    text-color: @normal-foreground;
+    padding: 0px 8px 0px 8px;
+}
