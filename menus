@@ -27,7 +27,8 @@ AddToMenu   Utilities "$[gt.Root Menu]" Title
 + "" Nop
 + "$[gt.Session]"                                  Popup Session
 -+ "" Nop
-+ "$[gt.Logout]"                                   FvwmScript $[FVWM_USERDIR]/scripts/FvwmScript-Quit
++ "$[gt.Logout]"                                   Exec exec $FVWM_USERDIR/scripts/rofi/logout.sh
+# FvwmScript $[FVWM_USERDIR]/scripts/FvwmScript-Quit
 
 DestroyMenu Favorites
 AddToMenu   Favorites

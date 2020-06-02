@@ -15,10 +15,10 @@ options="$shutdown\n$reboot\n$lock\n$restart\n$logout"
 chosen="$(echo -e "$options" | $rofi_command -dmenu -selected-row 2)"
 case $chosen in
     $shutdown)
-        systemctl poweroff
+        $FVWM_USERDIR/scripts/rofi/yesno.sh "systemctl poweroff"
         ;;
     $reboot)
-        systemctl reboot
+        $FVWM_USERDIR/scripts/rofi/yesno.sh "systemctl reboot"
         ;;
     $lock)
         xscreensaver-command -l

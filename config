@@ -208,6 +208,7 @@ Silent Key Tab             A  4  FuncFvwmNextMaximized
 Key Space                  A  4  Exec exec rofi -show run
 Key W                      A  4  Exec exec rofi -show windowcd
 Key e                      A  4  Exec exec $[infostore.launcher]
+Key q                      A  4  Exec exec $FVWM_USERDIR/scripts/rofi/logout.sh
 
 # Terminal
 Key T                      A  MC Exec exec $[infostore.terminal]
