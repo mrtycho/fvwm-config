@@ -1,11 +1,10 @@
-EwmhBaseStruts 0 0 32 42
+EwmhBaseStruts 0 0 30 48
 
-Style BarButtons UseStyle PanelStyle
-Colorset 11 fg #202020, bg #3983d5, RootTransparent buffer, Tint #abd2ff 75, hi #3983d5, sh #3983d5, fgsh #f0f0f0
-#Colorset 11 fg #202020, bg #dbdbdb, hi white, sh #bababa, fgsh #f0f0f0
-Colorset 12 fg white,   bg #afafaf, RootTransparent buffer, Tint #CbC8C7 60, sh #808080, hi #c0c0c0, fgsh #303030
-Colorset 13 fg black,   bg #bebebe, hi #808080, sh #808080,  fgsh #e0e0e0
-Colorset 14 fg #202020, bg #EbE8E7, RootTransparent buffer, Tint #EbE8E7 75, hi #ffffff, sh #afafaf, fgsh #f0f0f0
+Style BarButtons UseStyle PanelStyle, BorderWidth 1
+Colorset 11 fg #202020, bg #dbdbdb, hi white, sh #bababa, fgsh #f0f0f0
+Colorset 12 fg white,   bg #afafaf, RootTransparent buffer, Tint #363a40 60, sh #808080, hi #c0c0c0, fgsh #303030
+Colorset 13 fg black,   bg #454a5a, hi #707587, sh# 6b7184, fgsh #e0e0e0
+Colorset 14 fg #C0C1C6, bg #363a40, RootTransparent buffer, Tint #363a40 75, hi #616167, sh #181c2a, fgsh #101020
 
 DestroyModuleConfig BarButtons: *
 *BarButtons: Colorset 14
@@ -14,9 +13,11 @@ DestroyModuleConfig BarButtons: *
 *BarButtons: Padding 2 2
 PipeRead "echo *BarButtons: Geometry 520x48+$$((($[infostore.screenWidth]-520)/2))-0"
 
+#*BarButtons: (1x1, Frame 1, Padding 0, Container(Rows 1, Frame 0 ))
+#*BarButtons: (End)
 *BarButtons: (11x1, Frame 1, Padding 2, Container(Rows 1, Frame 0 ))
-*BarButtons: (Frame 1, Colorset 13, \
-    PressColorset 11, Icon icons/menu.png, \
+*BarButtons: (Frame 1, Colorset 5, \
+    PressColorset 7, Icon icons/menu.png, \
     Action "Exec exec $[infostore.launcher]", \
     Action(Mouse 3) `Menu Utilities rectangle +$left+$top 1 -100m`)
 *BarButtons: (Icon icons/folder.png, \
@@ -84,10 +85,10 @@ Style FvwmPager	       NoTitle, Sticky, WindowListSkip, StaysOnBottom, NeverFocu
 Style "FvwmIconMan"      NoTitle, NoHandles, Sticky, WindowListSkip, CirculateSkip
 
 DestroyModuleConfig FvwmIconMan: *
-*FvwmIconMan: Background #EbE8E7
+*FvwmIconMan: Background #2F343F
 *FvwmIconMan: Foreground #202020
 *FvwmIconMan: ManagerGeometry 1x1
-*FvwmIconMan: ButtonGeometry 28x28
+*FvwmIconMan: ButtonGeometry 30x30
 *FvwmIconMan: MaxButtonWidthByColumns 2
 
 *FvwmIconMan: Font "$[infostore.smallfont]"
@@ -107,7 +108,7 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: FocusAndSelectButton down
 *FvwmIconMan: TitleButton flat
 *FvwmIconMan: TitleColorset 9
-*FvwmIconMan: ReliefThickness 1
+*FvwmIconMan: ReliefThickness 0
 *FvwmIconMan: Resolution page #global
 *FvwmIconMan: DrawIcons always
 *FvwmIconMan: FollowFocus True
@@ -132,14 +133,14 @@ Style FvwmBar UseStyle PanelStyle
 DestroyModuleConfig FvwmBar: *
 *FvwmBar: Font "$[infostore.normalfont]"
 *FvwmBar: Colorset 9
-*FvwmBar: Frame 1
+*FvwmBar: Frame 0
 *FvwmBar: Padding 0 0
 *FvwmBar: Columns 23
-PipeRead "echo *FvwmBar: Geometry $$(($[infostore.screenWidth]-2))x30+0+0"
+PipeRead "echo *FvwmBar: Geometry $$(($[infostore.screenWidth]-2))x28+0+0"
 
-*FvwmBar: (18x1, Frame 1, Padding 0, Swallow "FvwmIconMan" `FvwmIconMan`)
-*FvwmBar: (2x1, Padding 10, Colorset 9, Right, Swallow (NoClose, UseOld) 'stalonetray' \
-	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NE --max-geometry 8x1 --kludges force_icons_size,fix_window_pos,use_icons_hints`)
+*FvwmBar: (18x1, Frame 0, Padding 0, Swallow "FvwmIconMan" `FvwmIconMan`)
+*FvwmBar: (2x1, Colorset 9, Padding 2, Right, Swallow (NoClose,NoTitle,UseOld) 'stalonetray' \
+	`Exec exec stalonetray -c "$[FVWM_USERDIR]/stalonetrayrc" --icon-gravity NE --max-geometry 8x1 --kludges force_icons_size,fix_window_pos,use_icons_hints` "")
 *FvwmBar: (2x1, Frame 0, Padding 2, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
 *FvwmBar: (1x1, Frame 0, Padding 2, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 9")
 

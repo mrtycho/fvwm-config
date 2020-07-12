@@ -5,13 +5,13 @@
 * {
   /* General */
   text-font:                            "Noto Sans 12";
-  icon-font:                            "feather 28";
+  icon-font:                            "feather 24";
 }
 
 /* ########### */
 
 #window {
-  width: 368px;
+  width: 346px;
   height: 92px;
 }
 

@@ -1,20 +1,22 @@
 CleanupColorsets
 
-Colorset 0 fg #13315d, bg #7ab5f8, fgsh #abd2ff, hi #abd2ff, sh #43618d
-Colorset 1 fg #6a6c6e, bg #e1e1e1, fgsh #d0cfcf, hi #f2f2f2, sh #9a9c9e
-Colorset 2 fg white,   bg #606060 
-Colorset 3 fg #202020, bg #FAF9F8, hi #FAF9F8, sh #FAF9F8, fgsh #ffffff 
-#Colorset 3 fg black,   bg #EbE8E7, Pixmap taskbar2.xpm, hi white, sh black, fgsh #f0f0f0
+Colorset 0 fg #1c2f4a, bg #7F9FC7, fgsh #a0b4d2, hi #a0b4d2, sh #3e5371
+Colorset 1 fg #868b9c, bg #363a40, fgsh #262a30, hi #616167, sh #181c2a
+Colorset 2 fg white,   bg #181c2a
+Colorset 3 fg #efefef, bg #363a40, fgsh #181c2a, hi #7e8395, sh #7e8395
 Colorset 4 fg black,   bg #EbE8E7, hi white, fgsh #f0f0f0
-Colorset 5 fg #2f2f2f, bg #EbE8E7, hi #ffffff, sh #c7c8cd, fgsh #ced1d4
-Colorset 6 fg white,   bg #3983d5
-Colorset 7 fg black,   bg #CFCAC4, fgsh #f0f0f0, hi #BAB3AB, sh #BAB3AB
-Colorset 8 fg #6a6c6e, bg #EbE8E7, hi #EbE8E7, sh #EbE8E7, fgsh #ffffff
-Colorset 9 fg #202020, bg #EbE8E7, hi #EbE8E7, sh #EbE8E7, fgsh #f0f0f0
+Colorset 5 fg #fafaff, bg #344d71, hi #507bad, sh #406b9d, fgsh #1f242f
+Colorset 6 fg #13315d, bg #7F9FC7, hi #7ab5f8, sh #7ab5f8
+Colorset 7 fg #f0f0ff, bg #445d81, fgsh #181c2a, hi #7e8395, sh #7e8395
+Colorset 8 fg #939aa3, bg #262a30, hi #2F343F, sh #2F343F, fgsh #1f242f
+Colorset 9 fg #C0C1C6, bg #363a40, hi #2F343F, sh #2F343F, fgsh #1f242f
 Colorset 10 fg white, bg black, hi #202020, sh #202020
 
 Style * Colorset 1, HilightColorset 0, BorderColorset 1, HilightBorderColorset 0
 Style * BorderWidth 3, HandleWidth 3
+
+DefaultColorset 5
+DefaultFont "$[infostore.normalfont]"
 
 DestroyDecor AmbienceDecor
 AddToDecor AmbienceDecor
@@ -39,14 +41,14 @@ AddToDecor AmbienceDecor
 
 Style	* UseDecor AmbienceDecor
 Style * Font "$[infostore.titlefont]"
-# Style * NoIcon
 
 Style * IconFont "$[infostore.smallfont]"
 Style * IconBackgroundRelief 0, IconTitleRelief 0	
-Style * IconBackgroundColorset 12, IconTitleColorset 10, HilightIconTitleColorset 6
+Style * IconBackgroundColorset 12, IconTitleColorset 5, HilightIconTitleColorset 6
 Style * IconSize 88 56, IconTitle
 Style * IconBox 10 45 -10 -5, IconGrid 22 18, IconFill top left
 Style * IconOverride
+Style * Icon default.png
 
 DestroyDecor PanelDecor
 AddToDecor PanelDecor
@@ -58,6 +60,15 @@ Style PanelStyle \
   UseDecor PanelDecor, FvwmBorder, FvwmButtons, NoTitle, FixedSize, WindowListSkip, CirculateSkip, \
   Sticky, NeverFocus, StaysOnBottom, NoHandles, FixedPosition, BorderWidth 1, BorderColorset 2
 
+#Style "$[infostore.terminal]" EWMHMiniIconOverride, Icon icons/terminal.png, MiniIcon icons/mini/terminal.png
+#Style "$[infostore.filemanager]" EWMHMiniIconOverride,Icon icons/folder.png, MiniIcon icons/mini/folder.png
+#Style "$[infostore.editor]" EWMHMiniIconOverride,Icon icons/editor.png, MiniIcon icons/mini/editor.png
+#Style "$[infostore.viewer]" EWMHMiniIconOverride,Icon icons/viewer.png, MiniIcon icons/mini/viewer.png
+#Style "$[infostore.audioplayer]" EWMHMiniIconOverride,Icon icons/audio.png, MiniIcon icons/mini/audio.png
+#Style "$[infostore.videoplayer]" EWMHMiniIconOverride, Icon icons/media.png, MiniIcon icons/mini/video.png
+#Style "$[infostore.browser]" EWMHMiniIconOverride, Icon icons/browser.png, MiniIcon icons/mini/browser.png
+#Style "$[infostore.mail]" EWMHMiniIconOverride, Icon icons/mail.png, MiniIcon icons/mini/mail.png
+
 Style "Xman" MiniIcon mini/Help.xpm
 #Style "Firefox*" EWMHMiniIconOverride, Icon icons/browser.png, MiniIcon icons/mini/browser.png
 #Style "Thunderbird" EWMHMiniIconOverride, Icon icons/mail.png, MiniIcon icons/mini/mail.png
@@ -65,12 +76,13 @@ Style "xterm" MiniIcon icons/mini/terminal.png
 Style "xfce4-terminal" MiniIcon icons/mini/terminal.png
 Style "gpodder" MiniIcon icons/mini/audio.png
 Style "xv" MiniIcon icons/mini/viewer.png
+Style "oomox" Icon default.png
 
 MenuStyle * Fvwm
 MenuStyle * Hilight3DThickness 0, PopupOffset 0 100, PopupDelay 300
 MenuStyle * Font "$[infostore.normalfont]"
 MenuStyle * TitleFont "$[infostore.titlefont]"
-MenuStyle * MenuColorset 5, HilightBack, ActiveColorset 6, HilightTitleBack, TitleColorset 6
+MenuStyle * MenuColorset 5, HilightBack, ActiveColorset 6, HilightTitleBack, TitleColorset 5
 MenuStyle * BorderWidth 1, TitleUnderlines1, Animation
 MenuStyle * TrianglesUseFore, TrianglesSolid
 MenuStyle * ItemFormat "%s%| %0.2p%i%0.2p %l  %r  %i%> %|%s"
