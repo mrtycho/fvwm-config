@@ -3,6 +3,19 @@ Simple old-school style Fvwm-Configuration
 
 ![Busy Screen](/screenshot_busy.png?raw=true "Busy Screen")
 
+Features
+--------
+
+
+Dependencies
+------------
+* m4
+* python, GMenu, gnome-menus
+* rofi
+* stalonetray
+* xscreensaver
+* xsettingsd
+
 Keyboard Shortcuts
 ------------------
 * `Alt+F4` -- Close active window

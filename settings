@@ -2,13 +2,13 @@
 # Appearance
 #--------------------------------------------------------------------------
 
-InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:Noto Sans:size=9::minspace=False:antialias=True"
-InfoStoreAdd normalfont "xft:Noto Sans:size=10:minspace=False:antialias=True"
-InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:Noto Sans:size=10:minspace=False:antialias=True"
-
-InfoStoreAdd screenWidth $[wa.width]
+InfoStoreAdd smallfont  "Shadow=1 0 SE:xft:Liberation Sans:size=9::minspace=False:antialias=True"
+InfoStoreAdd normalfont "xft:Liberation Sans:size=10:minspace=False:antialias=True"
+InfoStoreAdd titlefont  "Shadow=1 0 SE:xft:Liberation Sans:size=10:minspace=False:antialias=True"
 
 InfoStoreAdd theme magic
+
+InfoStoreAdd screenWidth $[wa.width]
 
 #--------------------------------------------------------------------------
 # Default Applications
@@ -16,15 +16,22 @@ InfoStoreAdd theme magic
 
 InfoStoreAdd filemanager pcmanfm
 InfoStoreAdd editor      mousepad
-InfoStoreAdd terminal    xterm
+InfoStoreAdd terminal    uxterm
 InfoStoreAdd browser     firefox
 InfoStoreAdd mail        thunderbird
-InfoStoreAdd viewer      phototonic
+InfoStoreAdd viewer      gthumb
 InfoStoreAdd videoplayer vlc
 InfoStoreAdd audioplayer audacious
 InfoStoreAdd help        xman
-InfoStoreAdd launcher    xfce4-appfinder
+InfoStoreAdd launcher    'rofi -modi drun -show drun -show-icons'
 InfoStoreAdd search      mate-search-tool
+
+#--------------------------------------------------------------------------
+# Styles
+#--------------------------------------------------------------------------
+
+Style * StartsOnDesk 0
+Style Mail    StartsOnPage 0 1 0
 
 #--------------------------------------------------------------------------
 # Startup
@@ -34,5 +41,5 @@ DestroyFunc LocalStartFunction
 AddToFunc LocalStartFunction
 + I Test (Init, x xsettingsd) Exec exec xsettingsd -c  "$[FVWM_USERDIR]/xsettingsd"
 #+ I Test (Init) Exec exec xrandr --output HDMI-1 --mode 1920x1080 --rate 60.00 --output eDP-1 --mode 1920x1080 --rate 60.00 --right-of HDMI-1
-#+ I Test (Init) Exec exec compton
++ I Test (Init) Exec exec picom
 
