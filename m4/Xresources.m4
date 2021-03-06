@@ -22,7 +22,7 @@ forloop(`i',`0',`15', `SET_COLOR(CONCAT(*.color,i),i)')dnl
 !-------
 
 ! Use a nice truetype font and size by default... 
-xterm*faceName: DejaVu Sans Mono for Powerline 
+xterm*faceName: MONOSPACE_FONT_NAME
 xterm*faceSize: 11
 
 *customization: -color

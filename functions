@@ -57,7 +57,7 @@ AddToFunc IconifyWindow
 
 DestroyFunc RearrangeIcons
 AddToFunc RearrangeIcons
-+ C All (CurrentPage, Iconic) PlaceAgain Icon
++ I All (CurrentPage, Iconic) PlaceAgain Icon
 
 DestroyFunc CloseWindow
 AddToFunc CloseWindow
@@ -138,13 +138,13 @@ AddToFunc   MaximizeToSide
 + I ThisWindow (!Maximized) ResizeMoveMaximize frame 960p -82p screen c $0 +0)
 + I TestRc (!Match) Maximize
 
-// Config functions
+# Config functions
 
 DestroyFunc LoadLocalConfig
 AddToFunc LoadLocalConfig
 + I Test (F $[FVWM_USERDIR]/$0) Read $0
 
-// Module function
+# Module function
 
 DestroyFunc RestartModule
 AddToFunc RestartModule

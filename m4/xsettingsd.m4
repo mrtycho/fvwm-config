@@ -1,9 +1,9 @@
 Gtk/CursorThemeSize 0
 Gtk/ToolbarStyle "icons"
-Gtk/DecorationLayout "menu:minimize,maximize,close"
+Gtk/DecorationLayout "DECORATION_LAYOUT"
 Gtk/KeyThemeName ""
 Gtk/FontName "NORMAL_FONT_NAME"
-Gtk/ToolbarIconSize 3
+Gtk/ToolbarIconSize 2
 Gtk/ButtonImages 0
 Net/EnableInputFeedbackSounds 0
 Net/EnableEventSounds 0

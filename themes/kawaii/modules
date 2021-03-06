@@ -33,7 +33,7 @@ PipeRead "echo *BarButtons: Geometry 510x40+$$((($[infostore.screenWidth]-510)/2
     Action "Exec exec $[infostore.audioplayer]", \
     Action(Mouse 3) `Menu Popup_Multimedia rectangle +$left+$top 1 -100m`)
 *BarButtons: (Icon icons/browser.png, PressColorset 6, \
-    Action "Exec exec $[infostore.browser]"), \
+    Action "Exec exec $[infostore.browser]", \
     Action(Mouse 3) `Menu Popup_Internet rectangle +$left+$top 1 -100m`)
 *BarButtons: (Icon icons/mail.png,1 \
     PressColorset 6, Action "Exec exec $[infostore.mail]")
