@@ -64,7 +64,7 @@ def get_icon(gicon):
 	if filename.find(str(icon_size)+"/") == -1:
 		return None
 	pix = icon_info.load_icon()
-	if pix.get_height()!=16:
+	if pix.get_height()>icon_size:
 		return None
 
 	return filename + suffix
