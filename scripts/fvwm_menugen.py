@@ -57,10 +57,14 @@ def get_icon(gicon):
 	icon_info = theme.lookup_by_gicon(gicon, icon_size, 0)
 	if icon_info is None:
 		return None
+	
 	filename,suffix = os.path.splitext(icon_info.get_filename())
 	if suffix=='.svg' or suffix=='.svgz':
 		return icon_info.get_filename()+':{0}x{0}'.format(str(icon_size))
 	if filename.find(str(icon_size)+"/") == -1:
+		return None
+	pix = icon_info.load_icon()
+	if pix.get_height()!=16:
 		return None
 
 	return filename + suffix
