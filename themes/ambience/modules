@@ -119,7 +119,7 @@ DestroyModuleConfig FvwmIconMan: *
 # action
 *FvwmIconMan: action    Mouse    1 N SendCommand "Function IconifyOrFocusAndRaise"
 *FvwmIconMan: action    Mouse    2 N SendCommand Iconify
-*FvwmIconMan: action    Mouse    3 N SendCommand "Menu Window-Ops3 c+0 -101m "
+*FvwmIconMan: action    Mouse    3 N SendCommand "Menu DynamicWindowOps Rectangle +$left+$bottom 1 +0p"
 *FvwmIconMan: action    Key   	 Left N gotobutton Left, select
 *FvwmIconMan: action    Key    	 Right N gotobutton Right, select
 *FvwmIconMan: action    Key    	 Up N gotobutton Up, select

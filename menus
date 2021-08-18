@@ -1,3 +1,7 @@
+#------------------------------------------------------------------------------
+# Menu functions
+#------------------------------------------------------------------------------
+
 DestroyFunc CreateAppMenu
 AddToFunc CreateAppMenu
 + I PipeRead "python3 $FVWM_USERDIR/scripts/fvwm_menugen.py -d lxde -n Programs --icons -t '$[infostore.terminal] -e'"
@@ -5,10 +9,34 @@ AddToFunc CreateAppMenu
 AddToFunc StartFunction
 + I Function CreateAppMenu
 
+DestroyFunc GenWindowOps
+AddToFunc GenWindowOps
++ I AddToMenu DynamicWindowOps
++ I ThisWindow (!Sticky,!"Fvwm*")	+ "$[gt.Move to Page]"         	Popup Move-window
++ I ThisWindow (!"Fvwm*") + "$[gt.&Group Ops]"     		Popup WindowGroupOps
++ I ThisWindow (!"Fvwm*") + ""			Nop
++ I ThisWindow (!Iconified) + "$[gt.&Iconify]	Alt-F9"			Iconify
++ I TestRc (NoMatch) + "$[gt.&DeIconify]		Alt-F9"		Iconify
++ I ThisWindow (!Maximized , !"Fvwm*|fvwm_menu") + "$[gt.Maximize]	Alt-F10"        Maximize
++ I ThisWindow (Maximized , !"Fvwm*|fvwm_menu") + "$[gt.Restore]	Alt-F10"	Maximize
++ I ThisWindow (!Shaded) + "$[gt.Shade]"        		WindowShade
++ I TestRc (NoMatch) + "$[gt.Unshade]"				WindowShade
++ I ThisWindow (Sticky, !"Fvwm*") + "$[gt.Unstick]" Stick
++ I ThisWindow (!Sticky, !"Fvwm*") + "$[gt.Stick]"			Stick
++ I ThisWindow (!"Fvwm*") + ""					Nop
++ I ThisWindow (!"Fvwm*") + "$[gt.&Close]	Alt-F4" Close
++ I ThisWindow (!FvwmIdent) + ""					Nop
++ I ThisWindow (!FvwmIdent) + "$[gt.Identify]	Alt-F11"                         	Module FvwmIdent
++ I ThisWindow (!Iconfied, !"Fvwm*|fvwm_menu") + "$[gt.More&...]"     	Menu Window This 0 0
+
 # Fvwm2
 #PipeRead "python3 $FVWM_USERDIR/scripts/fvwm-menu-desktop --desktop lxde -t Programs --term-cmd '$[infostore.terminal] -e '"
 # SUSE
 # PipeRead "xdg_menu --charset UTF-8 --format fvwm2"
+
+#------------------------------------------------------------------------------
+# Root menu
+#------------------------------------------------------------------------------
 
 DestroyMenu Utilities
 AddToMenu   Utilities "$[gt.Root Menu]" Title 
@@ -414,6 +442,13 @@ AddToMenu "Window-Ops3"
 + ""					Nop
 + "$[gt.Identify]	Alt-F11"                         Module FvwmIdent
 + "$[gt.More&...]"                                 Menu Window This 0 0
+
+# Dynamic version
+
+DestroyMenu DynamicWindowOps
+AddToMenu DynamicWindowOps DynamicPopUpAction GenWindowOps
+AddToMenu DynamicWindowOps DynamicPopDownAction \
+          DestroyMenu recreate DynamicWindowOps
 
 #------------------------------------------------------------------------------
 # A "Move Window" menu

@@ -117,4 +117,4 @@ Mouse 3  4  A  All ($c) Iconify On
 
 Mouse 1  T  A  Function "MoveOrRaiseOrMaximize"
 Mouse 2  T  A  Function "RaiseLowerWindow"
-Mouse 3  T  A  Menu Window-Ops3
+Mouse 3  T  A  Menu DynamicWindowOps

@@ -22,7 +22,7 @@ import re
 import sys
 gi.require_version('GMenu', '3.0')
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, GMenu, GLib
+from gi.repository import Gtk, GMenu, GLib, GdkPixbuf
 from io import BytesIO
 import argparse
 
@@ -63,11 +63,12 @@ def get_icon(gicon):
 		return icon_info.get_filename()+':{0}x{0}'.format(str(icon_size))
 	if filename.find(str(icon_size)+"/") == -1:
 		return None
-	pix = icon_info.load_icon()
-	if pix.get_height()>icon_size:
+	pix= GdkPixbuf.Pixbuf.new_from_file(icon_info.get_filename())
+	
+	if not pix or (pix.get_height() != icon_size):
 		return None
 
-	return filename + suffix
+	return "\"" + filename + suffix + "\""
 
 def get_menu_icon(directory):
 	return get_icon(directory.get_icon())

@@ -100,16 +100,14 @@ DestroyModuleConfig FE-Focus: *
 *FE-Focus: iconify TransferFocus
 *FE-Focus: deiconify Layer default
 *FE-Focus: destroy_window TransferFocus
+*FE-Focus: new_page FocusPage
+*FE-Focus: new_desk FocusPage
 
 DestroyFunc TransferFocus
 AddToFunc TransferFocus
  + I ThisWindow (Iconic) Layer 0 0
  + I Prev (!Iconic, CurrentGlobalPage, !Overlapped, AcceptsFocus) Focus
  + I TestRc (NoMatch) ThisWindow (CurrentGlobalPage,!Overlapped,AcceptsFocus,!Iconic) Focus
-
-DestroyModuleConfig FE-Page: *
-*FE-Page: new_page FocusPage
-*FE-Page: new_desk FocusPage
 
 DestroyFunc FocusPage
 AddToFunc FocusPage

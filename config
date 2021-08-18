@@ -51,9 +51,7 @@ AddToFunc StartFunction
 + I Test (Init,x xfce4-power-manager) Exec exec xfce4-power-manager
 + I Exec exec $(source $[FVWM_USERDIR]/background.cfg)
 + I FvwmEvent FE-Focus
-+ I FvwmEvent FE-Page
 + I Module FvwmCommandS
-+ I Module FvwmAuto 300
 + I Schedule 100 Function StartModules
 
 # This file decides if we start FvwmAnimate or not
@@ -73,6 +71,7 @@ IgnoreModifiers L2
 ClickTime 550
 OpaqueMoveSize 100
 IgnoreModifiers L25
+MoveThreshold 3
 
 EdgeScroll 0 0
 EdgeResistance 500
@@ -93,7 +92,7 @@ Style * ResizeOpaque
 Style * WindowShadeSteps 20
 Style * SnapAttraction 5 All ScreenAll
 Style * SnapGrid 5 5
-Style * EdgeMoveResistance 5
+Style * EdgeMoveDelay 350, EdgeMoveResistance 350
 Style * !UsePPosition,!UseIconPosition
 Style * EWMHDonateIcon
 Style * GrabFocus, GrabFocusTransient
@@ -162,9 +161,9 @@ Style "FvwmScript-Quit" UsePPosition, !Button 1, !Button 2, !Button 4, StaysOnTo
 #------------------------------------------------------------------------------
 
 Mouse 1  R  A     Menu Utilities mouse -1p -1p
-Mouse 2  R  A     Menu Window mouse -1p -1p
-Mouse 3  R  A     WindowList mouse -1p -1p NoGeometry
-Mouse 3  R  C     WindowList mouse -1p -1p OnlyListSkip, NoGeometry
+Mouse 2  R  A     WindowList mouse -1p -1p NoGeometry,TitleForAllDesks,NoCurrentDeskTitle,UseIconName
+Mouse 2  R  C     WindowList mouse -1p -1p OnlyListSkip, NoGeometry
+Mouse 3  R  A     Menu Window mouse -1p -1p
 
 Mouse 1  W  4     Function "MoveAndRaise"
 Mouse 2  W  4     Menu Window mouse -1p -1p
@@ -173,7 +172,7 @@ Mouse 3  W  CM    WindowList mouse -1p -1p OnlyListSkip, NoGeometry
 
 Mouse 1  I  A     Function "MoveOrIconifyOrRaise"
 Mouse 2  I  A     Iconify
-Mouse 3  I  A     Menu Window-Ops3 c+0 -101m
+Mouse 3  I  A     Menu Window-Ops3 c+0 -100m
 
 #------------------------------------------------------------------------------
 # Key Bindings

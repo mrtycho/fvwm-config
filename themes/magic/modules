@@ -21,17 +21,17 @@ PipeRead "echo *BarButtons: Geometry 800x42+$$((($[infostore.screenWidth]-800)/2
     PressColorset 6, Action "Exec exec $[infostore.terminal]")
 *BarButtons: (Title (Side,Center) Editor, Icon icons/TextEditor.xpm, PressIcon icons/TextEditor_pressed.xpm \
     PressColorset 6, Action "Exec exec $[infostore.editor]", \
-    Action(Mouse 3) `Menu Popup_Development rectangle +$left+$top 1 -101m`)
+    Action(Mouse 3) `Menu Popup_Development rectangle +$left+$top 1 -100m`)
 *BarButtons: (Title (Side,Center) $[gt.Images], Icon icons/Viewer.xpm, PressIcon icons/Viewer_pressed.xpm \
     PressColorset 6, Action "Exec exec $[infostore.viewer]", \
     Action(Mouse 2) 'Exec exec evince', \
-    Action(Mouse 3) `Menu Popup_Graphics rectangle +$left+$top 1 -101m`)
+    Action(Mouse 3) `Menu Popup_Graphics rectangle +$left+$top 1 -100m`)
 *BarButtons: (Title (Side,Center) $[gt.Media], Icon icons/Media.xpm, PressColorset 6, PressIcon icons/Media_pressed.xpm \
     Action "Exec exec $[infostore.audioplayer]", \
-    Action(Mouse 3) `Menu Popup_Multimedia rectangle +$left+$top 1 -101m`)
+    Action(Mouse 3) `Menu Popup_Multimedia rectangle +$left+$top 1 -100m`)
 *BarButtons: (Title (Side,Center) $[gt.Browser], Icon icons/Web.xpm, PressColorset 6, PressIcon icons/Web_pressed.xpm \
     Action "Exec exec $[infostore.browser]", \
-    Action(Mouse 3) `Menu Popup_Internet rectangle +$left+$top 1 -101m`)
+    Action(Mouse 3) `Menu Popup_Internet rectangle +$left+$top 1 -100m`)
 *BarButtons: (Title (Side,Center) $[gt.Mail], Icon icons/Mail.xpm, PressIcon icons/Mail_pressed.xpm \
     PressColorset 6, Action "Exec exec $[infostore.mail]")
 *BarButtons: (Frame -1, Colorset 10, Swallow(UseOld,NoHints,NoRespawn) "xload" 'Exec xload -nolabel -fg white -hl white -jumpscroll 1')
@@ -92,7 +92,7 @@ DestroyModuleConfig FvwmIconMan: *
 # action
 *FvwmIconMan: action Mouse 1   N SendCommand "Function IconifyOrFocusAndRaise"
 *FvwmIconMan: action Mouse 2   N SendCommand Iconify
-*FvwmIconMan: action Mouse 3   N SendCommand "Menu Window-Ops3 c+0 -101m "
+*FvwmIconMan: action Mouse 3   N SendCommand "Menu DynamicWindowOps Rectangle +$left+$bottom 1 +0p"
 *FvwmIconMan: action Key Left  N gotobutton Left, select
 *FvwmIconMan: action Key Right N gotobutton Right, select
 *FvwmIconMan: action Key Up    N gotobutton Up, select
