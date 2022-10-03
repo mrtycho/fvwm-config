@@ -45,10 +45,10 @@ Style * Font "$[infostore.titlefont]"
 # Style * NoIcon
 
 Style * IconFont "$[infostore.smallfont]"
-Style * IconBackgroundRelief 0, IconTitleRelief 0	
+Style * IconBackgroundRelief 0, IconTitleRelief 1	
 Style * IconBackgroundColorset 12, IconTitleColorset 0, HilightIconTitleColorset 6
-Style * IconSize 62 62, IconTitle
-Style * IconBox 10 45 -10 -5, IconGrid 22 18, IconFill top left
+Style * IconSize 72 62, IconTitle
+Style * IconBox 10 45 -10 -5, IconGrid 24 30, IconFill top left
 Style * IconOverride
 
 DestroyDecor PanelDecor
@@ -79,7 +79,7 @@ Style "gpodder" MiniIcon icons/mini/audio.png
 Style "xv" MiniIcon icons/mini/viewer.png
 
 MenuStyle * Fvwm
-MenuStyle * Hilight3DThickness 0, PopupOffset 0 100, PopupDelay 300
+MenuStyle * Hilight3DThickness 0, PopupOffset 0 98, PopupDelay 300
 MenuStyle * Font "$[infostore.normalfont]"
 MenuStyle * TitleFont "$[infostore.titlefont]"
 MenuStyle * MenuColorset 5, HilightBack, ActiveColorset 6, HilightTitleBack, TitleColorset 0
@@ -87,7 +87,8 @@ MenuStyle * BorderWidth 1, TitleUnderlines0, Animation
 MenuStyle * TrianglesUseFore, TrianglesSolid
 MenuStyle * ItemFormat "%s%| %0.2p%i%0.2p %l  %r  %i%> %|%s"
 MenuStyle * VerticalItemSpacing 6 5, VerticalTitleSpacing 6 5
-MenuStyle * SeparatorsLong
+MenuStyle * SeparatorsLong, FlatSeparators
+MenuStyle * VerticalMargins 0 0
 
 CopyMenuStyle * bgMenu
 MenuStyle bgMenu VerticalItemSpacing 2 6, VerticalTitleSpacing 4 3

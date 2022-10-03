@@ -53,6 +53,7 @@ AddToFunc StartFunction
 + I FvwmEvent FE-Focus
 + I Module FvwmCommandS
 + I Schedule 100 Function StartModules
++ I All (Iconic) PlaceAgain Icon
 
 # This file decides if we start FvwmAnimate or not
 LoadLocalConfig .start-FvwmAnimate
@@ -77,13 +78,11 @@ EdgeScroll 0 0
 EdgeResistance 500
 EdgeThickness 1
 
-BusyCursor DynamicMenu True, Read True
+BusyCursor DynamicMenu False, Read True
 
 CursorStyle ROOT         left_ptr
 CursorStyle TITLE        left_ptr
 CursorStyle DEFAULT      left_ptr
-CursorStyle SYS          left_ptr
-CursorStyle MENU         left_ptr
 
 Style * ClickToFocus
 Style * MouseFocusClickRaises

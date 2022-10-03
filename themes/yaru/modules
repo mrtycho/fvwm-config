@@ -64,8 +64,8 @@ DestroyModuleConfig DeskerPanelButtons: *
 *DeskerPanelButtons: Padding 1 1
 *DeskerPanelButtons: (1x1, Frame 1, Container(Rows 6, Frame 1))
 *DeskerPanelButtons: (5x4, Frame -1, Colorset 9, Swallow "FvwmDesker" 'Module FvwmPager FvwmDesker')
-*DeskerPanelButtons: (3x2, Frame 0, Left, Swallow (NoClose, UseOld) 'stalonetray' \
-	`Exec exec stalonetray -c $[FVWM_USERDIR]/stalonetrayrc --icon-gravity NW -p --kludges --max-geometry 8x1  force_icons_size,fix_window_pos,use_icons_hints`)
+*DeskerPanelButtons: (3x2, Frame 0, Left, Swallow (NoHints,UseOld,Respawn,NoClose,NoKill) "stalonetray" \
+	"exec exec stalonetray -f 0 --parent-bg --icon-gravity NE --grow-gravity NE --icon-size=22 --kludges=force_icons_size --max-geometry 6x1 --dockapp-mode simple --no-shrink true")
 *DeskerPanelButtons: (2x2, Frame 0, Right, Swallow (Kill) "FvwmApplet-DigitalClock" "FvwmScript $[FVWM_USERDIR]/scripts/FvwmApplet-DigitalClock 5")
 
 *DeskerPanelButtons: (End)
