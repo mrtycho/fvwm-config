@@ -19,24 +19,51 @@ Style * BorderWidth 4, HandleWidth 4
 DefaultColorset 5
 DefaultFont "$[infostore.normalfont]"
 
-DestroyDecor MagicDecor
-AddToDecor MagicDecor
-+ TitleStyle   Centered Height 26
-+ TitleStyle   AllActive       (TiledPixmap title-active.xpm) -- Flat
-+ TitleStyle   Inactive        (TiledPixmap title-inactive.xpm) -- Flat
-+ ButtonStyle  1  Active	    (Pixmap close-activeup.xpm)  -- Flat
-+ ButtonStyle  1	ActiveDown   (Pixmap close-activedown.xpm) -- Flat
-+ ButtonStyle  1	Inactive     (Pixmap close-inactive.xpm) -- Flat
-+ ButtonStyle  2	Active	    (Pixmap maximize-activeup.xpm)  -- Flat
-+ ButtonStyle  2	ActiveDown   (Pixmap maximize-activedown.xpm) -- Flat
-+ ButtonStyle  2	Inactive     (Pixmap maximize-inactive.xpm) -- Flat
-+ ButtonStyle  4	Active	    (Pixmap iconify-activeup.xpm)  -- Flat
-+ ButtonStyle  4	ActiveDown   (Pixmap iconify-activedown.xpm) -- Flat
-+ ButtonStyle  4	Inactive     (Pixmap iconify-inactive.xpm ) -- Flat
-+ BorderStyle	Active   -- HiddenHandles 
-+ BorderStyle	Inactive -- HiddenHandles 
+# Window Decoration
+#--------------------------------------------------------------------------
+TitleStyle	Centered MinHeight 26 -- Flat
 
-Style * UseDecor MagicDecor, FvwmButtons, FvwmBorder 
+TitleStyle   ActiveUp       MultiPixmap \
+								Main TiledPixmap title-active.xpm, \
+								LeftButtons TiledPixmap button_active2.xpm, \
+								LeftEnd AdjustedPixmap leftend_active.xpm, -- Flat
+TitleStyle   ActiveDown       MultiPixmap \
+								Main TiledPixmap title-activedown.xpm, \
+								LeftButtons TiledPixmap button_active2.xpm, \
+								RightEnd AdjustedPixmap leftend_active.xpm, \
+								LeftEnd AdjustedPixmap rightend_active.xpm, -- Flat
+TitleStyle   Inactive       MultiPixmap \
+								Main TiledPixmap title-inactive.xpm, \
+								LeftButtons TiledPixmap button_inactive2.xpm, \
+								LeftEnd AdjustedPixmap leftend_inactive.xpm -- Flat
+TitleStyle   InactiveDown   MultiPixmap \
+								Main TiledPixmap title-inactivedown.xpm, \
+								LeftButtons TiledPixmap button_inactive2.xpm, \
+								LeftEnd AdjustedPixmap leftend_inactive.xpm -- Flat
+ButtonStyle 	Reset
+
+ButtonStyle  1  Active	    (Pixmap close-activeup.xpm)  -- UseTitleStyle Flat
+ButtonStyle  1	ActiveDown   (Pixmap close-activedown2.xpm) -- UseTitleStyle Flat
+ButtonStyle  1	Inactive     (Pixmap close-inactive.xpm) -- UseTitleStyle Flat
+ButtonStyle  1	InActiveDown   (Pixmap close-activedown.xpm) -- UseTitleStyle Flat
+ButtonStyle  2	Active	    (Pixmap maximize-activeup2.xpm)  -- UseTitleStyle Flat
+ButtonStyle  2	ActiveDown   (Pixmap maximize-activedown2.xpm) -- UseTitleStyle Flat
+ButtonStyle  2	Inactive     (Pixmap maximize-inactive.xpm) -- UseTitleStyle Flat
+ButtonStyle  2	InactiveDown   (Pixmap maximize-activedown.xpm) -- UseTitleStyle Flat
+ButtonStyle  4	Active	    (Pixmap iconify-activeup2.xpm)  -- UseTitleStyle Flat
+ButtonStyle  4	ActiveDown   (Pixmap iconify-activedown2.xpm) -- UseTitleStyle Flat
+ButtonStyle  4	Inactive     (Pixmap iconify-inactive.xpm ) -- UseTitleStyle Flat
+ButtonStyle  4	InactiveDown   (Pixmap iconify-activedown.xpm) -- UseTitleStyle Flat
+
+
+
+BorderStyle	Active --  HiddenHandles Raised
+BorderStyle	Inactive --  HiddenHandles Raised
+
+ButtonStyle 2 - MwmDecorMax
+ButtonStyle 4 - MwmDecorMin
+
+Style * FvwmButtons, FvwmBorder 
 Style * Font "$[infostore.titlefont]"
 Style * IconFont "$[infostore.smallfont]"
 # Style * NoIcon
