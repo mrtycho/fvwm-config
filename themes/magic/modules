@@ -42,7 +42,7 @@ DestroyModuleConfig FvwmDesker: *
 *FvwmDesker: Colorset * 12
 *FvwmDesker: Fore #b3b3b3
 *FvwmDesker: Hilight black
-*FvwmDesker: WindowColorsets 5 0
+*FvwmDesker: WindowColorsets 1 0
 *FvwmDesker: Font none
 *FvwmDesker: SmallFont none
 *FvwmDesker: MiniIcons
@@ -55,6 +55,8 @@ DestroyModuleConfig FvwmDesker: *
 *FvwmDesker: Label 2 Internet
 *FvwmDesker: Label 3 Misc
 *FvwmDesker: SmallFont "$[infostore.smallfont]"
+*FvwmDesker: SolidSeparators
+#*FvwmDesker: Window3DBorders
 
 DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Background #afafaf

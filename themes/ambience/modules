@@ -3,7 +3,7 @@ EwmhBaseStruts 0 0 32 42
 Style BarButtons UseStyle PanelStyle
 Colorset 11 fg #202020, bg #3983d5, RootTransparent buffer, Tint #abd2ff 75, hi #3983d5, sh #3983d5, fgsh #f0f0f0
 #Colorset 11 fg #202020, bg #dbdbdb, hi white, sh #bababa, fgsh #f0f0f0
-Colorset 12 fg white,   bg #afafaf, RootTransparent buffer, Tint #CbC8C7 60, sh #808080, hi #c0c0c0, fgsh #303030
+Colorset 12 fg white,   bg #afafaf, RootTransparent buffer, Tint #CbC8C7 60, sh #dbd8d7, hi #dbCdCd, fgsh #303030
 Colorset 13 fg black,   bg #bebebe, hi #808080, sh #808080,  fgsh #e0e0e0
 Colorset 14 fg #202020, bg #EbE8E7, RootTransparent buffer, Tint #EbE8E7 75, hi #ffffff, sh #afafaf, fgsh #f0f0f0
 

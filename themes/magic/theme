@@ -30,8 +30,8 @@ TitleStyle   ActiveUp       MultiPixmap \
 TitleStyle   ActiveDown       MultiPixmap \
 								Main TiledPixmap title-activedown.xpm, \
 								LeftButtons TiledPixmap button_active2.xpm, \
-								RightEnd AdjustedPixmap leftend_active.xpm, \
-								LeftEnd AdjustedPixmap rightend_active.xpm, -- Flat
+								RightEnd AdjustedPixmap rightend_activedown.xpm, \
+								LeftEnd AdjustedPixmap leftend_activedown.xpm, -- Flat
 TitleStyle   Inactive       MultiPixmap \
 								Main TiledPixmap title-inactive.xpm, \
 								LeftButtons TiledPixmap button_inactive2.xpm, \
@@ -73,7 +73,7 @@ Style * IconBackgroundColorset 3, IconTitleColorset 4, HilightIconTitleColorset 
 Style * IconSize 60 50, IconTitle, IconBackgroundPadding 2
 Style * IconBox 10 45 -10 -5, IconGrid 21 21, IconFill top left
 Style * IconOverride
-Style * Icon Template.xpm
+#Style * Icon Template.xpm
 
 DestroyDecor MagicPanelDecor
 AddToDecor MagicPanelDecor
