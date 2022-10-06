@@ -9,11 +9,11 @@ DestroyModuleConfig BarButtons: *
 *BarButtons: Colorset 12
 *BarButtons: Font "$[infostore.smallfont]"
 *BarButtons: Rows 1
-*BarButtons: Padding 1 1
-*BarButtons: Frame 0
+*BarButtons: Padding 2 2
+*BarButtons: Frame 1
 PipeRead "echo *BarButtons: Geometry 800x42+$$((($[infostore.screenWidth]-800)/2))-0@p"
 
-*BarButtons: (8x1, Frame 1, Padding 1, Container(Rows 1, Frame 0 ))
+#*BarButtons: (8x1, Frame 1, Padding 1, Container(Rows 1, Frame 1 ))
 *BarButtons: (Title (Side,Center) $[gt.Files], Icon icons/FileManager.xpm, PressIcon icons/FileManager_pressed.xpm \
     PressColorset 6, Action "Exec exec $[infostore.filemanager]", \
     Action(Mouse 3) "Exec exec $[infostore.terminal] -e mc")
@@ -34,8 +34,8 @@ PipeRead "echo *BarButtons: Geometry 800x42+$$((($[infostore.screenWidth]-800)/2
     Action(Mouse 3) `Menu Popup_Internet rectangle +$left+$top 1 -100m`)
 *BarButtons: (Title (Side,Center) $[gt.Mail], Icon icons/Mail.xpm, PressIcon icons/Mail_pressed.xpm \
     PressColorset 6, Action "Exec exec $[infostore.mail]")
-*BarButtons: (Frame -1, Colorset 10, Swallow(UseOld,NoHints,NoRespawn) "xload" 'Exec xload -nolabel -fg white -hl white -jumpscroll 1')
-*BarButtons: (End)
+*BarButtons: (Frame 1, Padding 0, Swallow(UseOld,NoHints,NoRespawn) "xload" 'Exec xload -nolabel -bg black -fg white -hl white -jumpscroll 1')
+#*BarButtons: (End)
 
 DestroyModuleConfig FvwmDesker: *
 *FvwmDesker: UseSkipList
